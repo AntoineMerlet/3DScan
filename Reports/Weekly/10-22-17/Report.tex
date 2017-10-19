@@ -61,99 +61,20 @@ Professor: \professor \\ \vspace{10pt}
 \end{center}
 
 
-
-
 \end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \tableofcontents
 \newpage
-
-\section{Presentation of the project}
-\begin{figure}[H]
-    \centering
-    \subfloat[Input Image]{{\includegraphics[width=7cm]{input_example.jpg} }}
-    \qquad
-    \subfloat[Output image]{{\includegraphics[width=7cm]{output_example.png} }}
-    \caption{Comparision between input image and a result example}
-    \label{fig:example}%
-\end{figure}
-
-\subsection{First draft}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=15cm]{First_UML.png}
-	\caption{First application design using UML notation}
-	\label{fig: FirstUML}    
-\end{figure}
+\section {Brainstorming}
+First meeting (19/10/2017): ideas for the project schedule
+Weeks 1 and 2: scheduling, review of the previous codes (8 hours)
+Week 3: final scheduling decision
+Week 4: design (5-15 hours)
+Weeks 5, 6 and 7: coding (10h/week)
+Week 8: debugging
+Week 9: optimization / debugging
+Week 10: report / presentation / user manual / oral presentation
 
 
-\begin{itemize}
-  \item MainWindow, being the core of the application. Handles: GUI, display methods, load and save;
-  \item DataBase, being the class handling the image folder selected by the user. From a given path, should be able to load every and only images, and process them;
-  \item BaseImage, inherited from QPixmap, being the type used to represent any image loaded into the software. This class conatins the functions to process the images, as well as the reults of these functions;
-  \item OutputImage, inherited from QPixmap, containing the image to be saved as well as the methods to perform the save.
-\end{itemize}
-
-\begin{lstlisting}[language=C++]
-public:
-    void lowerResolution(const int &);
-    void computeMean();
-\end{lstlisting}
-
-Following is shown the code of the \textit{BaseImage:lowerResolution(const int \&)} function:
- 
-\begin{lstlisting}[language=C++]
-void BaseImage::computeMean(){
-    // Computes the mean value of lowImage
-
-    // get image size
-    int h = lowImage->height();
-    int w = lowImage->width();
-
-    // init counters in RGB
-    int totalR = 0;
-    int totalG = 0;
-    int totalB = 0;
-
-    // Goign through the image
-    for ( int i = 0; i < w; i++){
-        for ( int j = 0; j < h; j++){
-
-            // get the current pixel value
-            QColor currentpixel( lowImage->pixel( i, j));
-
-            // add the corresponding channels
-            totalR += currentpixel.red();
-            totalG += currentpixel.green();
-            totalB += currentpixel.blue();
-        }
-    }
-    // division to get the mean.
-    totalR /= h * w;
-    totalG /= h * w;
-    totalB /= h * w;
-    // creating the resulting color as a qRGB
-    setMean(new QColor( totalR, totalG, totalB));
-}
-\end{lstlisting}
-The second function is the \textit{BaseImage::lowerResolution(const int \&ImageSize)} function.
- 
-\begin{itemize}
-  \item \textit{path}, being the path of the database folder;
-  \item \textit{nbImg}, being the number of images in this database;
-  \item\textit{data}, being a vector (STL) containing pointers to \textit{BaseImage}. It contains all the instances (pointers to) of the images load into the database.
-\end{itemize}
-
-\begin{enumerate}
-  \item \textbf{Menu}: Allows the user to load an image, save the final result and quit the program. Each choice can be directly accessed using the appropriate shortcut;
-  \item \textbf{QGraphicsView}: This is the area where images are displayed. The first image that is displayed is the basic image loaded by the user. Followd its pixelized version, and finally the artified version of the image;
-  \item\textbf{Lower Resolution Button}: Once an image is loaded by the user, this button is enabled (disabled by default). On click, it the image will be pixelized and displayed;
-  \item \textbf{Load Database Button}: Becomes enable after the \textbf{Lower Resolution Button} is used. Open a dialog window to allow the user to select a folder containing images. Using this button enable the following one;
-  \item \textbf{Process Button}: Once the both the pixelized version of the input image and the database are set, the user can use this button to artify the image.
-  \item \textbf{Image Size}: Allows the user to select the number of pixel used to form the pixelized version of the base image. This number is bounded between 10 and 500.
-  \item \textbf{SubImage Size}: Allows the user to select the number of pixel used to form the pixelized version of the database images. This number is bounded between 5 and 50.
-  \item \textbf{Verbose Console}: This area is visible or not depending on the value of the checkbox named \textit{verbose}. It allows the user to have a feedback on the software status.
-\end{enumerate}
 \end{document} % DONE WITH DOCUMENT!
 
