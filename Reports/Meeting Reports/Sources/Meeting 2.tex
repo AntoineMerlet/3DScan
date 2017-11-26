@@ -1,0 +1,157 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Meeting n. 2}
+\newcommand{\labtitle}{Software Engineering Project}
+\newcommand{\authorname}{Antoine Merlet}
+\newcommand{\professor}{Dr. Yohan Fougerolle, Dr. Cansen Jiang, Dr. David Strubel}
+
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Summary}
+This second meeting was held on 16, November 2017. 
+First, we compared the work done to our previous goals
+
+\begin{itemize}
+\item Read all the previous work reports: DONE
+\item Download all the previous projects: DONE
+\item Start to look at the previous codes: STARTED
+\item Install all the necessary components: STARTED
+\end{itemize}
+
+As we can see, we ran late on several points. First, this second meeting was held a month after the first one, which is a too long duration for proper project management. This is due to troubles regarding the software installation, as well as the need for our attention for other lessons. In the future, we will meet more frequently. 
+
+The goals to reach for this meeting are the following:
+
+\begin{itemize}
+\item Split the project in several tasks
+\item Assign these tasks to group members
+\item Define the working strategy (what is worth improving)
+\end{itemize}
+
+\section{Tasks splitting}
+We first started by a brainstorming, and then divided the work in several categories
+
+\begin{itemize}
+\item GUI improvement and user experience
+\item Acquisition improvement
+\item Registration
+\item Filtering/Denoising
+\item Software Design
+\item Proper code/GUI interfacing
+\item Meshing
+\end{itemize}
+
+We then selected the tasks to do first, and each member chose its subject:
+
+\begin{itemize}
+\item[Marcio:] Acquisiton Improvement
+\item[Mladen:] GUI improvement
+\item[Gulnur:] Mathematical tools
+\item[Antoine:] Software Design, Interfacing, project management
+\end{itemize}
+
+Following are described each assigned task
+
+\subsection{Acquisiton Improvement}
+
+In this part, the goal is to look for possible improvement regarding the Kinect and Intell sensors, as well as the turning table.
+The first step should be to be able to retreive information for the sensors (using old projects?), look thoroughly at the reports for this specific parts (critics, work already done). This should be followed by a study of the current state of the implementation, and finally determine what can be improved.
+
+\subsection{GUI improvement and user experience}
+
+As the GUI is the link between the final user and the actual core of the program, it should match the needs, as well as be simple of use. In this part, a study of the currently availabe GUIs should be done, leading to a selection of points to improve. If the current state of the GUI quality is good, it might be possible to reuse a GUI from a previous project, and add new features to it. If overall none of theses GUIs are satisfying, we should create a brand new one.
+
+
+\subsection{Mathematical tools}
+
+From all the reports and software, we understood that most of the teams are using Point-to-Point ICP (from PCL) for scan registration. However, we belive that more options than this method should be given. Therefore, there will be a study of the available mathematical tools, and this on several levels:
+
+\begin{itemize}
+\item Denoising
+\item Filtering
+\item Registration
+\item Meshing
+\end{itemize}
+
+From what we saw in the reports, the registration part is the one that can largely be improved. A weak registration process leads to nearly impossible meshing, and can be induced by poor data management (outlier removals, filtering, point density reduction, etc...). A study of the previous reports will be done, and hopefully each team identified the weak points of their implementation, to speed up the process. If not, we might not have time to do a second study on the current state of the meshing part.
+
+Within two weeks, we should be able to start improving the imprementation of the registration 
+
+
+\subsection{Software design}
+
+Regarding the current codes and report, it might be interesting to start from scratch, with a new Software Design. In fact, we know that at the end of this project, our work will not be perfect, and therefore could be further improved. In  the current state of the project (for all 4 of them), the Software design is missing: few class diagrams, no proper documentation or commenting, non robust interfacing betwen core and GUI. We belive that it is important to make our software understandable, easy to install, read and improve.
+
+However, this does not mean that we should reinvent the wheel. In fact, once understood, the previous code have strong ideas and implementation. only their overall organization is poorly handeled. That is why we will reuse previously developped functions, while improving, if possible, their documentation and readability.
+
+The first step will be to read thoroughly the current codes, and on the fly select good function. Then determine the Software structure to use, according to what have been learned from the previous projects
+
+
+\section{Goals for the next meeting}
+
+\begin{itemize}
+\item Solve all installation issues, and be able to run the previous projects on all members computers
+\item Have a global idea, for each member, of what should be improved
+\end{itemize}
+
+\end{document} % DONE WITH DOCUMENT!
+
