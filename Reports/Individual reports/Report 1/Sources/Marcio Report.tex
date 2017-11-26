@@ -1,0 +1,115 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Software Engineering Project}
+\newcommand{\labtitle}{Weekly Report}
+\newcommand{\authorname}{Marcio Aloisio Bezerra Cavalcanti Rockenbach}
+\newcommand{\professor}{Dr. Yohan Fougerolle}
+
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section {Introduction}
+\setlength{\parindent}{5ex}
+This is the first individual report of our Software Engineering Project. In this report, I will add all activities done in the past few weeks. For the next weeks, I plan on doing a weekly report of my progress.\\
+\section{GitHub and LaTeX}
+As a inexperienced programmer without any previous knowledge on C++ and project management in the context of Computer Science, I had to start by getting familiarized with the tools that we will have to use. I installed and obtained basic knowledge on these programs to be able to use them during our project.\\
+\section{Previous Projects}
+One of the first tasks was to download all of the previous last year projects from their GitHub repositories and to read their reports. I downloaded all of the projects and tried to run them.\\
+\indent It was very challenging to make the projects run, since they use very specific libraries and need to have everything installed and configured in very specific paths.\\
+Antoine helped me by installing most of the needed files. In the end, we still weren't able to run the projects. With the help of Oleh, one of our classmates, I was able to install the rest of the necessary files and to run one of the projects (3D Korn).\\
+\section{Supplementary Material}
+This project introduces a whole new world of concepts and algorithms that I'm not familiar with. To be able to start to understand the project strategy, it was necessary to get supplementary material. The previous reports helped, but they are not enough to provide us the background knowledge to perform the task of programming a 3D scanner.\\
+\indent For that, I read the articles provided by Cansen Jiang and David Strubel. Also, I watched tutorial videos on PCL and Kinect. One of the most useful resources was a series of videos published in YouTube that can be viewed at \url{https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZMlWHdcy8hAGDy6IaoxUKf}.
+\section{General Strategy}
+In our first group meeting, we created the outline of how we should create the 3D scanner:\\
+\\
+1) Acquisition of the image with the Kinect RGB-D sensor\\
+2) Background subtraction to get the region of interest\\
+3) Point Cloud formation\\
+4) Denoising\\
+5) Triangulation\\
+6) Colorizing\\
+\\
+\indent In the next group meeting, we refined that algorithm, and decided to split the tasks between group members:\\
+\\
+1) Marcio - Data acquisition\\
+2) Antoine - Project Design\\
+3) Gulnur - Mathematical refinement of the algorithms\\
+4) Mladen - GUI\\
+\section{Kinect}
+On November 24th, Mladen and I went to the Robotics Lab at Condorcet to get familiar with the Kinect Sensor. We had some problems to make the Kinect sensor work, but with the help of other classmates (Oleh, Daria and Lisa), we finished the installation of all required drivers and software.\\
+\indent We worked with Kinect Studio to test the sensor and to see the acquired data (RGB and depth images). We also used the 3D Korn project to test the functionality of the program and to acquire some experimental point clouds data.\\
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.3]{Kinect.jpg}
+\caption{Kinect Studio - RGB Image}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.3]{Marcio_Cloud.jpg}
+\caption{3D Korn - Point Cloud Acquisition}
+\end{figure}
+
+\section{Perspectives}
+Although we made progress, it's still necessary to gain more background knowledge to advance in the project. I'm still not able to fully understand the previous projects codes, and I have to work on that.\\
+\indent As my current role is in data acquisition, I need to focus more on understanding how the Kinect sensor works and how to handle the data provided by it.\\
+\indent For what I read on  the reports, the previous groups used the Grabber module on the PCL to obtain the data from the Kinect. I'm planning on discussing with the group if we are going to maintain the same strategy on that subject or if we are going to try a different approach.\\
+
+\end{document} % DONE WITH DOCUMENT!
+
