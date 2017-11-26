@@ -1,5 +1,4 @@
 # 3DScan
 Software Engineering MAIA Project
 
-
-dasdasads
+Group members: Gulnur Ungan, Mladen Rakic, Marcio Rockenback, Antoine Merlet
