@@ -1,0 +1,139 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Meeting n. 1}
+\newcommand{\labtitle}{Software Engineering Project}
+\newcommand{\authorname}{Antoine Merlet}
+\newcommand{\professor}{Dr. Yohan Fougerolle, Dr. Cansen Jiang, Dr. David Strubel}
+
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Summary}
+Our team is a team of four students: Gülnur Ungan, Mladen Rakic, Marcio Rockenback, Antoine Merlet.
+This first meeting was held on 19, October 2017. 
+For this meeting, our goals were the following:
+
+\begin{itemize}
+\item Get the big picture of the project
+\item Define each member task
+\item Define a basic and realistic draft of our schedule
+\item Define the goals to achieve for the next meeting
+\end{itemize}
+
+\section{Understanding of the topic}
+During the past summer, one of our member had the opportunity to work or a similar project: 3D body scan using 4 Kinect. The main difference between this previous experience and the current project is the referential used (4 still views against, for this project, one still view with rotating subject). Also, no library such as PCL or Boost were used. However, this does not affect is a great manner the data processing, as the mathematical steps are the same. Here a brief summary of the tasks to accomplish to process the data and form a 3D model of the body:
+
+\begin{enumerate}
+\item Acquire and store the data (there is no pretension to make it real-time, so storage is needed). Each image is acquired after a partial rotation of the subject.
+\item Remove outliers 
+\item Filter the data
+\item Align and register the Point Clouds (PC) two by two, by cascading.
+\item Filter the data the prepare meshing: remove low infoarmation points.
+\item Triangulation of the data (building triangles between points)
+\item Surface rendering 
+\end{enumerate}
+
+Obviously, each step will have to be studied and detailed in the future.
+
+\section{Management}
+Project Management is a very important part, as in any project. 
+Following is presented a brief outline of the steps to accomplish for the project, as a team:
+
+\begin{enumerate}
+\item Read previous reports: topic knowledge, past work, implementation choices, algorithms criticism.
+\item Define the schedule.
+\item Meaningfully split the tasks (according to each members' strengths).
+\item Setup a Github repository to enable remote team work.
+\item Frequent report writing (Meeting report: team; Weekly report: individual).
+\end{enumerate}
+
+Here is our first draft of the schedule:
+
+\begin{itemize}
+\item[Week 1:] Get started with the project. Start planning and get a clear understanding of the concept/goal.
+\item[Week 2:] Study the previous work and install the components.
+\item[Week 3:]Determine what should be kept (if any) from the previous works, and what should be done/re-done (critical reports explaining the choices). Split thoroughly the tasks.
+\item[Week 4:]Choice the improvements to bring for the project. General design of GUI and Software. Study of the algorithms to use.
+\item[Week 5:]Start the implementation.
+\item[Week 6:]Continue the implementation. Change the design if necessary.
+\item[Week 7:]Finish the implementation.
+\item[Week 8:]General debugging, optimization if possible. Check the sources, documentation, comments, pack, deploy.
+\item[Week 9:]Group and check all reports, finish final report, check for typo.
+\item[Week 10:]Prepare presentation (and demo?) support and speech.
+\item[Week 11:]Defense.
+\end{itemize}
+
+This first draft is not detailed and is subject to change, according to the difficulties encountered and the new knowledge acquired in the process.
+
+Our Github is hosted at \url{https://github.com/AntoineMerlet/3DScan}.
+
+\section{Goals until next meeting}
+
+\begin{itemize}
+\item Read all the previous work reports
+\item Download all the previous projects
+\item Start to look at the previous codes
+\item Install all the necessary components
+\end{itemize}
+
+
+\end{document} % DONE WITH DOCUMENT!
+
