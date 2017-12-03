@@ -1,0 +1,108 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Software Engineering Project}
+\newcommand{\labtitle}{Weekly report}
+\newcommand{\authorname}{Mladen Rakic}
+\newcommand{\professor}{Dr. Yohan Fougerolle}
+
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section {Accomplished tasks}
+This is the brief list of the things I have managed to accomplish this week:\\
+\linebreak
+1. My main focus was to get familiar with the concepts of the GUI implementation in Qt. In order to do that, I watched a number of Youtube tutorials on the topic and managed to understand the key principles behind it. To get into the routine, I created several simple GUIs to be able to understand all the connections and the organization of the code.\\ 
+\linebreak 
+2. Once I was done with that, I made a draft proposal of the functionalities that our group's GUI should have. The draft can be found in the Appendix 1.\\ 
+\linebreak
+3. Furthermore, I examined all the previous groups' GUIs in order to search for the one that mostly resembles my proposal. I concluded that the 3D Korn GUI (Group 1 from previous year) can be a good base for our group. In other words, we should consider improving their GUI rather than starting from scratch.\\
+\linebreak
+4. Aside from the GUI, I was present in the lab this week with Marcio in order to get a better understanding of the data acquisition process. We made several scans, testing the different positions of the Kinect sensor and trying to come up with the optimal protocol for the acquisition for our project.\\
+
+\section {Future tasks}
+Here I will present the list of my assignments for the upcoming week(s):\\
+\linebreak
+1. First thing to do is to present my GUI proposal to the rest of the group and to discuss together whether some changes have to be made or not. I expect to have the final design of the GUI by the end of the next week.\\
+\linebreak
+2. After that, I will start coding and preparing the GUI for our project, mainly focusing on the different improvement aspects of the previous year's GUI(s), in order to make its functionalities  suitable for our needs.\\
+
+\section {Appendix 1}
+This is the draft proposal of the functionalities our group's GUI should have:\\
+\linebreak
+1. Enable new session for acquisition (and display) of the point clouds.\\
+\linebreak
+2. Save the acquired point clouds (probably as .ply files instead of .pcd).\\
+\linebreak
+3. Load the existing set(s) of point clouds for further processing.\\
+\linebreak
+4. Enable the spatial coordinates manipulation and filtering of the data.\\
+\linebreak
+5. Register the point clouds using the proposed method(s).\\
+\linebreak
+6. Mesh the data using the algorithm(s) proposed.\\
+\linebreak
+7. Display the results (registered point cloud, mesh).\\
+\linebreak
+8. Save the obtained mesh for further use.\\
+\linebreak
+9. A detailed and well-documented help for the user.\\
+ 
+
+
+\end{document} % DONE WITH DOCUMENT!
+
