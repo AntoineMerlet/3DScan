@@ -1,0 +1,227 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2017-12-05T12:26:11
+#
+#-------------------------------------------------
+
+QT       += core gui opengl serialport
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = MAGMA-3D
+TEMPLATE = app
+
+
+SOURCES += main.cpp\
+    GUI/mainwindow.cpp \
+    IO/sensors.cpp \
+    IO/kinect_v2.cpp \
+    IO/intel_r200.cpp \
+    IO/iotools.cpp \
+    IO/kinect2_grabber.cpp
+
+HEADERS  += GUI/mainwindow.h \
+    IO/sensors.h \
+    IO/kinect_v2.h \
+    IO/intel_r200.h \
+    IO/iotools.h \
+    IO/kinect2_grabber.h
+
+FORMS    += GUI/mainwindow.ui
+
+
+INCLUDEPATH += "C:\Program Files\PCL 1.8.0\include\pcl-1.8" \
+                         "C:\Program Files\PCL 1.8.0\3rdParty\VTK\include\vtk-7.0" \
+                         "C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61" \
+                         "C:\Program Files\PCL 1.8.0\3rdParty\Qhull\include" \
+                         "C:\Program Files\PCL 1.8.0\3rdParty\FLANN\include" \
+                         "C:\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3" \
+                         "C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc" \
+                         "C:\Program Files\OpenNI2\Include" \
+                         "C:\Program Files (x86)\Intel\RSSDK\include" \
+                         "C:\Program Files (x86)\Intel\RSSDK\src\libpxc" \
+                         "C:\Qt\Qt5.7.0\5.7\msvc2015_64\include"
+
+LIBS += opengl32.lib advapi32.lib Ws2_32.lib user32.lib shell32.lib gdi32.lib kernel32.lib
+
+LIBS += "-LC:\Program Files\PCL 1.8.0\lib" \
+         -lpcl_features_release \
+         -lpcl_filters_release \
+         -lpcl_io_ply_release \
+         -lpcl_io_release \
+         -lpcl_kdtree_release \
+         -lpcl_keypoints_release \
+         -lpcl_ml_release \
+         -lpcl_octree_release \
+         -lpcl_outofcore_release \
+         -lpcl_people_release \
+         -lpcl_recognition_release \
+         -lpcl_registration_release \
+         -lpcl_sample_consensus_release \
+         -lpcl_search_release \
+         -lpcl_segmentation_release \
+         -lpcl_stereo_release \
+         -lpcl_surface_release \
+         -lpcl_tracking_release \
+         -lpcl_visualization_release \
+         -lpcl_common_release \
+         "-LC:\Program Files\PCL 1.8.0\3rdParty\Qhull\lib" \
+         -lqhullstatic \
+         "-LC:\Program Files\PCL 1.8.0\3rdParty\FLANN\lib" \
+         -lflann_cpp_s \
+         "-LC:\Program Files\PCL 1.8.0\3rdParty\Boost\lib" \
+         -llibboost_atomic-vc140-mt-1_61 \
+         -llibboost_chrono-vc140-mt-1_61 \
+         -llibboost_container-vc140-mt-1_61 \
+         -llibboost_context-vc140-mt-1_61 \
+         -llibboost_coroutine-vc140-mt-1_61 \
+         -llibboost_date_time-vc140-mt-1_61 \
+         -llibboost_exception-vc140-mt-1_61 \
+         -llibboost_filesystem-vc140-mt-1_61 \
+         -llibboost_graph-vc140-mt-1_61 \
+         -llibboost_iostreams-vc140-mt-1_61 \
+         -llibboost_locale-vc140-mt-1_61 \
+         -llibboost_log-vc140-mt-1_61 \
+         -llibboost_log_setup-vc140-mt-1_61 \
+         -llibboost_math_c99-vc140-mt-1_61 \
+         -llibboost_math_c99f-vc140-mt-1_61 \
+         -llibboost_math_c99l-vc140-mt-1_61 \
+         -llibboost_math_tr1-vc140-mt-1_61 \
+         -llibboost_math_tr1f-vc140-mt-1_61 \
+         -llibboost_math_tr1l-vc140-mt-1_61 \
+         -llibboost_mpi-vc140-mt-1_61 \
+         -llibboost_prg_exec_monitor-vc140-mt-1_61 \
+         -llibboost_program_options-vc140-mt-1_61 \
+         -llibboost_random-vc140-mt-1_61 \
+         -llibboost_regex-vc140-mt-1_61 \
+         -llibboost_serialization-vc140-mt-1_61 \
+         -llibboost_signals-vc140-mt-1_61 \
+         -llibboost_system-vc140-mt-1_61 \
+         -llibboost_test_exec_monitor-vc140-mt-1_61 \
+         -llibboost_thread-vc140-mt-1_61 \
+         -llibboost_timer-vc140-mt-1_61 \
+         -llibboost_type_erasure-vc140-mt-1_61 \
+         -llibboost_unit_test_framework-vc140-mt-1_61 \
+         -llibboost_wave-vc140-mt-1_61 \
+         -llibboost_wserialization-vc140-mt-1_61 \
+         "-LC:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\Lib\x64" \
+         -lkinect20 \
+         "-LC:\Program Files\OpenNI2\Lib" \
+         -lOpenNI2 \
+         "-LC:\Program Files (x86)\Intel\RSSDK\lib\x64" \
+         -llibpxc \
+         -llibpxc_d  \
+         -llibpxcmd \
+         -llibpxcmd_d \
+         "-LC:\Program Files\PCL 1.8.0\3rdParty\VTK\lib" \
+         -lvtkalglib-7.0 \
+         -lvtkChartsCore-7.0 \
+         -lvtkCommonColor-7.0 \
+         -lvtkCommonComputationalGeometry-7.0 \
+         -lvtkCommonCore-7.0 \
+         -lvtkCommonDataModel-7.0 \
+         -lvtkCommonExecutionModel-7.0 \
+         -lvtkCommonMath-7.0 \
+         -lvtkCommonMisc-7.0 \
+         -lvtkCommonSystem-7.0 \
+         -lvtkCommonTransforms-7.0 \
+         -lvtkDICOMParser-7.0 \
+         -lvtkDomainsChemistry-7.0 \
+         -lvtkexoIIc-7.0 \
+         -lvtkexpat-7.0 \
+         -lvtkFiltersAMR-7.0 \
+         -lvtkFiltersCore-7.0 \
+         -lvtkFiltersExtraction-7.0 \
+         -lvtkFiltersFlowPaths-7.0 \
+         -lvtkFiltersGeneral-7.0 \
+         -lvtkFiltersGeneric-7.0 \
+         -lvtkFiltersGeometry-7.0 \
+         -lvtkFiltersHybrid-7.0 \
+         -lvtkFiltersHyperTree-7.0 \
+         -lvtkFiltersImaging-7.0 \
+         -lvtkFiltersModeling-7.0 \
+         -lvtkFiltersParallel-7.0 \
+         -lvtkFiltersParallelImaging-7.0 \
+         -lvtkFiltersProgrammable-7.0 \
+         -lvtkFiltersSelection-7.0 \
+         -lvtkFiltersSMP-7.0 \
+         -lvtkFiltersSources-7.0 \
+         -lvtkFiltersStatistics-7.0 \
+         -lvtkFiltersTexture-7.0 \
+         -lvtkFiltersVerdict-7.0 \
+         -lvtkfreetype-7.0 \
+         -lvtkGeovisCore-7.0 \
+         -lvtkgl2ps-7.0 \
+         -lvtkhdf5-7.0 \
+         -lvtkhdf5_hl-7.0 \
+         -lvtkImagingColor-7.0 \
+         -lvtkImagingCore-7.0 \
+         -lvtkImagingFourier-7.0 \
+         -lvtkImagingGeneral-7.0 \
+         -lvtkImagingHybrid-7.0 \
+         -lvtkImagingMath-7.0 \
+         -lvtkImagingMorphological-7.0 \
+         -lvtkImagingSources-7.0 \
+         -lvtkImagingStatistics-7.0 \
+         -lvtkImagingStencil-7.0 \
+         -lvtkInfovisCore-7.0 \
+         -lvtkInteractionImage-7.0 \
+         -lvtkInteractionStyle-7.0 \
+         -lvtkInteractionWidgets-7.0 \
+         -lvtkIOAMR-7.0 \
+         -lvtkIOCore-7.0 \
+         -lvtkIOEnSight-7.0 \
+         -lvtkIOExodus-7.0 \
+         -lvtkIOExport-7.0 \
+         -lvtkIOGeometry-7.0 \
+         -lvtkIOImage-7.0 \
+         -lvtkIOImport-7.0 \
+         -lvtkIOInfovis-7.0 \
+         -lvtkIOLegacy-7.0 \
+         -lvtkIOLSDyna-7.0 \
+         -lvtkIOMINC-7.0 \
+         -lvtkIOMovie-7.0 \
+         -lvtkIONetCDF-7.0 \
+         -lvtkIOParallel-7.0 \
+         -lvtkIOParallelXML-7.0 \
+         -lvtkIOPLY-7.0 \
+         -lvtkIOSQL-7.0 \
+         -lvtkIOVideo-7.0 \
+         -lvtkIOXML-7.0 \
+         -lvtkIOXMLParser-7.0 \
+         -lvtkjpeg-7.0 \
+         -lvtkjsoncpp-7.0 \
+         -lvtklibxml2-7.0 \
+         -lvtkmetaio-7.0 \
+         -lvtkNetCDF-7.0 \
+         -lvtkNetCDF_cxx-7.0 \
+         -lvtkoggtheora-7.0 \
+         -lvtkParallelCore-7.0 \
+         -lvtkpng-7.0 \
+         -lvtkproj4-7.0 \
+         -lvtkRenderingAnnotation-7.0 \
+         -lvtkRenderingContext2D-7.0 \
+         -lvtkRenderingContextOpenGL-7.0 \
+         -lvtkRenderingCore-7.0 \
+         -lvtkRenderingFreeType-7.0 \
+         -lvtkRenderingGL2PS-7.0 \
+         -lvtkRenderingImage-7.0 \
+         -lvtkRenderingLabel-7.0 \
+         -lvtkRenderingLIC-7.0 \
+         -lvtkRenderingLOD-7.0 \
+         -lvtkRenderingOpenGL-7.0 \
+         -lvtkRenderingVolume-7.0 \
+         -lvtkRenderingVolumeOpenGL-7.0 \
+         -lvtksqlite-7.0 \
+         -lvtksys-7.0 \
+         -lvtktiff-7.0 \
+         -lvtkverdict-7.0 \
+         -lvtkViewsContext2D-7.0 \
+         -lvtkViewsCore-7.0 \
+         -lvtkViewsInfovis-7.0 \
+         -lvtkzlib-7.0 \
+         -lvtkViewsQt-7.0 \
+         -lvtkRenderingQt-7.0 \
+         -lvtkGUISupportQtSQL-7.0 \
+         -lvtkGUISupportQt-7.0 \
+
