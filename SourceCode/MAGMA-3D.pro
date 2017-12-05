@@ -18,14 +18,30 @@ SOURCES += main.cpp\
     IO/kinect_v2.cpp \
     IO/intel_r200.cpp \
     IO/iotools.cpp \
-    IO/kinect2_grabber.cpp
+    IO/kinect2_grabber.cpp \
+    Storage/database.cpp \
+    GUI/guitools.cpp \
+    Core/mathtools.cpp \
+    Core/registration.cpp \
+    Core/filtering.cpp \
+    Core/meshing.cpp \
+    GUI/parameters.cpp \
+    GUI/options.cpp
 
 HEADERS  += GUI/mainwindow.h \
     IO/sensors.h \
     IO/kinect_v2.h \
     IO/intel_r200.h \
     IO/iotools.h \
-    IO/kinect2_grabber.h
+    IO/kinect2_grabber.h \
+    Storage/database.h \
+    GUI/guitools.h \
+    Core/mathtools.h \
+    Core/registration.h \
+    Core/filtering.h \
+    Core/meshing.h \
+    GUI/parameters.h \
+    GUI/options.h
 
 FORMS    += GUI/mainwindow.ui
 
