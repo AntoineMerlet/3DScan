@@ -31,16 +31,16 @@ FORMS    += GUI/mainwindow.ui
 
 
 INCLUDEPATH += "C:\Program Files\PCL 1.8.0\include\pcl-1.8" \
-                         "C:\Program Files\PCL 1.8.0\3rdParty\VTK\include\vtk-7.0" \
-                         "C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61" \
-                         "C:\Program Files\PCL 1.8.0\3rdParty\Qhull\include" \
-                         "C:\Program Files\PCL 1.8.0\3rdParty\FLANN\include" \
-                         "C:\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3" \
-                         "C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc" \
-                         "C:\Program Files\OpenNI2\Include" \
-                         "C:\Program Files (x86)\Intel\RSSDK\include" \
-                         "C:\Program Files (x86)\Intel\RSSDK\src\libpxc" \
-                         "C:\Qt\Qt5.7.0\5.7\msvc2015_64\include"
+             "C:\Program Files\PCL 1.8.0\3rdParty\VTK\include\vtk-7.0" \
+             "C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61" \
+             "C:\Program Files\PCL 1.8.0\3rdParty\Qhull\include" \
+             "C:\Program Files\PCL 1.8.0\3rdParty\FLANN\include" \
+             "C:\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3" \
+             "C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc" \
+             "C:\Program Files\OpenNI2\Include" \
+             "C:\Program Files (x86)\Intel\RSSDK\include" \
+             "C:\Program Files (x86)\Intel\RSSDK\src\libpxc" \
+             "C:\Qt\Qt5.7.0\5.7\msvc2015_64\include"
 
 LIBS += opengl32.lib advapi32.lib Ws2_32.lib user32.lib shell32.lib gdi32.lib kernel32.lib
 

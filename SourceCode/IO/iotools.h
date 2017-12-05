@@ -3,6 +3,13 @@
 
 #include <string>
 #include <vector>
+#include <QStringList>
+
+#include <pcl/PolygonMesh.h>
+#include <pcl/point_cloud.h>
+#include <pcl/io/ply_io.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/io/vtk_lib_io.h>
 namespace IO {
 
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(std::string);
@@ -20,10 +27,10 @@ bool savePLY(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, std::string);
 bool saveSTL(pcl::PolygonMesh::Ptr, std::string);
 bool saveVTK(pcl::PolygonMesh::Ptr, std::string);
 
-bool savePCD(vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>, std::string);
-bool savePLY(vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>, std::string);
-bool saveSTL(vector<pcl::PolygonMesh::Ptr>, std::string);
-bool saveVTK(vector<pcl::PolygonMesh::Ptr>, std::string);
+bool savePCD(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>, std::string);
+bool savePLY(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>, std::string);
+bool saveSTL(std::vector<pcl::PolygonMesh::Ptr>, std::string);
+bool saveVTK(std::vector<pcl::PolygonMesh::Ptr>, std::string);
 
 }
 
