@@ -1,6 +1,5 @@
 #include "registration.h"
 
-Registration::Registration()
-{
+namespace Core {
 
 }

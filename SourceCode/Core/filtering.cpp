@@ -1,6 +1,5 @@
 #include "filtering.h"
 
-Filtering::Filtering()
-{
+namespace Core {
 
 }

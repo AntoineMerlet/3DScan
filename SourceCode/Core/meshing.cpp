@@ -1,6 +1,5 @@
 #include "meshing.h"
 
-Meshing::Meshing()
-{
+namespace Core {
 
 }

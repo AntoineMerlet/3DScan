@@ -1,11 +1,8 @@
 #ifndef MATHTOOLS_H
 #define MATHTOOLS_H
 
+namespace Core {
 
-class Mathtools
-{
-public:
-    Mathtools();
-};
+}
 
 #endif // MATHTOOLS_H

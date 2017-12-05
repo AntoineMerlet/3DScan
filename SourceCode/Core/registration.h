@@ -1,11 +1,8 @@
 #ifndef REGISTRATION_H
 #define REGISTRATION_H
 
+namespace Core {
 
-class Registration
-{
-public:
-    Registration();
-};
+}
 
 #endif // REGISTRATION_H
