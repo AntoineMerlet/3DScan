@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     Core/filtering.cpp \
     Core/meshing.cpp \
     GUI/parameters.cpp \
-    GUI/options.cpp
+    GUI/options.cpp \
+    scanwindow.cpp
 
 HEADERS  += GUI/mainwindow.h \
     IO/sensors.h \
@@ -41,9 +42,11 @@ HEADERS  += GUI/mainwindow.h \
     Core/filtering.h \
     Core/meshing.h \
     GUI/parameters.h \
-    GUI/options.h
+    GUI/options.h \
+    scanwindow.h
 
-FORMS    += GUI/mainwindow.ui
+FORMS    += GUI/mainwindow.ui \
+    scanwindow.ui
 
 
 INCLUDEPATH += "C:\Program Files\PCL 1.8.0\include\pcl-1.8" \

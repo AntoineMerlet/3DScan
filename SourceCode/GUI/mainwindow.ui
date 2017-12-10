@@ -1,24 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>650</width>
+    <height>450</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="mw_explorer_tabwidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>191</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="mw_pc_tab">
+     <attribute name="title">
+      <string>PC</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="mw_registeredpc_tab">
+     <attribute name="title">
+      <string>Registered PC</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="mw_mesh_tab">
+     <attribute name="title">
+      <string>Mesh</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QGraphicsView" name="mw_visualizer_graphicsview">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>40</y>
+      <width>391</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QFrame" name="mw_register_frame">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>240</y>
+      <width>151</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="mw_register_pc_pushbutton">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Register point clouds</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="mw_generatemesh_pushbutton">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Generate mesh</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="mw_visualizer_label">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Visualizer</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mw_pcexplorer_label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Point cloud explorer</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>650</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMAGMA_3D_scanner">
+    <property name="title">
+     <string>Scan</string>
+    </property>
+    <addaction name="actionNew_scan"/>
+   </widget>
+   <widget class="QMenu" name="menuImport">
+    <property name="title">
+     <string>Import</string>
+    </property>
+    <addaction name="actionImport_point_clouds"/>
+    <addaction name="actionImport_registered_PC"/>
+    <addaction name="actionImport_mesh"/>
+   </widget>
+   <widget class="QMenu" name="menuExport">
+    <property name="title">
+     <string>Export</string>
+    </property>
+    <addaction name="actionExport_point_clouds"/>
+    <addaction name="actionExport_registered_PC"/>
+    <addaction name="actionExport_mesh"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionUser_manual"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuMAGMA_3D_scanner"/>
+   <addaction name="menuImport"/>
+   <addaction name="menuExport"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNew_scan">
+   <property name="text">
+    <string>New scan</string>
+   </property>
+  </action>
+  <action name="actionImport_point_clouds">
+   <property name="text">
+    <string>Import point clouds</string>
+   </property>
+  </action>
+  <action name="actionImport_registered_PC">
+   <property name="text">
+    <string>Import registered PC</string>
+   </property>
+  </action>
+  <action name="actionImport_mesh">
+   <property name="text">
+    <string>Import mesh</string>
+   </property>
+  </action>
+  <action name="actionExport_point_clouds">
+   <property name="text">
+    <string>Export point clouds</string>
+   </property>
+  </action>
+  <action name="actionExport_registered_PC">
+   <property name="text">
+    <string>Export registered PC</string>
+   </property>
+  </action>
+  <action name="actionExport_mesh">
+   <property name="text">
+    <string>Export mesh</string>
+   </property>
+  </action>
+  <action name="actionUser_manual">
+   <property name="text">
+    <string>User manual</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>

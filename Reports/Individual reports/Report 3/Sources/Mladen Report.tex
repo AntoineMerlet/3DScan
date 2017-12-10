@@ -1,0 +1,116 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Software Engineering Project}
+\newcommand{\labtitle}{Weekly report}
+\newcommand{\authorname}{Mladen Rakic}
+\newcommand{\professor}{Dr. Yohan Fougerolle}
+
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section {Accomplished tasks}
+Here I will present the tasks I managed to accomplish during this week:\\
+\linebreak
+My goal for this week was to propose the design for the GUI. As stated in the previous weekly report, the GUI for our project will be based on the implementation of the 3D KORN from last year. Upon meeting with the group, I have decided on several main functionalities that we will inherit and improve from 3D KORN. Main focus will be to create GUI using signal-slot interaction, and not the manual implementation, as it was the case last year. We believe that should make the project more user-friendly, and, more importantly, easier to read and understand for the next generation. \\ 
+\linebreak 
+Our GUI will consist of two windows, namely main window and scan window (figures 1 and 2, respectively). Main window will allow the user to handle some of the core functionalities, such as importing/exporting data, registering point clouds and generating the mesh. Scan window will handle the scan/sensor parameters and spatial coordinate filtering.  \\
+\linebreak
+Main window allows the user to perform the following:\\
+\linebreak
+1. Scan - New scan : Opens the scan window and allows manipulating the scan session.\\
+\linebreak
+2. Import : Allows importing point cloud files, registered point clouds and mesh files.\\
+\linebreak
+3. Export : Allows exporting point cloud files, registered point clouds and mesh files.\\
+\linebreak
+4. Help : Gives user the access to the user manual and "about" section.\\
+\linebreak
+Scan window has the following functionalities:\\
+\linebreak
+1. Scan parameters : these include defining the range of spatial coordinates to be used for the scan, as well as the inclination angle.\\
+\linebreak
+2. Filter coordinates : check box that allows performing the spatial filtering.\\
+\linebreak
+3. Start scan and stop scan : buttons that trigger the beginning and the end of a scan session.\\
+\linebreak
+4. Capture point cloud : button used during the scan to capture a point cloud. Below it, there is a text edit box used for keeping the track of the number of captured point clouds.
+
+\begin{figure}[!htb]
+  \includegraphics[scale=0.7]{magma_mainwindow.png}
+  \caption{GUI - Main Window}
+  \label{fig:Kinect2}
+\end{figure}
+
+\begin{figure}[!htb]
+  \includegraphics[scale=0.7]{magma_scanwindow.png}
+  \caption{GUI - Scan Window}
+  \label{fig:MladenCloud}
+\end{figure}
+\newpage
+\section {Future tasks}
+Here I will present the list of my assignments for the upcoming week(s):\\
+\linebreak
+1. I will decide with the group whether there are some main functionalities missing from the current proposal or not, and improve the implementation according to that.\\
+\linebreak
+2. Furthermore, I will try to implement some handy functionalities for improving the user's experience, such as the progress bar that indicates the advancement of the processes which are executed.\\
+\linebreak
+3. As soon as we start developing the source codes, I will start connecting the GUI components to perform the corresponding functionalities.
+
+
+\end{document} % DONE WITH DOCUMENT!
+
