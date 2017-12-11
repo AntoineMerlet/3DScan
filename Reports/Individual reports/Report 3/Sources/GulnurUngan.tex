@@ -1,0 +1,95 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Software Engineering Project}
+\newcommand{\labtitle}{Weekly Report}
+\newcommand{\authorname}{Gulnur Semahat Ungan}
+\newcommand{\professor}{Dr. Yohan Fougerolle, Dr. Cansen Jiang, Dr. David Strubel}
+   
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Summary of the week}
+The registration of two point clouds can be split into the following steps:  1) Selection: The sampling of the input point clouds. 2) Matching: Estimating the correspondences between the points in the subsampled point clouds.3) Rejection: Filtering the correspondences to reduce the number of outliers. 4) Alignment: Assigning an error metric, and minimizing it to find the optimal transformation. Last week I tried KD tree algorithm on Matlab according to the article. I decided to use first ICP+Kd tree algorithm  for our project. And also I studied on PCL to implement algorithm on our project. Also, for the registration there is a competition between feature based approaches and ICP based approaches. Since I was thinking to use ICP+Kd tree algorithm, According to article that I read last week, there is  both advantages and disadvantages for feature based algorithms. The major advantages of using the feature-based
+methods over the ICP-based methods are:
+
+\begin{itemize}
+\item The registration process is independent of the initial
+alignment of PCs.
+\item  It is not necessary to search for all points in PCs to find the corresponding pairs. Thus, redundant or irrelevant points such as outliers, or points that do not have correspondences have no direct effect on the registration.
+\end{itemize}
+
+The main disadvantages can be said like :
+\begin{itemize}
+\item Point clouds  must have distinct features
+\item In general, the feature-based methods are slower than
+the ICP-based methods
+\end{itemize}
+
+\begin{figure} [h]
+\centering
+\includegraphics [scale=.5] {adsiz}
+\caption {Registrating a pair of point clouds. Path 1 is for feature-based registration algorithms and Path 2 is for ICP algorithms - From Marani , Reno et. al}
+\end{figure} 
+
+In the following week, I will try to implement the article that I uploaded github for feature based algoritm from C. Basdogan and A.C. Oztireli. Pseudocodes are available in the article. To implement this, I will work on both Matlab (to see the main appearance) and study about PCL (to implement these algorithms-if they are really useful when I saw the results on Matlab)
+
+
+\end{document} % DONE WITH DOCUMENT!
