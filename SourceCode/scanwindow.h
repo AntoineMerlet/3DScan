@@ -15,6 +15,11 @@ public:
     explicit scanwindow(QWidget *parent = 0);
     ~scanwindow();
 
+private slots:
+    void on_sw_horizontalacq_radiobutton_clicked();
+
+    void on_sw_horizontalacq_radiobutton_clicked(bool checked);
+
 private:
     Ui::scanwindow *ui;
 };

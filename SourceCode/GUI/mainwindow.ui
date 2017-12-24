@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>450</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="mw_pc_tab">
      <attribute name="title">
@@ -97,7 +97,7 @@
    <widget class="QLabel" name="mw_visualizer_label">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>230</x>
       <y>20</y>
       <width>61</width>
       <height>16</height>
@@ -118,6 +118,16 @@
     </property>
     <property name="text">
      <string>Point cloud explorer</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="mw_logger_textedit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>380</y>
+      <width>601</width>
+      <height>81</height>
+     </rect>
     </property>
    </widget>
   </widget>
