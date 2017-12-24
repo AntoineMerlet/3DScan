@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     Core/meshing.cpp \
     GUI/parameters.cpp \
     GUI/options.cpp \
-    scanwindow.cpp
+    scanwindow.cpp \
+    logger.cpp
 
 HEADERS  += GUI/mainwindow.h \
     IO/sensors.h \
@@ -43,7 +44,9 @@ HEADERS  += GUI/mainwindow.h \
     Core/meshing.h \
     GUI/parameters.h \
     GUI/options.h \
-    scanwindow.h
+    scanwindow.h \
+    logger.h \
+    utilities.h
 
 FORMS    += GUI/mainwindow.ui \
     scanwindow.ui

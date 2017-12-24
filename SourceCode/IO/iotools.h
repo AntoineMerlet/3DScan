@@ -12,25 +12,26 @@
 #include <pcl/io/vtk_lib_io.h>
 namespace IO {
 
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(std::string);
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPLY(std::string);
-pcl::PolygonMesh::Ptr loadSTL(std::string);
-pcl::PolygonMesh::Ptr loadVTK(std::string);
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(const std::string &);
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPLY(const std::string &);
 
-std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> loadPCD(QStringList);
-std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> loadPLY(QStringList);
-std::vector<pcl::PolygonMesh::Ptr> loadSTL(QStringList);
-std::vector<pcl::PolygonMesh::Ptr> loadVTK(QStringList);
+pcl::PolygonMesh::Ptr loadSTL(const std::string &);
+pcl::PolygonMesh::Ptr loadVTK(const std::string &);
 
-bool savePCD(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, std::string);
-bool savePLY(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, std::string);
-bool saveSTL(pcl::PolygonMesh::Ptr, std::string);
-bool saveVTK(pcl::PolygonMesh::Ptr, std::string);
+std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> loadPCD(const std::vector<std::string> &);
+std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> loadPLY(const std::vector<std::string> &);
+std::vector<pcl::PolygonMesh::Ptr> loadSTL(const std::vector<std::string> &);
+std::vector<pcl::PolygonMesh::Ptr> loadVTK(const std::vector<std::string> &);
 
-bool savePCD(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>, std::string);
-bool savePLY(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>, std::string);
-bool saveSTL(std::vector<pcl::PolygonMesh::Ptr>, std::string);
-bool saveVTK(std::vector<pcl::PolygonMesh::Ptr>, std::string);
+bool savePCD(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &, const std::string &);
+bool savePLY(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &, const std::string &);
+bool saveSTL(const pcl::PolygonMesh::Ptr &, const std::string &);
+bool saveVTK(const pcl::PolygonMesh::Ptr &, const std::string &);
+
+bool savePCD(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &, const std::string &, const std::vector<std::string> &);
+bool savePLY(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &, const std::string &, const std::vector<std::string> &);
+bool saveSTL(const std::vector<pcl::PolygonMesh::Ptr> &, const std::string &, const std::vector<std::string> &);
+bool saveVTK(const std::vector<pcl::PolygonMesh::Ptr> &, const std::string &, const std::vector<std::string> &);
 
 }
 
