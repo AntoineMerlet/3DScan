@@ -14,6 +14,7 @@ scanwindow::~scanwindow()
     delete ui;
 }
 
+<<<<<<< HEAD
 
 /// @author: Mladen Rakic
 /// @date: 24-12-2017
@@ -61,4 +62,9 @@ void scanwindow::on_sw_zmin_horslider_actionTriggered(int action)
 void scanwindow::on_sw_zmax_horslider_actionTriggered(int action)
 {
     dataclass->set_zmax(action);
+=======
+void scanwindow::on_sw_horizontalacq_radiobutton_clicked(bool checked)
+{
+    ui->
+>>>>>>> cea76863e0332169de01d5a5efd4e4ad82baaa33
 }
