@@ -33,7 +33,7 @@
       <x>20</x>
       <y>80</y>
       <width>181</width>
-      <height>311</height>
+      <height>261</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -42,16 +42,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QDoubleSpinBox" name="sw_inclination_spinbox">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>270</y>
-       <width>62</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="sw_xmin_label">
      <property name="geometry">
       <rect>
@@ -128,19 +118,6 @@
      </property>
      <property name="text">
       <string>Z maximum</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="sw_inclination_label">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>250</y>
-       <width>61</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Inclination</string>
      </property>
     </widget>
     <widget class="QSlider" name="sw_xmin_horslider">
@@ -226,7 +203,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>400</y>
+      <y>360</y>
       <width>121</width>
       <height>17</height>
      </rect>
@@ -288,7 +265,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>420</y>
+      <y>390</y>
       <width>171</width>
       <height>23</height>
      </rect>
