@@ -23,6 +23,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -51,6 +52,7 @@ public:
     QPushButton *mw_generatemesh_pushbutton;
     QLabel *mw_visualizer_label;
     QLabel *mw_pcexplorer_label;
+    QTextEdit *mw_logger_textedit;
     QMenuBar *menuBar;
     QMenu *menuMAGMA_3D_scanner;
     QMenu *menuImport;
@@ -63,7 +65,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(650, 450);
+        MainWindow->resize(650, 500);
         actionNew_scan = new QAction(MainWindow);
         actionNew_scan->setObjectName(QStringLiteral("actionNew_scan"));
         actionImport_point_clouds = new QAction(MainWindow);
@@ -112,10 +114,13 @@ public:
         mw_generatemesh_pushbutton->setGeometry(QRect(20, 70, 111, 31));
         mw_visualizer_label = new QLabel(centralWidget);
         mw_visualizer_label->setObjectName(QStringLiteral("mw_visualizer_label"));
-        mw_visualizer_label->setGeometry(QRect(250, 20, 61, 16));
+        mw_visualizer_label->setGeometry(QRect(230, 20, 61, 16));
         mw_pcexplorer_label = new QLabel(centralWidget);
         mw_pcexplorer_label->setObjectName(QStringLiteral("mw_pcexplorer_label"));
         mw_pcexplorer_label->setGeometry(QRect(30, 20, 101, 16));
+        mw_logger_textedit = new QTextEdit(centralWidget);
+        mw_logger_textedit->setObjectName(QStringLiteral("mw_logger_textedit"));
+        mw_logger_textedit->setGeometry(QRect(20, 380, 601, 81));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -152,7 +157,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        mw_explorer_tabwidget->setCurrentIndex(0);
+        mw_explorer_tabwidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

@@ -12,3 +12,8 @@ scanwindow::~scanwindow()
 {
     delete ui;
 }
+
+void scanwindow::on_sw_horizontalacq_radiobutton_clicked(bool checked)
+{
+    ui->
+}

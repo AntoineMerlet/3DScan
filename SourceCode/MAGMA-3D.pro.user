@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.0.2, 2017-12-24T13:09:10. -->
-=======
-<!-- Written by QtCreator 4.0.2, 2017-12-24T13:09:17. -->
->>>>>>> 5c2f330baa998898f9dc2391f0058a2720700cbe
+<!-- Written by QtCreator 4.0.2, 2017-12-24T14:31:10. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{84ac954c-b2f9-46a5-9a20-b73c2147dbb7}</value>
+  <value type="QByteArray">{0ac8b681-f754-4cdb-8517-23ed9c3178d9}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -70,11 +66,7 @@
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
-<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug</value>
-=======
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Mladen/Desktop/MAIA uB/Software Engineering/Project/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug</value>
->>>>>>> 5c2f330baa998898f9dc2391f0058a2720700cbe
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -128,11 +120,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release</value>
-=======
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Mladen/Desktop/MAIA uB/Software Engineering/Project/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release</value>
->>>>>>> 5c2f330baa998898f9dc2391f0058a2720700cbe
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -186,11 +174,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
-<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Profile</value>
-=======
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:/Users/Mladen/Desktop/MAIA uB/Software Engineering/Project/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Profile</value>
->>>>>>> 5c2f330baa998898f9dc2391f0058a2720700cbe
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -302,21 +286,13 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">MAGMA-3D</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/SoftEngProject/3DScan/SourceCode/MAGMA-3D.pro</value>
-=======
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Mladen/Desktop/MAIA uB/Software Engineering/Project/3DScan/SourceCode/MAGMA-3D.pro</value>
->>>>>>> 5c2f330baa998898f9dc2391f0058a2720700cbe
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">MAGMA-3D.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-<<<<<<< HEAD
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug</value>
-=======
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/Mladen/Desktop/MAIA uB/Software Engineering/Project/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug</value>
->>>>>>> 5c2f330baa998898f9dc2391f0058a2720700cbe
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
