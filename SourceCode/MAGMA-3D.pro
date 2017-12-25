@@ -45,8 +45,7 @@ HEADERS  += GUI/mainwindow.h \
     GUI/parameters.h \
     GUI/options.h \
     scanwindow.h \
-    logger.h \
-    utilities.h
+    logger.h
 
 FORMS    += GUI/mainwindow.ui \
     scanwindow.ui

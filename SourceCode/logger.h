@@ -1,5 +1,5 @@
-#ifndef LOGGER_H
-#define LOGGER_H
+#ifndef CUSTOM_LOGGER_H
+#define CUSTOM_LOGGER_H
 
 #include <fstream>
 #include <iostream>
@@ -14,16 +14,18 @@ class logger
 {
 public:
     void Log(const std::string& message);
+    void Log(const char * format, ...);
     logger& operator << (const string& message);
     static logger* GetLogger();
+    std::string CurrentDateTime();
 
 private:
     logger(){}; // Default constructor
     logger(const logger&){};             // Copy constructor
     logger& operator=(const logger&){ return *this; };  // Assignment operator for the logger class
-    static const std::string m_sFileName; // File name of the generated log
     static logger* m_pThis; // Pointer for the logger class
     static ofstream m_Logfile; // Log file stream object.
+
 };
 
 #endif
