@@ -42,16 +42,6 @@
      </attribute>
     </widget>
    </widget>
-   <widget class="QGraphicsView" name="mw_visualizer_graphicsview">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>40</y>
-      <width>391</width>
-      <height>331</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QFrame" name="mw_register_frame">
     <property name="geometry">
      <rect>
@@ -128,6 +118,22 @@
       <width>601</width>
       <height>81</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QVTKWidget" name="mw_qvtkWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>60</y>
+      <width>371</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
   </widget>
@@ -230,6 +236,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QVTKWidget</class>
+   <extends>QWidget</extends>
+   <header>QVTKWidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

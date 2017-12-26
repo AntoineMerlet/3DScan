@@ -13,6 +13,7 @@ class scanwindow : public QMainWindow
 
 public:
     explicit scanwindow(QWidget *parent = 0);
+    void scanwindow::readfile(std::string);
     ~scanwindow();
 
 private slots:
