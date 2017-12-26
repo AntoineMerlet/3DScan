@@ -7,8 +7,8 @@ namespace IO {
 /// @date: 15-12-2017
 /// @version 1.1
 ///
-/// @brief Function used to load the .PCD file given by path and returning the loaded point cloud.
-/// @param path The path of the file to load.
+/// @brief Function used to load the .PCD file given by path and returning the loaded Point Cloud.
+/// @param path The path of the .PCD file to load.
 /// @return The loaded point cloud in XYZ coordinates and RGB colors, as pointer. Or nullptr if errors while loading.
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(const std::string &path)
 {
@@ -25,13 +25,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(const std::string &path)
         return nullptr;
     }
 }
-
 /// @author: Antoine Merlet
 /// @date: 15-12-2017
 /// @version 1.1
 ///
-/// @brief Function used to load the .PLY file given by path and returning the loaded point cloud.
-/// @param path The path of the file to load.
+/// @brief Function used to load the .PLY file given by path and returning the loaded Point Cloud.
+/// @param path The path of the .PLY file to load.
 /// @return The loaded point cloud in XYZ coordinates and RGB colors, as pointer. Or nullptr if errors while loading.
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPLY(const std::string &path)
 {
@@ -55,7 +54,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPLY(const std::string &path)
 ///
 /// @brief Function used to load the .STL file given by path and returning the loaded mesh.
 /// @param path The path of the file to load.
-/// @return The loaded mesh pointer. Or nullptr if errors while loading.
+/// @return The loaded Mesg
+///  pointer. Or nullptr if errors while loading.
 pcl::PolygonMesh::Ptr loadSTL(const std::string &path)
 {
     pcl::PolygonMesh::Ptr ptrMesh (new pcl::PolygonMesh());
