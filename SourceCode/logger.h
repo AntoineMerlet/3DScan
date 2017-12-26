@@ -18,6 +18,8 @@ public:
     logger& operator << (const string& message);
     static logger* GetLogger();
     std::string CurrentDateTime();
+    static std::string SetFileName();
+    static std::string FileName;
 
 private:
     logger(){}; // Default constructor

@@ -6,6 +6,21 @@
 // Initiliazing static members of the class
 logger* logger::m_pThis = NULL;
 ofstream logger::m_Logfile;
+std::string logger::FileName = SetFileName();
+
+/// @author: Marcio Rockenbach
+/// @date: 26-12-2017
+/// @version 1.0
+///
+/// @brief Funtion to set the name of the logger file
+/// @return string that is the name of the file to be created
+std::string logger::SetFileName()
+{
+    string name = "Log_";
+    name.append(m_pThis->CurrentDateTime());
+    name.append(".txt");
+    return name;
+};
 
 /// @author: Marcio Rockenbach
 /// @date: 23-12-2017
@@ -17,11 +32,7 @@ logger* logger::GetLogger()
 {
     if (m_pThis == NULL){
         m_pThis = new logger();
-        string m_sFileName = "Log_";
-        m_sFileName.append(m_pThis->CurrentDateTime());
-        m_sFileName.append(".txt");
-        cout << m_sFileName;
-        m_Logfile.open(m_sFileName.c_str(), ios::out | ios::app);
+        m_Logfile.open(logger::FileName.c_str(), ios::out | ios::app);
     }
     return m_pThis;
 }
@@ -34,20 +45,20 @@ logger* logger::GetLogger()
 /// @param message to be included in the log; specification of the format of the message
 void logger::Log(const char * format, ...)
 {
-    char* sMessage = NULL;
-    int nLength = 0;
+    char* message = NULL;
+    int length = 0;
     va_list args;
     va_start(args, format);
     //  Return the number of characters in the string referenced the list of arguments.
     // _vscprintf doesn't count terminating '\0' (that's why +1)
-    nLength = _vscprintf(format, args) + 1;
-    sMessage = new char[nLength];
-    vsprintf_s(sMessage, nLength, format, args);
+    length = _vscprintf(format, args) + 1;
+    message = new char[length];
+    vsprintf_s(message, length, format, args);
     //vsprintf(sMessage, format, args);
     m_Logfile << logger::CurrentDateTime() << ":\t";
-    m_Logfile << sMessage << "\n";
+    m_Logfile << message << "\n";
     va_end(args);
-    delete [] sMessage;
+    delete [] message;
 }
 
 /// @author: Marcio Rockenbach
@@ -56,10 +67,10 @@ void logger::Log(const char * format, ...)
 ///
 /// @brief Logs a message
 /// @param message to be included in the log
-void logger::Log(const string& sMessage)
+void logger::Log(const string& message)
 {
     m_Logfile <<  logger::CurrentDateTime() << ":\t";
-    m_Logfile << sMessage << "\n";
+    m_Logfile << message << "\n";
 }
 
 /// @author: Marcio Rockenbach
