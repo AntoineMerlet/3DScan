@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -23,8 +22,10 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
+#include "QVTKWidget.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -45,12 +46,13 @@ public:
     QWidget *mw_pc_tab;
     QWidget *mw_registeredpc_tab;
     QWidget *mw_mesh_tab;
-    QGraphicsView *mw_visualizer_graphicsview;
     QFrame *mw_register_frame;
     QPushButton *mw_register_pc_pushbutton;
     QPushButton *mw_generatemesh_pushbutton;
     QLabel *mw_visualizer_label;
     QLabel *mw_pcexplorer_label;
+    QTextEdit *mw_logger_textedit;
+    QVTKWidget *mw_qvtkWidget;
     QMenuBar *menuBar;
     QMenu *menuMAGMA_3D_scanner;
     QMenu *menuImport;
@@ -63,7 +65,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(650, 450);
+        MainWindow->resize(650, 500);
         actionNew_scan = new QAction(MainWindow);
         actionNew_scan->setObjectName(QStringLiteral("actionNew_scan"));
         actionImport_point_clouds = new QAction(MainWindow);
@@ -96,9 +98,6 @@ public:
         mw_mesh_tab = new QWidget();
         mw_mesh_tab->setObjectName(QStringLiteral("mw_mesh_tab"));
         mw_explorer_tabwidget->addTab(mw_mesh_tab, QString());
-        mw_visualizer_graphicsview = new QGraphicsView(centralWidget);
-        mw_visualizer_graphicsview->setObjectName(QStringLiteral("mw_visualizer_graphicsview"));
-        mw_visualizer_graphicsview->setGeometry(QRect(230, 40, 391, 331));
         mw_register_frame = new QFrame(centralWidget);
         mw_register_frame->setObjectName(QStringLiteral("mw_register_frame"));
         mw_register_frame->setGeometry(QRect(40, 240, 151, 121));
@@ -112,10 +111,21 @@ public:
         mw_generatemesh_pushbutton->setGeometry(QRect(20, 70, 111, 31));
         mw_visualizer_label = new QLabel(centralWidget);
         mw_visualizer_label->setObjectName(QStringLiteral("mw_visualizer_label"));
-        mw_visualizer_label->setGeometry(QRect(250, 20, 61, 16));
+        mw_visualizer_label->setGeometry(QRect(230, 20, 61, 16));
         mw_pcexplorer_label = new QLabel(centralWidget);
         mw_pcexplorer_label->setObjectName(QStringLiteral("mw_pcexplorer_label"));
         mw_pcexplorer_label->setGeometry(QRect(30, 20, 101, 16));
+        mw_logger_textedit = new QTextEdit(centralWidget);
+        mw_logger_textedit->setObjectName(QStringLiteral("mw_logger_textedit"));
+        mw_logger_textedit->setGeometry(QRect(20, 380, 601, 81));
+        mw_qvtkWidget = new QVTKWidget(centralWidget);
+        mw_qvtkWidget->setObjectName(QStringLiteral("mw_qvtkWidget"));
+        mw_qvtkWidget->setGeometry(QRect(240, 60, 371, 291));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(mw_qvtkWidget->sizePolicy().hasHeightForWidth());
+        mw_qvtkWidget->setSizePolicy(sizePolicy);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -152,7 +162,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        mw_explorer_tabwidget->setCurrentIndex(0);
+        mw_explorer_tabwidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

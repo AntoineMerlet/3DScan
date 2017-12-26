@@ -22,7 +22,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(const std::string &path)
     catch (const std::exception &e)
     {
         // add emit info to console here e.what();
-        delete ptrPC;
         return nullptr;
     }
 }
@@ -46,7 +45,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPLY(const std::string &path)
     catch (const std::exception &e)
     {
         // add emit info to console here e.what();
-        delete ptrPC;
         return nullptr;
     }
 }
@@ -70,7 +68,6 @@ pcl::PolygonMesh::Ptr loadSTL(const std::string &path)
     catch (const std::exception &e)
     {
         // add emit info to console here e.what();
-        delete ptrMesh;
         return nullptr;
     }
 }
@@ -94,7 +91,6 @@ pcl::PolygonMesh::Ptr loadVTK(const std::string &path)
     catch (const std::exception &e)
     {
         // add emit info to console here e.what();
-        delete ptrMesh;
         return nullptr;
     }
 }
@@ -104,7 +100,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> loadPCD(const std::vector<st
 {
     std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> vecPC;
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr ptrPC;
-    for (std::vector<int>::iterator it = vecPaths.begin() ; it != vecPaths.end(); ++it)
+    for (std::vector<std::string>::const_iterator   it = vecPaths.begin() ; it != vecPaths.end(); ++it)
     {
         ptrPC = loadPCD(*it);
         if (ptrPC != nullptr)
@@ -117,7 +113,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> loadPLY(const std::vector<st
 {
     std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> vecPC;
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr ptrPC;
-    for (std::vector<int>::iterator it = vecPaths.begin() ; it != vecPaths.end(); ++it)
+    for (std::vector<std::string>::const_iterator   it = vecPaths.begin() ; it != vecPaths.end(); ++it)
     {
         ptrPC = loadPLY(*it);
         if (ptrPC != nullptr)
@@ -130,7 +126,7 @@ std::vector<pcl::PolygonMesh::Ptr> loadSTL(const std::vector<std::string> &vecPa
 {
     std::vector<pcl::PolygonMesh::Ptr> vecMesh;
     pcl::PolygonMesh::Ptr ptrMesh;
-    for (std::vector<int>::iterator it = vecPaths.begin() ; it != vecPaths.end(); ++it)
+    for (std::vector<std::string>::const_iterator  it = vecPaths.begin() ; it != vecPaths.end(); ++it)
     {
         ptrMesh = loadSTL(*it);
         if (ptrMesh != nullptr)
@@ -143,7 +139,7 @@ std::vector<pcl::PolygonMesh::Ptr> loadVTK(const std::vector<std::string> &vecPa
 {
     std::vector<pcl::PolygonMesh::Ptr> vecMesh;
     pcl::PolygonMesh::Ptr ptrMesh;
-    for (std::vector<int>::iterator it = vecPaths.begin() ; it != vecPaths.end(); ++it)
+    for (std::vector<std::string>::const_iterator  it = vecPaths.begin() ; it != vecPaths.end(); ++it)
     {
         ptrMesh = loadVTK(*it);
         if (ptrMesh != nullptr)
@@ -169,7 +165,7 @@ bool savePCD(pcl::PointCloud<const pcl::PointXYZRGB>::Ptr &ptrPC,const std::stri
     }
 }
 
-bool savePLY(pcl::PointCloud<const pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &vecPaths)
+bool savePLY(pcl::PointCloud<const pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &path)
 {
     try
     {
@@ -218,8 +214,8 @@ bool saveVTK(const pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
 int savePCD(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,const std::string &dir,const std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<int>::iterator itPath = vecPaths.begin();
-    std::vector<int>::iterator itPC = vecPC.begin();
+    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::const_iterator  itPC = vecPC.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecPC.end(); ++itPath, ++itPC)
         if (!savePCD(*itPC, dir + "/" + *itPath))
             fails++;
@@ -229,8 +225,8 @@ int savePCD(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,con
 int savePLY(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,const std::string &dir,const std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<int>::iterator itPath = vecPaths.begin();
-    std::vector<int>::iterator itPC = vecPC.begin();
+    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::const_iterator  itPC = vecPC.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecPC.end(); ++itPath, ++itPC)
         if (!savePLY(*itPC, dir + "/" + *itPath))
             fails++;
@@ -240,8 +236,8 @@ int savePLY(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,con
 int saveSTL(const std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string &dir,const std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<int>::iterator itPath = vecPaths.begin();
-    std::vector<int>::iterator itPC = vecMesh.begin();
+    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PolygonMesh::Ptr>::const_iterator  itPC = vecMesh.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecMesh.end(); ++itPath, ++itPC)
         if (!saveSTL(*itPC, dir + "/" + *itPath))
             fails++;
@@ -251,8 +247,8 @@ int saveSTL(const std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string 
 int saveVTK(const std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string &dir,const std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<int>::iterator itPath = vecPaths.begin();
-    std::vector<int>::iterator itPC = vecMesh.begin();
+    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PolygonMesh::Ptr>::const_iterator  itPC = vecMesh.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecMesh.end(); ++itPath, ++itPC)
         if (!saveVTK(*itPC, dir + "/" + *itPath))
             fails++;
