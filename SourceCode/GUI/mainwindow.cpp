@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QStringList>
 #include <string>
+#include <QDebug>
 
 using namespace std;
 
