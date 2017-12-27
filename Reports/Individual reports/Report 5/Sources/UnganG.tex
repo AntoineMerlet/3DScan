@@ -1,0 +1,73 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Software Engineering Project}
+\newcommand{\labtitle}{Weekly Reports-For 2 Weeks}
+\newcommand{\authorname}{Gulnur Semahat Ungan}
+\newcommand{\professor}{Dr. Yohan Fougerolle, Dr. Cansen Jiang, Dr. David Strubel}
+   
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Summary of the week}
+Last week, because of final week ,I could not study on this project. This week, I tried to figure out descriptor of one on feature based method for point cloud registration. k-nearest neighbour algorithm. To use and see this result I checked https://github.com/gvd/kdtree algorithm. I will work on the article that I uploaded 2 weeks ago. I hope I will implement it as soon as possible. Registration part includes not only cpp knowledge but also some mathematical talent to understand and to convert it into a language such as Cpp. According to this article there are 3 tasks to be done. First one is to feature selection method. Second one is to find local neighbours of all points in a point cloud efficiently. Third one is to find corresponding points in Point Clouds being registreted.  Also under three situations this method worked well. These are : (M and P are  point clouds ) (1)M and P are PCs of the whole model. (2) M is the PC of a whole model and P is a randomly selected subset of M containing 1/4 of points in M. (3) M and P have overlapping regions of varying ratio, but P is not a subset of M.
+
+
+\end{document} % DONE WITH DOCUMENT!
