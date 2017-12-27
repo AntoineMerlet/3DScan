@@ -6,6 +6,8 @@
 #include <QStringList>
 #include <string>
 #include <QDebug>
+#include <QDesktopServices>
+#include <QUrl>
 
 using namespace std;
 
@@ -59,10 +61,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//Load point clouds
+/// @author: Mladen Rakic
+/// @date: 27-12-2017
+/// @version 1.0
+///
+/// @brief Function to import point clouds
 void MainWindow::on_actionImport_point_clouds_triggered()
 {
-    //...
+    QStringList pointCloudFileNamesList = QFileDialog::getOpenFileNames(this, QString("Import point clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
+    if(pointCloudFileNamesList.size() !=0){
+        for(int i = 0; i < pointCloudFileNamesList.size(); i++){
+            pcl::PointCloud<pcl::PointXYZRGB>::Ptr pointCloudPtr (new pcl::PointCloud<pcl::PointXYZRGB>());
+            //Load ply files
+            if(pointCloudFileNamesList[i].endsWith(".ply")){
+                pcl::io::loadPLYFile(pointCloudFileNamesList[i].toStdString(), *pointCloudPtr);
+                database::mf_StaticAddPointCloud(pointCloudPtr);
+                //emit mf_SignalDatabasePointCloudUpdated();
+            }
+            //Load pcd files
+            else if(pointCloudFileNamesList[i].endsWith(".pcd")){
+                pcl::io::loadPCDFile(pointCloudFileNamesList[i].toStdString(), *pointCloudPtr);
+                database::getRawPCs(pointCloudPtr);
+                //emit mf_SignalDatabasePointCloudUpdated();
+            }
+
+        }
+    }
 }
 
 //Load registered point cloud
@@ -71,28 +95,102 @@ void MainWindow::on_actionImport_registered_pc_triggered()
     //...
 }
 
-//Load mesh
+/// @author: Mladen Rakic
+/// @date: 27-12-2017
+/// @version 1.0
+///
+/// @brief Function to import mesh
 void MainWindow::on_actionImport_mesh_triggered()
 {
-    //...
+    QStringList meshFileNamesList = QFileDialog::getOpenFileNames(this, QString("Import mesh"), QString(""), QString("Mesh (*.vtk *.stl)"));
+    if(meshFileNamesList.size() !=0){
+        for(int i = 0; i < meshFileNamesList.size(); i++){
+            pcl::PolygonMesh::Ptr meshPtr (new pcl::PolygonMesh());
+
+            if(meshFileNamesList[i].endsWith(".stl")){
+                pcl::io::loadPolygonFileSTL(meshFileNamesList[i].toStdString(), *meshPtr);
+                database::getMeshedPCs(meshPtr);
+                //emit mf_SignalDatabaseMeshUpdated();
+            }
+
+            else if(meshFileNamesList[i].endsWith(".vtk")){
+                pcl::io::loadPolygonFileVTK(meshFileNamesList[i].toStdString(), *meshPtr);
+                database::getMeshedPCs(meshPtr);
+                //emit mf_SignalDatabaseMeshUpdated();
+            }
+        }
+    }
 }
 
-//Save acquired point clouds
+/// @author: Mladen Rakic
+/// @date: 27-12-2017
+/// @version 1.0
+///
+/// @brief Function to export point clouds
 void MainWindow::on_actionExport_point_clouds_triggered()
 {
-    //...
+        QString directoryName = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
+        if(directoryName != ""){
+            QString filePath;
+            QListWidgetItem* item;
+
+            //Save pointclouds selected in pointcloud tab
+            for(int i = 0, len = MainWindow->mw_pc_tab->count(); i < len; i++)
+            {
+                item = MainWindow->mw_pc_tab->item(i);
+                if(item->checkState() == Qt::Checked)
+                {
+                    filePath = directoryName + "/" + item->text() + ".pcd";
+                    qDebug() << filePath << " : pointcloud size - " << database::rawPCs[i]->points.size();
+                    pcl::io::savePCDFile(filePath.toStdString(), *(database::rawPCs[i]));
+                }
+            }
+
+        }
+
 }
 
-//Save registered point cloud
+/// @author: Mladen Rakic
+/// @date: 27-12-2017
+/// @version 1.0
+///
+/// @brief Function to export registered point clouds
 void MainWindow::on_actionExport_registered_pc_triggered()
 {
-    //...
+    QString directoryName = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
+    if(directoryName != ""){
+        QString filePath;
+        QListWidgetItem* item;
+
+        //Save pointclouds selected in registered pointcloud tab
+        for(int i = 0, len = MainWindow->mw_registeredpc_tab->count(); i < len; i++)
+        {
+            item = MainWindow->mw_registeredpc_tab->item(i);
+            if(item->checkState() == Qt::Checked)
+            {
+                filePath = directoryName + "/" + item->text() + ".pcd";
+                qDebug() << filePath;
+                pcl::io::savePCDFile(filePath.toStdString(), *(database::registeredPCs[i]));
+            }
+        }
+    }
 }
 
 //Save generated mesh
 void MainWindow::on_actionExport_mesh_triggered()
 {
     //...
+}
+
+/// @author: Mladen Rakic
+/// @date: 27-12-2017
+/// @version 1.0
+///
+/// @brief Function to open the "about" file
+void MainWindow::on_actionAbout_triggered()
+{
+    //still have to figure out how make path independent from the computer used
+    QDesktopServices::openUrl(QUrl("file:///C:/Users/Mladen/Desktop/MAIA%20uB/Software%20Engineering/Project/3DScan/SourceCode/about.html"));
 }
 
 /// @author: Mladen Rakic
