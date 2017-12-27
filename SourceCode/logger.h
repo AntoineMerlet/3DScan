@@ -22,9 +22,9 @@ public:
     static std::string FileName;
 
 private:
-    logger(){}; // Default constructor
-    logger(const logger&){};             // Copy constructor
-    logger& operator=(const logger&){ return *this; };  // Assignment operator for the logger class
+    logger(){} // Default constructor
+    logger(const logger&){}             // Copy constructor
+    logger& operator=(const logger&){ return *this; }  // Assignment operator for the logger class
     static logger* m_pThis; // Pointer for the logger class
     static ofstream m_Logfile; // Log file stream object.
 

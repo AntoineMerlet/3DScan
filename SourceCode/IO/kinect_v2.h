@@ -14,6 +14,18 @@ public:
     bool setupSensor();
     bool startSensor();
     bool stopSensor();
+
+    boost::function<void( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& )> pointCloudCallback
+    = [this]( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& ptr )
+    {
+        boost::mutex::scoped_lock lock(mutex);
+        //mf_SetMvPointCloud(ptr);
+    };
+
+protected:
+    boost::mutex                            mutex;
+    boost::shared_ptr<pcl::Kinect2Grabber>  grabber;
+    boost::signals2::connection             connection;
 };
 
 }

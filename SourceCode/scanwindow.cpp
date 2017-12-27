@@ -14,6 +14,7 @@ scanwindow::scanwindow(QWidget *parent) :
 
 scanwindow::~scanwindow()
 {
+    QApplication::exit();
     delete ui;
 }
 
@@ -44,32 +45,32 @@ void scanwindow::on_sw_horizontalacq_radiobutton_clicked(bool checked)
 //Modify the spatial coordinates
 void scanwindow::on_sw_xmin_horslider_actionTriggered(int action)
 {
-    dataclass->set_xmin(action);
+   //dataclass->set_xmin(action);
 }
 
 void scanwindow::on_sw_xmax_horslider_actionTriggered(int action)
 {
-    dataclass->set_xmax(action);
+    //dataclass->set_xmax(action);
 }
 
 void scanwindow::on_sw_ymin_horslider_actionTriggered(int action)
 {
-    dataclass->set_ymin(action);
+    //dataclass->set_ymin(action);
 }
 
 void scanwindow::on_sw_ymax_horslider_actionTriggered(int action)
 {
-    dataclass->set_ymax(action);
+    //dataclass->set_ymax(action);
 }
 
 void scanwindow::on_sw_zmin_horslider_actionTriggered(int action)
 {
-    dataclass->set_zmin(action);
+    //dataclass->set_zmin(action);
 }
 
 void scanwindow::on_sw_zmax_horslider_actionTriggered(int action)
 {
-    dataclass->set_zmax(action);
+    //dataclass->set_zmax(action);
 }
 
 /// @author: Mladen Rakic
@@ -79,28 +80,21 @@ void scanwindow::on_sw_zmax_horslider_actionTriggered(int action)
 /// @brief Function to display text from logger file in scan window.
 /// @param filename Name of the text file to be read
 void scanwindow::readfile(std::string filename){
-    QFile file(filename);
-    if(!file.exists()){
-        qDebug() << "File not found! "<<filename;
-    }else{
-        qDebug() << filename<<" File found";
-    }
-    std::string line;
-    ui->sw_logger_textedit->clear();
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
-        QTextStream stream(&file);
-        while (!stream.atEnd()){
-            line = stream.readLine();
-            ui->sw_logger_textedit->setText(ui->sw_logger_textedit->toPlainText()+line+"\n");
-            qDebug() << "Line: "<<line;
-        }
-    }
-    file.close();
-}
-
-//Scan window destructor
-scanwindow::~scanwindow()
-{
-    QApplication::exit();
-    delete ui;
+//    QFile file(filename);
+//    if(!file.exists()){
+//        qDebug() << "File not found! "<<filename;
+//    }else{
+//        qDebug() << filename<<" File found";
+//    }
+//    std::string line;
+//    ui->sw_logger_textedit->clear();
+//    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+//        QTextStream stream(&file);
+//        while (!stream.atEnd()){
+//            line = stream.readLine();
+//            ui->sw_logger_textedit->setText(ui->sw_logger_textedit->toPlainText()+line+"\n");
+//            qDebug() << "Line: "<<line;
+//        }
+//    }
+//    file.close();
 }

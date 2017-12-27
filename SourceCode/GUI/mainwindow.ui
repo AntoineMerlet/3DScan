@@ -120,7 +120,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QVTKWidget" name="mw_qvtkWidget" native="true">
+   <widget class="QVTKWidget" name="pcScan" native="true">
     <property name="geometry">
      <rect>
       <x>240</x>

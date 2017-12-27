@@ -184,7 +184,7 @@ std::vector<pcl::PolygonMesh::Ptr> loadVTK(const std::vector<std::string> &vecPa
 /// @param ptrPC The Point Cloud to save
 /// @param path The path were to save the Point Cloud
 /// @return True if saved, false if error
-bool savePCD(pcl::PointCloud<const pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &path)
+bool savePCD(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &path)
 {
     try
     {
@@ -207,7 +207,7 @@ bool savePCD(pcl::PointCloud<const pcl::PointXYZRGB>::Ptr &ptrPC,const std::stri
 /// @param ptrPC The Point Cloud to save
 /// @param path The path were to save the Point Cloud
 /// @return True if saved, false if error
-bool savePLY(pcl::PointCloud<const pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &path)
+bool savePLY(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &path)
 {
     try
     {
@@ -230,7 +230,7 @@ bool savePLY(pcl::PointCloud<const pcl::PointXYZRGB>::Ptr &ptrPC,const std::stri
 /// @param ptrMesh The Mesh to save
 /// @param path The path were to save the Mesh
 /// @return True if saved, false if error
-bool saveSTL(const pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
+bool saveSTL(pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
 {
     try
     {
@@ -253,7 +253,7 @@ bool saveSTL(const pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
 /// @param ptrMesh The Mesh to save
 /// @param path The path were to save the Mesh
 /// @return True if saved, false if error
-bool saveVTK(const pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
+bool saveVTK(pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
 {
     try
     {
@@ -276,11 +276,11 @@ bool saveVTK(const pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
 /// @param vecPC The vector of Point Cloud  to save
 /// @param vecPaths The vector of paths were to save the multiple Point Clouds
 /// @return The number of errors while saving
-int savePCD(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,const std::string &dir,const std::vector<std::string> vecPaths)
+int savePCD(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,const std::string &dir, std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::const_iterator  itPC = vecPC.begin();
+    std::vector<std::string>::iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::iterator  itPC = vecPC.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecPC.end(); ++itPath, ++itPC)
         if (!savePCD(*itPC, dir + "/" + *itPath))
             fails++;
@@ -295,11 +295,11 @@ int savePCD(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,con
 /// @param vecPC The vector of Point Cloud  to save
 /// @param vecPaths The vector of paths were to save the multiple Point Clouds
 /// @return The number of errors while saving
-int savePLY(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,const std::string &dir,const std::vector<std::string> vecPaths)
+int savePLY(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,std::string &dir,std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::const_iterator  itPC = vecPC.begin();
+    std::vector<std::string>::iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::iterator  itPC = vecPC.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecPC.end(); ++itPath, ++itPC)
         if (!savePLY(*itPC, dir + "/" + *itPath))
             fails++;
@@ -315,11 +315,11 @@ int savePLY(const std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vecPC,con
 /// @param vecMesh The vector of Meshs  to save
 /// @param vecPaths The vector of paths were to save the multiple Meshs
 /// @return The number of errors while saving
-int saveSTL(const std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string &dir,const std::vector<std::string> vecPaths)
+int saveSTL(std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string &dir, std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
-    std::vector<pcl::PolygonMesh::Ptr>::const_iterator  itPC = vecMesh.begin();
+    std::vector<std::string>::iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PolygonMesh::Ptr>::iterator  itPC = vecMesh.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecMesh.end(); ++itPath, ++itPC)
         if (!saveSTL(*itPC, dir + "/" + *itPath))
             fails++;
@@ -334,11 +334,11 @@ int saveSTL(const std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string 
 /// @param vecMesh The vector of Meshs  to save
 /// @param vecPaths The vector of paths were to save the multiple Meshs
 /// @return The number of errors while saving
-int saveVTK(const std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string &dir,const std::vector<std::string> vecPaths)
+int saveVTK(std::vector<pcl::PolygonMesh::Ptr> &vecMesh,const std::string &dir, std::vector<std::string> vecPaths)
 {
     int fails = 0;
-    std::vector<std::string>::const_iterator  itPath = vecPaths.begin();
-    std::vector<pcl::PolygonMesh::Ptr>::const_iterator  itPC = vecMesh.begin();
+    std::vector<std::string>::iterator  itPath = vecPaths.begin();
+    std::vector<pcl::PolygonMesh::Ptr>::iterator  itPC = vecMesh.begin();
     for (itPath, itPC; itPath != vecPaths.end(), itPC != vecMesh.end(); ++itPath, ++itPC)
         if (!saveVTK(*itPC, dir + "/" + *itPath))
             fails++;

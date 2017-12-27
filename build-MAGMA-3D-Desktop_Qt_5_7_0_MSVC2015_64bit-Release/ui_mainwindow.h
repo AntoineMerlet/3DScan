@@ -52,7 +52,7 @@ public:
     QLabel *mw_visualizer_label;
     QLabel *mw_pcexplorer_label;
     QTextEdit *mw_logger_textedit;
-    QVTKWidget *mw_qvtkWidget;
+    QVTKWidget *pcScan;
     QMenuBar *menuBar;
     QMenu *menuMAGMA_3D_scanner;
     QMenu *menuImport;
@@ -118,14 +118,14 @@ public:
         mw_logger_textedit = new QTextEdit(centralWidget);
         mw_logger_textedit->setObjectName(QStringLiteral("mw_logger_textedit"));
         mw_logger_textedit->setGeometry(QRect(20, 380, 601, 81));
-        mw_qvtkWidget = new QVTKWidget(centralWidget);
-        mw_qvtkWidget->setObjectName(QStringLiteral("mw_qvtkWidget"));
-        mw_qvtkWidget->setGeometry(QRect(240, 60, 371, 291));
+        pcScan = new QVTKWidget(centralWidget);
+        pcScan->setObjectName(QStringLiteral("pcScan"));
+        pcScan->setGeometry(QRect(240, 60, 371, 291));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(mw_qvtkWidget->sizePolicy().hasHeightForWidth());
-        mw_qvtkWidget->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(pcScan->sizePolicy().hasHeightForWidth());
+        pcScan->setSizePolicy(sizePolicy);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

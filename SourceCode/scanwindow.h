@@ -25,6 +25,16 @@ private slots:
 
     void on_sw_xmin_horslider_actionTriggered(int action);
 
+    void on_sw_xmax_horslider_actionTriggered(int action);
+
+    void on_sw_ymin_horslider_actionTriggered(int action);
+
+    void on_sw_ymax_horslider_actionTriggered(int action);
+
+    void on_sw_zmin_horslider_actionTriggered(int action);
+
+    void on_sw_zmax_horslider_actionTriggered(int action);
+
 private:
     Ui::scanwindow *ui;
 };
