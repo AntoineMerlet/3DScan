@@ -71,7 +71,7 @@ void MainWindow::on_actionImport_point_clouds_triggered()
     if (qlistPC.size() > 0)
     {
         std::vector<std::string> listPC = QStringList2StdStringVec(qlistPC);
-        DB->addRawPC(IO::loadPCD(listPC[0]));
+        DB->addRawPC(IO::loadPLY(listPC[0]));
     }
     pcViz->addPointCloud(DB->getRawPC(0), "toto");
 }
@@ -127,3 +127,13 @@ void MainWindow::resetVtk()
 
 }
 
+
+void MainWindow::on_mw_register_pc_pushbutton_clicked()
+{
+
+}
+
+void MainWindow::on_mw_generatemesh_pushbutton_clicked()
+{
+
+}

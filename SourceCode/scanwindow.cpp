@@ -98,3 +98,8 @@ void scanwindow::readfile(std::string filename){
 //    }
 //    file.close();
 }
+
+void scanwindow::on_sw_horizontalacq_radiobutton_clicked()
+{
+
+}
