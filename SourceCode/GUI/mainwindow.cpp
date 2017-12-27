@@ -137,3 +137,7 @@ void MainWindow::on_mw_generatemesh_pushbutton_clicked()
 {
 
 }
+void MainWindow::receivedmessage(const QString &arg)
+{
+    ui->mw_logger_textedit->append(arg);
+}

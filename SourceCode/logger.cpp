@@ -2,10 +2,11 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <QObject>
 
 // Initiliazing static members of the class
-logger* logger::m_pThis = NULL;
-ofstream logger::m_Logfile;
+logger* logger::LogPointer = NULL;
+ofstream logger::LogFile;
 std::string logger::FileName = SetFileName();
 
 /// @author: Marcio Rockenbach
@@ -14,10 +15,9 @@ std::string logger::FileName = SetFileName();
 ///
 /// @brief Funtion to set the name of the logger file
 /// @return string that is the name of the file to be created
-std::string logger::SetFileName()
-{
+std::string logger::SetFileName(){
     string name = "Log_";
-    name.append(m_pThis->CurrentDateTime());
+    name.append(LogPointer->CurrentDateTime());
     name.append(".txt");
     return name;
 };
@@ -28,49 +28,28 @@ std::string logger::SetFileName()
 ///
 /// @brief Funtion to create the instance of logger class.
 /// @return pointer to a object of the logger class.
-logger* logger::GetLogger()
+logger* logger::CreateLog()
 {
-    if (m_pThis == NULL){
-        m_pThis = new logger();
-        m_Logfile.open(logger::FileName.c_str(), ios::out | ios::app);
+    if (LogPointer == NULL){
+        LogPointer = new logger();
+        LogFile.open(logger::FileName.c_str(), ios::out | ios::app);
     }
-    return m_pThis;
+    return LogPointer;
 }
 
 /// @author: Marcio Rockenbach
-/// @date: 25-12-2017
-/// @version 1.0
-///
-/// @brief Logs a message with a specific format
-/// @param message to be included in the log; specification of the format of the message
-void logger::Log(const char * format, ...)
-{
-    char* message = NULL;
-    int length = 0;
-    va_list args;
-    va_start(args, format);
-    //  Return the number of characters in the string referenced the list of arguments.
-    // _vscprintf doesn't count terminating '\0' (that's why +1)
-    length = _vscprintf(format, args) + 1;
-    message = new char[length];
-    vsprintf_s(message, length, format, args);
-    //vsprintf(sMessage, format, args);
-    m_Logfile << logger::CurrentDateTime() << ":\t";
-    m_Logfile << message << "\n";
-    va_end(args);
-    delete [] message;
-}
-
-/// @author: Marcio Rockenbach
-/// @date: 23-12-2017
-/// @version 1.0
+/// @date: 27-12-2017
+/// @version 2.0
 ///
 /// @brief Logs a message
 /// @param message to be included in the log
 void logger::Log(const string& message)
 {
-    m_Logfile <<  logger::CurrentDateTime() << ":\t";
-    m_Logfile << message << "\n";
+    QString qmessage = QString::fromStdString(message);
+    emit sendmessage(qmessage);
+    LogFile <<  logger::CurrentDateTime() << ":\t";
+    LogFile << message << "\n";
+    LogFile.flush();
 }
 
 /// @author: Marcio Rockenbach
@@ -81,8 +60,8 @@ void logger::Log(const string& message)
 /// @param string for the message to be logged.
 logger& logger::operator<<(const string& message)
 {
-    m_Logfile << "\n" << logger::CurrentDateTime() << ":\t";
-    m_Logfile << message << "\n";
+    LogFile << "\n" << logger::CurrentDateTime() << ":\t";
+    LogFile << message << "\n";
     return *this;
 }
 
@@ -102,4 +81,31 @@ std::string logger::CurrentDateTime()
     buf[13] = '_';
     buf[16] = '_';
     return buf;
+}
+
+/// @author: Marcio Rockenbach
+/// @date: 27-12-2017
+/// @version 2.0
+///
+/// @brief Logs a message with a specific format
+/// @param message to be included in the log; specification of the format of the message
+void logger::Log(const char * format, ...)
+{
+    char* message = NULL;
+    int length = 0;
+    va_list args;
+    va_start(args, format);
+    //  Return the number of characters in the string referenced the list of arguments.
+    // _vscprintf doesn't count terminating '\0' (that's why +1)
+    length = _vscprintf(format, args) + 1;
+    message = new char[length];
+    vsprintf_s(message, length, format, args);
+    //vsprintf(sMessage, format, args);
+    LogFile << logger::CurrentDateTime() << ":\t";
+    LogFile << message << "\n";
+    va_end(args);
+    QString qmessage = QString::fromStdString(message);
+    emit sendmessage(qmessage);
+    delete [] message;
+    LogFile.flush();
 }

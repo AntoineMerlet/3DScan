@@ -38,6 +38,8 @@ private slots:
     void on_mw_register_pc_pushbutton_clicked();
     void on_mw_generatemesh_pushbutton_clicked();
 
+public slots:
+    void receivedmessage(const QString& arg);
 
 private:
     Ui::MainWindow *ui;

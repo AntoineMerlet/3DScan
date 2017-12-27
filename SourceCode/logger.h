@@ -5,29 +5,34 @@
 #include <iostream>
 #include <cstdarg>
 #include <string>
+#include <QObject>
+#include <QString>
 
 using namespace std;
 
 #define LOGGER logger::GetLogger()
 
-class logger
+class logger: public QObject
 {
+    Q_OBJECT
 public:
-    void Log(const std::string& message);
-    void Log(const char * format, ...);
-    logger& operator << (const string& message);
-    static logger* GetLogger();
-    std::string CurrentDateTime();
-    static std::string SetFileName();
     static std::string FileName;
+    static logger* LogPointer; // Pointer for the logger class
+    logger(){}; // Default constructor
+    static logger* CreateLog(); // Creates instance of the logger class
+    void Log(const std::string& message); // Adds a message to the log file
+    void Log(const char * format, ...); // Adds a message to the log file with a specific formatting
+
+signals:
+    void sendmessage(const QString& arg);
 
 private:
-    logger(){} // Default constructor
-    logger(const logger&){}             // Copy constructor
-    logger& operator=(const logger&){ return *this; }  // Assignment operator for the logger class
-    static logger* m_pThis; // Pointer for the logger class
-    static ofstream m_Logfile; // Log file stream object.
-
+    static ofstream LogFile; // Log file stream object.
+    static std::string SetFileName(); // Sets the namefile of the log with current date and time
+    std::string CurrentDateTime(); // Gets the current date and time
+    logger& operator << (const string& message); // Operator overload
+    logger(const logger&){}; // Copy constructor
+    logger& operator=(const logger&){return *this;};  // Assignment operator for the logger class
 };
 
 #endif
