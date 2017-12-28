@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.0.2, 2017-12-28T19:17:31. -->
-<qtcreator>
- <data>
-  <variable>EnvironmentId</variable>
-  <value type="QByteArray">{84ac954c-b2f9-46a5-9a20-b73c2147dbb7}</value>
-=======
-<!-- Written by QtCreator 4.0.2, 2017-12-28T19:37:00. -->
+<!-- Written by QtCreator 4.0.2, 2017-12-28T21:27:21. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{0ac8b681-f754-4cdb-8517-23ed9c3178d9}</value>
->>>>>>> 57152475ba034a8192cfe6a8cb0a1686a6000800
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -293,13 +285,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">MAGMA-3D</value>
-<<<<<<< HEAD
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">MAGMA-3D2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Mladen/Desktop/MAIA uB/Software Engineering/Project/3DScan/SourceCode/MAGMA-3D.pro</value>
-=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/SoftEngProject/3DScan/SourceCode/MAGMA-3D.pro</value>
->>>>>>> 57152475ba034a8192cfe6a8cb0a1686a6000800
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">MAGMA-3D.pro</value>

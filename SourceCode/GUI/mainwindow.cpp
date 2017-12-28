@@ -10,11 +10,10 @@
 #include <string>
 #include <QDebug>
 #include <QDockWidget>
-<<<<<<< HEAD
 #include <QStandardItem>
-=======
 #include <logger.h>
->>>>>>> 57152475ba034a8192cfe6a8cb0a1686a6000800
+#include <GUI/aboutwindow.h>
+#include <QDesktopServices>
 
 using namespace std;
 
@@ -24,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     DB = new DataBase();
-
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
     pcViz->addCoordinateSystem(1.0);
@@ -80,9 +78,9 @@ void MainWindow::readfile(std::string filename){
 /// @brief Function to update the list of raw point clouds on the GUI
 void MainWindow::updatePCList()
 {
-
+    DB = new DataBase();
     PCList->clear();
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> rawPCs = DB::getRawPCs();
+    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> rawPCs = DB->getRawPCs();
     for (int i = 1; i <= rawPCs.size(); i++){
         stringstream ss;
         ss << "Pointcloud " << i;
@@ -91,7 +89,7 @@ void MainWindow::updatePCList()
         PCList->appendRow(Items);
     }
 
-    ui->pc_list->setModel(PCList);
+    // ui->pc_list->setModel(PCList);
 
 }
 
@@ -181,4 +179,16 @@ void MainWindow::on_mw_generatemesh_pushbutton_clicked()
 void MainWindow::receivedmessage(const QString &arg)
 {
     ui->mw_logger_textedit->append(arg);
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    aboutwindow *scan = new aboutwindow(this);
+    scan->show();
+}
+
+void MainWindow::on_actionUser_manual_triggered()
+{
+    LOG("User Manual");
+    QDesktopServices::openUrl(QUrl("user_manual.pdf"));
 }

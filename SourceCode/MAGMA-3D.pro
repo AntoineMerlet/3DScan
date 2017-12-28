@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     GUI/parameters.cpp \
     GUI/options.cpp \
     scanwindow.cpp \
-    logger.cpp
+    logger.cpp \
+    GUI/aboutwindow.cpp
 
 HEADERS  += GUI/mainwindow.h \
     IO/sensors.h \
@@ -45,10 +46,12 @@ HEADERS  += GUI/mainwindow.h \
     GUI/parameters.h \
     GUI/options.h \
     scanwindow.h \
-    logger.h
+    logger.h \
+    GUI/aboutwindow.h
 
 FORMS    += GUI/mainwindow.ui \
-    scanwindow.ui
+    scanwindow.ui \
+    GUI/aboutwindow.ui
 
 
 INCLUDEPATH += "C:\Program Files\PCL 1.8.0\include\pcl-1.8" \
