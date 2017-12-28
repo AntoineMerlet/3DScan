@@ -6,6 +6,7 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <vtkRenderWindow.h>
 #include "Storage/database.h"
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +26,7 @@ public:
 protected:
 
     void resetVtk();
+    void updatePCList();
 
 private slots:
     void on_actionNew_scan_triggered();
@@ -47,6 +49,8 @@ private:
     std::vector<std::string> selectedRaw;
     std::vector<std::string> selectedRegistered;
     std::vector<std::string> selectedMeshed;
+
+    QStandardItemModel* PCList;
 
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;

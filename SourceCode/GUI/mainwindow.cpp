@@ -9,6 +9,7 @@
 #include <string>
 #include <QDebug>
 #include <QDockWidget>
+#include <QStandardItem>
 
 using namespace std;
 
@@ -62,6 +63,29 @@ void MainWindow::readfile(std::string filename){
 //        }
 //    }
 //    file.close();
+}
+
+
+/// @author: Mladen Rakic
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Function to update the list of raw point clouds on the GUI
+void MainWindow::updatePCList()
+{
+
+    PCList->clear();
+    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> rawPCs = DB::getRawPCs();
+    for (int i = 1; i <= rawPCs.size(); i++){
+        stringstream ss;
+        ss << "Pointcloud " << i;
+        string PCName = ss.str();
+        QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
+        PCList->appendRow(Items);
+    }
+
+    ui->pc_list->setModel(PCList);
+
 }
 
 //Load point clouds

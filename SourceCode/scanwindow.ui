@@ -290,16 +290,6 @@
      <string>0</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="sw_logger_textedit">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>420</y>
-      <width>451</width>
-      <height>71</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QRadioButton" name="sw_horizontalacq_radiobutton">
     <property name="geometry">
      <rect>
