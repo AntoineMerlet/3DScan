@@ -44,6 +44,9 @@ public slots:
 private:
     Ui::MainWindow *ui;
     DataBase *DB;
+    std::vector<std::string> selectedRaw;
+    std::vector<std::string> selectedRegistered;
+    std::vector<std::string> selectedMeshed;
 
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;

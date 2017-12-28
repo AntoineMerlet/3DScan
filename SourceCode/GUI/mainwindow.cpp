@@ -67,31 +67,38 @@ void MainWindow::readfile(std::string filename){
 //Load point clouds
 void MainWindow::on_actionImport_point_clouds_triggered()
 {
-    QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import point clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
+    QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import Point Clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
     if (qlistPC.size() > 0)
-    {
-        std::vector<std::string> listPC = QStringList2StdStringVec(qlistPC);
-        DB->addRawPC(IO::loadPLY(listPC[0]));
-    }
-    pcViz->addPointCloud(DB->getRawPC(0), "toto");
+        rawPC2DB(qlistPC,DB);
 }
 
 //Load registered point cloud
 void MainWindow::on_actionImport_registered_PC_triggered()
 {
-    //...
+    QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import Point Clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
+    if (qlistPC.size() > 0)
+        registeredPC2DB(qlistPC,DB);
 }
 
 //Load mesh
 void MainWindow::on_actionImport_mesh_triggered()
 {
-    //...
+    QStringList qlistMesh = QFileDialog::getOpenFileNames(this, QString("Import Mesh"), QString(""), QString("Mesh (*.stl *.vtk)"));
+    if (qlistMesh.size() > 0)
+        meshedPC2DB(qlistMesh,DB);
 }
 
 //Save acquired point clouds
 void MainWindow::on_actionExport_point_clouds_triggered()
 {
-    //...
+    QString qdir = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
+    if (qdir != "")
+    {
+        foreach (std::string str, selectedRaw)
+        {
+
+        }
+    }
 }
 
 //Save registered point cloud

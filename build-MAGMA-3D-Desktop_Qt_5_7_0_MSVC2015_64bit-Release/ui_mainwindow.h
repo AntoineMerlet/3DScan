@@ -162,7 +162,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        mw_explorer_tabwidget->setCurrentIndex(2);
+        mw_explorer_tabwidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

@@ -9,14 +9,66 @@ std::vector<std::string> QStringList2StdStringVec(const QStringList &list){
 }
 
 
-//int loadData2DB(const QStringList &qlist, DataBase *DB){
-//    std::vector<std::string> listPC = QStringList2StdStringVec(qlist);
-//    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> currentPC;
-//    foreach (QString str, listPC)
-//    {
-//        if (str.endsWith(".pcd"))
-//        {
-//            DB IO::loadPCD(str)
-//        }
-//    }
-//}
+int loadData2DB(const QStringList &qlist, DataBase *DB){
+    foreach (QString str, qlist)
+    {
+        if (str.endsWith(".pcd"))
+        {
+            DB->addRawPC(IO::loadPCD(str.toStdString()));
+        }
+        if (str.endsWith(".ply"))
+        {
+            DB->addRawPC(IO::loadPLY(str.toStdString()));
+        }
+        if (str.endsWith(".stl"))
+        {
+            DB->addMeshedPC(IO::loadSTL(str.toStdString()));
+        }
+        if (str.endsWith(".vtk"))
+        {
+            DB->addMeshedPC(IO::loadVTK(str.toStdString()));
+        }
+    }
+}
+
+int rawPC2DB(const QStringList &qlist, DataBase *DB){
+    foreach (QString str, qlist)
+    {
+        if (str.endsWith(".pcd"))
+        {
+            DB->addRawPC(IO::loadPCD(str.toStdString()));
+        }
+        if (str.endsWith(".ply"))
+        {
+            DB->addRawPC(IO::loadPLY(str.toStdString()));
+        }
+    }
+}
+
+int registeredPC2DB(const QStringList &qlist, DataBase *DB){
+    foreach (QString str, qlist)
+    {
+        if (str.endsWith(".pcd"))
+        {
+            DB->addRegisteredPC(IO::loadPCD(str.toStdString()));
+        }
+        if (str.endsWith(".ply"))
+        {
+            DB->addRegisteredPC(IO::loadPLY(str.toStdString()));
+        }
+    }
+}
+
+int meshedPC2DB(const QStringList &qlist, DataBase *DB){
+    foreach (QString str, qlist)
+    {
+        if (str.endsWith(".stl"))
+        {
+            DB->addMeshedPC(IO::loadSTL(str.toStdString()));
+        }
+        if (str.endsWith(".vtk"))
+        {
+            DB->addMeshedPC(IO::loadVTK(str.toStdString()));
+        }
+    }
+}

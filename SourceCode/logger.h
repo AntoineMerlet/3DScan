@@ -18,7 +18,7 @@ class logger: public QObject
 public:
     static std::string FileName;
     static logger* LogPointer; // Pointer for the logger class
-    logger(){}; // Default constructor
+    logger(){} // Default constructor
     static logger* CreateLog(); // Creates instance of the logger class
     void Log(const std::string& message); // Adds a message to the log file
     void Log(const char * format, ...); // Adds a message to the log file with a specific formatting
@@ -31,8 +31,8 @@ private:
     static std::string SetFileName(); // Sets the namefile of the log with current date and time
     std::string CurrentDateTime(); // Gets the current date and time
     logger& operator << (const string& message); // Operator overload
-    logger(const logger&){}; // Copy constructor
-    logger& operator=(const logger&){return *this;};  // Assignment operator for the logger class
+    logger(const logger&){} // Copy constructor
+    logger& operator=(const logger&){return *this;}  // Assignment operator for the logger class
 };
 
 #endif

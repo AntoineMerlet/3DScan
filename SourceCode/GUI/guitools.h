@@ -9,5 +9,8 @@
 
 std::vector<std::string> QStringList2StdStringVec(const QStringList &);
 
-//int loadData2DB(const QStringList &);
+int loadData2DB(const QStringList &, DataBase *);
+int meshedPC2DB(const QStringList &, DataBase *);
+int rawPC2DB(const QStringList &, DataBase *);
+int registeredPC2DB(const QStringList &, DataBase *);
 #endif // GUITOOLS_H
