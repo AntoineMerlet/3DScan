@@ -1,3 +1,0 @@
-2017-12-28_15_10_58:	Test
-2017-12-28_15_10_58:	New logg
-2017-12-28_15_10_58:	Adding a new line to the log

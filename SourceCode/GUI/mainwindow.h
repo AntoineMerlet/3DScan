@@ -42,6 +42,7 @@ public slots:
     void receivedmessage(const QString& arg);
 
 private:
+
     Ui::MainWindow *ui;
     DataBase *DB;
     std::vector<std::string> selectedRaw;

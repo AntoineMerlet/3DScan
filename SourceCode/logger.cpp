@@ -65,12 +65,18 @@ void logger::Log(const string& message)
 ///
 /// @brief Overloads the << operator to log a message
 /// @param string for the message to be logged.
+//void logger::operator<<(const string& message)
+//{
+//    logger::Log(message);
+//}
+
+
 logger& logger::operator<<(const string& message)
 {
-    LogFile << "\n" << logger::CurrentDateTime() << ":\t";
-    LogFile << message << "\n";
+    logger::CreateLog()->Log(message);
     return *this;
 }
+
 
 /// @author: Marcio Rockenbach
 /// @date: 25-12-2017

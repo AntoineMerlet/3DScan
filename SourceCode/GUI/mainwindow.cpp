@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "guitools.h"
 #include "IO/iotools.h"
+#include "scanwindow.h"
 
 #include "IO/kinect2_grabber.h"
 #include <QFileDialog>
@@ -9,6 +10,7 @@
 #include <string>
 #include <QDebug>
 #include <QDockWidget>
+#include <logger.h>
 
 using namespace std;
 
@@ -36,6 +38,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNew_scan_triggered()
 {
     //...
+    scanwindow *scan = new scanwindow(this);
+    scan->show();
 }
 
 /// @author: Mladen Rakic
@@ -69,7 +73,10 @@ void MainWindow::on_actionImport_point_clouds_triggered()
 {
     QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import Point Clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
     if (qlistPC.size() > 0)
+    {
         rawPC2DB(qlistPC,DB);
+
+    }
 }
 
 //Load registered point cloud
