@@ -1,5 +1,6 @@
 #include "iotools.h"
 #include <exception>
+#include "logger.h"
 
 namespace IO {
 
@@ -16,7 +17,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(const std::string &path)
     try
     {
         pcl::io::loadPCDFile(path, *ptrPC);
-        // add emit info to console here
+
+    //   LOGGER->Log(" Message is:%s Number is:%d", message2.c_str(), nNum);
+
         return ptrPC;
     }
     catch (const std::exception &e)

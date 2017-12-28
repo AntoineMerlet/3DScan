@@ -6,10 +6,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    logger l;
-    l.CreateLog();
-    QObject::connect(&l, SIGNAL(sendmessage(QString)), &w, SLOT(receivedmessage(QString)));
+    INITLOG; // Initiliazing the logger
+    QObject::connect(logger::LogPointer, SIGNAL(sendmessage(QString)),
+                     &w, SLOT(receivedmessage(QString))); // Connecting logger and MainWindow
+    LOG("Program initilized");
     w.show();
-
     return a.exec();
 }
