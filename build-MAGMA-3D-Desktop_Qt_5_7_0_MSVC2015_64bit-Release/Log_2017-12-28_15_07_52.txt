@@ -1,0 +1,3 @@
+2017-12-28_15_07_52:	Test log
+2017-12-28_15_07_52:	New logg
+2017-12-28_15_07_52:	Adding a new line to the log

@@ -1,0 +1,3 @@
+2017-12-28_15_17_41:	Test
+2017-12-28_15_17_41:	New logg
+2017-12-28_15_17_41:	Adding a new line to the log

@@ -45,9 +45,16 @@ logger* logger::CreateLog()
 /// @param message to be included in the log
 void logger::Log(const string& message)
 {
-    QString qmessage = QString::fromStdString(message);
+    std::string time_message = logger::CurrentDateTime();
+    std::string time = time_message;
+    time_message[10] = ' ';
+    time_message[13] = ':';
+    time_message[16] = ':';
+    time_message.append(": ");
+    time_message.append(message);
+    QString qmessage = QString::fromStdString(time_message);
     emit sendmessage(qmessage);
-    LogFile <<  logger::CurrentDateTime() << ":\t";
+    LogFile <<  time << ":\t";
     LogFile << message << "\n";
     LogFile.flush();
 }
@@ -101,11 +108,18 @@ void logger::Log(const char * format, ...)
     message = new char[length];
     vsprintf_s(message, length, format, args);
     //vsprintf(sMessage, format, args);
-    LogFile << logger::CurrentDateTime() << ":\t";
-    LogFile << message << "\n";
-    va_end(args);
-    QString qmessage = QString::fromStdString(message);
+    std::string time_message = logger::CurrentDateTime();
+    std::string time = time_message;
+    time_message[10] = ' ';
+    time_message[13] = ':';
+    time_message[16] = ':';
+    time_message.append(": ");
+    time_message.append(message);
+    QString qmessage = QString::fromStdString(time_message);
     emit sendmessage(qmessage);
-    delete [] message;
+    LogFile <<  time << ":\t";
+    LogFile << message << "\n";
     LogFile.flush();
+    va_end(args);
+    delete [] message;
 }
