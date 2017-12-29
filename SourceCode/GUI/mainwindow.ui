@@ -193,7 +193,7 @@
    </widget>
    <widget class="QTextEdit" name="mw_logger_textedit">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -202,6 +202,9 @@
       <width>401</width>
       <height>81</height>
      </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QVTKWidget" name="pcScan" native="true">

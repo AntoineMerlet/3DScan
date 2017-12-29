@@ -1,5 +1,5 @@
 #include "database.h"
-
+#include "logger.h"
 /// @author: Antoine Merlet
 /// @date: 27-12-2017
 /// @version 1.0
@@ -14,7 +14,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>  DataBase::getRawPCs()
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return {};
     }
 }
@@ -25,7 +25,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>  DataBase::getRawPCs()
 /// @version 1.0
 ///
 /// @brief Function used to get the vector of registered Point Clouds from the DataBase
-/// @return The vector of Point Clouds
+/// @return The vector of Poiant Clouds
 std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> DataBase::getRegisteredPCs()
 {
     try
@@ -34,7 +34,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> DataBase::getRegisteredPCs()
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return {};
     }
 }
@@ -55,7 +55,7 @@ std::vector<pcl::PolygonMesh::Ptr> DataBase::getMeshedPCs()
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return {};
     }
 }
@@ -80,7 +80,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>  DataBase::getRawPCs(std::li
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return {};
     }
 }
@@ -104,7 +104,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> DataBase::getRegisteredPCs(s
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return {};
     }
 }
@@ -128,7 +128,7 @@ std::vector<pcl::PolygonMesh::Ptr> DataBase::getMeshedPCs(std::list<int> li)
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return {};
     }
 }
@@ -148,7 +148,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr  DataBase::getRawPC(const int &idx)
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return nullptr;
     }
 }
@@ -168,7 +168,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr DataBase::getRegisteredPC(const int &idx)
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return nullptr;
     }
 }
@@ -188,7 +188,7 @@ pcl::PolygonMesh::Ptr DataBase::getMeshedPC(const int &idx)
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return nullptr;
     }
 }
@@ -206,11 +206,12 @@ bool DataBase::addRawPC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &pc)
     try
     {
         rawPCs.push_back(pc);
+        LOG("Added 1 rawPC in DB. Size: " + std::to_string(rawPCs.size()));
         return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -228,11 +229,12 @@ bool DataBase::addRegisteredPC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &pc)
     try
     {
         registeredPCs.push_back(pc);
+        LOG("Added 1 registeredPC in DB. Size: " + std::to_string(registeredPCs.size()));
         return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -249,11 +251,12 @@ bool DataBase::addMeshedPC(const pcl::PolygonMesh::Ptr &mesh)
     try
     {
         meshedPCs.push_back(mesh);
+        LOG("Added 1 Mesh in DB. Size: " + std::to_string(meshedPCs.size()));
         return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -271,11 +274,11 @@ bool DataBase::replaceRawPC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &pc, co
     try
     {
         rawPCs.at(idx) = pc;
-        return true;
+        LOG("1 rawPC replaced DB. Size: " + std::to_string(registeredPCs.size()));
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -293,11 +296,12 @@ bool DataBase::replaceRegisteredPC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr 
     try
     {
         registeredPCs.at(idx) = pc;
+        LOG("1 registeredPC replaced DB");
         return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -315,11 +319,12 @@ bool DataBase::replaceMeshedPC(const pcl::PolygonMesh::Ptr &mesh, const int &idx
     try
     {
         meshedPCs.at(idx) = mesh;
+        LOG("1 mesh replaced DB");
         return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -335,12 +340,13 @@ bool DataBase::removeRawPC(const int &idx)
 {
     try
     {
-       rawPCs.erase(rawPCs.begin()+idx);
-       return true;
+        rawPCs.erase(rawPCs.begin()+idx);
+        LOG("1 rawPC removed from DB. Size: " + std::to_string(rawPCs.size()));
+        return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -356,12 +362,13 @@ bool DataBase::removeRegisteredPC(const int &idx)
 {
     try
     {
-       registeredPCs.erase(registeredPCs.begin()+idx);
-       return true;
+        registeredPCs.erase(registeredPCs.begin()+idx);
+        LOG("1 registeredPC removed from DB. Size: " + std::to_string(registeredPCs.size()));
+        return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -377,12 +384,13 @@ bool DataBase::removeMeshedPC(const int &idx)
 {
     try
     {
-       meshedPCs.erase(meshedPCs.begin()+idx);
-       return true;
+        meshedPCs.erase(meshedPCs.begin()+idx);
+        LOG("1 mesh removed from DB. Size: " + std::to_string(meshedPCs.size()));
+        return true;
     }
     catch (const std::exception &e)
     {
-
+        LOG("Error: "+ *e.what());
         return false;
     }
 }

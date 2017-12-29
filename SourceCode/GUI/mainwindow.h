@@ -25,7 +25,6 @@ public:
 
 protected:
 
-    void resetVtk();
     void updatePCList();
 
 private slots:

@@ -24,7 +24,6 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 #include "QVTKWidget.h"
 
@@ -55,7 +54,6 @@ public:
     QPushButton *sw_capturepc_puchbutton;
     QLabel *sw_pcnumber_label;
     QLineEdit *sw_pcnumber_lineedit;
-    QTextEdit *sw_logger_textedit;
     QRadioButton *sw_horizontalacq_radiobutton;
     QRadioButton *sw_verticalacq_radiobutton;
     QLabel *sw_acqtype_label;
@@ -141,9 +139,6 @@ public:
         sw_pcnumber_lineedit = new QLineEdit(centralwidget);
         sw_pcnumber_lineedit->setObjectName(QStringLiteral("sw_pcnumber_lineedit"));
         sw_pcnumber_lineedit->setGeometry(QRect(170, 450, 31, 20));
-        sw_logger_textedit = new QTextEdit(centralwidget);
-        sw_logger_textedit->setObjectName(QStringLiteral("sw_logger_textedit"));
-        sw_logger_textedit->setGeometry(QRect(220, 420, 451, 71));
         sw_horizontalacq_radiobutton = new QRadioButton(centralwidget);
         sw_horizontalacq_radiobutton->setObjectName(QStringLiteral("sw_horizontalacq_radiobutton"));
         sw_horizontalacq_radiobutton->setGeometry(QRect(30, 30, 82, 17));

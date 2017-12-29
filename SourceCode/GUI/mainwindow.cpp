@@ -17,6 +17,11 @@
 
 using namespace std;
 
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Constructor of main window. mainwindow is holding the pointer to the DataBase, and inits the PCl vizualiser
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -37,37 +42,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Showing scan window on click
 void MainWindow::on_actionNew_scan_triggered()
 {
     //...
     scanwindow *scan = new scanwindow(this);
     scan->show();
-}
-
-/// @author: Mladen Rakic
-/// @date: 26-12-2017
-/// @version 1.0
-///
-/// @brief Function to display text from logger file in main window.
-/// @param filename Name of the text file to be read
-void MainWindow::readfile(std::string filename){
-//    QFile file(filename);
-//    if(!file.exists()){
-//        qDebug() << "File not found! " << filename;
-//    }else{
-//        qDebug() << filename << " File found";
-//    }
-//    std::string line;
-//    ui->mw_logger_textedit->clear();
-//    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
-//        QTextStream stream(&file);
-//        while (!stream.atEnd()){
-//            line = stream.readLine();
-//            ui->mw_logger_textedit->setText(ui->mw_logger_textedit->toPlainText()+line+"\n");
-//            qDebug() << "Line: "<<line;
-//        }
-//    }
-//    file.close();
 }
 
 
@@ -93,7 +78,12 @@ void MainWindow::updatePCList()
 
 }
 
-//Load point clouds
+
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Opens a file dialog for the user to select one or several Point Clouds to load. These point cloouds are stored in DataBase
 void MainWindow::on_actionImport_point_clouds_triggered()
 {
     QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import Point Clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
@@ -104,7 +94,12 @@ void MainWindow::on_actionImport_point_clouds_triggered()
     }
 }
 
-//Load registered point cloud
+
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Opens a file dialog for the user to select one or several Point Clouds to load. These point cloouds are stored in DataBase
 void MainWindow::on_actionImport_registered_PC_triggered()
 {
     QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import Point Clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
@@ -112,7 +107,11 @@ void MainWindow::on_actionImport_registered_PC_triggered()
         registeredPC2DB(qlistPC,DB);
 }
 
-//Load mesh
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Opens a file dialog for the user to select one or several meshs to load. These meshs are stored in DataBase
 void MainWindow::on_actionImport_mesh_triggered()
 {
     QStringList qlistMesh = QFileDialog::getOpenFileNames(this, QString("Import Mesh"), QString(""), QString("Mesh (*.stl *.vtk)"));
@@ -120,7 +119,12 @@ void MainWindow::on_actionImport_mesh_triggered()
         meshedPC2DB(qlistMesh,DB);
 }
 
-//Save acquired point clouds
+
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 0.1
+///
+/// @brief Opens a file dialog for the user to select a folder to save Point Clouds.
 void MainWindow::on_actionExport_point_clouds_triggered()
 {
     QString qdir = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
@@ -133,38 +137,28 @@ void MainWindow::on_actionExport_point_clouds_triggered()
     }
 }
 
-//Save registered point cloud
+
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 0.1
+///
+/// @brief Opens a file dialog for the user to select a folder to save Point Clouds.
 void MainWindow::on_actionExport_registered_PC_triggered()
 {
     //...
 }
 
-//Save generated mesh
+
+/// @author: Antoine Merlet
+/// @date: 28-12-2017
+/// @version 0.1
+///
+/// @brief Opens a file dialog for the user to select a folder to save meshs.
 void MainWindow::on_actionExport_mesh_triggered()
 {
     //...
 }
 
-/// @author: Mladen Rakic
-/// @date: 26-12-2017
-/// @version 1.0
-///
-/// @brief Function to set up the QVTK Widget in the main window
-void MainWindow::resetVtk()
-{
-//    // Set up the QVTK widget
-//    viewer.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
-//    ui->mw_qvtkWidget->SetRenderWindow (viewer->getRenderWindow ());
-//    viewer->setupInteractor (ui->mw_qvtkWidget->GetInteractor (), ui->mw_qvtkWidget->GetRenderWindow ());
-//    ui->mw_qvtkWidget->update ();
-
-//    pcl::visualization::PointCloudColorHandlerCustom<PointType> colorPt (database->m_cloud, 0, 123, 100);
-//    viewer->addPointCloud (database->m_cloud, colorPt,  "cloud");
-//    viewer->resetCamera ();
-//    viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, "cloud");
-//    ui->mw_qvtkWidget->update ();
-
-}
 
 
 void MainWindow::on_mw_register_pc_pushbutton_clicked()

@@ -13,9 +13,11 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -44,11 +46,17 @@ public:
     QWidget *centralWidget;
     QTabWidget *mw_explorer_tabwidget;
     QWidget *mw_pc_tab;
+    QListView *pc_list;
     QWidget *mw_registeredpc_tab;
+    QListView *regpc_list;
     QWidget *mw_mesh_tab;
+    QListView *mesh_list;
     QFrame *mw_register_frame;
     QPushButton *mw_register_pc_pushbutton;
     QPushButton *mw_generatemesh_pushbutton;
+    QPushButton *filter_pb;
+    QComboBox *methods_cb;
+    QLabel *method_label;
     QLabel *mw_visualizer_label;
     QLabel *mw_pcexplorer_label;
     QTextEdit *mw_logger_textedit;
@@ -91,24 +99,42 @@ public:
         mw_explorer_tabwidget->setGeometry(QRect(20, 40, 191, 181));
         mw_pc_tab = new QWidget();
         mw_pc_tab->setObjectName(QStringLiteral("mw_pc_tab"));
+        pc_list = new QListView(mw_pc_tab);
+        pc_list->setObjectName(QStringLiteral("pc_list"));
+        pc_list->setGeometry(QRect(-10, -10, 201, 171));
         mw_explorer_tabwidget->addTab(mw_pc_tab, QString());
         mw_registeredpc_tab = new QWidget();
         mw_registeredpc_tab->setObjectName(QStringLiteral("mw_registeredpc_tab"));
+        regpc_list = new QListView(mw_registeredpc_tab);
+        regpc_list->setObjectName(QStringLiteral("regpc_list"));
+        regpc_list->setGeometry(QRect(-10, -10, 201, 171));
         mw_explorer_tabwidget->addTab(mw_registeredpc_tab, QString());
         mw_mesh_tab = new QWidget();
         mw_mesh_tab->setObjectName(QStringLiteral("mw_mesh_tab"));
+        mesh_list = new QListView(mw_mesh_tab);
+        mesh_list->setObjectName(QStringLiteral("mesh_list"));
+        mesh_list->setGeometry(QRect(-10, -10, 201, 171));
         mw_explorer_tabwidget->addTab(mw_mesh_tab, QString());
         mw_register_frame = new QFrame(centralWidget);
         mw_register_frame->setObjectName(QStringLiteral("mw_register_frame"));
-        mw_register_frame->setGeometry(QRect(40, 240, 151, 121));
+        mw_register_frame->setGeometry(QRect(40, 240, 151, 201));
         mw_register_frame->setFrameShape(QFrame::Box);
         mw_register_frame->setFrameShadow(QFrame::Raised);
         mw_register_pc_pushbutton = new QPushButton(mw_register_frame);
         mw_register_pc_pushbutton->setObjectName(QStringLiteral("mw_register_pc_pushbutton"));
-        mw_register_pc_pushbutton->setGeometry(QRect(20, 20, 111, 31));
+        mw_register_pc_pushbutton->setGeometry(QRect(20, 110, 111, 31));
         mw_generatemesh_pushbutton = new QPushButton(mw_register_frame);
         mw_generatemesh_pushbutton->setObjectName(QStringLiteral("mw_generatemesh_pushbutton"));
-        mw_generatemesh_pushbutton->setGeometry(QRect(20, 70, 111, 31));
+        mw_generatemesh_pushbutton->setGeometry(QRect(20, 150, 111, 31));
+        filter_pb = new QPushButton(mw_register_frame);
+        filter_pb->setObjectName(QStringLiteral("filter_pb"));
+        filter_pb->setGeometry(QRect(20, 70, 111, 31));
+        methods_cb = new QComboBox(mw_register_frame);
+        methods_cb->setObjectName(QStringLiteral("methods_cb"));
+        methods_cb->setGeometry(QRect(20, 30, 111, 22));
+        method_label = new QLabel(mw_register_frame);
+        method_label->setObjectName(QStringLiteral("method_label"));
+        method_label->setGeometry(QRect(20, 10, 101, 16));
         mw_visualizer_label = new QLabel(centralWidget);
         mw_visualizer_label->setObjectName(QStringLiteral("mw_visualizer_label"));
         mw_visualizer_label->setGeometry(QRect(230, 20, 61, 16));
@@ -117,7 +143,9 @@ public:
         mw_pcexplorer_label->setGeometry(QRect(30, 20, 101, 16));
         mw_logger_textedit = new QTextEdit(centralWidget);
         mw_logger_textedit->setObjectName(QStringLiteral("mw_logger_textedit"));
-        mw_logger_textedit->setGeometry(QRect(20, 380, 601, 81));
+        mw_logger_textedit->setEnabled(true);
+        mw_logger_textedit->setGeometry(QRect(220, 360, 401, 81));
+        mw_logger_textedit->setReadOnly(true);
         pcScan = new QVTKWidget(centralWidget);
         pcScan->setObjectName(QStringLiteral("pcScan"));
         pcScan->setGeometry(QRect(240, 60, 371, 291));
@@ -185,6 +213,14 @@ public:
         mw_explorer_tabwidget->setTabText(mw_explorer_tabwidget->indexOf(mw_mesh_tab), QApplication::translate("MainWindow", "Mesh", 0));
         mw_register_pc_pushbutton->setText(QApplication::translate("MainWindow", "Register point clouds", 0));
         mw_generatemesh_pushbutton->setText(QApplication::translate("MainWindow", "Generate mesh", 0));
+        filter_pb->setText(QApplication::translate("MainWindow", "Filter", 0));
+        methods_cb->clear();
+        methods_cb->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Option 1", 0)
+         << QApplication::translate("MainWindow", "Option 2", 0)
+         << QApplication::translate("MainWindow", "Option 3", 0)
+        );
+        method_label->setText(QApplication::translate("MainWindow", "Choose a method", 0));
         mw_visualizer_label->setText(QApplication::translate("MainWindow", "Visualizer", 0));
         mw_pcexplorer_label->setText(QApplication::translate("MainWindow", "Point cloud explorer", 0));
         menuMAGMA_3D_scanner->setTitle(QApplication::translate("MainWindow", "Scan", 0));

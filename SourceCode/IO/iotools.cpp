@@ -18,13 +18,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPCD(const std::string &path)
     {
         pcl::io::loadPCDFile(path, *ptrPC);
 
-    //   LOGGER->Log(" Message is:%s Number is:%d", message2.c_str(), nNum);
-
+        LOG("Loaded " + path);
         return ptrPC;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return nullptr;
     }
 }
@@ -41,12 +40,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr loadPLY(const std::string &path)
     try
     {
         pcl::io::loadPLYFile(path, *ptrPC);
-        // add emit info to console here
+        LOG("Loaded " + path);
         return ptrPC;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return nullptr;
     }
 }
@@ -65,12 +64,12 @@ pcl::PolygonMesh::Ptr loadSTL(const std::string &path)
     try
     {
         pcl::io::loadPolygonFileSTL(path, *ptrMesh);
-        // add emit info to console here
+        LOG("Loaded " + path);
         return ptrMesh;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return nullptr;
     }
 }
@@ -88,12 +87,12 @@ pcl::PolygonMesh::Ptr loadVTK(const std::string &path)
     try
     {
         pcl::io::loadPolygonFileVTK(path, *ptrMesh);
-        // add emit info to console here
+        LOG("Loaded " + path);
         return ptrMesh;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return nullptr;
     }
 }
@@ -192,12 +191,12 @@ bool savePCD(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &pa
     try
     {
         pcl::io::savePCDFile(path, *ptrPC);
-        // add emit info to console here
+        LOG("Saved at" + path);
         return true;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -215,12 +214,12 @@ bool savePLY(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &ptrPC,const std::string &pa
     try
     {
         pcl::io::savePLYFile(path, *ptrPC);
-        // add emit info to console here
+        LOG("Saved at" + path);
         return true;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -238,12 +237,12 @@ bool saveSTL(pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
     try
     {
         pcl::io::savePolygonFileSTL(path, *ptrMesh);
-        // add emit info to console here
+        LOG("Saved at" + path);
         return true;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
@@ -261,12 +260,12 @@ bool saveVTK(pcl::PolygonMesh::Ptr &ptrMesh,const std::string &path)
     try
     {
         pcl::io::savePolygonFileVTK(path, *ptrMesh);
-        // add emit info to console here
+        LOG("Saved at" + path);
         return true;
     }
     catch (const std::exception &e)
     {
-        // add emit info to console here e.what();
+        LOG("Error: "+ *e.what());
         return false;
     }
 }
