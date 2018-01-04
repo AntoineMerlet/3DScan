@@ -61,6 +61,7 @@ public:
     QLabel *mw_pcexplorer_label;
     QTextEdit *mw_logger_textedit;
     QVTKWidget *pcScan;
+    QLabel *mylogo;
     QMenuBar *menuBar;
     QMenu *menuMAGMA_3D_scanner;
     QMenu *menuImport;
@@ -154,6 +155,10 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(pcScan->sizePolicy().hasHeightForWidth());
         pcScan->setSizePolicy(sizePolicy);
+        mylogo = new QLabel(centralWidget);
+        mylogo->setObjectName(QStringLiteral("mylogo"));
+        mylogo->setGeometry(QRect(450, 10, 331, 41));
+        mylogo->setPixmap(QPixmap(QString::fromUtf8("../../build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/logo_small.jpg")));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -223,6 +228,7 @@ public:
         method_label->setText(QApplication::translate("MainWindow", "Choose a method", 0));
         mw_visualizer_label->setText(QApplication::translate("MainWindow", "Visualizer", 0));
         mw_pcexplorer_label->setText(QApplication::translate("MainWindow", "Point cloud explorer", 0));
+        mylogo->setText(QString());
         menuMAGMA_3D_scanner->setTitle(QApplication::translate("MainWindow", "Scan", 0));
         menuImport->setTitle(QApplication::translate("MainWindow", "Import", 0));
         menuExport->setTitle(QApplication::translate("MainWindow", "Export", 0));

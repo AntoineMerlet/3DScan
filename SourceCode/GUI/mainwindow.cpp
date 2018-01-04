@@ -18,6 +18,8 @@
 #include <QList>
 #include <QString>
 #include <QAbstractListModel>
+#include <QLabel>
+#include <QPixmap>
 
 using namespace std;
 
@@ -32,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QPixmap logo ("logo_small.jpg");
+    ui->mylogo->setPixmap(logo);
     DB = new DataBase();
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
