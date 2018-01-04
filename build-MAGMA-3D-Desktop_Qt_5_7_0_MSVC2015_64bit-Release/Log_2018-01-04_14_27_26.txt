@@ -1,0 +1,3 @@
+2018-01-04.14:27:26:	Program initilized
+2018-01-04.14:27:27:	About section
+2018-01-04.14:27:30:	User Manual

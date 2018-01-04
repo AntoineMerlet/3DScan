@@ -17,7 +17,7 @@ aboutwindow::aboutwindow(QWidget *parent) :
     QFile file("about.html");
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream stream(&file);
-    ui->show_about->setHtml(stream.readAll());
+    ui->show_about->setHtml(stream.readAll());       
     LOG("About section");
 }
 

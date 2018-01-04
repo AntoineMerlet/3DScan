@@ -1,0 +1,3 @@
+2018-01-04_14_19_52:	Program initilized
+2018-01-04_14_19_56:	User Manual
+2018-01-04_14_20_00:	About section
