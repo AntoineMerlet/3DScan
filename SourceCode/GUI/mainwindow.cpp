@@ -14,8 +14,14 @@
 #include <logger.h>
 #include <GUI/aboutwindow.h>
 #include <QDesktopServices>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QList>
+#include <QString>
+#include <QAbstractListModel>
 
 using namespace std;
+
 
 /// @author: Antoine Merlet
 /// @date: 28-12-2017
@@ -63,7 +69,7 @@ void MainWindow::on_actionNew_scan_triggered()
 /// @brief Function to update the list of raw point clouds on the GUI
 void MainWindow::updatePCList()
 {
-    DB = new DataBase();
+    PCList = new QStandardItemModel();
     PCList->clear();
     std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> rawPCs = DB->getRawPCs();
     for (int i = 1; i <= rawPCs.size(); i++){
@@ -73,11 +79,8 @@ void MainWindow::updatePCList()
         QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
         PCList->appendRow(Items);
     }
-
-    // ui->pc_list->setModel(PCList);
-
+    ui->pc_list->setModel(PCList);
 }
-
 
 /// @author: Antoine Merlet
 /// @date: 28-12-2017
@@ -90,6 +93,7 @@ void MainWindow::on_actionImport_point_clouds_triggered()
     if (qlistPC.size() > 0)
     {
         rawPC2DB(qlistPC,DB);
+        MainWindow::updatePCList();
 
     }
 }

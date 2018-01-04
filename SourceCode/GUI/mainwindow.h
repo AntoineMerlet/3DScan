@@ -50,9 +50,7 @@ private:
     std::vector<std::string> selectedRaw;
     std::vector<std::string> selectedRegistered;
     std::vector<std::string> selectedMeshed;
-
-    QStandardItemModel* PCList;
-
+    QStandardItemModel * PCList;
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;
 };

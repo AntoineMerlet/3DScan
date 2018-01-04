@@ -33,10 +33,10 @@
      <widget class="QListView" name="pc_list">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>-10</y>
-        <width>201</width>
-        <height>171</height>
+        <x>0</x>
+        <y>0</y>
+        <width>181</width>
+        <height>151</height>
        </rect>
       </property>
      </widget>
@@ -48,10 +48,10 @@
      <widget class="QListView" name="regpc_list">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>-10</y>
-        <width>201</width>
-        <height>171</height>
+        <x>0</x>
+        <y>0</y>
+        <width>181</width>
+        <height>151</height>
        </rect>
       </property>
      </widget>
@@ -63,10 +63,10 @@
      <widget class="QListView" name="mesh_list">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>-10</y>
-        <width>201</width>
-        <height>171</height>
+        <x>0</x>
+        <y>0</y>
+        <width>181</width>
+        <height>151</height>
        </rect>
       </property>
      </widget>
