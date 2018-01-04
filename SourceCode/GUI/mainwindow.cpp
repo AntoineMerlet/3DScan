@@ -80,6 +80,8 @@ void MainWindow::updatePCList()
         ss << "Pointcloud " << i;
         string PCName = ss.str();
         QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
+        Items->setCheckable(true);
+        Items->setCheckState(Qt::Unchecked);
         PCList->appendRow(Items);
     }
     ui->pc_list->setModel(PCList);
@@ -100,6 +102,8 @@ void MainWindow::updateRegPCList()
         ss << "Registered Pointcloud " << i;
         string PCName = ss.str();
         QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
+        Items->setCheckable(true);
+        Items->setCheckState(Qt::Unchecked);
         RPCList->appendRow(Items);
     }
     ui->regpc_list->setModel(RPCList);
@@ -120,6 +124,8 @@ void MainWindow::updateMeshList()
         ss << "Mesh " << i;
         string PCName = ss.str();
         QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
+        Items->setCheckable(true);
+        Items->setCheckState(Qt::Unchecked);
         MeshList->appendRow(Items);
     }
     ui->mesh_list->setModel(MeshList);
