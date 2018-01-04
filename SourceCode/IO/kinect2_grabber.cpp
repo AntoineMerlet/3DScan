@@ -1,5 +1,6 @@
 #include "kinect2_grabber.h"
 #include "QDebug"
+#include <logger.h>
 using namespace pcl;
 
 Kinect2Grabber::Kinect2Grabber()
@@ -167,6 +168,7 @@ void Kinect2Grabber::start()
     // Open Color Frame Reader
     result = colorSource->OpenReader( &colorReader );
     if( FAILED( result ) ){
+        LOG("Color reader not available");
         throw std::exception( "Exception : IColorFrameSource::OpenReader()" );
     }
 
@@ -174,12 +176,14 @@ void Kinect2Grabber::start()
     result = depthSource->OpenReader( &depthReader );
     qDebug() << "Depth reader result " << result;
     if( FAILED( result ) ){
+        LOG("Depth reader not available");
         throw std::exception( "Exception : IDepthFrameSource::OpenReader()" );
     }
 
     // Open Infrared Frame Reader
     result = infraredSource->OpenReader( &infraredReader );
     if( FAILED( result ) ){
+        LOG("Infrared reader not available");
         throw std::exception( "Exception : IInfraredFrameSource::OpenReader()" );
     }
 

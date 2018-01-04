@@ -2,6 +2,11 @@
 #define SCANWINDOW_H
 
 #include <QMainWindow>
+#include <QVTKWidget.h>
+#include <pcl/visualization/pcl_visualizer.h>
+#include <vtkRenderWindow.h>
+#include <IO/kinect_v2.h>
+#include <IO/kinect2_grabber.h>
 
 namespace Ui {
 class scanwindow;
@@ -35,8 +40,14 @@ private slots:
 
     void on_sw_zmax_horslider_actionTriggered(int action);
 
+    void on_sw_startscan_pushbutton_clicked();
+
+    void on_sw_stopscan_pushbutton_clicked();
+
 private:
     Ui::scanwindow *ui;
+    boost::shared_ptr<pcl::Grabber> grabber = boost::make_shared<pcl::Kinect2Grabber>();
+
 };
 
 #endif // SCANWINDOW_H

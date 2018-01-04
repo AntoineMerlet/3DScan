@@ -2,6 +2,9 @@
 #include "Storage/database.h"
 #include "ui_scanwindow.h"
 #include <string>
+#include <IO/kinect_v2.h>
+#include <IO/kinect2_grabber.h>
+#include <logger.h>
 
 using namespace std;
 
@@ -102,4 +105,85 @@ void scanwindow::readfile(std::string filename){
 void scanwindow::on_sw_horizontalacq_radiobutton_clicked()
 {
 
+}
+
+void scanwindow::on_sw_startscan_pushbutton_clicked()
+{
+    pcl::Kinect2Grabber * kinect = new pcl::Kinect2Grabber;
+    kinect->start();
+
+    // Credits: UnaNancyOwen (https://github.com/UnaNancyOwen/KinectGrabber/blob/Kinect2Grabber/Sample/main.cpp)
+    // PCL Visualizer
+        boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(
+            new pcl::visualization::PCLVisualizer( "Point Cloud Viewer" ) );
+        viewer->setCameraPosition( 0.0, 0.0, -2.5, 0.0, 0.0, 0.0 );
+
+
+        // Point Cloud
+
+        pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
+
+        // Retrieved Point Cloud Callback Function
+        boost::mutex mutex;
+        boost::function<void( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& )> function =
+            [&cloud, &mutex]( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& ptr ){
+                boost::mutex::scoped_lock lock( mutex );
+
+                /* Point Cloud Processing */
+
+                cloud = ptr->makeShared();
+            };
+
+        // Kinect2Grabber
+//        boost::shared_ptr<pcl::Grabber> grabber = boost::make_shared<pcl::Kinect2Grabber>();
+
+        // Register Callback Function
+        boost::signals2::connection connection = grabber->registerCallback( function );
+
+        // Start Grabber
+        grabber->start();
+
+        while( !viewer->wasStopped() ){
+            // Update Viewer
+            viewer->spinOnce();
+
+            boost::mutex::scoped_try_lock lock( mutex );
+            if( lock.owns_lock() && cloud ){
+                // Update Point Cloud
+                if( !viewer->updatePointCloud( cloud, "cloud" ) ){
+                    viewer->addPointCloud( cloud, "cloud" );
+                }
+            }
+        }
+}
+
+void scanwindow::on_sw_stopscan_pushbutton_clicked()
+{
+
+
+    // Point Cloud
+
+    pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
+
+    // Retrieved Point Cloud Callback Function
+    boost::mutex mutex;
+    boost::function<void( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& )> function =
+        [&cloud, &mutex]( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& ptr ){
+            boost::mutex::scoped_lock lock( mutex );
+
+            /* Point Cloud Processing */
+
+            cloud = ptr->makeShared();
+        };
+
+    // Register Callback Function
+    boost::signals2::connection connection = grabber->registerCallback( function );
+
+    // Stop Grabber
+    grabber->stop();
+
+    // Disconnect Callback Function
+    if( connection.connected() ){
+        connection.disconnect();
+    }
 }

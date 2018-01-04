@@ -7539,7 +7539,30 @@ debug\mainwindow.obj: ..\SourceCode\GUI\mainwindow.cpp ../SourceCode/GUI/mainwin
 		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QDialog \
 		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\QDesktopServices \
 		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qdesktopservices.h \
-		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstandardpaths.h
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstandardpaths.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QListWidget \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qlistwidget.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qlistview.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qvalidator.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qslider.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qstyle.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qtabbar.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qrubberband.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QListWidgetItem \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QList \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QAbstractListModel \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\QPixmap
 
 debug\sensors.obj: ..\SourceCode\IO\sensors.cpp ../SourceCode/IO/sensors.h \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\point_cloud.h" \
@@ -14057,7 +14080,10 @@ debug\kinect2_grabber.obj: ..\SourceCode\IO\kinect2_grabber.cpp ../SourceCode/IO
 		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qset.h \
 		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcontiguouscache.h \
 		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsharedpointer.h \
-		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsharedpointer_impl.h
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		../SourceCode/logger.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QObject \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QString
 
 debug\database.obj: ..\SourceCode\Storage\database.cpp ../SourceCode/Storage/database.h \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\PolygonMesh.h" \
@@ -20270,7 +20296,16 @@ debug\scanwindow.obj: ..\SourceCode\scanwindow.cpp ../SourceCode/scanwindow.h \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\io\impl\vtk_lib_io.hpp" \
 		"..\..\..\Program Files\PCL 1.8.0\3rdParty\VTK\include\vtk-7.0\vtkVertexGlyphFilter.h" \
 		"..\..\..\Program Files\PCL 1.8.0\3rdParty\VTK\include\vtk-7.0\vtkFiltersGeneralModule.h" \
-		ui_scanwindow.h
+		ui_scanwindow.h \
+		../SourceCode/IO/kinect_v2.h \
+		../SourceCode/IO/sensors.h \
+		../SourceCode/IO/kinect2_grabber.h \
+		"..\..\..\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc\Kinect.h" \
+		"..\..\..\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc\Kinect.INPC.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\io\grabber.h" \
+		../SourceCode/logger.h \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QObject \
+		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QString
 
 debug\logger.obj: ..\SourceCode\logger.cpp ../SourceCode/logger.h \
 		..\..\..\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QObject \

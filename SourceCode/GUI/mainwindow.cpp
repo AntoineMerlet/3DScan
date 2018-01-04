@@ -61,6 +61,7 @@ void MainWindow::on_actionNew_scan_triggered()
 {
     //...
     scanwindow *scan = new scanwindow(this);
+    scan->setWindowTitle("MAGMA Project - New Scan");
     scan->show();
 }
 
@@ -233,8 +234,9 @@ void MainWindow::receivedmessage(const QString &arg)
 
 void MainWindow::on_actionAbout_triggered()
 {
-    aboutwindow *scan = new aboutwindow(this);
-    scan->show();
+    aboutwindow *about = new aboutwindow(this);
+    about->setWindowTitle("MAGMA Project - About");
+    about->show();
 }
 
 void MainWindow::on_actionUser_manual_triggered()
