@@ -26,6 +26,8 @@ public:
 protected:
 
     void updatePCList();
+    void updateRegPCList();
+    void updateMeshList();
 
 private slots:
     void on_actionNew_scan_triggered();
@@ -51,6 +53,8 @@ private:
     std::vector<std::string> selectedRegistered;
     std::vector<std::string> selectedMeshed;
     QStandardItemModel * PCList;
+    QStandardItemModel * RPCList;
+    QStandardItemModel * MeshList;
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;
 };

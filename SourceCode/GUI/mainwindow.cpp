@@ -3,7 +3,6 @@
 #include "guitools.h"
 #include "IO/iotools.h"
 #include "scanwindow.h"
-
 #include "IO/kinect2_grabber.h"
 #include <QFileDialog>
 #include <QStringList>
@@ -82,6 +81,47 @@ void MainWindow::updatePCList()
     ui->pc_list->setModel(PCList);
 }
 
+/// @author: Mladen Rakic
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Function to update the list of raw point clouds on the GUI
+void MainWindow::updateRegPCList()
+{
+    RPCList = new QStandardItemModel();
+    RPCList->clear();
+    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> regPCs = DB->getRegisteredPCs();
+    for (int i = 1; i <= regPCs.size(); i++){
+        stringstream ss;
+        ss << "Registered Pointcloud " << i;
+        string PCName = ss.str();
+        QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
+        RPCList->appendRow(Items);
+    }
+    ui->regpc_list->setModel(RPCList);
+}
+
+/// @author: Mladen Rakic
+/// @date: 28-12-2017
+/// @version 1.0
+///
+/// @brief Function to update the list of raw point clouds on the GUI
+void MainWindow::updateMeshList()
+{
+    MeshList = new QStandardItemModel();
+    MeshList->clear();
+    std::vector<pcl::PolygonMesh::Ptr> mesh = DB->getMeshedPCs();
+    for (int i = 1; i <= mesh.size(); i++){
+        stringstream ss;
+        ss << "Mesh " << i;
+        string PCName = ss.str();
+        QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
+        MeshList->appendRow(Items);
+    }
+    ui->mesh_list->setModel(MeshList);
+}
+
+
 /// @author: Antoine Merlet
 /// @date: 28-12-2017
 /// @version 1.0
@@ -109,6 +149,7 @@ void MainWindow::on_actionImport_registered_PC_triggered()
     QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import Point Clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
     if (qlistPC.size() > 0)
         registeredPC2DB(qlistPC,DB);
+    MainWindow::updateRegPCList();
 }
 
 /// @author: Antoine Merlet
@@ -121,6 +162,7 @@ void MainWindow::on_actionImport_mesh_triggered()
     QStringList qlistMesh = QFileDialog::getOpenFileNames(this, QString("Import Mesh"), QString(""), QString("Mesh (*.stl *.vtk)"));
     if (qlistMesh.size() > 0)
         meshedPC2DB(qlistMesh,DB);
+    MainWindow::updateMeshList();
 }
 
 
