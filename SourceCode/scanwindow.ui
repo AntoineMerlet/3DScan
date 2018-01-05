@@ -268,26 +268,13 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>450</y>
+      <y>440</y>
       <width>121</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Number of captured PCs</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="sw_pcnumber_lineedit">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>450</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="sw_horizontalacq_radiobutton">
@@ -329,7 +316,7 @@
      <string>Acquisition mode</string>
     </property>
    </widget>
-   <widget class="QVTKWidget" name="sw_qvtkWidget" native="true">
+   <widget class="QVTKWidget" name="kinect_live" native="true">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -343,6 +330,16 @@
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="cap_pc">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>440</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>

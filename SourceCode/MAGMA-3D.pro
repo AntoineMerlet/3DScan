@@ -256,6 +256,5 @@ LIBS += "-LC:\Program Files\PCL 1.8.0\lib" \
          -lvtkGUISupportQtSQL-7.0 \
          -lvtkGUISupportQt-7.0 \
 
-DISTFILES += \
-    about.html
+DISTFILES +=
 

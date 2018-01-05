@@ -17,12 +17,12 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 #include "QVTKWidget.h"
@@ -53,11 +53,11 @@ public:
     QLabel *sw_visualizer_label;
     QPushButton *sw_capturepc_puchbutton;
     QLabel *sw_pcnumber_label;
-    QLineEdit *sw_pcnumber_lineedit;
     QRadioButton *sw_horizontalacq_radiobutton;
     QRadioButton *sw_verticalacq_radiobutton;
     QLabel *sw_acqtype_label;
-    QVTKWidget *sw_qvtkWidget;
+    QVTKWidget *kinect_live;
+    QSpinBox *cap_pc;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -135,10 +135,7 @@ public:
         sw_capturepc_puchbutton->setGeometry(QRect(30, 390, 171, 23));
         sw_pcnumber_label = new QLabel(centralwidget);
         sw_pcnumber_label->setObjectName(QStringLiteral("sw_pcnumber_label"));
-        sw_pcnumber_label->setGeometry(QRect(30, 450, 121, 16));
-        sw_pcnumber_lineedit = new QLineEdit(centralwidget);
-        sw_pcnumber_lineedit->setObjectName(QStringLiteral("sw_pcnumber_lineedit"));
-        sw_pcnumber_lineedit->setGeometry(QRect(170, 450, 31, 20));
+        sw_pcnumber_label->setGeometry(QRect(30, 440, 121, 16));
         sw_horizontalacq_radiobutton = new QRadioButton(centralwidget);
         sw_horizontalacq_radiobutton->setObjectName(QStringLiteral("sw_horizontalacq_radiobutton"));
         sw_horizontalacq_radiobutton->setGeometry(QRect(30, 30, 82, 17));
@@ -148,14 +145,17 @@ public:
         sw_acqtype_label = new QLabel(centralwidget);
         sw_acqtype_label->setObjectName(QStringLiteral("sw_acqtype_label"));
         sw_acqtype_label->setGeometry(QRect(20, 10, 131, 16));
-        sw_qvtkWidget = new QVTKWidget(centralwidget);
-        sw_qvtkWidget->setObjectName(QStringLiteral("sw_qvtkWidget"));
-        sw_qvtkWidget->setGeometry(QRect(240, 50, 421, 341));
+        kinect_live = new QVTKWidget(centralwidget);
+        kinect_live->setObjectName(QStringLiteral("kinect_live"));
+        kinect_live->setGeometry(QRect(240, 50, 421, 341));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(sw_qvtkWidget->sizePolicy().hasHeightForWidth());
-        sw_qvtkWidget->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(kinect_live->sizePolicy().hasHeightForWidth());
+        kinect_live->setSizePolicy(sizePolicy);
+        cap_pc = new QSpinBox(centralwidget);
+        cap_pc->setObjectName(QStringLiteral("cap_pc"));
+        cap_pc->setGeometry(QRect(160, 440, 42, 22));
         scanwindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(scanwindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -186,7 +186,6 @@ public:
         sw_visualizer_label->setText(QApplication::translate("scanwindow", "Visualizer", 0));
         sw_capturepc_puchbutton->setText(QApplication::translate("scanwindow", "Capture point cloud", 0));
         sw_pcnumber_label->setText(QApplication::translate("scanwindow", "Number of captured PCs", 0));
-        sw_pcnumber_lineedit->setText(QApplication::translate("scanwindow", "0", 0));
         sw_horizontalacq_radiobutton->setText(QApplication::translate("scanwindow", "Horizontal", 0));
         sw_verticalacq_radiobutton->setText(QApplication::translate("scanwindow", "Vertical", 0));
         sw_acqtype_label->setText(QApplication::translate("scanwindow", "Acquisition mode", 0));
