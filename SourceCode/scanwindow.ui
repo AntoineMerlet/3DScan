@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>550</height>
+    <width>225</width>
+    <height>551</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>61</width>
+       <width>45</width>
        <height>16</height>
       </rect>
      </property>
@@ -60,7 +60,7 @@
       <rect>
        <x>20</x>
        <y>50</y>
-       <width>61</width>
+       <width>81</width>
        <height>16</height>
       </rect>
      </property>
@@ -120,7 +120,7 @@
       <string>Z maximum</string>
      </property>
     </widget>
-    <widget class="QSlider" name="sw_xmin_horslider">
+    <widget class="QSlider" name="xmin">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -129,11 +129,20 @@
        <height>19</height>
       </rect>
      </property>
+     <property name="minimum">
+      <number>-30</number>
+     </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
+     <property name="value">
+      <number>-3</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QSlider" name="sw_xmax_horslider">
+    <widget class="QSlider" name="xmax">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -142,11 +151,26 @@
        <height>19</height>
       </rect>
      </property>
+     <property name="minimum">
+      <number>-30</number>
+     </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
+     <property name="singleStep">
+      <number>1</number>
+     </property>
+     <property name="pageStep">
+      <number>0</number>
+     </property>
+     <property name="value">
+      <number>3</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QSlider" name="sw_ymin_horslider">
+    <widget class="QSlider" name="ymin">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -155,11 +179,20 @@
        <height>19</height>
       </rect>
      </property>
+     <property name="minimum">
+      <number>-30</number>
+     </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
+     <property name="value">
+      <number>-3</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QSlider" name="sw_ymax_horslider">
+    <widget class="QSlider" name="ymax">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -168,11 +201,20 @@
        <height>19</height>
       </rect>
      </property>
+     <property name="minimum">
+      <number>-30</number>
+     </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
+     <property name="value">
+      <number>3</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QSlider" name="sw_zmin_horslider">
+    <widget class="QSlider" name="zmin">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -181,11 +223,20 @@
        <height>19</height>
       </rect>
      </property>
+     <property name="minimum">
+      <number>-30</number>
+     </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
+     <property name="value">
+      <number>-3</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QSlider" name="sw_zmax_horslider">
+    <widget class="QSlider" name="zmax">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -194,8 +245,30 @@
        <height>19</height>
       </rect>
      </property>
+     <property name="minimum">
+      <number>-30</number>
+     </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
+     <property name="value">
+      <number>3</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="xmin_lab">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>10</y>
+       <width>45</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
@@ -236,19 +309,6 @@
     </property>
     <property name="text">
      <string>Stop scan</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="sw_visualizer_label">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Visualizer</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sw_capturepc_puchbutton">
@@ -316,22 +376,6 @@
      <string>Acquisition mode</string>
     </property>
    </widget>
-   <widget class="QVTKWidget" name="kinect_live" native="true">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>50</y>
-      <width>421</width>
-      <height>341</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-   </widget>
    <widget class="QSpinBox" name="cap_pc">
     <property name="geometry">
      <rect>
@@ -348,20 +392,145 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>700</width>
+     <width>225</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QVTKWidget</class>
-   <extends>QWidget</extends>
-   <header>QVTKWidget.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>xmin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>xmin</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>42</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>141</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xmax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>xmax</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>150</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xmin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>xmin_lab</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ymin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ymin</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>135</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>224</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ymax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ymax</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zmin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>zmin</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>183</x>
+     <y>303</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zmax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>zmax</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>74</x>
+     <y>347</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>161</x>
+     <y>342</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xmin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>scanwindow</receiver>
+   <slot>updatebox()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-56</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>updatebox()</slot>
+ </slots>
 </ui>

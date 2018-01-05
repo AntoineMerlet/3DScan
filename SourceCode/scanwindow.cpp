@@ -5,6 +5,7 @@
 #include <IO/kinect_v2.h>
 #include <IO/kinect2_grabber.h>
 #include <logger.h>
+#include <QSlider>
 
 using namespace std;
 
@@ -15,6 +16,12 @@ scanwindow::scanwindow(QWidget *parent) :
     ui(new Ui::scanwindow)
 {
     ui->setupUi(this);
+    connect(ui->xmin, SIGNAL(ui->xmin->valueChanged()), this, SLOT(scanwindow::updatebox()));
+    connect(ui->xmax, SIGNAL(ui->xmax->valueChanged()), this, SLOT(scanwindow::updatebox()));
+    connect(ui->ymin, SIGNAL(ui->ymin->valueChanged()), this, SLOT(scanwindow::updatebox()));
+    connect(ui->ymax, SIGNAL(ui->ymax->valueChanged()), this, SLOT(scanwindow::updatebox()));
+    connect(ui->zmin, SIGNAL(ui->zmin->valueChanged()), this, SLOT(scanwindow::updatebox()));
+    connect(ui->zmax, SIGNAL(ui->zmax->valueChanged()), this, SLOT(scanwindow::updatebox()));
 }
 
 scanwindow::~scanwindow()
@@ -47,37 +54,6 @@ void scanwindow::on_sw_horizontalacq_radiobutton_clicked(bool checked)
     //...
 }
 
-//Modify the spatial coordinates
-void scanwindow::on_sw_xmin_horslider_actionTriggered(int action)
-{
-   //dataclass->set_xmin(action);
-}
-
-void scanwindow::on_sw_xmax_horslider_actionTriggered(int action)
-{
-    //dataclass->set_xmax(action);
-}
-
-void scanwindow::on_sw_ymin_horslider_actionTriggered(int action)
-{
-    //dataclass->set_ymin(action);
-}
-
-void scanwindow::on_sw_ymax_horslider_actionTriggered(int action)
-{
-    //dataclass->set_ymax(action);
-}
-
-void scanwindow::on_sw_zmin_horslider_actionTriggered(int action)
-{
-    //dataclass->set_zmin(action);
-}
-
-void scanwindow::on_sw_zmax_horslider_actionTriggered(int action)
-{
-    //dataclass->set_zmax(action);
-}
-
 void scanwindow::on_sw_horizontalacq_radiobutton_clicked()
 {
 
@@ -90,7 +66,6 @@ void scanwindow::on_sw_horizontalacq_radiobutton_clicked()
 /// @brief Function used to start the live scan
 void scanwindow::on_sw_startscan_pushbutton_clicked()
 {
-    vtkBoundingBox box;
     pcl::Kinect2Grabber * kinect = new pcl::Kinect2Grabber;
     kinect->start();
 
@@ -98,16 +73,9 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
     // PCL Visualizer
     viewer.reset(new pcl::visualization::PCLVisualizer("Kinect viewer"));
     viewer->setCameraPosition( 0.0, 0.0, -2.5, 0.0, 0.0, 0.0 );
+    scanwindow::updatebox();
 
-    //        LOG("Background");
-    //        ui->kinect_live->SetRenderWindow(viewer->getRenderWindow());
-    //        LOG("Render");
-    //        viewer->setupInteractor(ui->kinect_live->GetInteractor(),ui->kinect_live->GetRenderWindow());
-    //        LOG("Setup");
-    //        ui->kinect_live->update();
-
-
-        // Point Cloud
+    // Point Cloud
 
         pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
 
@@ -167,4 +135,20 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
             if( connection.connected() ){
                 connection.disconnect();
             }
+}
+
+void scanwindow::updatebox(){
+    viewer->removeShape("cube");
+    viewer->addCube(ui->xmin->value(), ui->xmax->value(), ui->ymin->value(), ui->ymax->value(), ui->zmin->value(), ui->zmax->value());
+    //viewer->addCube(-0.2, 0.2, -0.2, 0.2, -0.2, 0.2);
+    viewer->setShapeRenderingProperties(pcl::visualization::PCL_VISUALIZER_REPRESENTATION, pcl::visualization::PCL_VISUALIZER_REPRESENTATION_WIREFRAME, "cube");
+    viewer->setShapeRenderingProperties (pcl::visualization::PCL_VISUALIZER_COLOR, 0.8, 0.0, 0.0, "cube");
+    viewer->setShapeRenderingProperties (pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 2, "cube");
+    viewer->setShapeRenderingProperties (pcl::visualization::PCL_VISUALIZER_OPACITY, 0.33, "cube");
+
+}
+
+void scanwindow::on_xmin_sliderReleased()
+{
+    ui->xmin->setValue(ui->xmin->value());
 }

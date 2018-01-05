@@ -25,7 +25,6 @@
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
-#include "QVTKWidget.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -41,22 +40,21 @@ public:
     QLabel *sw_ymax_label;
     QLabel *sw_zmin_label;
     QLabel *sw_zmax_label;
-    QSlider *sw_xmin_horslider;
-    QSlider *sw_xmax_horslider;
-    QSlider *sw_ymin_horslider;
-    QSlider *sw_ymax_horslider;
-    QSlider *sw_zmin_horslider;
-    QSlider *sw_zmax_horslider;
+    QSlider *xmin;
+    QSlider *xmax;
+    QSlider *ymin;
+    QSlider *ymax;
+    QSlider *zmin;
+    QSlider *zmax;
+    QLabel *xmin_lab;
     QCheckBox *sw_filtering_checkbox;
     QPushButton *sw_startscan_pushbutton;
     QPushButton *sw_stopscan_pushbutton;
-    QLabel *sw_visualizer_label;
     QPushButton *sw_capturepc_puchbutton;
     QLabel *sw_pcnumber_label;
     QRadioButton *sw_horizontalacq_radiobutton;
     QRadioButton *sw_verticalacq_radiobutton;
     QLabel *sw_acqtype_label;
-    QVTKWidget *kinect_live;
     QSpinBox *cap_pc;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -65,7 +63,7 @@ public:
     {
         if (scanwindow->objectName().isEmpty())
             scanwindow->setObjectName(QStringLiteral("scanwindow"));
-        scanwindow->resize(700, 550);
+        scanwindow->resize(225, 551);
         centralwidget = new QWidget(scanwindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         sw_scanparameters_label = new QLabel(centralwidget);
@@ -78,10 +76,10 @@ public:
         sw_parameters_frame->setFrameShadow(QFrame::Raised);
         sw_xmin_label = new QLabel(sw_parameters_frame);
         sw_xmin_label->setObjectName(QStringLiteral("sw_xmin_label"));
-        sw_xmin_label->setGeometry(QRect(20, 10, 61, 16));
+        sw_xmin_label->setGeometry(QRect(20, 10, 45, 16));
         sw_xmax_label = new QLabel(sw_parameters_frame);
         sw_xmax_label->setObjectName(QStringLiteral("sw_xmax_label"));
-        sw_xmax_label->setGeometry(QRect(20, 50, 61, 16));
+        sw_xmax_label->setGeometry(QRect(20, 50, 81, 16));
         sw_ymin_label = new QLabel(sw_parameters_frame);
         sw_ymin_label->setObjectName(QStringLiteral("sw_ymin_label"));
         sw_ymin_label->setGeometry(QRect(20, 90, 51, 16));
@@ -94,30 +92,53 @@ public:
         sw_zmax_label = new QLabel(sw_parameters_frame);
         sw_zmax_label->setObjectName(QStringLiteral("sw_zmax_label"));
         sw_zmax_label->setGeometry(QRect(20, 210, 61, 16));
-        sw_xmin_horslider = new QSlider(sw_parameters_frame);
-        sw_xmin_horslider->setObjectName(QStringLiteral("sw_xmin_horslider"));
-        sw_xmin_horslider->setGeometry(QRect(10, 30, 160, 19));
-        sw_xmin_horslider->setOrientation(Qt::Horizontal);
-        sw_xmax_horslider = new QSlider(sw_parameters_frame);
-        sw_xmax_horslider->setObjectName(QStringLiteral("sw_xmax_horslider"));
-        sw_xmax_horslider->setGeometry(QRect(10, 70, 160, 19));
-        sw_xmax_horslider->setOrientation(Qt::Horizontal);
-        sw_ymin_horslider = new QSlider(sw_parameters_frame);
-        sw_ymin_horslider->setObjectName(QStringLiteral("sw_ymin_horslider"));
-        sw_ymin_horslider->setGeometry(QRect(10, 110, 160, 19));
-        sw_ymin_horslider->setOrientation(Qt::Horizontal);
-        sw_ymax_horslider = new QSlider(sw_parameters_frame);
-        sw_ymax_horslider->setObjectName(QStringLiteral("sw_ymax_horslider"));
-        sw_ymax_horslider->setGeometry(QRect(10, 150, 160, 19));
-        sw_ymax_horslider->setOrientation(Qt::Horizontal);
-        sw_zmin_horslider = new QSlider(sw_parameters_frame);
-        sw_zmin_horslider->setObjectName(QStringLiteral("sw_zmin_horslider"));
-        sw_zmin_horslider->setGeometry(QRect(10, 190, 160, 19));
-        sw_zmin_horslider->setOrientation(Qt::Horizontal);
-        sw_zmax_horslider = new QSlider(sw_parameters_frame);
-        sw_zmax_horslider->setObjectName(QStringLiteral("sw_zmax_horslider"));
-        sw_zmax_horslider->setGeometry(QRect(10, 230, 160, 19));
-        sw_zmax_horslider->setOrientation(Qt::Horizontal);
+        xmin = new QSlider(sw_parameters_frame);
+        xmin->setObjectName(QStringLiteral("xmin"));
+        xmin->setGeometry(QRect(10, 30, 160, 19));
+        xmin->setMinimum(-30);
+        xmin->setMaximum(30);
+        xmin->setValue(-3);
+        xmin->setOrientation(Qt::Horizontal);
+        xmax = new QSlider(sw_parameters_frame);
+        xmax->setObjectName(QStringLiteral("xmax"));
+        xmax->setGeometry(QRect(10, 70, 160, 19));
+        xmax->setMinimum(-30);
+        xmax->setMaximum(30);
+        xmax->setSingleStep(1);
+        xmax->setPageStep(0);
+        xmax->setValue(3);
+        xmax->setOrientation(Qt::Horizontal);
+        ymin = new QSlider(sw_parameters_frame);
+        ymin->setObjectName(QStringLiteral("ymin"));
+        ymin->setGeometry(QRect(10, 110, 160, 19));
+        ymin->setMinimum(-30);
+        ymin->setMaximum(30);
+        ymin->setValue(-3);
+        ymin->setOrientation(Qt::Horizontal);
+        ymax = new QSlider(sw_parameters_frame);
+        ymax->setObjectName(QStringLiteral("ymax"));
+        ymax->setGeometry(QRect(10, 150, 160, 19));
+        ymax->setMinimum(-30);
+        ymax->setMaximum(30);
+        ymax->setValue(3);
+        ymax->setOrientation(Qt::Horizontal);
+        zmin = new QSlider(sw_parameters_frame);
+        zmin->setObjectName(QStringLiteral("zmin"));
+        zmin->setGeometry(QRect(10, 190, 160, 19));
+        zmin->setMinimum(-30);
+        zmin->setMaximum(30);
+        zmin->setValue(-3);
+        zmin->setOrientation(Qt::Horizontal);
+        zmax = new QSlider(sw_parameters_frame);
+        zmax->setObjectName(QStringLiteral("zmax"));
+        zmax->setGeometry(QRect(10, 230, 160, 19));
+        zmax->setMinimum(-30);
+        zmax->setMaximum(30);
+        zmax->setValue(3);
+        zmax->setOrientation(Qt::Horizontal);
+        xmin_lab = new QLabel(sw_parameters_frame);
+        xmin_lab->setObjectName(QStringLiteral("xmin_lab"));
+        xmin_lab->setGeometry(QRect(120, 10, 45, 16));
         sw_filtering_checkbox = new QCheckBox(centralwidget);
         sw_filtering_checkbox->setObjectName(QStringLiteral("sw_filtering_checkbox"));
         sw_filtering_checkbox->setGeometry(QRect(30, 360, 121, 17));
@@ -127,9 +148,6 @@ public:
         sw_stopscan_pushbutton = new QPushButton(centralwidget);
         sw_stopscan_pushbutton->setObjectName(QStringLiteral("sw_stopscan_pushbutton"));
         sw_stopscan_pushbutton->setGeometry(QRect(130, 480, 75, 23));
-        sw_visualizer_label = new QLabel(centralwidget);
-        sw_visualizer_label->setObjectName(QStringLiteral("sw_visualizer_label"));
-        sw_visualizer_label->setGeometry(QRect(220, 10, 47, 13));
         sw_capturepc_puchbutton = new QPushButton(centralwidget);
         sw_capturepc_puchbutton->setObjectName(QStringLiteral("sw_capturepc_puchbutton"));
         sw_capturepc_puchbutton->setGeometry(QRect(30, 390, 171, 23));
@@ -145,27 +163,27 @@ public:
         sw_acqtype_label = new QLabel(centralwidget);
         sw_acqtype_label->setObjectName(QStringLiteral("sw_acqtype_label"));
         sw_acqtype_label->setGeometry(QRect(20, 10, 131, 16));
-        kinect_live = new QVTKWidget(centralwidget);
-        kinect_live->setObjectName(QStringLiteral("kinect_live"));
-        kinect_live->setGeometry(QRect(240, 50, 421, 341));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(kinect_live->sizePolicy().hasHeightForWidth());
-        kinect_live->setSizePolicy(sizePolicy);
         cap_pc = new QSpinBox(centralwidget);
         cap_pc->setObjectName(QStringLiteral("cap_pc"));
         cap_pc->setGeometry(QRect(160, 440, 42, 22));
         scanwindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(scanwindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 700, 21));
+        menubar->setGeometry(QRect(0, 0, 225, 21));
         scanwindow->setMenuBar(menubar);
         statusbar = new QStatusBar(scanwindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
         scanwindow->setStatusBar(statusbar);
 
         retranslateUi(scanwindow);
+        QObject::connect(xmin, SIGNAL(valueChanged(int)), xmin, SLOT(setValue(int)));
+        QObject::connect(xmax, SIGNAL(valueChanged(int)), xmax, SLOT(setValue(int)));
+        QObject::connect(xmin, SIGNAL(valueChanged(int)), xmin_lab, SLOT(setNum(int)));
+        QObject::connect(ymin, SIGNAL(valueChanged(int)), ymin, SLOT(setValue(int)));
+        QObject::connect(ymax, SIGNAL(valueChanged(int)), ymax, SLOT(setValue(int)));
+        QObject::connect(zmin, SIGNAL(valueChanged(int)), zmin, SLOT(setValue(int)));
+        QObject::connect(zmax, SIGNAL(valueChanged(int)), zmax, SLOT(setValue(int)));
+        QObject::connect(xmin, SIGNAL(valueChanged(int)), scanwindow, SLOT(updatebox()));
 
         QMetaObject::connectSlotsByName(scanwindow);
     } // setupUi
@@ -180,10 +198,10 @@ public:
         sw_ymax_label->setText(QApplication::translate("scanwindow", "Y maximum", 0));
         sw_zmin_label->setText(QApplication::translate("scanwindow", "Z minimum", 0));
         sw_zmax_label->setText(QApplication::translate("scanwindow", "Z maximum", 0));
+        xmin_lab->setText(QString());
         sw_filtering_checkbox->setText(QApplication::translate("scanwindow", "Filter coordinates", 0));
         sw_startscan_pushbutton->setText(QApplication::translate("scanwindow", "Start scan", 0));
         sw_stopscan_pushbutton->setText(QApplication::translate("scanwindow", "Stop scan", 0));
-        sw_visualizer_label->setText(QApplication::translate("scanwindow", "Visualizer", 0));
         sw_capturepc_puchbutton->setText(QApplication::translate("scanwindow", "Capture point cloud", 0));
         sw_pcnumber_label->setText(QApplication::translate("scanwindow", "Number of captured PCs", 0));
         sw_horizontalacq_radiobutton->setText(QApplication::translate("scanwindow", "Horizontal", 0));

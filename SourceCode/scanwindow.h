@@ -25,6 +25,7 @@ class scanwindow : public QMainWindow
 public:
     explicit scanwindow(QWidget *parent = 0);
     static int counter;
+    void updatebox();
     ~scanwindow();
 
 private slots:
@@ -34,26 +35,14 @@ private slots:
 
     void on_sw_verticalacq_radiobutton_clicked(bool checked);
 
-    void on_sw_xmin_horslider_actionTriggered(int action);
-
-    void on_sw_xmax_horslider_actionTriggered(int action);
-
-    void on_sw_ymin_horslider_actionTriggered(int action);
-
-    void on_sw_ymax_horslider_actionTriggered(int action);
-
-    void on_sw_zmin_horslider_actionTriggered(int action);
-
-    void on_sw_zmax_horslider_actionTriggered(int action);
-
     void on_sw_startscan_pushbutton_clicked();
+
+    void on_xmin_sliderReleased();
 
 private:
     Ui::scanwindow *ui;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
     boost::shared_ptr<pcl::Grabber> grabber = boost::make_shared<pcl::Kinect2Grabber>();
-
-
 };
 
 #endif // SCANWINDOW_H
