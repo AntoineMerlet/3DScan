@@ -1,0 +1,93 @@
+\documentclass[aps,letterpaper,11pt]{revtex4}
+\usepackage{graphicx} % For images
+\usepackage{float}    % For tables and other floats
+\usepackage{verbatim} % For comments and other
+\usepackage{amssymb}  % For more math
+\usepackage{fullpage} % Set margins and place page numbers at bottom center
+\usepackage{listings} % For source code
+\usepackage[usenames,dvipsnames]{color} % For colors and names
+\usepackage[pdftex]{hyperref}           % For hyperlinks and indexing the PDF
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+% Custom colors
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+ \lstset{
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+%  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{deepred}
+  }
+  
+\hypersetup{ % play with the different link colors here
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue % set to black to prevent printing blue links
+}
+
+\newcommand{\labno}{Software Engineering Project}
+\newcommand{\labtitle}{Weekly report}
+\newcommand{\authorname}{Mladen Rakic}
+\newcommand{\professor}{Dr. Yohan Fougerolle}
+
+
+\begin{document}  
+\begin{titlepage}
+\begin{center}
+{\LARGE \textsc{\labno:} \\ \vspace{4pt}}
+{\Large \textsc{\labtitle} \\ \vspace{4pt}} 
+\rule[13pt]{\textwidth}{1pt} \\ \vspace{150pt}
+{\large By: \authorname \\ \vspace{10pt}
+Professor: \professor \\ \vspace{10pt}
+\today}
+\end{center}
+
+
+\end{titlepage}% END TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section {Accomplished tasks}
+ This is the brief list of things I have managed to accomplish up to this point:\\
+\linebreak
+1. This week, I managed to display the list of point clouds when they are loaded into the program. Marcio and I were able to manage the lists and the tab widget to display raw point clouds, registered point clouds and the mesh.\\ 
+\linebreak 
+2. We also started working on the filtering and registration windows which will allow the user to manage the parameters required by the methods. Gulnur has implemented most of the functions at this point and we are able to incorporate those into the GUI now.\\ 
+\linebreak
+3. I was also inspired this week to design the logo for the group (figure 1). The name of the group was originally inspired by the first letters of our names: Marcio, Antoine, Gulnur, Mladen - hence MAGMA. The idea that popped up was to somehow make the name more meaningful and close to the actual project, so I modified one of the letters A into a triangle shape. The shape resembles a volcano, but it is also triangulated, to symbolize the meshing.\\
+\linebreak
+
+\begin{figure}[!htb]
+  \includegraphics[scale=1.0]{logo.jpg}
+  \caption{Logo of the group}
+  \label{fig:Kinect2}
+\end{figure}
+
+4. We have also started working on the live feed from Kinect. We are currently trying to get to one of the sensors to test out some of the things we came up with.
+\pagebreak
+
+\section {Future tasks}
+This is the brief list of things to do in these last couple of days:\\
+\linebreak
+1. Marcio and I will continue working on the GUI functionalities and the live feed from Kinect as soon as we get the sensor.\\
+\linebreak
+2. The last thing to do will be to write the final report and to prepare the presentation for defense.\\
+
+\end{document} % DONE WITH DOCUMENT!
+
