@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -55,8 +54,6 @@ public:
     QPushButton *mw_register_pc_pushbutton;
     QPushButton *mw_generatemesh_pushbutton;
     QPushButton *filter_pb;
-    QComboBox *methods_cb;
-    QLabel *method_label;
     QLabel *mw_visualizer_label;
     QLabel *mw_pcexplorer_label;
     QTextEdit *mw_logger_textedit;
@@ -118,24 +115,18 @@ public:
         mw_explorer_tabwidget->addTab(mw_mesh_tab, QString());
         mw_register_frame = new QFrame(centralWidget);
         mw_register_frame->setObjectName(QStringLiteral("mw_register_frame"));
-        mw_register_frame->setGeometry(QRect(40, 240, 151, 201));
+        mw_register_frame->setGeometry(QRect(40, 250, 151, 191));
         mw_register_frame->setFrameShape(QFrame::Box);
         mw_register_frame->setFrameShadow(QFrame::Raised);
         mw_register_pc_pushbutton = new QPushButton(mw_register_frame);
         mw_register_pc_pushbutton->setObjectName(QStringLiteral("mw_register_pc_pushbutton"));
-        mw_register_pc_pushbutton->setGeometry(QRect(20, 110, 111, 31));
+        mw_register_pc_pushbutton->setGeometry(QRect(20, 80, 111, 31));
         mw_generatemesh_pushbutton = new QPushButton(mw_register_frame);
         mw_generatemesh_pushbutton->setObjectName(QStringLiteral("mw_generatemesh_pushbutton"));
-        mw_generatemesh_pushbutton->setGeometry(QRect(20, 150, 111, 31));
+        mw_generatemesh_pushbutton->setGeometry(QRect(20, 140, 111, 31));
         filter_pb = new QPushButton(mw_register_frame);
         filter_pb->setObjectName(QStringLiteral("filter_pb"));
-        filter_pb->setGeometry(QRect(20, 70, 111, 31));
-        methods_cb = new QComboBox(mw_register_frame);
-        methods_cb->setObjectName(QStringLiteral("methods_cb"));
-        methods_cb->setGeometry(QRect(20, 30, 111, 22));
-        method_label = new QLabel(mw_register_frame);
-        method_label->setObjectName(QStringLiteral("method_label"));
-        method_label->setGeometry(QRect(20, 10, 101, 16));
+        filter_pb->setGeometry(QRect(20, 20, 111, 31));
         mw_visualizer_label = new QLabel(centralWidget);
         mw_visualizer_label->setObjectName(QStringLiteral("mw_visualizer_label"));
         mw_visualizer_label->setGeometry(QRect(230, 20, 61, 16));
@@ -160,6 +151,16 @@ public:
         mylogo->setGeometry(QRect(450, 10, 331, 41));
         mylogo->setPixmap(QPixmap(QString::fromUtf8("../../build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/logo_small.jpg")));
         MainWindow->setCentralWidget(centralWidget);
+        mw_explorer_tabwidget->raise();
+        mw_register_frame->raise();
+        mw_visualizer_label->raise();
+        mw_pcexplorer_label->raise();
+        mw_logger_textedit->raise();
+        pcScan->raise();
+        mylogo->raise();
+        mw_generatemesh_pushbutton->raise();
+        filter_pb->raise();
+        mw_register_pc_pushbutton->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 650, 21));
@@ -219,13 +220,6 @@ public:
         mw_register_pc_pushbutton->setText(QApplication::translate("MainWindow", "Register point clouds", 0));
         mw_generatemesh_pushbutton->setText(QApplication::translate("MainWindow", "Generate mesh", 0));
         filter_pb->setText(QApplication::translate("MainWindow", "Filter", 0));
-        methods_cb->clear();
-        methods_cb->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "Option 1", 0)
-         << QApplication::translate("MainWindow", "Option 2", 0)
-         << QApplication::translate("MainWindow", "Option 3", 0)
-        );
-        method_label->setText(QApplication::translate("MainWindow", "Choose a method", 0));
         mw_visualizer_label->setText(QApplication::translate("MainWindow", "Visualizer", 0));
         mw_pcexplorer_label->setText(QApplication::translate("MainWindow", "Point cloud explorer", 0));
         mylogo->setText(QString());

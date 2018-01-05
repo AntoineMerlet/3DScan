@@ -20,6 +20,8 @@
 #include <QAbstractListModel>
 #include <QLabel>
 #include <QPixmap>
+#include <GUI/filterwindow.h>
+#include <GUI/regwindow.h>
 
 using namespace std;
 
@@ -217,10 +219,17 @@ void MainWindow::on_actionExport_mesh_triggered()
 }
 
 
-
+/// @author: Mladen Rakic / Marcio Rockenbach
+/// @date: 05-01-2018
+/// @version 1.0
+///
+/// @brief Showing register window on click
 void MainWindow::on_mw_register_pc_pushbutton_clicked()
 {
-
+    regwindow *reg = new regwindow(this);
+    reg->setWindowTitle("MAGMA Project - Register");
+    LOG("Register window opened");
+    reg->show();
 }
 
 void MainWindow::on_mw_generatemesh_pushbutton_clicked()
@@ -232,6 +241,11 @@ void MainWindow::receivedmessage(const QString &arg)
     ui->mw_logger_textedit->append(arg);
 }
 
+/// @author: Marcio Rockenbach
+/// @date: 29-12-2017
+/// @version 1.0
+///
+/// @brief Showing about window on click
 void MainWindow::on_actionAbout_triggered()
 {
     aboutwindow *about = new aboutwindow(this);
@@ -239,8 +253,26 @@ void MainWindow::on_actionAbout_triggered()
     about->show();
 }
 
+/// @author: Marcio Rockenbach
+/// @date: 29-12-2017
+/// @version 1.0
+///
+/// @brief Showing user manual on click
 void MainWindow::on_actionUser_manual_triggered()
 {
-    LOG("User Manual");
+    LOG("User Manual opened");
     QDesktopServices::openUrl(QUrl("user_manual.pdf"));
+}
+
+/// @author: Mladen Rakic / Marcio Rockenbach
+/// @date: 05-01-2018
+/// @version 1.0
+///
+/// @brief Showing filter window on click
+void MainWindow::on_filter_pb_clicked()
+{
+    filterwindow *filter = new filterwindow(this);
+    filter->setWindowTitle("MAGMA Project - Filter");
+    LOG("Filter window opened");
+    filter->show();
 }
