@@ -29,7 +29,9 @@ SOURCES += main.cpp\
     GUI/options.cpp \
     scanwindow.cpp \
     logger.cpp \
-    GUI/aboutwindow.cpp
+    GUI/aboutwindow.cpp \
+    GUI/filterwindow.cpp \
+    GUI/regwindow.cpp
 
 HEADERS  += GUI/mainwindow.h \
     IO/sensors.h \
@@ -47,11 +49,15 @@ HEADERS  += GUI/mainwindow.h \
     GUI/options.h \
     scanwindow.h \
     logger.h \
-    GUI/aboutwindow.h
+    GUI/aboutwindow.h \
+    GUI/filterwindow.h \
+    GUI/regwindow.h
 
 FORMS    += GUI/mainwindow.ui \
     scanwindow.ui \
-    GUI/aboutwindow.ui
+    GUI/aboutwindow.ui \
+    GUI/filterwindow.ui \
+    GUI/regwindow.ui
 
 
 INCLUDEPATH += "C:\Program Files\PCL 1.8.0\include\pcl-1.8" \

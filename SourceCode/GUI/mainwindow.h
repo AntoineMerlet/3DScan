@@ -42,6 +42,8 @@ private slots:
     void on_actionAbout_triggered();
     void on_actionUser_manual_triggered();
 
+    void on_filter_pb_clicked();
+
 public slots:
     void receivedmessage(const QString& arg);
 
