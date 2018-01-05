@@ -15,7 +15,7 @@ pcl::Correspondences correspKD(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::
 
 pcl::Correspondences correspRpoly(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, pcl::Correspondences corresp, const int &iter, const int &cardi, const float &simiThre)
 {
-    pcl::registration::CorrespondenceRejectorPoly<pcl::PointXYZ> rejector_poly;
+    pcl::registration::CorrespondenceRejectorPoly<pcl::PointXYZRGB> rejector_poly;
     pcl::Correspondences correspRes;
     rejector_poly.setCardinality(cardi);
     rejector_poly.setIterations(iter);
