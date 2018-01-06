@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap logo ("logo_small.jpg");
     ui->mylogo->setPixmap(logo);
     DB = new DataBase();
+<<<<<<< HEAD
     PCList = new QStandardItemModel();
     PCList->clear();
     RPCList = new QStandardItemModel();
@@ -47,6 +48,10 @@ MainWindow::MainWindow(QWidget *parent) :
     selectedRaw.clear();
     selectedRegistered.clear();
     selectedMeshed.clear();
+=======
+    FW = new filterwindow();
+    FW->close();
+>>>>>>> e8909cb2e6969634fa1cd48532b7d71ad30f1b55
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     vtkObject::GlobalWarningDisplayOff();
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
@@ -373,8 +378,7 @@ void MainWindow::on_actionUser_manual_triggered()
 /// @brief Showing filter window on click
 void MainWindow::on_filter_pb_clicked()
 {
-    filterwindow *filter = new filterwindow(this);
-    filter->setWindowTitle("MAGMA Project - Filter");
+
     LOG("Filter window opened");
     filter->show();
 }
