@@ -49,6 +49,9 @@ public:
         int order;
     } covarfilt;
 
+private slots:
+    void on_filter_pb_clicked();
+
 private:
     Ui::filterwindow *ui;
 };

@@ -329,7 +329,7 @@
     <string>Sigma R</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="sigmas_sb">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -345,7 +345,7 @@
     <number>20</number>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox">
+  <widget class="QDoubleSpinBox" name="sigmar_sb">
    <property name="geometry">
     <rect>
      <x>200</x>
