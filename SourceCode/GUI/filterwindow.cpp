@@ -19,7 +19,10 @@ void filterwindow::on_filter_pb_clicked()
 {
     paramsfilt.maxdepth = ui->depth_sb->value();
     paramsfilt.smoothsize = ui->smooth_sb->value();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
     if (ui->voxelgrid_cb->checkState() == true) {
         voxelgridfilt.x = ui->x_sb->value();
         voxelgridfilt.y = ui->y_sb->value();

@@ -151,16 +151,6 @@ public:
         mylogo->setGeometry(QRect(450, 10, 331, 41));
         mylogo->setPixmap(QPixmap(QString::fromUtf8("../../build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/logo_small.jpg")));
         MainWindow->setCentralWidget(centralWidget);
-        mw_explorer_tabwidget->raise();
-        mw_register_frame->raise();
-        mw_visualizer_label->raise();
-        mw_pcexplorer_label->raise();
-        mw_logger_textedit->raise();
-        pcScan->raise();
-        mylogo->raise();
-        mw_generatemesh_pushbutton->raise();
-        filter_pb->raise();
-        mw_register_pc_pushbutton->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 650, 21));
@@ -196,7 +186,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        mw_explorer_tabwidget->setCurrentIndex(0);
+        mw_explorer_tabwidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

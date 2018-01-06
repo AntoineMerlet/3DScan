@@ -1,2 +1,0 @@
-2017-12-28_19_21_00:	mes1
-2017-12-28_19_21_22:	Button to open Scan Window pressed

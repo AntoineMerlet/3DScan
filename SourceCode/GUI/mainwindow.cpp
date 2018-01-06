@@ -20,8 +20,12 @@
 #include <QAbstractListModel>
 #include <QLabel>
 #include <QPixmap>
+<<<<<<< HEAD
 #include <GUI/filterwindow.h>
 #include "GUI/regwindow.h"
+=======
+#include <exception>
+>>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
 
 using namespace std;
 
@@ -39,18 +43,35 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap logo ("logo_small.jpg");
     ui->mylogo->setPixmap(logo);
     DB = new DataBase();
+    PCList = new QStandardItemModel();
+    PCList->clear();
+    RPCList = new QStandardItemModel();
+    RPCList->clear();
+    MeshList = new QStandardItemModel();
+    MeshList->clear();
+    selectedRaw.clear();
+    selectedRegistered.clear();
+    selectedMeshed.clear();
     FW = new filterwindow();
     FW->close();
+<<<<<<< HEAD
     RW = new regwindow();
     RW->close();
+=======
+    vtkObject::GlobalWarningDisplayOff();
+>>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
-    pcViz->setBackgroundColor (0.1, 0.1, 0.1);
-    pcViz->addCoordinateSystem(1.0);
     ui->pcScan->SetRenderWindow(pcViz->getRenderWindow() );
     pcViz->setupInteractor(ui->pcScan->GetInteractor(),ui->pcScan->GetRenderWindow());
+<<<<<<< HEAD
 
     QObject::connect(FW, SIGNAL(updatefilt()), this, SLOT(updatef()));
     QObject::connect(RW, SIGNAL(updatereg()), this, SLOT(updater()));
+=======
+    pcViz->setBackgroundColor (0.1, 0.1, 0.1);
+    pcViz->addCoordinateSystem(1.0);
+    pcViz->setCameraPosition(0.0, 0.0, 7, 0.0, 0.0, 0.0);
+>>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
 }
 
 MainWindow::~MainWindow()
@@ -74,73 +95,169 @@ void MainWindow::on_actionNew_scan_triggered()
     scan->show();
 }
 
-
-/// @author: Mladen Rakic
-/// @date: 28-12-2017
-/// @version 1.0
+/// @author: Mladen Rakic / Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 2.0
 ///
 /// @brief Function to update the list of raw point clouds on the GUI
-void MainWindow::updatePCList()
+void MainWindow::updatePCList(QStringList list)
 {
-    PCList = new QStandardItemModel();
-    PCList->clear();
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> rawPCs = DB->getRawPCs();
-    for (int i = 1; i <= rawPCs.size(); i++){
-        stringstream ss;
-        ss << "Pointcloud " << i;
-        string PCName = ss.str();
-        QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
-        Items->setCheckable(true);
-        Items->setCheckState(Qt::Unchecked);
-        PCList->appendRow(Items);
-    }
+    int rawPCs_size = DB->getRawPCs().size();
+    int dif = rawPCs_size - PCList->rowCount();
+    if (dif >= 0)
+        for (int i = 0; i < dif; i++){
+            QStandardItem* newitem = new QStandardItem(list[i]);
+            newitem->setCheckable(true);
+            newitem->setCheckState(Qt::Unchecked);
+            PCList->appendRow(newitem);
+        }
     ui->pc_list->setModel(PCList);
 }
 
-/// @author: Mladen Rakic
-/// @date: 28-12-2017
-/// @version 1.0
+/// @author: Mladen Rakic / Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 2.0
 ///
 /// @brief Function to update the list of raw point clouds on the GUI
-void MainWindow::updateRegPCList()
+void MainWindow::updateRegPCList(QStringList list)
 {
-    RPCList = new QStandardItemModel();
-    RPCList->clear();
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> regPCs = DB->getRegisteredPCs();
-    for (int i = 1; i <= regPCs.size(); i++){
-        stringstream ss;
-        ss << "Registered Pointcloud " << i;
-        string PCName = ss.str();
-        QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
-        Items->setCheckable(true);
-        Items->setCheckState(Qt::Unchecked);
-        RPCList->appendRow(Items);
-    }
+    int regPCs_size = DB->getRegisteredPCs().size();
+    int dif = regPCs_size - RPCList->rowCount();
+    if (dif >= 0)
+        for (int i = 0; i < dif; i++){
+            QStandardItem* newitem = new QStandardItem(list[i]);
+            newitem->setCheckable(true);
+            newitem->setCheckState(Qt::Unchecked);
+            RPCList->appendRow(newitem);
+        }
     ui->regpc_list->setModel(RPCList);
 }
 
-/// @author: Mladen Rakic
-/// @date: 28-12-2017
-/// @version 1.0
+/// @author: Mladen Rakic / Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 2.0
 ///
 /// @brief Function to update the list of raw point clouds on the GUI
-void MainWindow::updateMeshList()
+void MainWindow::updateMeshList(QStringList list)
 {
-    MeshList = new QStandardItemModel();
-    MeshList->clear();
-    std::vector<pcl::PolygonMesh::Ptr> mesh = DB->getMeshedPCs();
-    for (int i = 1; i <= mesh.size(); i++){
-        stringstream ss;
-        ss << "Mesh " << i;
-        string PCName = ss.str();
-        QStandardItem* Items = new QStandardItem(QString::fromStdString(PCName));
-        Items->setCheckable(true);
-        Items->setCheckState(Qt::Unchecked);
-        MeshList->appendRow(Items);
-    }
+    int mesh_size = DB->getMeshedPCs().size();
+    int dif = mesh_size - MeshList->rowCount();
+    if (dif >= 0)
+        for (int i = 0; i < dif; i++){
+            QStandardItem* newitem = new QStandardItem(list[i]);
+            newitem->setCheckable(true);
+            newitem->setCheckState(Qt::Unchecked);
+            MeshList->appendRow(newitem);
+        }
     ui->mesh_list->setModel(MeshList);
 }
 
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Function to update the list which contains the index of each checked raw point cloud
+void MainWindow::UpdateSelectedRaw(){
+    for (int i = 0; i < PCList->rowCount(); i++)
+        if (PCList->item(i)->checkState())
+            selectedRaw.insert(i);
+        else selectedRaw.erase(i);
+}
+
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Function to update the list which contains the index of each checked registered point cloud
+void MainWindow::UpdateSelectedReg(){
+    for (int i = 0; i < RPCList->rowCount(); i++)
+        if (RPCList->item(i)->checkState())
+            selectedRegistered.insert(i);
+        else selectedRegistered.erase(i);
+}
+
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Function to update the list which contains the index of each checked mesh
+void MainWindow::UpdateSelectedMesh(){
+    for (int i = 0; i < MeshList->rowCount(); i++)
+        if (MeshList->item(i)->checkState())
+            selectedMeshed.insert(i);
+        else selectedMeshed.erase(i);
+}
+
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Function to update the VTK Widget to show only the checked point clouds and mesh
+void MainWindow::updateDisplay(){
+    for (int i = 0; i < PCList->rowCount(); i++)
+        if (PCList->item(i)->checkState())
+        {
+            try{
+                pcViz->addPointCloud(DB->getRawPC(i),PCList->item(i)->text().toStdString());
+                ui->pcScan->update();
+            }
+            catch (const std::exception &e)
+            {
+            }
+        }
+        else {
+            try{
+                pcViz->removePointCloud(PCList->item(i)->text().toStdString());
+                ui->pcScan->update();
+            }
+            catch (const std::exception &e)
+            {
+            }
+        }
+
+    for (int i = 0; i < RPCList->rowCount(); i++)
+        if (RPCList->item(i)->checkState())
+        {
+            try{
+                pcViz->addPointCloud(DB->getRegisteredPC(i),RPCList->item(i)->text().toStdString());
+                ui->pcScan->update();
+            }
+            catch (const std::exception &e)
+            {
+            }
+        }
+        else {
+            try{
+                pcViz->removePointCloud(RPCList->item(i)->text().toStdString());
+                ui->pcScan->update();
+            }
+            catch (const std::exception &e)
+            {
+            }
+        }
+
+    for (int i = 0; i < MeshList->rowCount(); i++)
+        if (MeshList->item(i)->checkState())
+        {
+            try{
+                pcViz->addPolygonMesh(*(DB->getMeshedPC(i)),MeshList->item(i)->text().toStdString());
+                ui->pcScan->update();
+            }
+            catch (const std::exception &e)
+            {
+            }
+        }
+        else {
+            try{
+                pcViz->removePolygonMesh(MeshList->item(i)->text().toStdString());
+                ui->pcScan->update();
+            }
+            catch (const std::exception &e)
+            {
+            }
+        }
+
+}
 
 /// @author: Antoine Merlet
 /// @date: 28-12-2017
@@ -153,8 +270,7 @@ void MainWindow::on_actionImport_point_clouds_triggered()
     if (qlistPC.size() > 0)
     {
         rawPC2DB(qlistPC,DB);
-        MainWindow::updatePCList();
-
+        MainWindow::updatePCList(qlistPC);
     }
 }
 
@@ -169,7 +285,7 @@ void MainWindow::on_actionImport_registered_PC_triggered()
     QStringList qlistPC = QFileDialog::getOpenFileNames(this, QString("Import Point Clouds"), QString(""), QString("Point Cloud (*.pcd *.ply)"));
     if (qlistPC.size() > 0)
         registeredPC2DB(qlistPC,DB);
-    MainWindow::updateRegPCList();
+    MainWindow::updateRegPCList(qlistPC);
 }
 
 /// @author: Antoine Merlet
@@ -182,7 +298,7 @@ void MainWindow::on_actionImport_mesh_triggered()
     QStringList qlistMesh = QFileDialog::getOpenFileNames(this, QString("Import Mesh"), QString(""), QString("Mesh (*.stl *.vtk)"));
     if (qlistMesh.size() > 0)
         meshedPC2DB(qlistMesh,DB);
-    MainWindow::updateMeshList();
+    MainWindow::updateMeshList(qlistMesh);
 }
 
 
@@ -196,7 +312,7 @@ void MainWindow::on_actionExport_point_clouds_triggered()
     QString qdir = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
     if (qdir != "")
     {
-        foreach (std::string str, selectedRaw)
+        //    foreach (std::string str, selectedRaw)
         {
 
         }
@@ -280,7 +396,40 @@ void MainWindow::on_filter_pb_clicked()
 {
 
     LOG("Filter window opened");
-    filter->show();
+    FW->show();
+}
+
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Updates the display and the set of selected raw point clouds whenever a user clicks on the list of loaded raw point clouds on the GUI
+void MainWindow::on_pc_list_clicked(const QModelIndex &index)
+{
+    UpdateSelectedRaw();
+    updateDisplay();
+}
+
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Updates the display and the set of selected registered point clouds whenever a user clicks on the List of loaded registered point clouds on the GUI
+void MainWindow::on_regpc_list_clicked(const QModelIndex &index)
+{
+    UpdateSelectedReg();
+    updateDisplay();
+}
+
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Updates the display and the set of selected Mesh whenever a user clicks on the list of loaded meshes on the GUI
+void MainWindow::on_mesh_list_clicked(const QModelIndex &index)
+{
+    UpdateSelectedMesh();
+    updateDisplay();
 }
 
 void MainWindow::updatef() {

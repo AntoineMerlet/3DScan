@@ -39,8 +39,11 @@ private slots:
 
     void on_xmin_sliderReleased();
 
+    void on_sw_stopscan_pushbutton_clicked();
+
 private:
     Ui::scanwindow *ui;
+    pcl::Kinect2Grabber * kinect;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
     boost::shared_ptr<pcl::Grabber> grabber = boost::make_shared<pcl::Kinect2Grabber>();
 };

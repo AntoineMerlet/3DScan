@@ -1,8 +1,0 @@
-2018-01-04.21:20:49:	Program initilized
-2018-01-04.21:20:51:	About section
-2018-01-04.21:21:59:	About section
-2018-01-04.21:22:35:	About section
-2018-01-04.21:23:09:	About section
-2018-01-04.21:23:55:	About section
-2018-01-04.21:24:41:	About section
-2018-01-04.21:25:20:	About section

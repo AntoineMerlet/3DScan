@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="mw_pc_tab">
      <attribute name="title">
@@ -201,16 +201,6 @@
      <pixmap>../../build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/logo_small.jpg</pixmap>
     </property>
    </widget>
-   <zorder>mw_explorer_tabwidget</zorder>
-   <zorder>mw_register_frame</zorder>
-   <zorder>mw_visualizer_label</zorder>
-   <zorder>mw_pcexplorer_label</zorder>
-   <zorder>mw_logger_textedit</zorder>
-   <zorder>pcScan</zorder>
-   <zorder>mylogo</zorder>
-   <zorder>mw_generatemesh_pushbutton</zorder>
-   <zorder>filter_pb</zorder>
-   <zorder>mw_register_pc_pushbutton</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -316,6 +306,9 @@
    <class>QVTKWidget</class>
    <extends>QWidget</extends>
    <header>QVTKWidget.h</header>
+   <slots>
+    <slot>slot1()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>

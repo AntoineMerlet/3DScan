@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
@@ -23,20 +22,16 @@ QT_BEGIN_NAMESPACE
 class Ui_regwindow
 {
 public:
-    QCheckBox *icp_reg;
     QPushButton *reg_button;
 
     void setupUi(QDialog *regwindow)
     {
         if (regwindow->objectName().isEmpty())
             regwindow->setObjectName(QStringLiteral("regwindow"));
-        regwindow->resize(450, 300);
-        icp_reg = new QCheckBox(regwindow);
-        icp_reg->setObjectName(QStringLiteral("icp_reg"));
-        icp_reg->setGeometry(QRect(20, 20, 121, 17));
+        regwindow->resize(665, 450);
         reg_button = new QPushButton(regwindow);
         reg_button->setObjectName(QStringLiteral("reg_button"));
-        reg_button->setGeometry(QRect(190, 260, 75, 23));
+        reg_button->setGeometry(QRect(290, 410, 75, 23));
 
         retranslateUi(regwindow);
 
@@ -46,7 +41,6 @@ public:
     void retranslateUi(QDialog *regwindow)
     {
         regwindow->setWindowTitle(QApplication::translate("regwindow", "Dialog", 0));
-        icp_reg->setText(QApplication::translate("regwindow", "ICP", 0));
         reg_button->setText(QApplication::translate("regwindow", "Register", 0));
     } // retranslateUi
 

@@ -1,3 +1,0 @@
-2018-01-04.19:43:10:	Program initilized
-2018-01-04.19:43:23:	Loaded C:/SoftEngProject/SoftEng Old Projects/Grp1/Mladen PLY/TDK_CapturedPointCloud1.ply
-2018-01-04.19:43:23:	Added 1 rawPC in DB. Size: 1

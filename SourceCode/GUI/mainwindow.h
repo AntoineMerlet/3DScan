@@ -7,8 +7,14 @@
 #include <vtkRenderWindow.h>
 #include "Storage/database.h"
 #include <QStandardItemModel>
+<<<<<<< HEAD
 #include "GUI/filterwindow.h"
 #include "GUI/regwindow.h"
+=======
+#include <GUI/filterwindow.h>
+#include <GUI/regwindow.h>
+
+>>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
 
 namespace Ui {
 class MainWindow;
@@ -27,9 +33,9 @@ public:
 
 protected:
 
-    void updatePCList();
-    void updateRegPCList();
-    void updateMeshList();
+    void updatePCList(QStringList);
+    void updateRegPCList(QStringList);
+    void updateMeshList(QStringList);
 
 private slots:
     void on_actionNew_scan_triggered();
@@ -46,25 +52,37 @@ private slots:
 
     void on_filter_pb_clicked();
 
+    void on_pc_list_clicked(const QModelIndex &index);
+
+    void on_regpc_list_clicked(const QModelIndex &index);
+
+    void on_mesh_list_clicked(const QModelIndex &index);
+
 public slots:
     void receivedmessage(const QString& arg);
     void updatef();
     void updater();
 
 private:
-
     Ui::MainWindow *ui;
     DataBase *DB;
-    std::vector<std::string> selectedRaw;
-    std::vector<std::string> selectedRegistered;
-    std::vector<std::string> selectedMeshed;
+    void UpdateSelectedRaw();
+    void UpdateSelectedReg();
+    void UpdateSelectedMesh();
+    void updateDisplay();
+    std::set<int> selectedRaw;
+    std::set<int> selectedRegistered;
+    std::set<int> selectedMeshed;
     QStandardItemModel * PCList;
     QStandardItemModel * RPCList;
     QStandardItemModel * MeshList;
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;
     filterwindow * FW;
+<<<<<<< HEAD
     regwindow * RW;
+=======
+>>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
 };
 
 #endif // MAINWINDOW_H

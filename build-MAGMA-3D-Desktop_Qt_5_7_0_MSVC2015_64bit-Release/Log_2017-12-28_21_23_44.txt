@@ -1,6 +1,0 @@
-2017-12-28_21_23_45:	Program initilized
-2017-12-28_21_23_49:	User Manual
-2017-12-28_21_23_52:	About section
-2017-12-28_21_25_21:	About section
-2017-12-28_21_25_49:	About section
-2017-12-28_21_26_17:	About section

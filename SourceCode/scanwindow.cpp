@@ -66,13 +66,14 @@ void scanwindow::on_sw_horizontalacq_radiobutton_clicked()
 /// @brief Function used to start the live scan
 void scanwindow::on_sw_startscan_pushbutton_clicked()
 {
-    pcl::Kinect2Grabber * kinect = new pcl::Kinect2Grabber;
+    kinect = new pcl::Kinect2Grabber;
     kinect->start();
 
     // Credits: UnaNancyOwen (https://github.com/UnaNancyOwen/KinectGrabber/blob/Kinect2Grabber/Sample/main.cpp)
     // PCL Visualizer
     viewer.reset(new pcl::visualization::PCLVisualizer("Kinect viewer"));
     viewer->setCameraPosition( 0.0, 0.0, -2.5, 0.0, 0.0, 0.0 );
+    viewer->setShowFPS(false);
     scanwindow::updatebox();
 
     // Point Cloud
@@ -151,4 +152,11 @@ void scanwindow::updatebox(){
 void scanwindow::on_xmin_sliderReleased()
 {
     ui->xmin->setValue(ui->xmin->value());
+}
+
+void scanwindow::on_sw_stopscan_pushbutton_clicked()
+{
+    viewer->close();
+    grabber->stop();
+    kinect->stop();
 }
