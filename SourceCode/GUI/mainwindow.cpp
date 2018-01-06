@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "guitools.h"
 #include "IO/iotools.h"
-#include "scanwindow.h"
 #include "IO/kinect2_grabber.h"
 #include <QFileDialog>
 #include <QStringList>
@@ -20,12 +19,9 @@
 #include <QAbstractListModel>
 #include <QLabel>
 #include <QPixmap>
-<<<<<<< HEAD
 #include <GUI/filterwindow.h>
 #include "GUI/regwindow.h"
-=======
 #include <exception>
->>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
 
 using namespace std;
 
@@ -52,31 +48,26 @@ MainWindow::MainWindow(QWidget *parent) :
     selectedRaw.clear();
     selectedRegistered.clear();
     selectedMeshed.clear();
-    FW = new filterwindow();
+    FW = new filterwindow(this);
     FW->close();
-<<<<<<< HEAD
-    RW = new regwindow();
+    RW = new regwindow(this);
     RW->close();
-=======
     vtkObject::GlobalWarningDisplayOff();
->>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     ui->pcScan->SetRenderWindow(pcViz->getRenderWindow() );
     pcViz->setupInteractor(ui->pcScan->GetInteractor(),ui->pcScan->GetRenderWindow());
-<<<<<<< HEAD
-
-    QObject::connect(FW, SIGNAL(updatefilt()), this, SLOT(updatef()));
-    QObject::connect(RW, SIGNAL(updatereg()), this, SLOT(updater()));
-=======
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
     pcViz->addCoordinateSystem(1.0);
     pcViz->setCameraPosition(0.0, 0.0, 7, 0.0, 0.0, 0.0);
->>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
+
+
 }
 
 MainWindow::~MainWindow()
 {
     delete DB;
+    delete scan;
+
     QApplication::exit();
     delete ui;
 }
@@ -90,7 +81,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNew_scan_triggered()
 {
     //...
-    scanwindow *scan = new scanwindow(this);
+    scan = new scanwindow(this);
     scan->setWindowTitle("MAGMA Project - New Scan");
     scan->show();
 }
@@ -437,5 +428,5 @@ void MainWindow::updatef() {
 }
 
 void MainWindow::updater() {
-
+    LOG("TEST");
 }

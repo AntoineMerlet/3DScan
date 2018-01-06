@@ -16,12 +16,6 @@ scanwindow::scanwindow(QWidget *parent) :
     ui(new Ui::scanwindow)
 {
     ui->setupUi(this);
-    connect(ui->xmin, SIGNAL(ui->xmin->valueChanged()), this, SLOT(scanwindow::updatebox()));
-    connect(ui->xmax, SIGNAL(ui->xmax->valueChanged()), this, SLOT(scanwindow::updatebox()));
-    connect(ui->ymin, SIGNAL(ui->ymin->valueChanged()), this, SLOT(scanwindow::updatebox()));
-    connect(ui->ymax, SIGNAL(ui->ymax->valueChanged()), this, SLOT(scanwindow::updatebox()));
-    connect(ui->zmin, SIGNAL(ui->zmin->valueChanged()), this, SLOT(scanwindow::updatebox()));
-    connect(ui->zmax, SIGNAL(ui->zmax->valueChanged()), this, SLOT(scanwindow::updatebox()));
 }
 
 scanwindow::~scanwindow()
@@ -159,4 +153,34 @@ void scanwindow::on_sw_stopscan_pushbutton_clicked()
     viewer->close();
     grabber->stop();
     kinect->stop();
+}
+
+void scanwindow::on_xmin_sliderMoved(int position)
+{
+    updatebox();
+}
+
+void scanwindow::on_xmax_sliderMoved(int position)
+{
+    updatebox();
+}
+
+void scanwindow::on_ymin_sliderMoved(int position)
+{
+    updatebox();
+}
+
+void scanwindow::on_ymax_sliderMoved(int position)
+{
+    updatebox();
+}
+
+void scanwindow::on_zmin_sliderMoved(int position)
+{
+    updatebox();
+}
+
+void scanwindow::on_zmax_sliderMoved(int position)
+{
+    updatebox();
 }

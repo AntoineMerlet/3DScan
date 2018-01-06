@@ -5,7 +5,10 @@ regwindow::regwindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::regwindow)
 {
+
     ui->setupUi(this);
+
+    QObject::connect(this, SIGNAL(updatereg()), parent, SLOT(updater()));
 
 }
 
@@ -16,33 +19,33 @@ regwindow::~regwindow()
 
 void regwindow::on_p2plls_toggled(bool checked)
 {
-    ui->svd->toggled(false);
-    ui->lmp2p->toggled(false);
-    ui->lmp2s->toggled(false);
+    ui->svd->setChecked(false);
+    ui->lmp2p->setChecked(false);
+    ui->lmp2s->setChecked(false);
     methodreg.type = 1;
 }
 
 void regwindow::on_svd_toggled(bool checked)
 {
-    ui->p2plls->toggled(false);
-    ui->lmp2p->toggled(false);
-    ui->lmp2s->toggled(false);
+    ui->p2plls->setChecked(false);
+    ui->lmp2p->setChecked(false);
+    ui->lmp2s->setChecked(false);
     methodreg.type = 2;
 }
 
 void regwindow::on_lmp2p_toggled(bool checked)
 {
-    ui->p2plls->toggled(false);
-    ui->svd->toggled(false);
-    ui->lmp2s->toggled(false);
+    ui->p2plls->setChecked(false);
+    ui->svd->setChecked(false);
+    ui->lmp2s->setChecked(false);
     methodreg.type = 3;
 }
 
 void regwindow::on_lmp2s_toggled(bool checked)
 {
-    ui->p2plls->toggled(false);
-    ui->svd->toggled(false);
-    ui->lmp2p->toggled(false);
+    ui->p2plls->setChecked(false);
+    ui->svd->setChecked(false);
+    ui->lmp2p->setChecked(false);
     methodreg.type = 4;
 }
 

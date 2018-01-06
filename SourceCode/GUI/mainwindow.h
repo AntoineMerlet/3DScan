@@ -7,14 +7,10 @@
 #include <vtkRenderWindow.h>
 #include "Storage/database.h"
 #include <QStandardItemModel>
-<<<<<<< HEAD
 #include "GUI/filterwindow.h"
 #include "GUI/regwindow.h"
-=======
-#include <GUI/filterwindow.h>
-#include <GUI/regwindow.h>
+#include "scanwindow.h"
 
->>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
 
 namespace Ui {
 class MainWindow;
@@ -49,13 +45,9 @@ private slots:
     void on_mw_generatemesh_pushbutton_clicked();
     void on_actionAbout_triggered();
     void on_actionUser_manual_triggered();
-
     void on_filter_pb_clicked();
-
     void on_pc_list_clicked(const QModelIndex &index);
-
     void on_regpc_list_clicked(const QModelIndex &index);
-
     void on_mesh_list_clicked(const QModelIndex &index);
 
 public slots:
@@ -79,10 +71,8 @@ private:
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;
     filterwindow * FW;
-<<<<<<< HEAD
     regwindow * RW;
-=======
->>>>>>> 5e8699a1f4866001dff3667338b238cd30a8685b
+    scanwindow *scan;
 };
 
 #endif // MAINWINDOW_H
