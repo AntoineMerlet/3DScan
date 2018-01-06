@@ -8,6 +8,7 @@
 #include "Storage/database.h"
 #include <QStandardItemModel>
 #include "GUI/filterwindow.h"
+#include "GUI/regwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +48,8 @@ private slots:
 
 public slots:
     void receivedmessage(const QString& arg);
+    void updatef();
+    void updater();
 
 private:
 
@@ -60,7 +63,8 @@ private:
     QStandardItemModel * MeshList;
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;
-    filterwindow FW;
+    filterwindow * FW;
+    regwindow * RW;
 };
 
 #endif // MAINWINDOW_H

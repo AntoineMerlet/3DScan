@@ -21,7 +21,7 @@
 #include <QLabel>
 #include <QPixmap>
 #include <GUI/filterwindow.h>
-#include <GUI/regwindow.h>
+#include "GUI/regwindow.h"
 
 using namespace std;
 
@@ -41,11 +41,16 @@ MainWindow::MainWindow(QWidget *parent) :
     DB = new DataBase();
     FW = new filterwindow();
     FW->close();
+    RW = new regwindow();
+    RW->close();
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
     pcViz->addCoordinateSystem(1.0);
     ui->pcScan->SetRenderWindow(pcViz->getRenderWindow() );
     pcViz->setupInteractor(ui->pcScan->GetInteractor(),ui->pcScan->GetRenderWindow());
+
+    QObject::connect(FW, SIGNAL(updatefilt()), this, SLOT(updatef()));
+    QObject::connect(RW, SIGNAL(updatereg()), this, SLOT(updater()));
 }
 
 MainWindow::~MainWindow()
@@ -276,4 +281,12 @@ void MainWindow::on_filter_pb_clicked()
 
     LOG("Filter window opened");
     filter->show();
+}
+
+void MainWindow::updatef() {
+
+}
+
+void MainWindow::updater() {
+
 }

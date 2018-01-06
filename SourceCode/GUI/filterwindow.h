@@ -60,6 +60,9 @@ private slots:
 
 private:
     Ui::filterwindow *ui;
+
+signals:
+    void updatefilt();
 };
 
 #endif // FILTERWINDOW_H

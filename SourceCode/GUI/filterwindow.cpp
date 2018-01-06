@@ -1,11 +1,13 @@
 #include "filterwindow.h"
 #include "ui_filterwindow.h"
+#include "GUI/mainwindow.h"
 
 filterwindow::filterwindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::filterwindow)
 {
     ui->setupUi(this);
+
 }
 
 filterwindow::~filterwindow()
@@ -15,8 +17,8 @@ filterwindow::~filterwindow()
 
 void filterwindow::on_filter_pb_clicked()
 {
-    params.maxdepth = ui->depth_sb->value();
-    params.smoothsize = ui->smooth_sb->value();
+    paramsfilt.maxdepth = ui->depth_sb->value();
+    paramsfilt.smoothsize = ui->smooth_sb->value();
 
     if (ui->voxelgrid_cb->checkState() == true) {
         voxelgridfilt.x = ui->x_sb->value();
@@ -54,4 +56,5 @@ void filterwindow::on_filter_pb_clicked()
     }
 
     this->close();
+    emit updatefilt();
 }
