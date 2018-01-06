@@ -1,0 +1,3 @@
+2018-01-05.17:27:00:	Program initilized
+2018-01-05.17:27:06:	Pressed
+2018-01-05.17:27:06:	Try to save

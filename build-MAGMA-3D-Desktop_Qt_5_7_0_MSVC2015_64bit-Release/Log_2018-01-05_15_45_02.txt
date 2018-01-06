@@ -1,0 +1,5 @@
+2018-01-05.15:45:02:	Program initilized
+2018-01-05.15:45:08:	Filter window opened
+2018-01-05.15:45:14:	Register window opened
+2018-01-05.15:45:24:	About section opened
+2018-01-05.15:45:27:	User Manual opened

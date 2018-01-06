@@ -1,0 +1,2 @@
+2018-01-05.16:01:23:	Program initilized
+2018-01-05.16:01:27:	Reached here
