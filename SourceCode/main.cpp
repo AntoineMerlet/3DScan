@@ -1,6 +1,6 @@
 #include "GUI/mainwindow.h"
 #include <QApplication>
-#include <logger.h>
+#include <IO/logger.h>
 
 int main(int argc, char *argv[])
 {

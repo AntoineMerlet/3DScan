@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QDockWidget>
 #include <QStandardItem>
-#include <logger.h>
+#include <IO/logger.h>
 #include <GUI/aboutwindow.h>
 #include <QDesktopServices>
 #include <QListWidget>

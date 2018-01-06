@@ -2,7 +2,7 @@
 #include "ui_aboutwindow.h"
 #include <QFile>
 #include <QTextStream>
-#include <logger.h>
+#include <IO/logger.h>
 
 /// @author: Marcio Rockenbach
 /// @date: 28-12-2017
