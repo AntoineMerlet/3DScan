@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>225</width>
-    <height>551</height>
+    <height>496</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -289,7 +289,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>480</y>
+      <y>430</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -302,7 +302,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>480</y>
+      <y>430</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -311,24 +311,11 @@
      <string>Stop scan</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="sw_capturepc_puchbutton">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>390</y>
-      <width>171</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Capture point cloud</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="sw_pcnumber_label">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>440</y>
+      <y>390</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -380,7 +367,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>440</y>
+      <y>390</y>
       <width>42</width>
       <height>22</height>
      </rect>

@@ -50,7 +50,6 @@ public:
     QCheckBox *sw_filtering_checkbox;
     QPushButton *sw_startscan_pushbutton;
     QPushButton *sw_stopscan_pushbutton;
-    QPushButton *sw_capturepc_puchbutton;
     QLabel *sw_pcnumber_label;
     QRadioButton *sw_horizontalacq_radiobutton;
     QRadioButton *sw_verticalacq_radiobutton;
@@ -63,7 +62,7 @@ public:
     {
         if (scanwindow->objectName().isEmpty())
             scanwindow->setObjectName(QStringLiteral("scanwindow"));
-        scanwindow->resize(225, 551);
+        scanwindow->resize(225, 496);
         centralwidget = new QWidget(scanwindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         sw_scanparameters_label = new QLabel(centralwidget);
@@ -144,16 +143,13 @@ public:
         sw_filtering_checkbox->setGeometry(QRect(30, 360, 121, 17));
         sw_startscan_pushbutton = new QPushButton(centralwidget);
         sw_startscan_pushbutton->setObjectName(QStringLiteral("sw_startscan_pushbutton"));
-        sw_startscan_pushbutton->setGeometry(QRect(30, 480, 75, 23));
+        sw_startscan_pushbutton->setGeometry(QRect(30, 430, 75, 23));
         sw_stopscan_pushbutton = new QPushButton(centralwidget);
         sw_stopscan_pushbutton->setObjectName(QStringLiteral("sw_stopscan_pushbutton"));
-        sw_stopscan_pushbutton->setGeometry(QRect(130, 480, 75, 23));
-        sw_capturepc_puchbutton = new QPushButton(centralwidget);
-        sw_capturepc_puchbutton->setObjectName(QStringLiteral("sw_capturepc_puchbutton"));
-        sw_capturepc_puchbutton->setGeometry(QRect(30, 390, 171, 23));
+        sw_stopscan_pushbutton->setGeometry(QRect(130, 430, 75, 23));
         sw_pcnumber_label = new QLabel(centralwidget);
         sw_pcnumber_label->setObjectName(QStringLiteral("sw_pcnumber_label"));
-        sw_pcnumber_label->setGeometry(QRect(30, 440, 121, 16));
+        sw_pcnumber_label->setGeometry(QRect(30, 390, 121, 16));
         sw_horizontalacq_radiobutton = new QRadioButton(centralwidget);
         sw_horizontalacq_radiobutton->setObjectName(QStringLiteral("sw_horizontalacq_radiobutton"));
         sw_horizontalacq_radiobutton->setGeometry(QRect(30, 30, 82, 17));
@@ -165,7 +161,7 @@ public:
         sw_acqtype_label->setGeometry(QRect(20, 10, 131, 16));
         cap_pc = new QSpinBox(centralwidget);
         cap_pc->setObjectName(QStringLiteral("cap_pc"));
-        cap_pc->setGeometry(QRect(160, 440, 42, 22));
+        cap_pc->setGeometry(QRect(160, 390, 42, 22));
         scanwindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(scanwindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -202,7 +198,6 @@ public:
         sw_filtering_checkbox->setText(QApplication::translate("scanwindow", "Filter coordinates", 0));
         sw_startscan_pushbutton->setText(QApplication::translate("scanwindow", "Start scan", 0));
         sw_stopscan_pushbutton->setText(QApplication::translate("scanwindow", "Stop scan", 0));
-        sw_capturepc_puchbutton->setText(QApplication::translate("scanwindow", "Capture point cloud", 0));
         sw_pcnumber_label->setText(QApplication::translate("scanwindow", "Number of captured PCs", 0));
         sw_horizontalacq_radiobutton->setText(QApplication::translate("scanwindow", "Horizontal", 0));
         sw_verticalacq_radiobutton->setText(QApplication::translate("scanwindow", "Vertical", 0));

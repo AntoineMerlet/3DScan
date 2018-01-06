@@ -7,6 +7,8 @@
 #include <vtkRenderWindow.h>
 #include "Storage/database.h"
 #include <QStandardItemModel>
+#include <GUI/filterwindow.h>
+#include <GUI/regwindow.h>
 
 namespace Ui {
 class MainWindow;
@@ -25,9 +27,9 @@ public:
 
 protected:
 
-    void updatePCList();
-    void updateRegPCList();
-    void updateMeshList();
+    void updatePCList(QStringList);
+    void updateRegPCList(QStringList);
+    void updateMeshList(QStringList);
 
 private slots:
     void on_actionNew_scan_triggered();
@@ -44,16 +46,25 @@ private slots:
 
     void on_filter_pb_clicked();
 
+    void on_pc_list_clicked(const QModelIndex &index);
+
+    void on_regpc_list_clicked(const QModelIndex &index);
+
+    void on_mesh_list_clicked(const QModelIndex &index);
+
 public slots:
     void receivedmessage(const QString& arg);
 
 private:
-
     Ui::MainWindow *ui;
     DataBase *DB;
-    std::vector<std::string> selectedRaw;
-    std::vector<std::string> selectedRegistered;
-    std::vector<std::string> selectedMeshed;
+    void UpdateSelectedRaw();
+    void UpdateSelectedReg();
+    void UpdateSelectedMesh();
+    void updateDisplay();
+    std::list<int> selectedRaw;
+    std::list<int> selectedRegistered;
+    std::list<int> selectedMeshed;
     QStandardItemModel * PCList;
     QStandardItemModel * RPCList;
     QStandardItemModel * MeshList;

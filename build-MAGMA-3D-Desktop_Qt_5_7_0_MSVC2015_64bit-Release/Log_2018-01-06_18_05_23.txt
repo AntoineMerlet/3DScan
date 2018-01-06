@@ -1,0 +1,9 @@
+2018-01-06.18:05:24:	Program initialized
+2018-01-06.18:05:28:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/TDK_CapturedPointCloud1.ply
+2018-01-06.18:05:28:	Added 1 rawPC in DB. Size: 1
+2018-01-06.18:05:43:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/002.ply
+2018-01-06.18:05:43:	Added 1 rawPC in DB. Size: 2
+2018-01-06.18:06:03:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/TDK_CapturedPointCloud3.ply
+2018-01-06.18:06:03:	Added 1 rawPC in DB. Size: 3
+2018-01-06.18:06:31:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/TDK_CapturedPointCloud2.ply
+2018-01-06.18:06:31:	Added 1 rawPC in DB. Size: 4

@@ -1,0 +1,9 @@
+2018-01-06.14:59:06:	Program initilized
+2018-01-06.14:59:17:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/000.ply
+2018-01-06.14:59:17:	Added 1 rawPC in DB. Size: 1
+2018-01-06.14:59:19:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/001.ply
+2018-01-06.14:59:19:	Added 1 rawPC in DB. Size: 2
+2018-01-06.14:59:20:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/002.ply
+2018-01-06.14:59:20:	Added 1 rawPC in DB. Size: 3
+2018-01-06.14:59:21:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/003.ply
+2018-01-06.14:59:21:	Added 1 rawPC in DB. Size: 4
