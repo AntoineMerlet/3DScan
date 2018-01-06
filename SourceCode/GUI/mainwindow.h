@@ -7,6 +7,7 @@
 #include <vtkRenderWindow.h>
 #include "Storage/database.h"
 #include <QStandardItemModel>
+#include "GUI/filterwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -59,6 +60,7 @@ private:
     QStandardItemModel * MeshList;
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;
+    filterwindow FW;
 };
 
 #endif // MAINWINDOW_H

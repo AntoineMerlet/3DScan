@@ -273,8 +273,7 @@ void MainWindow::on_actionUser_manual_triggered()
 /// @brief Showing filter window on click
 void MainWindow::on_filter_pb_clicked()
 {
-    filterwindow *filter = new filterwindow(this);
-    filter->setWindowTitle("MAGMA Project - Filter");
+
     LOG("Filter window opened");
     filter->show();
 }

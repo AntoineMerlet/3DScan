@@ -6,31 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
-    <height>300</height>
+    <width>665</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QCheckBox" name="icp_reg">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>121</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ICP</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="reg_button">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>260</y>
+     <x>290</x>
+     <y>410</y>
      <width>75</width>
      <height>23</height>
     </rect>
