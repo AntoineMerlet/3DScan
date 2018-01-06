@@ -2,10 +2,13 @@
 #include "Storage/database.h"
 #include "ui_scanwindow.h"
 #include <string>
+#include <GUI/mainwindow.h>
 #include <IO/kinect_v2.h>
 #include <IO/kinect2_grabber.h>
 #include <IO/logger.h>
 #include <QSlider>
+#include <QCloseEvent>
+#include <QObject>
 
 using namespace std;
 
@@ -21,6 +24,7 @@ scanwindow::scanwindow(QWidget *parent) :
 scanwindow::~scanwindow()
 {
     QApplication::exit();
+    viewer->close();
     delete ui;
 }
 
@@ -62,13 +66,14 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
 {
     kinect = new pcl::Kinect2Grabber;
     kinect->start();
-
+    scan_pressed = true;
     // Credits: UnaNancyOwen (https://github.com/UnaNancyOwen/KinectGrabber/blob/Kinect2Grabber/Sample/main.cpp)
     // PCL Visualizer
     viewer.reset(new pcl::visualization::PCLVisualizer("Kinect viewer"));
     viewer->setCameraPosition( 0.0, 0.0, -2.5, 0.0, 0.0, 0.0 );
     viewer->setShowFPS(false);
-    scanwindow::updatebox();
+    viewer->addText("Press 's' on keyboard to save",0,0);
+    updatebox();
 
     // Point Cloud
 
@@ -95,7 +100,7 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
                     std::ostringstream oss;
                     oss << std::setfill( '0' ) << std::setw( 3 ) << index++;
                     std::cout << oss.str() + ".pcd" << std::endl;
-                    // Save Point Cloud to PCD File
+                    // Save Point Cloud to PLY File
                     scanwindow::counter = scanwindow::counter + 1;
                     pcl::io::savePLYFile( oss.str() + ".ply", *cloud );
                 }
@@ -134,8 +139,13 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
 
 void scanwindow::updatebox(){
     viewer->removeShape("cube");
-    viewer->addCube(ui->xmin->value(), ui->xmax->value(), ui->ymin->value(), ui->ymax->value(), ui->zmin->value(), ui->zmax->value());
-    //viewer->addCube(-0.2, 0.2, -0.2, 0.2, -0.2, 0.2);
+    float x_min = ((float)ui->xmin->value())/3;
+    float x_max = ((float)ui->xmax->value())/3;
+    float y_min = ((float)ui->ymin->value())/3;
+    float y_max = ((float)ui->ymax->value())/3;
+    float z_min = ((float)ui->zmin->value())/3;
+    float z_max = ((float)ui->zmax->value())/3;
+    viewer->addCube(x_min, x_max, y_min, y_max, z_min, z_max);
     viewer->setShapeRenderingProperties(pcl::visualization::PCL_VISUALIZER_REPRESENTATION, pcl::visualization::PCL_VISUALIZER_REPRESENTATION_WIREFRAME, "cube");
     viewer->setShapeRenderingProperties (pcl::visualization::PCL_VISUALIZER_COLOR, 0.8, 0.0, 0.0, "cube");
     viewer->setShapeRenderingProperties (pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 2, "cube");
@@ -150,9 +160,13 @@ void scanwindow::on_xmin_sliderReleased()
 
 void scanwindow::on_sw_stopscan_pushbutton_clicked()
 {
-    viewer->close();
-    grabber->stop();
-    kinect->stop();
+    if (scan_pressed == true){
+            viewer->close();
+            grabber->stop();
+            kinect->stop();
+            scan_pressed = false;}
+    emit send_unhide();
+    scanwindow::setVisible(false);
 }
 
 void scanwindow::on_xmin_sliderMoved(int position)
@@ -183,4 +197,11 @@ void scanwindow::on_zmin_sliderMoved(int position)
 void scanwindow::on_zmax_sliderMoved(int position)
 {
     updatebox();
+}
+
+void scanwindow::closeEvent(QCloseEvent *e){
+    emit send_unhide();
+    if (scan_pressed == true)
+        viewer->close();
+    e->accept();
 }
