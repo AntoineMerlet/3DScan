@@ -19,10 +19,11 @@ namespace Core {
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief Function used to load the .PCD file given by path and returning the loaded Point Cloud.
+/// @brief Function used to downsample the given Point Cloud
 /// @param pc The Point Cloud to downsample
+/// @param x y z The size of the filter
 /// @return The downsampled Point Cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr pc){
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr pc, const float &x, const float &y, const float &z){
     LOG("Downsampling ...");
     pcl::VoxelGrid<pcl::PointXYZRGB> grid;
     grid.setLeafSize (0.01, 0.01, 0.01);
@@ -33,27 +34,6 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZR
     return src;
 }
 
-
-void fullregister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec )
-{
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, source;
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it = vec.rbegin();
-
-    for (it; it != vec.rend() -1; ++it)
-    {
-        target = *(it + 1);
-        source = *it;
-        pairregister(target,source);
-    }
-}
-
-
-void pairregister(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &target, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &source)
-{
-
-}
-
-
 /// @author: Gulnur Ungan
 /// @date: 05-01-2018
 /// @version 1.0
@@ -63,9 +43,9 @@ void pairregister(pcl::PointCloud<pcl::PointXYZRGB>::Ptr &target, pcl::PointClou
 /// @param sigmaR: The standard deviation of the Gaussian for the intensity difference
 /// @param sigmaS: The size of the Gaussian bilateral filter window to use
 /// @return The final point cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFitler(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &sigmaR, const float &sigmaS)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &sigmaR, const float &sigmaS)
 {
-    LOG("Fast Bilateral Filter is processing ...");
+    LOG("Bilateral Filtering")
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
     pcl::FastBilateralFilter<pcl::PointXYZRGB> fbf;
     fbf.setSigmaS(sigmaS);
@@ -73,23 +53,22 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFitler(pcl::PointCloud<pcl::Poin
     fbf.setInputCloud(cloud_in);
 
     fbf.filter(*cloud_out);
-    LOG("Final Point Cloud ");
+    LOG("Done")
     return cloud_out;
 }
-
 
 /// @author: Gulnur Ungan
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief Takes in a colored organized point cloud, that might contain non values for the depth information.
+/// @brief Takes in a colored organized point cloud, that might contain non zero values for the depth information.
 /// @param cloud_in : The Point Cloud to downsample
 /// @param sigmaC: the new value to be set. It is called sigmacolor.
 /// @param sigmaD: the new value to be set. It is called sigmadepth.
-/// @return: An upsampled version of this cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamblerRGB(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &sigmaC, const float &sigmaD)
+/// @return An upsampled version of this cloud
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamplerRGB(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &sigmaC, const float &sigmaD)
 {
-    LOG("Loading");
+    LOG("Sampling...")
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out;
 
     pcl::BilateralUpsampling<pcl::PointXYZRGB, pcl::PointXYZRGB> bus;
@@ -98,11 +77,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamblerRGB(pcl::PointCloud<pcl
     bus.setInputCloud(cloud_in);
 
     bus.process(*cloud_out);
-    LOG("Done");
+     LOG("Process")
     return cloud_out;
-
 }
-
 
 /// @author: Gulnur Ungan
 /// @date: 05-01-2018
@@ -115,7 +92,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamblerRGB(pcl::PointCloud<pcl
 /// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const int &windowSize, const float &maxMovement)
 {
-    LOG("Median filter is working");
+    LOG("Median filter is processing")
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
 
     pcl::MedianFilter<pcl::PointXYZRGB> mf;
@@ -124,12 +101,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXY
     mf.setInputCloud(cloud_in);
 
     mf.filter(*cloud_out);
-    LOG("Resultant point cloud by median filter.");
+    LOG("Resultant cloud")
     return cloud_out;
 }
-
-
-
 
 /// @author: Gulnur Ungan
 /// @date: 05-01-2018
@@ -137,11 +111,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXY
 ///
 /// @brief :Random sampling with uniform probability. Based on an article. Results: http://www.ittc.ku.edu/~jsv/Papers/Vit84.sampling.pdf
 /// @param cloud_in : The Point Cloud to downsample
-/// @param order: Set number of indices to be sampled.
-/// @return: Resultant point cloud
+/// @param order: downsampling ratio
+/// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order)
 {
-    LOG("randsample starts.");
+    LOG("Sampling with uniform probability")
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
 
     pcl::RandomSample<pcl::PointXYZRGB> randsample;
@@ -149,25 +123,25 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXY
     randsample.setInputCloud(cloud_in);
 
     randsample.filter(*cloud_out);
-    LOG("Resultant point cloud");
+    LOG("Resultant")
     return cloud_out;
 }
-
-
 
 /// @author: Gulnur Ungan
 /// @date: 05-01-2018
 /// @version 1.0
 ///
 /// @brief : It samples the input point cloud in the space of normal directions computed at every point.
+/// @param cloud_in : The Point Cloud to downsample
+/// @param order: downsampling ratio
 /// @param nbBins: Number of bins.
-/// @param order: sample the number of sample indices
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
-/// @return: Resultant point cloud
+/// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const unsigned int &nbBins, const float &maxDepthChange, const float &smoothSize)
 {
-    LOG("Downloading pointcloud for normalsampling.");
+
+    LOG("Normal Space Sampling")
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
 
     pcl::NormalSpaceSampling<pcl::PointXYZRGB, pcl::PointNormal> normsample;
@@ -176,7 +150,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXY
     normsample.setInputCloud(cloud_in);
     normsample.setNormals (getNormalPoints(cloud_in, maxDepthChange, smoothSize));
     normsample.filter(*cloud_out);
-    LOG("Result");
+    LOG("Result")
     return cloud_out;
 }
 
@@ -185,13 +159,15 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXY
 /// @version 1.0
 ///
 /// @brief : It selects the points such that the resulting cloud is as stable as possible for being registered (against a copy of itself) with ICP.
-/// @param nbBins: Number of bins.
-/// @param order: sample the number of sample indices
+/// @param cloud_in : The Point Cloud to downsample
+/// @param order: downsampling ratio
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
-/// @return: Resultant point cloud
+/// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const float &maxDepthChange, const float &smoothSize)
 {
+
+    LOG("Covariance Sampling")
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
     pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud_in_const(new pcl::PointCloud<pcl::PointXYZRGB>(*cloud_in));
 
@@ -201,9 +177,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::Poi
     covSampling.setInputCloud(cloud_in_const);
     covSampling.setNormals(getNormalPoints(cloud_in, maxDepthChange, smoothSize));
     covSampling.filter(*cloud_out);
+    LOG("Resultant point")
     return cloud_out;
 }
-
 
 
 /// @author: Gulnur Ungan
@@ -211,12 +187,13 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::Poi
 /// @version 1.0
 ///
 /// @brief:Surface normal estimation on organized data using integral images
+/// @param cloud_in The point cloud to compute normals from
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
-/// @return:Cloud with its normals.
+/// @return Cloud with its normals.
 pcl::PointCloud<pcl::PointNormal>::Ptr getNormalPoints(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &maxDepthChange, const float &smoothSize )
 {
-    LOG("Downloading point cloud");
+    LOG("Integral Normal Estimation")
     pcl::IntegralImageNormalEstimation<pcl::PointXYZRGB, pcl::Normal>normest;
 
     pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
@@ -229,8 +206,35 @@ pcl::PointCloud<pcl::PointNormal>::Ptr getNormalPoints(pcl::PointCloud<pcl::Poin
 
     normest.compute(*normals);
 
-
-    LOG("Resultant point cloud with its normals");
+    LOG("Cloud with its normals")
     return normal2PointNormal(cloud_in,normals);
+}
+
+/// @author: Gulnur Ungan
+/// @date: 05-01-2018
+/// @version 1.0
+///
+/// @brief:Surface normal estimation on organized data using integral images
+/// @param cloud_in The point cloud to compute normals from
+/// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
+/// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
+/// @return normals.
+pcl::PointCloud<pcl::Normal>::Ptr getNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &maxDepthChange, const float &smoothSize )
+{
+    LOG("Integral Normal Estimation")
+    pcl::IntegralImageNormalEstimation<pcl::PointXYZRGB, pcl::Normal>normest;
+
+    pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
+
+    normest.setNormalEstimationMethod(normest.AVERAGE_DEPTH_CHANGE);
+    normest.setMaxDepthChangeFactor(maxDepthChange);
+    normest.setDepthDependentSmoothing(true);
+    normest.setNormalSmoothingSize(smoothSize);
+    normest.setInputCloud(cloud_in);
+
+    normest.compute(*normals);
+
+    LOG("Normals")
+    return normals;
 }
 }
