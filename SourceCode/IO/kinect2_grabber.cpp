@@ -1,6 +1,6 @@
 #include "kinect2_grabber.h"
 #include "QDebug"
-#include <logger.h>
+#include <IO/logger.h>
 using namespace pcl;
 
 Kinect2Grabber::Kinect2Grabber()

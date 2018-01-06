@@ -5,7 +5,7 @@
 #include <pcl/filters/filter.h>
 #include <pcl/point_cloud.h>
 #include <vector>
-#include "logger.h"
+#include "IO/logger.h"
 
 namespace Core {
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const float &, const float &, const float &);

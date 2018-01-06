@@ -19,6 +19,7 @@ SOURCES += main.cpp\
     IO/intel_r200.cpp \
     IO/iotools.cpp \
     IO/kinect2_grabber.cpp \
+    IO/logger.cpp \
     Storage/database.cpp \
     GUI/guitools.cpp \
     Core/mathtools.cpp \
@@ -27,8 +28,7 @@ SOURCES += main.cpp\
     Core/meshing.cpp \
     GUI/parameters.cpp \
     GUI/options.cpp \
-    scanwindow.cpp \
-    logger.cpp \
+    GUI/scanwindow.cpp \
     GUI/aboutwindow.cpp \
     GUI/filterwindow.cpp \
     GUI/regwindow.cpp
@@ -39,6 +39,7 @@ HEADERS  += GUI/mainwindow.h \
     IO/intel_r200.h \
     IO/iotools.h \
     IO/kinect2_grabber.h \
+    IO/logger.h \
     Storage/database.h \
     GUI/guitools.h \
     Core/mathtools.h \
@@ -47,14 +48,13 @@ HEADERS  += GUI/mainwindow.h \
     Core/meshing.h \
     GUI/parameters.h \
     GUI/options.h \
-    scanwindow.h \
-    logger.h \
+    GUI/scanwindow.h \
     GUI/aboutwindow.h \
     GUI/filterwindow.h \
     GUI/regwindow.h
 
 FORMS    += GUI/mainwindow.ui \
-    scanwindow.ui \
+    GUI/scanwindow.ui \
     GUI/aboutwindow.ui \
     GUI/filterwindow.ui \
     GUI/regwindow.ui
