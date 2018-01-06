@@ -49,13 +49,13 @@ MainWindow::MainWindow(QWidget *parent) :
     selectedMeshed.clear();
     FW = new filterwindow();
     FW->close();
-    pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     vtkObject::GlobalWarningDisplayOff();
+    pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
+    ui->pcScan->SetRenderWindow(pcViz->getRenderWindow() );
+    pcViz->setupInteractor(ui->pcScan->GetInteractor(),ui->pcScan->GetRenderWindow());
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
     pcViz->addCoordinateSystem(1.0);
     pcViz->setCameraPosition(0.0, 0.0, 7, 0.0, 0.0, 0.0);
-    ui->pcScan->SetRenderWindow(pcViz->getRenderWindow() );
-    pcViz->setupInteractor(ui->pcScan->GetInteractor(),ui->pcScan->GetRenderWindow());
 }
 
 MainWindow::~MainWindow()
