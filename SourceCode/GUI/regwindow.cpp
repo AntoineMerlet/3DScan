@@ -46,34 +46,78 @@ void regwindow::on_lmp2s_toggled(bool checked)
     methodreg.type = 4;
 }
 
-
-
 void regwindow::on_median_cb_toggled(bool checked)
 {
-    ui->one2one_cb->setEnabled(true);
-}
+    if (checked == true){
+        ui->one2one_cb->setEnabled(true);
+    }
 
+    if (checked == false){
+        ui->one2one_cb->setChecked(false);
+        ui->one2one_cb->setEnabled(false);
+        ui->ransac_cb->setChecked(false);
+        ui->ransac_cb->setEnabled(false);
+        ui->surface_cb->setChecked(false);
+        ui->surface_cb->setEnabled(false);
+        ui->boundary_cb->setChecked(false);
+        ui->boundary_cb->setEnabled(false);
+
+        ui->ransacit_sb->setEnabled(false);
+        ui->ransacth_sb->setEnabled(false);
+        ui->angle_sb->setEnabled(false);
+    }
+}
 
 void regwindow::on_one2one_cb_toggled(bool checked)
 {
-    ui->ransac_cb->setEnabled(true);
-    ui->ransacit_sb->setEnabled(true);
-    ui->ransacth_sb->setEnabled(true);
+    if (checked == true){
+        ui->ransac_cb->setEnabled(true);
+        ui->ransacit_sb->setEnabled(true);
+        ui->ransacth_sb->setEnabled(true);
+    }
+
+    if (checked == false){
+        ui->ransac_cb->setChecked(false);
+        ui->ransac_cb->setEnabled(false);
+        ui->surface_cb->setChecked(false);
+        ui->surface_cb->setEnabled(false);
+        ui->boundary_cb->setChecked(false);
+        ui->boundary_cb->setEnabled(false);
+
+        ui->ransacit_sb->setEnabled(false);
+        ui->ransacth_sb->setEnabled(false);
+        ui->angle_sb->setEnabled(false);
+    }
 }
-
-
 
 void regwindow::on_ransac_cb_toggled(bool checked)
 {
-    ui->surface_cb->setEnabled(true);
-    ui->angle_sb->setEnabled(true);
+    if (checked == true){
+        ui->surface_cb->setEnabled(true);
+        ui->angle_sb->setEnabled(true);
+    }
+
+    if (checked == false){
+        ui->surface_cb->setChecked(false);
+        ui->surface_cb->setEnabled(false);
+        ui->boundary_cb->setChecked(false);
+        ui->boundary_cb->setEnabled(false);
+
+        ui->angle_sb->setEnabled(false);
+    }
+
 }
-
-
 
 void regwindow::on_surface_cb_toggled(bool checked)
 {
-    ui->boundary_cb->setEnabled(true);
+    if (checked == true){
+        ui->boundary_cb->setEnabled(true);
+    }
+
+    if (checked == false){
+        ui->boundary_cb->setChecked(false);
+        ui->boundary_cb->setEnabled(false);
+    }
 }
 
 void regwindow::on_reg_button_clicked()
