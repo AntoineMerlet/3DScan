@@ -1,2 +1,0 @@
-2017-12-29_13_14_22:	Program initilized
-2017-12-29_13_15_39:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_eze0.ply
