@@ -38,7 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap logo ("logo_small.jpg");
     ui->mylogo->setPixmap(logo);
     DB = new DataBase();
-<<<<<<< HEAD
     PCList = new QStandardItemModel();
     PCList->clear();
     RPCList = new QStandardItemModel();
@@ -48,10 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
     selectedRaw.clear();
     selectedRegistered.clear();
     selectedMeshed.clear();
-=======
     FW = new filterwindow();
     FW->close();
->>>>>>> e8909cb2e6969634fa1cd48532b7d71ad30f1b55
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     vtkObject::GlobalWarningDisplayOff();
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
@@ -147,7 +144,8 @@ void MainWindow::updateMeshList(QStringList list)
 void MainWindow::UpdateSelectedRaw(){
     for (int i = 0; i < PCList->rowCount(); i++)
         if (PCList->item(i)->checkState())
-            selectedRaw.push_back(i);
+            selectedRaw.insert(i);
+        else selectedRaw.erase(i);
 }
 
 /// @author: Marcio Rockenbach
@@ -158,7 +156,8 @@ void MainWindow::UpdateSelectedRaw(){
 void MainWindow::UpdateSelectedReg(){
     for (int i = 0; i < RPCList->rowCount(); i++)
         if (RPCList->item(i)->checkState())
-            selectedRegistered.push_back(i);
+            selectedRegistered.insert(i);
+        else selectedRegistered.erase(i);
 }
 
 /// @author: Marcio Rockenbach
@@ -169,7 +168,8 @@ void MainWindow::UpdateSelectedReg(){
 void MainWindow::UpdateSelectedMesh(){
     for (int i = 0; i < MeshList->rowCount(); i++)
         if (MeshList->item(i)->checkState())
-            selectedMeshed.push_back(i);
+            selectedMeshed.insert(i);
+        else selectedMeshed.erase(i);
 }
 
 /// @author: Marcio Rockenbach
@@ -380,21 +380,36 @@ void MainWindow::on_filter_pb_clicked()
 {
 
     LOG("Filter window opened");
-    filter->show();
+    FW->show();
 }
 
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Updates the display and the set of selected raw point clouds whenever a user clicks on the list of loaded raw point clouds on the GUI
 void MainWindow::on_pc_list_clicked(const QModelIndex &index)
 {
     UpdateSelectedRaw();
     updateDisplay();
 }
 
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Updates the display and the set of selected registered point clouds whenever a user clicks on the List of loaded registered point clouds on the GUI
 void MainWindow::on_regpc_list_clicked(const QModelIndex &index)
 {
     UpdateSelectedReg();
     updateDisplay();
 }
 
+/// @author: Marcio Rockenbach
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Updates the display and the set of selected Mesh whenever a user clicks on the list of loaded meshes on the GUI
 void MainWindow::on_mesh_list_clicked(const QModelIndex &index)
 {
     UpdateSelectedMesh();

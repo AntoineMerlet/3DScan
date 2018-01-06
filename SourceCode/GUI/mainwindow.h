@@ -7,12 +7,9 @@
 #include <vtkRenderWindow.h>
 #include "Storage/database.h"
 #include <QStandardItemModel>
-<<<<<<< HEAD
 #include <GUI/filterwindow.h>
 #include <GUI/regwindow.h>
-=======
-#include "GUI/filterwindow.h"
->>>>>>> e8909cb2e6969634fa1cd48532b7d71ad30f1b55
+
 
 namespace Ui {
 class MainWindow;
@@ -66,15 +63,15 @@ private:
     void UpdateSelectedReg();
     void UpdateSelectedMesh();
     void updateDisplay();
-    std::list<int> selectedRaw;
-    std::list<int> selectedRegistered;
-    std::list<int> selectedMeshed;
+    std::set<int> selectedRaw;
+    std::set<int> selectedRegistered;
+    std::set<int> selectedMeshed;
     QStandardItemModel * PCList;
     QStandardItemModel * RPCList;
     QStandardItemModel * MeshList;
     QVTKWidget pcScene;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> pcViz;
-    filterwindow FW;
+    filterwindow * FW;
 };
 
 #endif // MAINWINDOW_H
