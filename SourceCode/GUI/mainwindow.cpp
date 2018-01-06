@@ -39,6 +39,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap logo ("logo_small.jpg");
     ui->mylogo->setPixmap(logo);
     DB = new DataBase();
+    FW = new filterwindow();
+    FW->close();
     pcViz.reset (new pcl::visualization::PCLVisualizer ("viewer", false));
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
     pcViz->addCoordinateSystem(1.0);

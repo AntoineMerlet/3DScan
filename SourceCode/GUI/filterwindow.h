@@ -15,6 +15,40 @@ public:
     explicit filterwindow(QWidget *parent = 0);
     ~filterwindow();
 
+    struct params {
+        float maxdepth;
+        int smoothsize;
+    } paramsfilt;
+
+    struct voxelgrid {
+        float x;
+        float y;
+        float z;
+    } voxelgridfilt;
+
+    struct bilateral {
+        int sigmaS;
+        float sigmaR;
+    } bilateralfilt;
+
+    struct median {
+        int windowsize;
+        int maxmovement;
+    } medianfilt;
+
+    struct random {
+        int order;
+    } randomfilt;
+
+    struct normal {
+        int order;
+        int nofbins;
+    } normalfilt;
+
+    struct covar {
+        int order;
+    } covarfilt;
+
 private:
     Ui::filterwindow *ui;
 };
