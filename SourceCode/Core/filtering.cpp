@@ -24,13 +24,13 @@ namespace Core {
 /// @param x y z The size of the filter
 /// @return The downsampled Point Cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr pc, const float &x, const float &y, const float &z){
-    LOG("Downsampling ...");
+    LOG("VoxelGrid on " + std::to_string(pc->size()) + "points ...");
     pcl::VoxelGrid<pcl::PointXYZRGB> grid;
     grid.setLeafSize (x, y, z);
     grid.setInputCloud (pc);
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr src (new pcl::PointCloud<pcl::PointXYZRGB>);
     grid.filter (*src);
-    LOG("Downsampling Done.");
+    LOG("Downsampling Done. Now " + std::to_string(src->size()) + " points");
     return src;
 }
 
@@ -45,13 +45,16 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZR
 /// @return The final point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &sigmaR, const float &sigmaS)
 {
+    LOG("Bilateral Filtering on " + std::to_string(cloud_in->size()) + "points ...");
+
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
     pcl::FastBilateralFilter<pcl::PointXYZRGB> fbf;
     fbf.setSigmaS(sigmaS);
     fbf.setSigmaR(sigmaR);
     fbf.setInputCloud(cloud_in);
-
     fbf.filter(*cloud_out);
+
+    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
 }
 
@@ -66,14 +69,16 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFilter(pcl::PointCloud<pcl::Poin
 /// @return An upsampled version of this cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamplerRGB(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &sigmaC, const float &sigmaD)
 {
+    LOG("Bilateral upsampling on " + std::to_string(cloud_in->size()) + "points ...");
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out;
 
     pcl::BilateralUpsampling<pcl::PointXYZRGB, pcl::PointXYZRGB> bus;
     bus.setSigmaColor(sigmaC);
     bus.setSigmaDepth(sigmaD);
     bus.setInputCloud(cloud_in);
-
     bus.process(*cloud_out);
+
+    LOG("Upsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
 }
 
@@ -88,14 +93,16 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamplerRGB(pcl::PointCloud<pcl
 /// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const int &windowSize, const float &maxMovement)
 {
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
+    LOG("Median filtering on " + std::to_string(cloud_in->size()) + "points ...");
 
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
     pcl::MedianFilter<pcl::PointXYZRGB> mf;
     mf.setWindowSize(windowSize);
     mf.setMaxAllowedMovement(maxMovement);
     mf.setInputCloud(cloud_in);
-
     mf.filter(*cloud_out);
+
+    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
 }
 
@@ -109,13 +116,15 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXY
 /// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order)
 {
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
+    LOG("Random sampling on " + std::to_string(cloud_in->size()) + "points ...");
 
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
     pcl::RandomSample<pcl::PointXYZRGB> randsample;
     randsample.setSample(cloud_in->size() / order);
     randsample.setInputCloud(cloud_in);
-
     randsample.filter(*cloud_out);
+
+    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
 }
 
@@ -140,6 +149,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXY
     normsample.setInputCloud(cloud_in);
     normsample.setNormals (getNormalPoints(cloud_in, maxDepthChange, smoothSize));
     normsample.filter(*cloud_out);
+
+    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
 }
 
@@ -164,11 +175,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::Poi
     covSampling.setInputCloud(cloud_in_const);
     covSampling.setNormals(getNormalPoints(cloud_in, maxDepthChange, smoothSize));
     covSampling.filter(*cloud_out);
+
+    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
 }
-
-
-
-
 
 }
