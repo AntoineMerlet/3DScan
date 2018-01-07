@@ -56,6 +56,8 @@ MainWindow::MainWindow(QWidget *parent) :
     selectedRaw.clear();
     selectedRegistered.clear();
     selectedMeshed.clear();
+    scan = new scanwindow(this);
+    QObject::connect(scan,SIGNAL(send_unhide()),this,SLOT(unhidemain()));
     FW = new filterwindow(this);
     FW->close();
     RW = new regwindow(this);
@@ -65,16 +67,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pcScan->SetRenderWindow(pcViz->getRenderWindow() );
     pcViz->setupInteractor(ui->pcScan->GetInteractor(),ui->pcScan->GetRenderWindow());
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
-    pcViz->addCoordinateSystem(1.0);
-    pcViz->setCameraPosition(0.0, 0.0, 7, 0.0, 0.0, 0.0);
+    pcViz->addCoordinateSystem(1.0, -1.0, -0.5, -0.5);
+    pcViz->setShowFPS(false);
+    pcViz->setCameraPosition(0.0, 0.0, -5, 0.0, 0.0, 0.0);
 }
 
 MainWindow::~MainWindow()
 {
     delete DB;
-    delete scan;
     delete FW;
     delete RW;
+    delete scan;
     delete PCList;
     delete RPCList;
     delete MeshList;
@@ -89,12 +92,10 @@ MainWindow::~MainWindow()
 /// @brief Showing scan window on click
 void MainWindow::on_actionNew_scan_triggered()
 {
-    scan = new scanwindow(this);
-    QObject::connect(scan,SIGNAL(send_unhide()),this,SLOT(unhidemain()));
     scan->setWindowTitle("MAGMA Project - New Scan");
     scan->move(700,100);
-    scan->show();
     MainWindow::setVisible(false);
+    scan->show();
 }
 
 /// @author: Mladen Rakic / Marcio Rockenbach

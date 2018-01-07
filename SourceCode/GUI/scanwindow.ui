@@ -227,13 +227,13 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>-30</number>
+      <number>-10</number>
      </property>
      <property name="maximum">
-      <number>30</number>
+      <number>15</number>
      </property>
      <property name="value">
-      <number>-3</number>
+      <number>0</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -249,13 +249,13 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>-30</number>
+      <number>-10</number>
      </property>
      <property name="maximum">
       <number>30</number>
      </property>
      <property name="value">
-      <number>3</number>
+      <number>9</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
