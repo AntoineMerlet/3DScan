@@ -167,7 +167,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXY
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
 /// @return Resultant point cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const unsigned int &nbBins, const float &maxDepthChange, const float &smoothSize)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const unsigned int &nbBins, const float &radius)
 {
     LOG("Normal  sampling on " + std::to_string(cloud_in->size()) + "points ...");
 
@@ -179,7 +179,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXY
     normsample.setBins (nbBins, nbBins, nbBins);
     normsample.setSample(cloud_in->size() / order);
     normsample.setInputCloud(cloud_in);
-    normsample.setNormals (getNormalPoints(cloud_in, maxDepthChange, smoothSize));
+    normsample.setNormals (getNormalPoints(cloud_in, radius));
     normsample.filter(*cloud_out);
 
     LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
@@ -196,7 +196,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXY
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
 /// @return Resultant point cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const float &maxDepthChange, const float &smoothSize)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const float &radius)
 {
     LOG("Covariance  sampling on " + std::to_string(cloud_in->size()) + "points ...");
 
@@ -206,7 +206,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::Poi
     cloud_out->points.resize(cloud_out->width * cloud_out->height);
 
     pcl::CovarianceSampling< pcl::PointNormal, pcl::PointNormal> covSampling;
-    pcl::PointCloud<pcl::PointNormal>::Ptr normals = getNormalPoints(cloud_in, maxDepthChange, smoothSize);
+    pcl::PointCloud<pcl::PointNormal>::Ptr normals = getNormalPoints(cloud_in, radius);
     pcl::PointCloud<pcl::PointNormal>::Ptr out (new pcl::PointCloud<pcl::PointNormal>);
     covSampling.setNumberOfSamples(normals->size() / order);
     covSampling.setKeepOrganized (true);

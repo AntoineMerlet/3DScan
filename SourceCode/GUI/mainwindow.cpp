@@ -30,6 +30,9 @@
 #include <pcl/filters/random_sample.h>
 #include <QCloseEvent>
 #include <pcl/features/normal_3d.h>
+#include <pcl/registration/correspondence_rejection_sample_consensus.h>
+
+
 
 using namespace std;
 
@@ -357,7 +360,6 @@ void MainWindow::on_actionExport_mesh_triggered()
 void MainWindow::on_filter_pb_clicked()
 {
 
-    LOG("Filter window opened");
     FW->show();
 }
 
@@ -418,7 +420,6 @@ void MainWindow::on_pc_list_clicked(const QModelIndex &)
 {
     UpdateSelectedRaw();
     updateDisplay();
-    LOG("Display updated");
 }
 
 /// @author: Marcio Rockenbach
@@ -467,9 +468,9 @@ void MainWindow::updatef() {
         if (FW->randomfilt.checked)
             *currentPC = *Core::randomSample(currentPC,100);
         if (FW->normalfilt.checked)
-            *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
+            *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, 0.05);
         if (FW->covarfilt.checked)
-            *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
+            *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,0.05);
         DB->replaceRawPC(currentPC,*it);
         pcViz->updatePointCloud(currentPC,PCList->item(*it)->text().toStdString());
     }
@@ -477,35 +478,19 @@ void MainWindow::updatef() {
 }
 
 void MainWindow::updater() {
-    LOG("P1 " + std::to_string(RW->paramsreg.maxdepth) +" P2"+ std::to_string(RW->paramsreg.smoothsize ));
-
     if (selectedRaw.size() > 1)
     {
         LOG("Processing " + std::to_string(selectedRaw.size()) +" point clouds");
 
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, target;
-
-        pcl::PointCloud<pcl::PointNormal>::Ptr srcN(new pcl::PointCloud<pcl::PointNormal>), targetN(new pcl::PointCloud<pcl::PointNormal>);
-        pcl::NormalEstimation<pcl::PointXYZRGB, pcl::PointNormal> norm_est;
-
-        norm_est.setRadiusSearch (0.05);
-
-
-
+        pcl::Correspondences corresp;
         for(int i = 1; i < selectedRaw.size(); i++)
         {
             src = DB->getRawPC(i-1);
             target = DB->getRawPC(i);
 
-
-            norm_est.setInputCloud (src);
-            norm_est.compute (*srcN);
-            norm_est.setInputCloud (target);
-            norm_est.compute (*targetN);
-
-
-            LOG("test");
-            //pcl::Correspondences corresp = Core::fullCorresp(srcN,targetN,1000,0.2,1,acos (90.0 * M_PI / 180.0),0.05);
+            LOG("Processing pair number " + std::to_string(i) );
+            pcl::Correspondences corresp = Core::fullCorresp(src,target,1000,0.05,1,acos (45.0 * M_PI / 180.0),0.05);
         }
     }
 }

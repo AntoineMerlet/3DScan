@@ -263,6 +263,9 @@
    <property name="text">
     <string>Import point clouds</string>
    </property>
+   <property name="shortcut">
+    <string>O</string>
+   </property>
   </action>
   <action name="actionImport_registered_PC">
    <property name="text">

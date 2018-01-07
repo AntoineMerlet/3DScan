@@ -1,0 +1,127 @@
+2018-01-07.14:35:46:	Program initilized
+2018-01-07.14:35:52:	Loaded D:/chair_alb0.ply
+2018-01-07.14:35:52:	Added 1 rawPC in DB. Size: 1
+2018-01-07.14:35:52:	Loaded D:/chair_alb1.ply
+2018-01-07.14:35:52:	Added 1 rawPC in DB. Size: 2
+2018-01-07.14:35:53:	Register window opened
+2018-01-07.14:35:54:	Display updated
+2018-01-07.14:35:55:	Display updated
+2018-01-07.14:35:57:	Register window opened
+2018-01-07.14:35:57:	Processing 2 point clouds
+2018-01-07.14:35:57:	Processing 33959 point clouds33762
+2018-01-07.14:35:57:	test
+2018-01-07.14:35:57:	Running full correspondence rejection on src: 33959 points, target: 33762 points
+2018-01-07.14:35:58:	Normals Done. Now 33959
+2018-01-07.14:35:59:	Normals Done. Now 33762
+2018-01-07.14:35:59:	Normals Done. Now 33959
+2018-01-07.14:36:00:	Normals Done. Now 33762
+2018-01-07.14:36:00:	Finding correspondences. src: 33959 points, target: 33762 points
+2018-01-07.14:36:00:	Found 2816 correspondences.
+2018-01-07.14:36:00:	 ------ Found 2816.000000 correspondences -------
+2018-01-07.14:36:00:	Ransac correspondence rejection on 2816 correspondences
+2018-01-07.14:36:00:	Kept 2805 correspondences (99.609375%)
+2018-01-07.14:36:00:	Total Kept 2805 correspondences (99.609375%)
+2018-01-07.14:37:06:	Display updated
+2018-01-07.14:37:07:	Display updated
+2018-01-07.14:37:19:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb2.ply
+2018-01-07.14:37:19:	Added 1 rawPC in DB. Size: 3
+2018-01-07.14:37:19:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb3.ply
+2018-01-07.14:37:19:	Added 1 rawPC in DB. Size: 4
+2018-01-07.14:37:19:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb4.ply
+2018-01-07.14:37:19:	Added 1 rawPC in DB. Size: 5
+2018-01-07.14:37:19:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb5.ply
+2018-01-07.14:37:19:	Added 1 rawPC in DB. Size: 6
+2018-01-07.14:37:19:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb6.ply
+2018-01-07.14:37:19:	Added 1 rawPC in DB. Size: 7
+2018-01-07.14:37:19:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb7.ply
+2018-01-07.14:37:19:	Added 1 rawPC in DB. Size: 8
+2018-01-07.14:37:19:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb8.ply
+2018-01-07.14:37:19:	Added 1 rawPC in DB. Size: 9
+2018-01-07.14:37:21:	Display updated
+2018-01-07.14:37:21:	Display updated
+2018-01-07.14:37:22:	Display updated
+2018-01-07.14:37:22:	Display updated
+2018-01-07.14:37:22:	Display updated
+2018-01-07.14:37:23:	Display updated
+2018-01-07.14:37:23:	Display updated
+2018-01-07.14:37:25:	Register window opened
+2018-01-07.14:37:27:	Processing 7 point clouds
+2018-01-07.14:37:27:	Processing 33959 point clouds33762
+2018-01-07.14:37:27:	test
+2018-01-07.14:37:27:	Running full correspondence rejection on src: 33959 points, target: 33762 points
+2018-01-07.14:37:27:	Normals Done. Now 33959
+2018-01-07.14:37:28:	Normals Done. Now 33762
+2018-01-07.14:37:29:	Normals Done. Now 33959
+2018-01-07.14:37:29:	Normals Done. Now 33762
+2018-01-07.14:37:29:	Finding correspondences. src: 33959 points, target: 33762 points
+2018-01-07.14:37:29:	Found 2816 correspondences.
+2018-01-07.14:37:29:	 ------ Found 2816.000000 correspondences -------
+2018-01-07.14:37:29:	Ransac correspondence rejection on 2816 correspondences
+2018-01-07.14:37:29:	Kept 2805 correspondences (99.609375%)
+2018-01-07.14:37:29:	Total Kept 2805 correspondences (99.609375%)
+2018-01-07.14:37:29:	Processing 33762 point clouds31143
+2018-01-07.14:37:29:	test
+2018-01-07.14:37:29:	Running full correspondence rejection on src: 33762 points, target: 31143 points
+2018-01-07.14:37:30:	Normals Done. Now 33762
+2018-01-07.14:37:30:	Normals Done. Now 31143
+2018-01-07.14:37:31:	Normals Done. Now 33762
+2018-01-07.14:37:31:	Normals Done. Now 31143
+2018-01-07.14:37:31:	Finding correspondences. src: 33762 points, target: 31143 points
+2018-01-07.14:37:32:	Found 2285 correspondences.
+2018-01-07.14:37:32:	 ------ Found 2285.000000 correspondences -------
+2018-01-07.14:37:32:	Ransac correspondence rejection on 2285 correspondences
+2018-01-07.14:37:32:	Kept 2279 correspondences (99.737419%)
+2018-01-07.14:37:32:	Total Kept 2279 correspondences (99.737419%)
+2018-01-07.14:37:32:	Processing 31143 point clouds25341
+2018-01-07.14:37:32:	test
+2018-01-07.14:37:32:	Running full correspondence rejection on src: 31143 points, target: 25341 points
+2018-01-07.14:37:32:	Normals Done. Now 31143
+2018-01-07.14:37:33:	Normals Done. Now 25341
+2018-01-07.14:37:33:	Normals Done. Now 31143
+2018-01-07.14:37:34:	Normals Done. Now 25341
+2018-01-07.14:37:34:	Finding correspondences. src: 31143 points, target: 25341 points
+2018-01-07.14:37:34:	Found 1351 correspondences.
+2018-01-07.14:37:34:	 ------ Found 1351.000000 correspondences -------
+2018-01-07.14:37:34:	Ransac correspondence rejection on 1351 correspondences
+2018-01-07.14:37:34:	Kept 1346 correspondences (99.629906%)
+2018-01-07.14:37:34:	Total Kept 1346 correspondences (99.629906%)
+2018-01-07.14:37:34:	Processing 25341 point clouds23125
+2018-01-07.14:37:34:	test
+2018-01-07.14:37:34:	Running full correspondence rejection on src: 25341 points, target: 23125 points
+2018-01-07.14:37:34:	Normals Done. Now 25341
+2018-01-07.14:37:35:	Normals Done. Now 23125
+2018-01-07.14:37:35:	Normals Done. Now 25341
+2018-01-07.14:37:35:	Normals Done. Now 23125
+2018-01-07.14:37:35:	Finding correspondences. src: 25341 points, target: 23125 points
+2018-01-07.14:37:36:	Found 2126 correspondences.
+2018-01-07.14:37:36:	 ------ Found 2126.000000 correspondences -------
+2018-01-07.14:37:36:	Ransac correspondence rejection on 2126 correspondences
+2018-01-07.14:37:36:	Kept 2123 correspondences (99.858894%)
+2018-01-07.14:37:36:	Total Kept 2123 correspondences (99.858894%)
+2018-01-07.14:37:36:	Processing 23125 point clouds30987
+2018-01-07.14:37:36:	test
+2018-01-07.14:37:36:	Running full correspondence rejection on src: 23125 points, target: 30987 points
+2018-01-07.14:37:36:	Normals Done. Now 23125
+2018-01-07.14:37:37:	Normals Done. Now 30987
+2018-01-07.14:37:37:	Normals Done. Now 23125
+2018-01-07.14:37:38:	Normals Done. Now 30987
+2018-01-07.14:37:38:	Finding correspondences. src: 23125 points, target: 30987 points
+2018-01-07.14:37:38:	Found 3430 correspondences.
+2018-01-07.14:37:38:	 ------ Found 3430.000000 correspondences -------
+2018-01-07.14:37:38:	Ransac correspondence rejection on 3430 correspondences
+2018-01-07.14:37:38:	Kept 3427 correspondences (99.912537%)
+2018-01-07.14:37:38:	Total Kept 3427 correspondences (99.912537%)
+2018-01-07.14:37:38:	Processing 30987 point clouds30146
+2018-01-07.14:37:38:	test
+2018-01-07.14:37:38:	Running full correspondence rejection on src: 30987 points, target: 30146 points
+2018-01-07.14:37:38:	Normals Done. Now 30987
+2018-01-07.14:37:39:	Normals Done. Now 30146
+2018-01-07.14:37:39:	Normals Done. Now 30987
+2018-01-07.14:37:40:	Normals Done. Now 30146
+2018-01-07.14:37:40:	Finding correspondences. src: 30987 points, target: 30146 points
+2018-01-07.14:37:40:	Found 4435 correspondences.
+2018-01-07.14:37:40:	 ------ Found 4435.000000 correspondences -------
+2018-01-07.14:37:40:	Ransac correspondence rejection on 4435 correspondences
+2018-01-07.14:37:40:	Kept 4435 correspondences (100.000000%)
+2018-01-07.14:37:40:	Total Kept 4435 correspondences (100.000000%)
+2018-01-07.14:38:18:	Main window closed

@@ -1,0 +1,29 @@
+2018-01-07.14:29:40:	Program initilized
+2018-01-07.14:29:46:	Loaded D:/chair_alb0.ply
+2018-01-07.14:29:46:	Added 1 rawPC in DB. Size: 1
+2018-01-07.14:29:46:	Loaded D:/chair_alb1.ply
+2018-01-07.14:29:46:	Added 1 rawPC in DB. Size: 2
+2018-01-07.14:29:46:	Display updated
+2018-01-07.14:29:47:	Display updated
+2018-01-07.14:29:48:	Register window opened
+2018-01-07.14:29:49:	Processing 2 point clouds
+2018-01-07.14:29:49:	Processing 0 point clouds0
+2018-01-07.14:29:49:	test
+2018-01-07.14:29:49:	Running full correspondence rejection on src: 33959 points, target: 33762 points
+2018-01-07.14:29:49:	Normals Done. Now 33959
+2018-01-07.14:29:50:	Normals Done. Now 33762
+2018-01-07.14:29:50:	Normals Done. Now 33959
+2018-01-07.14:29:51:	Normals Done. Now 33762
+2018-01-07.14:29:51:	Finding correspondences. src: 33959 points, target: 33762 points
+2018-01-07.14:29:51:	Found 2816 correspondences.
+2018-01-07.14:29:51:	 ------ Found 2816.000000 correspondences -------
+2018-01-07.14:29:51:	Median distance correspondence rejection on 2816 correspondences
+2018-01-07.14:29:51:	Kept 1409 correspondences (50.035511%)
+2018-01-07.14:29:51:	Surface Normal correspondence rejection on 1409 correspondences
+2018-01-07.14:29:51:	Kept 1193 correspondences (84.669975%)
+2018-01-07.14:29:51:	One to one correspondence rejection on 1193 correspondences
+2018-01-07.14:29:51:	Kept 1193 correspondences (100.000000%)
+2018-01-07.14:29:51:	Ransac correspondence rejection on 1193 correspondences
+2018-01-07.14:29:51:	Kept 1193 correspondences (100.000000%)
+2018-01-07.14:29:51:	Total Kept 1193 correspondences (42.365055%)
+2018-01-07.14:30:08:	Main window closed

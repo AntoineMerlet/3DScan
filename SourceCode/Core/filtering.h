@@ -13,8 +13,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFilter(pcl::PointCloud<pcl::Poin
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamplerRGB(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const float &, const float &);
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const int &, const float &);
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const int &);
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const unsigned int &, const unsigned int &, const float &, const float &);
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const unsigned int &, const float &, const float &);
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const unsigned int &, const unsigned int &, const float &);
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr, const unsigned int &, const float &);
 
 }
 
