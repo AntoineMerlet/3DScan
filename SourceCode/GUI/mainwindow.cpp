@@ -29,6 +29,7 @@
 #include <cmath>
 #include <pcl/filters/random_sample.h>
 #include <QCloseEvent>
+#include <pcl/features/normal_3d.h>
 
 using namespace std;
 
@@ -476,31 +477,35 @@ void MainWindow::updatef() {
 }
 
 void MainWindow::updater() {
+    LOG("P1 " + std::to_string(RW->paramsreg.maxdepth) +" P2"+ std::to_string(RW->paramsreg.smoothsize ));
+
     if (selectedRaw.size() > 1)
     {
         LOG("Processing " + std::to_string(selectedRaw.size()) +" point clouds");
 
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, target;
-        pcl::PointCloud<pcl::PointNormal>::Ptr srcN, targetN;
+
+        pcl::PointCloud<pcl::PointNormal>::Ptr srcN(new pcl::PointCloud<pcl::PointNormal>), targetN(new pcl::PointCloud<pcl::PointNormal>);
+        pcl::NormalEstimation<pcl::PointXYZRGB, pcl::PointNormal> norm_est;
+
+        norm_est.setRadiusSearch (0.05);
+
+
+
         for(int i = 1; i < selectedRaw.size(); i++)
         {
             src = DB->getRawPC(i-1);
             target = DB->getRawPC(i);
 
-            srcN = Core::getNormalPoints(src,0.01f,50);
-            targetN = Core::getNormalPoints(target,0.01f,50);
 
-            pcl::PointCloud<pcl::PointNormal>::Ptr srcNS(new pcl::PointCloud<pcl::PointNormal>), targetNS(new pcl::PointCloud<pcl::PointNormal>);
-            pcl::RandomSample<pcl::PointNormal> randsample;
-            randsample.setSample(srcN->size() / 100);
-            randsample.setInputCloud(srcN);
-            randsample.filter(*srcNS);
-            randsample.setInputCloud(targetN);
-            randsample.filter(*targetNS);
+            norm_est.setInputCloud (src);
+            norm_est.compute (*srcN);
+            norm_est.setInputCloud (target);
+            norm_est.compute (*targetN);
 
-            LOG("Processing " + std::to_string(srcNS->size()) +" point clouds"+ std::to_string(targetNS->size()) );
+
             LOG("test");
-            pcl::Correspondences corresp = Core::fullCorresp(srcNS,targetNS,1000,0.2,1,acos (90.0 * M_PI / 180.0),0.05);
+            //pcl::Correspondences corresp = Core::fullCorresp(srcN,targetN,1000,0.2,1,acos (90.0 * M_PI / 180.0),0.05);
         }
     }
 }
