@@ -1,0 +1,12 @@
+2018-01-07.05:42:51:	Program initilized
+2018-01-07.05:43:04:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.05:43:04:	Added 1 rawPC in DB. Size: 1
+2018-01-07.05:43:04:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.05:43:04:	Added 1 rawPC in DB. Size: 2
+2018-01-07.05:43:06:	Register window opened
+2018-01-07.05:43:07:	Processing 2 point clouds
+2018-01-07.05:43:07:	Processing 0.000000 point clouds548
+2018-01-07.05:43:07:	Normals Done. Now 307200
+2018-01-07.05:43:07:	Normals Done. Now 307200
+2018-01-07.05:43:07:	test
+2018-01-07.05:43:07:	Finding correspondences. src: 307200 points, target: 307200 points

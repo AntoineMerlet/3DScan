@@ -1,0 +1,24 @@
+2018-01-07.06:07:50:	Program initilized
+2018-01-07.06:08:04:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.06:08:04:	Added 1 rawPC in DB. Size: 1
+2018-01-07.06:08:04:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.06:08:04:	Added 1 rawPC in DB. Size: 2
+2018-01-07.06:08:08:	Filter window opened
+2018-01-07.06:08:11:	Processing 2 point clouds
+2018-01-07.06:08:11:	Random sampling on 307200points ...
+2018-01-07.06:08:11:	Downsampling Done. Now 30720 points
+2018-01-07.06:08:11:	Random sampling on 307200points ...
+2018-01-07.06:08:11:	Downsampling Done. Now 30720 points
+2018-01-07.06:08:16:	Filter window opened
+2018-01-07.06:08:17:	Processing 2 point clouds
+2018-01-07.06:08:17:	Random sampling on 307200points ...
+2018-01-07.06:08:17:	Downsampling Done. Now 30720 points
+2018-01-07.06:08:17:	Random sampling on 307200points ...
+2018-01-07.06:08:17:	Downsampling Done. Now 30720 points
+2018-01-07.06:08:21:	Register window opened
+2018-01-07.06:08:22:	Processing 2 point clouds
+2018-01-07.06:08:22:	Processing 30720 point clouds30720
+2018-01-07.06:08:22:	Normals Done. Now 307200
+2018-01-07.06:08:22:	Normals Done. Now 307200
+2018-01-07.06:08:22:	test
+2018-01-07.06:08:22:	Finding correspondences. src: 307200 points, target: 307200 points

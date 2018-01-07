@@ -1,0 +1,29 @@
+2018-01-07.02:50:11:	Program initilized
+2018-01-07.02:50:35:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.02:50:35:	Added 1 rawPC in DB. Size: 1
+2018-01-07.02:50:37:	Filter window opened
+2018-01-07.02:50:39:	Processing 1 point clouds
+2018-01-07.02:50:39:	Median filtering on 307200points ...
+2018-01-07.02:50:39:	Downsampling Done. Now 307200 points
+2018-01-07.02:51:09:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb2.ply
+2018-01-07.02:51:09:	Added 1 rawPC in DB. Size: 2
+2018-01-07.02:51:09:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb3.ply
+2018-01-07.02:51:09:	Added 1 rawPC in DB. Size: 3
+2018-01-07.02:51:09:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb4.ply
+2018-01-07.02:51:09:	Added 1 rawPC in DB. Size: 4
+2018-01-07.02:51:09:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb5.ply
+2018-01-07.02:51:09:	Added 1 rawPC in DB. Size: 5
+2018-01-07.02:51:09:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb6.ply
+2018-01-07.02:51:09:	Added 1 rawPC in DB. Size: 6
+2018-01-07.02:51:09:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb7.ply
+2018-01-07.02:51:09:	Added 1 rawPC in DB. Size: 7
+2018-01-07.02:51:09:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb8.ply
+2018-01-07.02:51:09:	Added 1 rawPC in DB. Size: 8
+2018-01-07.02:51:22:	Filter window opened
+2018-01-07.02:51:28:	Processing 1 point clouds
+2018-01-07.02:51:28:	Median filtering on 307200points ...
+2018-01-07.02:51:28:	Downsampling Done. Now 307200 points
+2018-01-07.02:52:12:	Filter window opened
+2018-01-07.02:52:16:	Processing 1 point clouds
+2018-01-07.02:52:16:	Median filtering on 307200points ...
+2018-01-07.02:52:17:	Downsampling Done. Now 307200 points

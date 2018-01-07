@@ -1,0 +1,11 @@
+2018-01-07.00:23:31:	Program initilized
+2018-01-07.00:23:48:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.00:23:48:	Added 1 rawPC in DB. Size: 1
+2018-01-07.00:23:48:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.00:23:48:	Added 1 rawPC in DB. Size: 2
+2018-01-07.00:23:48:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb2.ply
+2018-01-07.00:23:48:	Added 1 rawPC in DB. Size: 3
+2018-01-07.00:23:52:	Filter window opened
+2018-01-07.00:23:59:	3
+2018-01-07.00:23:59:	3
+2018-01-07.00:23:59:	3

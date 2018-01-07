@@ -1,0 +1,15 @@
+2018-01-07.02:34:23:	Program initilized
+2018-01-07.02:34:36:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.02:34:36:	Added 1 rawPC in DB. Size: 1
+2018-01-07.02:34:36:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.02:34:36:	Added 1 rawPC in DB. Size: 2
+2018-01-07.02:34:40:	Filter window opened
+2018-01-07.02:34:44:	Processing 1 point clouds
+2018-01-07.02:34:44:	Random sampling on 33959points ...
+2018-01-07.02:34:44:	Downsampling Done. Now 6791 points
+2018-01-07.02:34:59:	Filter window opened
+2018-01-07.02:35:04:	Processing 1 point clouds
+2018-01-07.02:35:04:	Random sampling on 33762points ...
+2018-01-07.02:35:04:	Downsampling Done. Now 6752 points
+2018-01-07.02:35:04:	Normal  sampling on 6752points ...
+2018-01-07.02:35:04:	Downsampling Done. Now 0 points

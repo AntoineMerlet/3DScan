@@ -2,6 +2,7 @@
 #include <pcl/filters/normal_space.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/features/integral_image_normal.h>
+#include "IO/logger.h"
 
 namespace Core {
 /// @author: Antoine Merlet
@@ -15,6 +16,9 @@ namespace Core {
 pcl::PointCloud<pcl::PointNormal>::Ptr normal2PointNormal(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, pcl::PointCloud<pcl::Normal>::Ptr normals)
 {
     pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals (new pcl::PointCloud<pcl::PointNormal>);
+    cloud_with_normals->width = 640;
+    cloud_with_normals->height = 480;
+    cloud_with_normals->points.resize(cloud_with_normals->width * cloud_with_normals->height);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_xyz(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::copyPointCloud(*cloud_xyz, *cloud_in);
     pcl::concatenateFields (*cloud_xyz, *normals, *cloud_with_normals);
@@ -35,15 +39,17 @@ pcl::PointCloud<pcl::Normal>::Ptr getNormals(pcl::PointCloud<pcl::PointXYZRGB>::
     pcl::IntegralImageNormalEstimation<pcl::PointXYZRGB, pcl::Normal>normest;
 
     pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
+    normals->width = 640;
+    normals->height = 480;
+    normals->points.resize(normals->width * normals->height);
 
-    normest.setNormalEstimationMethod(normest.AVERAGE_3D_GRADIENT);
+    normest.setNormalEstimationMethod(normest.AVERAGE_DEPTH_CHANGE);
     normest.setMaxDepthChangeFactor(maxDepthChange); // val = 0.05
     normest.setDepthDependentSmoothing(true);
     normest.setNormalSmoothingSize(smoothSize); // val = 10.0f
     normest.setInputCloud(cloud_in);
 
     normest.compute(*normals);
-
 
     return normals;
 }
@@ -60,17 +66,18 @@ pcl::PointCloud<pcl::Normal>::Ptr getNormals(pcl::PointCloud<pcl::PointXYZRGB>::
 pcl::PointCloud<pcl::PointNormal>::Ptr getNormalPoints(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &maxDepthChange, const float &smoothSize )
 {
     pcl::IntegralImageNormalEstimation<pcl::PointXYZRGB, pcl::Normal>normest;
-
     pcl::PointCloud<pcl::Normal>::Ptr normals (new pcl::PointCloud<pcl::Normal>);
+    cloud_in->width = 640;
+    cloud_in->height = 480;
+    cloud_in->points.resize(cloud_in->width * cloud_in->height);
 
     normest.setNormalEstimationMethod(normest.AVERAGE_DEPTH_CHANGE);
     normest.setMaxDepthChangeFactor(maxDepthChange);
-    normest.setDepthDependentSmoothing(true);
     normest.setNormalSmoothingSize(smoothSize);
     normest.setInputCloud(cloud_in);
-
     normest.compute(*normals);
 
+    LOG("Normals Done. Now " + std::to_string(normals->size()));
 
     return normal2PointNormal(cloud_in,normals);
 }

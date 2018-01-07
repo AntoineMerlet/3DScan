@@ -1,0 +1,33 @@
+2018-01-07.03:17:09:	Program initilized
+2018-01-07.03:17:21:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb2.ply
+2018-01-07.03:17:21:	Added 1 rawPC in DB. Size: 1
+2018-01-07.03:17:24:	Filter window opened
+2018-01-07.03:17:29:	Processing 1 point clouds
+2018-01-07.03:17:29:	Bilateral Filtering on 307200points ...
+2018-01-07.03:17:29:	TEST
+2018-01-07.03:17:30:	Downsampling Done. Now 307200 points 
+2018-01-07.03:17:34:	Filter window opened
+2018-01-07.03:17:36:	Processing 1 point clouds
+2018-01-07.03:17:36:	Bilateral Filtering on 307200points ...
+2018-01-07.03:17:36:	TEST
+2018-01-07.03:17:37:	Downsampling Done. Now 307200 points 
+2018-01-07.03:17:38:	Filter window opened
+2018-01-07.03:17:41:	Processing 1 point clouds
+2018-01-07.03:17:41:	Bilateral Filtering on 307200points ...
+2018-01-07.03:17:41:	TEST
+2018-01-07.03:17:41:	Downsampling Done. Now 307200 points 
+2018-01-07.03:17:43:	Filter window opened
+2018-01-07.03:17:46:	Processing 1 point clouds
+2018-01-07.03:17:46:	Bilateral Filtering on 307200points ...
+2018-01-07.03:17:46:	TEST
+2018-01-07.03:17:46:	Downsampling Done. Now 307200 points 
+2018-01-07.03:17:51:	Filter window opened
+2018-01-07.03:17:54:	Processing 1 point clouds
+2018-01-07.03:17:54:	Bilateral Filtering on 307200points ...
+2018-01-07.03:17:54:	TEST
+2018-01-07.03:17:54:	Downsampling Done. Now 307200 points 
+2018-01-07.03:17:58:	Filter window opened
+2018-01-07.03:18:10:	Processing 1 point clouds
+2018-01-07.03:18:10:	Bilateral Filtering on 307200points ...
+2018-01-07.03:18:10:	TEST
+2018-01-07.03:18:10:	Downsampling Done. Now 307200 points 
