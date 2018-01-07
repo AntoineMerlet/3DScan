@@ -138,6 +138,86 @@ I also worked on the loading and display of the point clouds in the main window 
 Since the input and output are closely related to interaction with the user, it was a good opportunity for me to also learn a lot about GUI design in Qt and how to transmit information between different modules of the software.\par
 
 \subsection{Gülnur}
+
+
+3D scanning has a bunch of problems that have been focusing on for a long time. These can be mentioned as follows: optically uncooperative materials, scanning in the presence of occlusions,insuring safety for delicate objects,scanning large objects at high resolution, accurate scanning in the field,handling large datasets,filling holes in dense polygon models  and so on. To handle these problems, theory of 3D scanning can be divided into two main parts. These are registration and filtering. Registration part is split into 4 steps to be understandable:
+\begin{enumerate}
+  \item \textbf{Selection}:The sampling of the input point clouds.
+ \item \textbf{Matching}:Estimating the correspondences between the points in the subsampled point clouds.
+  \item \textbf{Rejection}: Filtering the correspondences to reduce the number of outliers.
+\item \textbf{Alignment}: Assigning an error metric, and minimizing it to find the optimal transformation.
+\end{enumerate}
+For registration algorithm, it is chosen according to important parameters such as accuracy,computational complexity, convergence rate and number of data. Registration algorithms are two types: Feature based and ICP(Iterative closest point) based. These two different approach for registration methods are used for different priorities. The major advantages of using the feature-based methods over the ICP-based methods are: 
+\begin{enumerate}
+\item The registration process is independent of the initial
+alignment of PCs.
+\item  It is not necessary to search for all points in PCs to find the corresponding pairs. Thus, redundant or irrelevant points such as outliers, or points that do not have correspondences have no direct effect on the registration.
+\end{enumerate}
+The main disadvantages can be said like :
+\begin{enumerate}
+\item Point clouds  must have distinct features
+\item In general, the feature-based methods are slower than
+the ICP-based methods
+\end{enumerate}
+Last year projects focused on ICP aigorithms. First of all, we tried to find a good feature based method to implement by searching so many papers. Then, we decided to go back ICP algorithms because of time complexity of feature based algorithms and complexity of these algorithms. Difference between ICP and Feature based algorithms can be shown below figure. Note that, path 1 is for feature-based registration algorithms and path 2 is for ICP algorithms  [Marani , Reno et. a]
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{icpvsfe.png}
+	\caption{Difference between ICP and feature based aigorithms}
+
+\end{figure}
+
+
+Filtering part of our project comprise of 3 subtitles. These are noise removal,sampling and normal estimation.
+\begin{enumerate}
+  \item \textbf{Noise Removal}:It can be defined as  the process of removing noise from a signal. To remove noise we used as follows:
+\begin{enumerate}
+  \item \textbf{Median Filter}:It is one of the simplest filter for 3D point cloud registration. In our project median filter has two parameters. Window size is used for setting the window  size of the filter and maximum movement is  limitation of moving while filtering is processing.
+  \item \textbf{Bilateral Filter}: We implemented bilateral filter for smoothing depth between two point clouds. Bilateral filter has 2 parameters which are called Sigma S and Sigma R. Sigma S is used for tuning  size of the Gaussian bilateral filter window to use and Sigma R is used for tuning standard deviation.
+\end{enumerate}
+\item \textbf{Sampling}: Sampling techniques reduce time for registration point clouds.
+\begin{enumerate}
+  \item \textbf{Random Sampling}: We applly random sampling with uniform probability.This sampling is based off Algorithm A from the paper "Faster Methods for Random Sampling" by Jeffrey Scott Vitter. For random sampling, the only parameter is sampling ratio. Sampling ratio is used for making registration fast. In our project, it can be tuned between 2 and 10.
+  \item \textbf{Voxel Grid}: It is used to downsample the given point cloud. Its parameters are called x,y and z. These are used for size of the filter.
+ \item \textbf{Normal Space Sampling}: It selects randomly (uniform)  samples from each bin.  Transformation is locked better when normal space sampling is used. It has 2 parameters. These are sampling ratio and number of bins. 
+ \item \textbf{Covariance Sampling}: It selects the points such that the resulting cloud is as stable as possible for being registered (against a copy of itself) with ICP.
+\end{enumerate}
+ \item \textbf{Normal estimation}: We used normal estimation for estimating  local surface properties at each point in point cloud.
+\end{enumerate}
+
+Since we used Iterative closest point algorithm in our project, registration window first ask normal computation parameters. For normal computation, it is needed to be known maximum depth chance and smoothing size. Maximum depth chance is defined as  threshold for computing object borders based on depth changes. Smoothing size is the factor for tuning area for smoothing surfaces.  Correspondence represents a match between two entities (e.g., points, descriptors, etc). This is represesented via the indices of a source point and a target point, and the distance between them. In this project we focused on estimation and rejection of correspondence.
+\begin{enumerate}
+\item \textbf{Correspondence Estimation}: Correspondence estimation is the process of pairing points pi from the source point cloud P to their closest neighbors qjin the target cloud Q. This is a greedy approximation of finding the ideal correspondences (pi , qj) between the two clouds. [Holz et al.]. In this project, maximum distance is used for tuning correspondence estimation as parameter.
+\item \textbf{Correspondence Rejection}: Rejection is also another issue for 3D point cloud registration. To achieve our goal, we set the parameters as called median distance, 1 to 1, RANSAC surface normal and organized boundary. They are cascaded in previous sentence order. Briefly, we would like to explain aiming of these parameters. Median distance is used for tuning distance between two different correspondence and Ransac is used to neglect false correspondences icp algorithm.
+\item \textbf{Transform Estimators}
+For PCL, ICP is equal to SVD. For improvement of our project, we have added 4 different methods  for estimating as follow:
+\begin{enumerate}
+ \item \textbf{SVD}: Singular value decomposition method can be called as basic ICP in our project.
+\item \textbf{LLS P2S}: It is called linear least square point to surface. In each iteration of ICP, there is always point to plane error. Linear least square optimization is added for removing ICP point to surface approach handicap. [Low]
+ \item \textbf{LM P2P}:  Levenberg Marquardt point to point method. Basically, it can be said that Levenberg Marquardt algorithm is a version of non linear least square problems. Note that, previous option is capable of using linear least square optimization. This method is a combination of gradient descent method and the Gauss Newton method. [Gavin]
+ \item \textbf{LM P2S}: Levenberg Marquardt point to  surface method. Since Levenberg Marquardt is used for non linear optimizing problems,  for ICP point to surface method, it is good to use LM P2S for non linear objects.
+
+\end{enumerate}
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+In conclusion, I (Gulnur Ungan) chose above mentioned filters for our project. Previous year projects put just one filter. I would like to put more than one filter to see basically differences between filters and each of filter has different priority as its duty. This means that, MAGMA can show different views of filtering. I implemented filters in our project. For ICP, since its complexity, Antoine Merlet helped me for implementing all those 4 diffferent ICP types.
+
+
+
+
+
 \subsection{Mladen}
 One of the main reasons that made me tackle this particular part of the project was to actually get familiar with the concepts of creating the user interface and to get a better understanding of the way components are organized and connected. Also, the ability to design things in an appealing, yet simplistic and minimalistic way, came in handy when it came to this. Having studied the previous year’s designs of the interface, I found numerous flaws in both the aesthetics and the implementation. Therefore, the proposed GUI, even though it inherited some minor concepts from those, is for the most part built from scratch and developed in a way to suit the particular needs of our proposal.\par
 The principal concept around which the whole design process revolved is to make the interface as much user-friendly as possible, while keeping it powerful, in a sense that it is able to provide the user with the wide variety of methods and parameters choices. The way I implemented this was to create several independent windows, each serving a particular purpose, while maintaining the user not overwhelmed with the amount of content.\par
