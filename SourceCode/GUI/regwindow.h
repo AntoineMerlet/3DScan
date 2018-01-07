@@ -60,7 +60,7 @@ public:
 
     struct surface {
         bool checked = false;
-        int angle;
+        float angle;
     } surfacereg;
 
     struct boundary {
@@ -74,15 +74,20 @@ private slots:
     void on_lmp2s_toggled(bool checked);
     void on_median_cb_toggled(bool checked);
     void on_one2one_cb_toggled(bool checked);
-    void on_ransac_cb_toggled(bool checked);
     void on_surface_cb_toggled(bool checked);
     void on_reg_button_clicked();
+
+    void on_boundary_cb_toggled(bool checked);
+
+
+    void on_default_button_clicked();
 
 private:
     Ui::regwindow *ui;
 
 signals:
     void updatereg();
+    void updateregd();
 };
 
 #endif // REGWINDOW_H

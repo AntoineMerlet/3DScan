@@ -6,10 +6,12 @@
 #include <IO/kinect_v2.h>
 #include <IO/kinect2_grabber.h>
 #include <IO/logger.h>
+#include <IO/iotools.h>
 #include <QSlider>
 #include <QCloseEvent>
 #include <iostream>
 #include <sstream>
+#include <QDir>
 
 using namespace std;
 

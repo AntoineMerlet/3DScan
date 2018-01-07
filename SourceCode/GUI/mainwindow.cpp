@@ -26,11 +26,11 @@
 #include "Core/registration.h"
 #include <pcl/registration/correspondence_estimation.h>
 #include "Core/mathtools.h"
-#include <cmath>
 #include <pcl/filters/random_sample.h>
 #include <QCloseEvent>
 #include <pcl/features/normal_3d.h>
 #include <pcl/registration/correspondence_rejection_sample_consensus.h>
+#include <pcl/registration/icp.h>
 
 
 
@@ -59,6 +59,8 @@ MainWindow::MainWindow(QWidget *parent) :
     selectedRaw.clear();
     selectedRegistered.clear();
     selectedMeshed.clear();
+    scan = new scanwindow(this);
+    QObject::connect(scan,SIGNAL(send_unhide()),this,SLOT(unhidemain()));
     FW = new filterwindow(this);
     FW->close();
     RW = new regwindow(this);
@@ -68,16 +70,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pcScan->SetRenderWindow(pcViz->getRenderWindow() );
     pcViz->setupInteractor(ui->pcScan->GetInteractor(),ui->pcScan->GetRenderWindow());
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
-    pcViz->addCoordinateSystem(1.0);
-    pcViz->setCameraPosition(0.0, 0.0, 7, 0.0, 0.0, 0.0);
+    pcViz->addCoordinateSystem(1.0, -1.0, -0.5, -0.5);
+    pcViz->setShowFPS(false);
+    pcViz->setCameraPosition(0.0, 0.0, -5, 0.0, 0.0, 0.0);
 }
 
 MainWindow::~MainWindow()
 {
     delete DB;
-    delete scan;
     delete FW;
     delete RW;
+    delete scan;
     delete PCList;
     delete RPCList;
     delete MeshList;
@@ -92,12 +95,10 @@ MainWindow::~MainWindow()
 /// @brief Showing scan window on click
 void MainWindow::on_actionNew_scan_triggered()
 {
-    scan = new scanwindow(this);
-    QObject::connect(scan,SIGNAL(send_unhide()),this,SLOT(unhidemain()));
     scan->setWindowTitle("MAGMA Project - New Scan");
     scan->move(700,100);
-    scan->show();
     MainWindow::setVisible(false);
+    scan->show();
 }
 
 /// @author: Mladen Rakic / Marcio Rockenbach
@@ -359,11 +360,7 @@ void MainWindow::on_actionExport_mesh_triggered()
 /// @brief Showing filter window on click
 void MainWindow::on_filter_pb_clicked()
 {
-<<<<<<< HEAD
-
-=======
-    LOG("Filter window opened");
->>>>>>> bf11af50638f34710f44f450589c46cb228d7c83
+    FW->setWindowTitle("MAGMA Project - Filter");
     FW->show();
 }
 
@@ -375,8 +372,6 @@ void MainWindow::on_filter_pb_clicked()
 /// @brief Showing register window on click
 void MainWindow::on_mw_register_pc_pushbutton_clicked()
 {
-
-    LOG("Register window opened");
     RW->setWindowTitle("MAGMA Project - Register");
     RW->show();
 }
@@ -470,14 +465,11 @@ void MainWindow::updatef() {
         if (FW->medianfilt.checked)
             *currentPC = *Core::medianFilter(currentPC,FW->medianfilt.windowsize, FW->medianfilt.maxmovement);
         if (FW->randomfilt.checked)
-            *currentPC = *Core::randomSample(currentPC,100);
-<<<<<<< HEAD
+            *currentPC = *Core::randomSample(currentPC,FW->randomfilt.order);
         if (FW->normalfilt.checked)
-            *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, 0.05);
+            *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, FW->paramsfilt.radius);
         if (FW->covarfilt.checked)
-            *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,0.05);
-=======
->>>>>>> bf11af50638f34710f44f450589c46cb228d7c83
+            *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,FW->paramsfilt.radius);
         DB->replaceRawPC(currentPC,*it);
         pcViz->updatePointCloud(currentPC,PCList->item(*it)->text().toStdString());
     }
@@ -488,17 +480,103 @@ void MainWindow::updater() {
     if (selectedRaw.size() > 1)
     {
         LOG("Processing " + std::to_string(selectedRaw.size()) +" point clouds");
+        std::set<int>::iterator it = selectedRaw.begin();
 
-        pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, target;
+        pcl::PointCloud<pcl::PointXYZRGB>::Ptr src (new pcl::PointCloud<pcl::PointXYZRGB>), target(new pcl::PointCloud<pcl::PointXYZRGB>);
+        pcl::PointCloud<pcl::Normal>::Ptr srcN, targetN;
+        pcl::PointCloud<pcl::PointNormal>::Ptr srcPN, targetPN;
         pcl::Correspondences corresp;
-        for(int i = 1; i < selectedRaw.size(); i++)
-        {
-            src = DB->getRawPC(i-1);
-            target = DB->getRawPC(i);
+        Eigen::Matrix4d transform;
+        pcl::PointCloud<pcl::PointXYZRGB>::Ptr finalPC (new pcl::PointCloud<pcl::PointXYZRGB>), output (new pcl::PointCloud<pcl::PointXYZRGB>);
 
+        double mser = 0;
+        double msea = 0;
+        int simi = 0;
+        if (RW->similarreg.checked)
+            simi = RW->similarreg.iter;
+        if (RW->absolutereg.checked)
+            msea = RW->absolutereg.mse;
+        if (RW->relativereg.checked)
+            mser = RW->relativereg.mse;
+
+        *src = *DB->getRawPC(*it);
+        it++;
+        int i = 1;
+        for(it; it != selectedRaw.end(); it++)
+        {
             LOG("Processing pair number " + std::to_string(i) );
-            pcl::Correspondences corresp = Core::fullCorresp(src,target,1000,0.05,1,acos (45.0 * M_PI / 180.0),0.05);
+            i++;
+            *target = *DB->getRawPC(*it);
+
+            srcN = Core::getNormals(src,RW->paramsreg.radius);
+            targetN = Core::getNormals(target,RW->paramsreg.radius);
+            srcPN = Core::getNormalPoints(src,RW->paramsreg.radius);
+            targetPN = Core::getNormalPoints(target,RW->paramsreg.radius);
+            corresp = Core::correspKD(src,target,srcN,targetN);
+            int tmp = corresp.size();
+            LOG(" ---- Running correspondence rejection on src: " + std::to_string(tmp) + " correspondences.");
+
+            if (RW->mediandistreg.checked)
+                corresp = Core::correspRmeddist(src,target,corresp,RW->mediandistreg.medfact);
+            if (RW->surfacereg.checked)
+                corresp = Core::correspRsurfacenorm(srcPN,targetPN,corresp,RW->surfacereg.angle);
+            if (RW->boundaryreg.checked)
+                corresp = Core::correspRboudary(srcPN,targetPN,corresp);
+            if (RW->one2onereg.checked)
+                corresp = Core::correspR121(corresp);
+            if (RW->ransacreg.checked)
+                corresp = Core::correspRransac(src,target,corresp,RW->ransacreg.iter,RW->ransacreg.threshold);
+            LOG(" ------ Total Kept " + std::to_string(corresp.size()) + " correspondences (" + std::to_string( (corresp.size() / (float)tmp) * 100) + "%)");
+
+            LOG(" ------ Running ICP");
+
+            transform = Core::pairRegister(src, target, corresp, RW->methodreg.type, RW->methodreg.maxiter, simi, mser ,msea);
+            pcl::transformPointCloud(*src,*output,transform);
+            *src = *output;
+            *src += *DB->getRawPC(*it);
         }
+        DB->addRegisteredPC(src);
+        QStringList list;
+        list.append("Registered");
+        updateRegPCList(list);
+    }
+}
+
+void MainWindow::updated()
+{
+    if (selectedRaw.size() > 1)
+    {
+        LOG("Processing " + std::to_string(selectedRaw.size()) +" point clouds");
+        std::set<int>::iterator it = selectedRaw.begin();
+        pcl::PointCloud<pcl::PointXYZRGB>::Ptr src (new pcl::PointCloud<pcl::PointXYZRGB>), target(new pcl::PointCloud<pcl::PointXYZRGB>);
+        pcl::PointCloud<pcl::PointXYZRGB>::Ptr finalPC (new pcl::PointCloud<pcl::PointXYZRGB>), output (new pcl::PointCloud<pcl::PointXYZRGB>);
+        *src = *DB->getRawPC(*it);
+        it++;
+        int i = 1;
+        for(it; it != selectedRaw.end(); it++)
+        {
+            LOG("Processing pair number " + std::to_string(i) );
+            i++;
+            *target = *DB->getRawPC(*it);
+            LOG(" ------ Running ICP");
+
+            pcl::IterativeClosestPoint<pcl::PointXYZRGB, pcl::PointXYZRGB> icp;
+            icp.setInputCloud (src);
+            icp.setInputTarget (target);
+            icp.setMaxCorrespondenceDistance (0.50);
+            icp.setMaximumIterations (100);
+            icp.setTransformationEpsilon (1e-10);
+            icp.align (*output);
+            *src = *output;
+            *src += *DB->getRawPC(*it);
+        }
+        LOG(" ------ ICP finished");
+        DB->addRegisteredPC(src);
+        QStringList list;
+        QString str;
+        str.setNum((rand() % 100));
+        list.append("Registered" +str);
+        updateRegPCList(list);
     }
 }
 

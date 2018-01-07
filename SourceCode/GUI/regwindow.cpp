@@ -2,6 +2,7 @@
 #include "ui_regwindow.h"
 #include "IO/logger.h"
 #include <GUI/mainwindow.h>
+#include <cmath>
 
 regwindow::regwindow(QWidget *parent) :
     QDialog(parent),
@@ -11,6 +12,7 @@ regwindow::regwindow(QWidget *parent) :
     ui->setupUi(this);
 
     QObject::connect(this, SIGNAL(updatereg()), parent, SLOT(updater()));
+    QObject::connect(this, SIGNAL(updateregd()), parent, SLOT(updated()));
 
 
 }
@@ -60,7 +62,8 @@ void regwindow::on_lmp2s_toggled(bool checked)
 void regwindow::on_median_cb_toggled(bool checked)
 {
     if (checked == true){
-        ui->one2one_cb->setEnabled(true);
+        ui->surface_cb->setEnabled(true);
+        ui->angle_sb->setEnabled(true);
     }
 
     if (checked == false){
@@ -75,7 +78,43 @@ void regwindow::on_median_cb_toggled(bool checked)
 
         ui->ransacit_sb->setEnabled(false);
         ui->ransacth_sb->setEnabled(false);
-        ui->angle_sb->setEnabled(false);
+    }
+}
+
+void regwindow::on_surface_cb_toggled(bool checked)
+{
+    if (checked == true){
+        ui->boundary_cb->setEnabled(true);
+    }
+
+    if (checked == false){
+        ui->one2one_cb->setChecked(false);
+        ui->one2one_cb->setEnabled(false);
+        ui->ransac_cb->setChecked(false);
+        ui->ransac_cb->setEnabled(false);
+        ui->boundary_cb->setChecked(false);
+        ui->boundary_cb->setEnabled(false);
+
+        ui->ransacit_sb->setEnabled(false);
+        ui->ransacth_sb->setEnabled(false);
+    }
+}
+
+
+void regwindow::on_boundary_cb_toggled(bool checked)
+{
+    if (checked == true){
+        ui->one2one_cb->setEnabled(true);
+    }
+
+    if (checked == false){
+        ui->ransac_cb->setChecked(false);
+        ui->ransac_cb->setEnabled(false);
+        ui->one2one_cb->setChecked(false);
+        ui->one2one_cb->setEnabled(false);
+
+        ui->ransacit_sb->setEnabled(false);
+        ui->ransacth_sb->setEnabled(false);
     }
 }
 
@@ -90,46 +129,14 @@ void regwindow::on_one2one_cb_toggled(bool checked)
     if (checked == false){
         ui->ransac_cb->setChecked(false);
         ui->ransac_cb->setEnabled(false);
-        ui->surface_cb->setChecked(false);
-        ui->surface_cb->setEnabled(false);
-        ui->boundary_cb->setChecked(false);
-        ui->boundary_cb->setEnabled(false);
 
         ui->ransacit_sb->setEnabled(false);
         ui->ransacth_sb->setEnabled(false);
-        ui->angle_sb->setEnabled(false);
     }
 }
 
-void regwindow::on_ransac_cb_toggled(bool checked)
-{
-    if (checked == true){
-        ui->surface_cb->setEnabled(true);
-        ui->angle_sb->setEnabled(true);
-    }
 
-    if (checked == false){
-        ui->surface_cb->setChecked(false);
-        ui->surface_cb->setEnabled(false);
-        ui->boundary_cb->setChecked(false);
-        ui->boundary_cb->setEnabled(false);
 
-        ui->angle_sb->setEnabled(false);
-    }
-
-}
-
-void regwindow::on_surface_cb_toggled(bool checked)
-{
-    if (checked == true){
-        ui->boundary_cb->setEnabled(true);
-    }
-
-    if (checked == false){
-        ui->boundary_cb->setChecked(false);
-        ui->boundary_cb->setEnabled(false);
-    }
-}
 
 /// @author: Mladen Rakic
 /// @date: 06-01-2018
@@ -159,7 +166,7 @@ void regwindow::on_reg_button_clicked()
 
     if (ui->surface_cb->checkState()) {
         surfacereg.checked = true;
-        surfacereg.angle = ui->angle_sb->value();
+        surfacereg.angle = acos(ui->angle_sb->value() *M_PI / 180.0);
     }
 
     if (ui->boundary_cb->checkState()) {
@@ -183,4 +190,13 @@ void regwindow::on_reg_button_clicked()
 
     this->close();
     emit updatereg();
+}
+
+
+
+void regwindow::on_default_button_clicked()
+{
+
+    this->close();
+    emit updateregd();
 }

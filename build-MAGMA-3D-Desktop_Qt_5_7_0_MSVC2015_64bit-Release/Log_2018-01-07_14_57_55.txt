@@ -1,0 +1,10 @@
+2018-01-07.14:57:56:	Program initilized
+2018-01-07.14:58:05:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/004.ply
+2018-01-07.14:58:05:	Added 1 rawPC in DB. Size: 1
+2018-01-07.14:58:06:	Display updated
+2018-01-07.14:58:10:	Display updated
+2018-01-07.14:58:18:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/006.ply
+2018-01-07.14:58:18:	Added 1 rawPC in DB. Size: 2
+2018-01-07.14:58:19:	Display updated
+2018-01-07.14:58:19:	Display updated
+2018-01-07.14:58:37:	Main window closed

@@ -29,15 +29,17 @@ namespace Core {
 /// @param target: target point cloud
 /// @param maxDist: maximum allowed distance between correspondences
 /// @return the found correspondences (index of query point, index of target point, distance)
-pcl::Correspondences correspKD(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, pcl::PointCloud<pcl::Normal>::Ptr srcN, pcl::PointCloud<pcl::Normal>::Ptr targetN, const float &radius)
+pcl::Correspondences correspKD(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, pcl::PointCloud<pcl::Normal>::Ptr srcN, pcl::PointCloud<pcl::Normal>::Ptr targetN)
 {
     LOG("Finding correspondences. src: " + std::to_string(src->size()) + " points, target: " + std::to_string(target->size()) + " points");
     pcl::registration::CorrespondenceEstimationBackProjection<pcl::PointXYZRGB, pcl::PointXYZRGB, pcl::Normal> corr_est;
+    pcl::Correspondences corresp;
+
     corr_est.setInputSource(src);
     corr_est.setSourceNormals(srcN);
     corr_est.setInputTarget(target);
     corr_est.setTargetNormals(targetN);
-    pcl::Correspondences corresp;
+
     corr_est.determineReciprocalCorrespondences(corresp);
     LOG("Found " + std::to_string(corresp.size()) + " correspondences.");
     return corresp;
@@ -232,116 +234,8 @@ pcl::Correspondences correspRboudary(pcl::PointCloud<pcl::PointNormal>::Ptr src,
     return correspRes;
 }
 
-/// @author: Antoine Merlet
-/// @date: 06-01-2018
-/// @version 1.0
-///
-/// @brief Run a set of rejections to obtain correspondences
-/// @param src: The source Point Cloud
-/// @param target: the target point cloud
-/// @param iter: the number of iterations for ransac rejection
-/// @param maxDist: the maximum between two points to be said corresponding
-/// @param medFact: the median factor for median distance rejection
-/// @param thres: the threshold and value for rejaction by surface norme
-/// @param in_thres: the inlier threshold value for ransac rejaction
-/// @return the resultant set of correspondences
-pcl::Correspondences fullCorresp(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, const int &iter, const float &radius, const float &medFact, const float &thres, const float &in_thres)
-{
-    LOG("Running full correspondence rejection on src: " + std::to_string(src->size()) + " points, target: " + std::to_string(target->size()) + " points");
 
-    pcl::PointCloud<pcl::PointNormal>::Ptr srcPN (new pcl::PointCloud<pcl::PointNormal>), targetPN (new pcl::PointCloud<pcl::PointNormal>);
-    pcl::PointCloud<pcl::Normal>::Ptr srcN (new pcl::PointCloud<pcl::Normal>), targetN (new pcl::PointCloud<pcl::Normal>);
-    srcN = getNormals(src,radius);
-    targetN = getNormals(target,radius);
-    srcPN = getNormalPoints(src,radius);
-    targetPN = getNormalPoints(target,radius);
 
-    pcl::Correspondences corresp;
-    corresp = correspKD(src,target,srcN,targetN,radius);
-    float tmp = corresp.size();
-    LOG(" ------ Found " + std::to_string(tmp) + " correspondences -------");
-
-    corresp = correspRmeddist(src, target,corresp, medFact); // val = 2
-    corresp = correspRsurfacenorm(srcPN,targetPN,corresp,thres); // val  = (acos (deg2rad (30.0))
-    corresp = correspRboudary(srcPN,targetPN,corresp);
-    corresp = correspR121(corresp);
-    corresp = correspRransac(src,target,corresp,iter,in_thres); // val = 5cm
-
-    LOG("Total Kept " + std::to_string(corresp.size()) + " correspondences (" + std::to_string( (corresp.size() / tmp) * 100) + "%)");
-
-    return corresp;
-}
-
-/// @author: Antoine Merlet
-/// @date: 06-01-2018
-/// @version 1.0
-///
-/// @brief pairwise registration of all point clouds with transform propagation (but not incremental, i.e not point cloud addition)
-/// @param [out] vec: the vector of Point Cloud to register. the point clouds are modified to their registered version
-/// @param icp mode: 1: LLS point to plane, 2: SVD, 3: LM point to point, 4: LM point to plane
-/// @param maxDepthChange: the maximum depth change for normal calculation
-/// @param smoothSize: the smoothing value for normal calculation
-/// @param iter: the number of iterations for ransac rejection
-/// @param maxDist: the maximum between two points to be said corresponding
-/// @param medFact: the median factor for median distance rejection
-/// @param thres: the threshold and value for rejaction by surface norme
-/// @param in_thres: the inlier threshold value for ransac rejaction
-void fullRegister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &radius, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
-{
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it = vec.rbegin();
-    pcl::PointCloud<pcl::PointNormal>::Ptr srcN (new pcl::PointCloud<pcl::PointNormal>), targetN (new pcl::PointCloud<pcl::PointNormal>);
-    Eigen::Matrix4d transform;
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr output (new pcl::PointCloud<pcl::PointXYZRGB>);
-
-    for (it; it != vec.rend() -1; ++it)
-    {
-        srcN = getNormalPoints(*it, radius);
-        targetN = getNormalPoints(*(it + 1), radius);
-        transform = pairRegister(srcN,targetN,icpMode,iter,maxDist,medFac,thres,in_thres);
-        std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it_propagation = vec.rbegin();
-        for (it_propagation; it_propagation != it + 1; ++it_propagation)
-        {
-            pcl::transformPointCloud(**it_propagation,*output,transform);
-            **it_propagation = *output;
-        }
-    }
-}
-
-/// @author: Antoine Merlet
-/// @date: 06-01-2018
-/// @version 1.0
-///
-/// @brief pairwise incremental registration of all point clouds
-/// @param vec The vector of Point Cloud to register
-/// @param icp mode: 1: LLS point to plane, 2: SVD, 3: LM point to point, 4: LM point to plane
-/// @param maxDepthChange: the maximum depth change for normal calculation
-/// @param smoothSize: the smoothing value for normal calculation
-/// @param iter: the number of iterations for ransac rejection
-/// @param maxDist: the maximum between two points to be said corresponding
-/// @param medFact: the median factor for median distance rejection
-/// @param thres: the threshold and value for rejaction by surface norme
-/// @param in_thres: the inlier threshold value for ransac rejaction
-/// @return the total final point cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr fullRegisterIncremental(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &radius, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
-{
-    std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it = vec.rbegin();
-    pcl::PointCloud<pcl::PointNormal>::Ptr srcN (new pcl::PointCloud<pcl::PointNormal>), targetN (new pcl::PointCloud<pcl::PointNormal>);
-    Eigen::Matrix4d transform;
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr finalPC (new pcl::PointCloud<pcl::PointXYZRGB>), output (new pcl::PointCloud<pcl::PointXYZRGB>);
-    *finalPC = **it;
-    for (it; it != vec.rend() -1; ++it)
-    {
-        srcN = getNormalPoints(finalPC, radius);
-        targetN = getNormalPoints(*(it + 1), radius);
-        transform = pairRegister(srcN,targetN,icpMode,iter,maxDist,medFac,thres,in_thres);
-        pcl::transformPointCloud(*finalPC,*output,transform);
-        *finalPC = *output;
-        *finalPC += **(it + 1);
-        pcl::transformPointCloud(**it,*output,transform);
-        **it = *output;
-    }
-    return finalPC;
-}
 
 
 /// @author: Antoine Merlet
@@ -358,25 +252,54 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr fullRegisterIncremental(std::vector<pcl::
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
-Eigen::Matrix4d pairRegister(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &icpMode, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
+Eigen::Matrix4d pairRegister(pcl::PointCloud<pcl::PointXYZRGB>::Ptr srcPN, pcl::PointCloud<pcl::PointXYZRGB>::Ptr targetPN, pcl::Correspondences corresp, const int &icpMode, const int &maxiter, const int &iter_simi, const float &mser, const float &msea)
 {
-    Eigen::Matrix4d final_transform;
+    boost::shared_ptr< pcl::registration::TransformationEstimation< pcl::PointXYZRGB, pcl::PointXYZRGB, double > > estPtr;
     switch(icpMode) {
     case 1:
-        final_transform = icpLLSp2s(src,target,iter,maxDist,medFac,thres,in_thres);
+        //estPtr.reset ( new pcl::registration::TransformationEstimationPointToPlaneLLS < pcl::PointXYZRGB, pcl::PointXYZRGB, double  > () );
+        LOG(" ---- Running PointToPlaneLLS");
         break;
     case 2:
-        final_transform = icpSVD(src,target,iter,maxDist,medFac,thres,in_thres);
+        estPtr.reset ( new pcl::registration::TransformationEstimationSVD < pcl::PointXYZRGB, pcl::PointXYZRGB, double  > () );
+        LOG(" ---- Running SVD");
         break;
     case 3:
-        final_transform = icpLMp2p(src,target,iter,maxDist,medFac,thres,in_thres);
+        estPtr.reset ( new pcl::registration::TransformationEstimationLM < pcl::PointXYZRGB, pcl::PointXYZRGB, double  > () );
+        LOG(" ---- Running PointToPointLM");
         break;
     case 4:
-        final_transform = icpLMp2s(src,target,iter,maxDist,medFac,thres,in_thres);
+        //estPtr.reset ( new pcl::registration::TransformationEstimationPointToPlane < pcl::PointXYZRGB, pcl::PointXYZRGB , double > () );
+        LOG(" ---- Running PointToPlaneLM");
         break;
     default:
         break;
     }
+
+    Eigen::Matrix4d final_transform (Eigen::Matrix4d::Identity()), transform (Eigen::Matrix4d::Identity ());
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr output (new pcl::PointCloud<pcl::PointXYZRGB>);
+
+    int iterations = 0;
+    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, corresp);
+    converged.setMaximumIterations(maxiter);
+
+    if (iter_simi != 0)
+        converged.setMaximumIterationsSimilarTransforms(iter_simi);
+    if (mser != 0)
+        converged.setRelativeMSE(mser);
+    if (iter_simi != 0)
+        converged.setAbsoluteMSE(msea);
+
+    do{
+
+        pcl::transformPointCloud(*srcPN, *output, final_transform);
+        estPtr->estimateRigidTransformation(*output,*targetPN,transform);
+        std::cout << transform << endl<< endl<< endl;
+        final_transform = transform * final_transform;
+        ++iterations;
+
+    }while(iterations < maxiter);
+
     return final_transform;
 }
 
@@ -393,19 +316,22 @@ Eigen::Matrix4d pairRegister(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::Po
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
-Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &radius, const float &medFac, const float &thres, const float &in_thres)
-
+Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr srcPN, pcl::PointCloud<pcl::PointNormal>::Ptr targetPN, pcl::Correspondences corresp, const int &maxiter, const int &iter_simi, const float &mser, const float &msea)
 {
     pcl::registration::TransformationEstimationPointToPlaneLLS< pcl::PointNormal, pcl::PointNormal, double > teLLS;
     Eigen::Matrix4d final_transform (Eigen::Matrix4d::Identity()), transform (Eigen::Matrix4d::Identity ());
-    pcl::CorrespondencesPtr corresp (new pcl::Correspondences);
     pcl::PointCloud<pcl::PointNormal>::Ptr output (new pcl::PointCloud<pcl::PointNormal>);
-    *output = *src;
+    *output = *srcPN;
 
     int iterations = 0;
-    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, *corresp);
-    converged.setMaximumIterations(iter);
-    converged.setMaximumIterationsSimilarTransforms(5);
+    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, corresp);
+    converged.setMaximumIterations(maxiter);
+    if (iter_simi != 0)
+        converged.setMaximumIterationsSimilarTransforms(iter_simi);
+    if (mser != 0)
+        converged.setRelativeMSE(mser);
+    if (iter_simi != 0)
+        converged.setAbsoluteMSE(msea);
 
     do{
         //        *corresp = fullCorresp(output, target, iter, radius, medFac, thres, in_thres);
@@ -431,27 +357,33 @@ Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::Point
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
-Eigen::Matrix4d icpSVD(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
-
+Eigen::Matrix4d icpSVD(pcl::PointCloud<pcl::PointNormal>::Ptr srcPN, pcl::PointCloud<pcl::PointNormal>::Ptr targetPN, pcl::Correspondences corresp, const int &maxiter, const int &iter_simi, const float &mser, const float &msea)
 {
-    pcl::registration::TransformationEstimationSVD< pcl::PointNormal, pcl::PointNormal, double > teSVD;
-    Eigen::Matrix4d final_transform (Eigen::Matrix4d::Identity()), transform (Eigen::Matrix4d::Identity ());
-    pcl::CorrespondencesPtr corresp (new pcl::Correspondences);
+    pcl::registration::TransformationEstimationSVD< pcl::PointNormal, pcl::PointNormal, double> teSVD;
+    pcl::registration::TransformationEstimationSVD<pcl::PointNormal,pcl::PointNormal, double>::Matrix4 transform;
+    Eigen::Matrix4d final_transform (Eigen::Matrix4d::Identity());
     pcl::PointCloud<pcl::PointNormal>::Ptr output (new pcl::PointCloud<pcl::PointNormal>);
-    *output = *src;
-
     int iterations = 0;
-    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, *corresp);
-    converged.setMaximumIterations(iter);
-    converged.setMaximumIterationsSimilarTransforms(5);
+    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, corresp);
+    converged.setMaximumIterations(maxiter);
+    if (iter_simi != 0)
+        converged.setMaximumIterationsSimilarTransforms(iter_simi);
+    if (mser != 0)
+        converged.setRelativeMSE(mser);
+    if (iter_simi != 0)
+        converged.setAbsoluteMSE(msea);
+    LOG(" ---- Running SVD ICP on src: " + std::to_string(srcPN->size()));
 
     do{
-        //        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
-        //        teSVD.estimateRigidTransformation(*output,*target,*corresp,transform);
-        //        final_transform = transform * final_transform;
-        //        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
-        //        ++iterations;
-    }while(!converged);
+        pcl::transformPointCloudWithNormals(*srcPN, *output, final_transform);
+
+        teSVD.estimateRigidTransformation(*output,*targetPN,corresp,transform);
+        std::cout << transform << endl;
+        final_transform = transform * final_transform;
+        ++iterations;
+    }while(!converged.hasConverged());
+
+    std::cout << iterations << endl;
     return final_transform;
 }
 
@@ -469,19 +401,22 @@ Eigen::Matrix4d icpSVD(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointClo
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
-Eigen::Matrix4d icpLMp2p(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
-
+Eigen::Matrix4d icpLMp2p(pcl::PointCloud<pcl::PointNormal>::Ptr srcPN, pcl::PointCloud<pcl::PointNormal>::Ptr targetPN, pcl::Correspondences corresp, const int &maxiter, const int &iter_simi, const float &mser, const float &msea)
 {
     pcl::registration::TransformationEstimationLM< pcl::PointNormal, pcl::PointNormal, double > teLM;
     Eigen::Matrix4d final_transform (Eigen::Matrix4d::Identity()), transform (Eigen::Matrix4d::Identity ());
-    pcl::CorrespondencesPtr corresp (new pcl::Correspondences);
     pcl::PointCloud<pcl::PointNormal>::Ptr output (new pcl::PointCloud<pcl::PointNormal>);
-    *output = *src;
+    *output = *srcPN;
 
     int iterations = 0;
-    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, *corresp);
-    converged.setMaximumIterations(iter);
-    converged.setMaximumIterationsSimilarTransforms(5);
+    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, corresp);
+    converged.setMaximumIterations(maxiter);
+    if (iter_simi != 0)
+        converged.setMaximumIterationsSimilarTransforms(iter_simi);
+    if (mser != 0)
+        converged.setRelativeMSE(mser);
+    if (iter_simi != 0)
+        converged.setAbsoluteMSE(msea);
 
     do{
         //        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
@@ -507,18 +442,22 @@ Eigen::Matrix4d icpLMp2p(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointC
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
-Eigen::Matrix4d icpLMp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
+Eigen::Matrix4d icpLMp2s(pcl::PointCloud<pcl::PointNormal>::Ptr srcPN, pcl::PointCloud<pcl::PointNormal>::Ptr targetPN, pcl::Correspondences corresp, const int &maxiter, const int &iter_simi, const float &mser, const float &msea)
 {
     pcl::registration::TransformationEstimationPointToPlane< pcl::PointNormal, pcl::PointNormal, double > teLM;
     Eigen::Matrix4d final_transform (Eigen::Matrix4d::Identity()), transform (Eigen::Matrix4d::Identity ());
-    pcl::CorrespondencesPtr corresp (new pcl::Correspondences);
     pcl::PointCloud<pcl::PointNormal>::Ptr output (new pcl::PointCloud<pcl::PointNormal>);
-    *output = *src;
+    *output = *srcPN;
 
     int iterations = 0;
-    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, *corresp);
-    converged.setMaximumIterations(iter);
-    converged.setMaximumIterationsSimilarTransforms(5);
+    pcl::registration::DefaultConvergenceCriteria<double> converged(iterations, transform, corresp);
+    converged.setMaximumIterations(maxiter);
+    if (iter_simi != 0)
+        converged.setMaximumIterationsSimilarTransforms(iter_simi);
+    if (mser != 0)
+        converged.setRelativeMSE(mser);
+    if (iter_simi != 0)
+        converged.setAbsoluteMSE(msea);
 
     do{
         //        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);

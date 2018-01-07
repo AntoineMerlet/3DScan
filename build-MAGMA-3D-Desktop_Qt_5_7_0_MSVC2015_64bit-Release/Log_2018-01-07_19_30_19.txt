@@ -1,0 +1,15 @@
+2018-01-07.19:30:21:	Program initilized
+2018-01-07.19:30:29:	Loaded D:/chair_alb0.ply
+2018-01-07.19:30:29:	Added 1 rawPC in DB. Size: 1
+2018-01-07.19:30:29:	Loaded D:/chair_alb1.ply
+2018-01-07.19:30:29:	Added 1 rawPC in DB. Size: 2
+2018-01-07.19:30:34:	Processing 2 point clouds
+2018-01-07.19:30:34:	Processing pair number 1
+2018-01-07.19:30:36:	Finding correspondences. src: 33959 points, target: 33762 points
+2018-01-07.19:30:36:	Found 2816 correspondences.
+2018-01-07.19:30:36:	 ---- Running correspondence rejection on src: 2816 correspondences.
+2018-01-07.19:30:36:	 ------ Total Kept 2816 correspondences (100.000000%)
+2018-01-07.19:30:36:	 ------ Running ICP
+2018-01-07.19:30:37:	Added 1 registeredPC in DB. Size: 1
+2018-01-07.19:30:39:	Display updated
+2018-01-07.19:30:47:	Main window closed

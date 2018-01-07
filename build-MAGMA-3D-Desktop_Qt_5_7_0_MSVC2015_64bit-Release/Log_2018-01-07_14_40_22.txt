@@ -1,0 +1,2 @@
+2018-01-07.14:40:23:	Program initilized
+2018-01-07.14:41:23:	Live scan started

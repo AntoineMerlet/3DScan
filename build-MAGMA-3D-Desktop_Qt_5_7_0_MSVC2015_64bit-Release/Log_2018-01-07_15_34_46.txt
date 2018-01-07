@@ -1,0 +1,50 @@
+2018-01-07.15:34:48:	Program initilized
+2018-01-07.15:35:08:	Loaded D:/chair_alb0.ply
+2018-01-07.15:35:08:	Added 1 rawPC in DB. Size: 1
+2018-01-07.15:35:08:	Loaded D:/chair_alb1.ply
+2018-01-07.15:35:08:	Added 1 rawPC in DB. Size: 2
+2018-01-07.15:35:19:	Processing 1 point clouds
+2018-01-07.15:35:19:	VoxelGrid on 307200points ...
+2018-01-07.15:35:19:	Downsampling Done. Now 1104 points
+2018-01-07.15:35:19:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:35:27:	Processing 1 point clouds
+2018-01-07.15:35:27:	Bilateral Filtering on 307200points ...
+2018-01-07.15:35:37:	Downsampling Done. Now 307200 points 
+2018-01-07.15:35:37:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:35:58:	Processing 1 point clouds
+2018-01-07.15:35:58:	Bilateral Filtering on 307200points ...
+2018-01-07.15:35:58:	Downsampling Done. Now 307200 points 
+2018-01-07.15:35:58:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:02:	Processing 1 point clouds
+2018-01-07.15:36:02:	Bilateral Filtering on 307200points ...
+2018-01-07.15:36:02:	Downsampling Done. Now 307200 points 
+2018-01-07.15:36:02:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:13:	Processing 1 point clouds
+2018-01-07.15:36:13:	Median filtering on 307200points ...
+2018-01-07.15:36:13:	Downsampling Done. Now 307200 points
+2018-01-07.15:36:13:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:18:	Processing 1 point clouds
+2018-01-07.15:36:18:	Median filtering on 307200points ...
+2018-01-07.15:36:18:	Downsampling Done. Now 307200 points
+2018-01-07.15:36:18:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:20:	Processing 1 point clouds
+2018-01-07.15:36:20:	Median filtering on 307200points ...
+2018-01-07.15:36:20:	Downsampling Done. Now 307200 points
+2018-01-07.15:36:20:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:22:	Processing 1 point clouds
+2018-01-07.15:36:22:	Median filtering on 307200points ...
+2018-01-07.15:36:22:	Downsampling Done. Now 307200 points
+2018-01-07.15:36:22:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:24:	Processing 1 point clouds
+2018-01-07.15:36:24:	Median filtering on 307200points ...
+2018-01-07.15:36:24:	Downsampling Done. Now 307200 points
+2018-01-07.15:36:24:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:29:	Processing 1 point clouds
+2018-01-07.15:36:29:	Median filtering on 307200points ...
+2018-01-07.15:36:29:	Downsampling Done. Now 307200 points
+2018-01-07.15:36:29:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:31:	Processing 1 point clouds
+2018-01-07.15:36:31:	Median filtering on 307200points ...
+2018-01-07.15:36:31:	Downsampling Done. Now 307200 points
+2018-01-07.15:36:31:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:36:34:	Main window closed
