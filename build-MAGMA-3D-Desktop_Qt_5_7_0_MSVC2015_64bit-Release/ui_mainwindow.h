@@ -197,6 +197,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         actionNew_scan->setText(QApplication::translate("MainWindow", "New scan", 0));
         actionImport_point_clouds->setText(QApplication::translate("MainWindow", "Import point clouds", 0));
+        actionImport_point_clouds->setShortcut(QApplication::translate("MainWindow", "O", 0));
         actionImport_registered_PC->setText(QApplication::translate("MainWindow", "Import registered PC", 0));
         actionImport_mesh->setText(QApplication::translate("MainWindow", "Import mesh", 0));
         actionExport_point_clouds->setText(QApplication::translate("MainWindow", "Export point clouds", 0));

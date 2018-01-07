@@ -269,7 +269,7 @@ bool DataBase::replaceRawPC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &pc, co
     try
     {
         rawPCs.at(idx) = pc;
-        LOG("1 rawPC replaced DB. Size: " + std::to_string(registeredPCs.size()));
+        LOG("1 rawPC replaced DB. Size: " + std::to_string(rawPCs.size()));
     }
     catch (const std::exception &e)
     {

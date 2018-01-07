@@ -10132,7 +10132,36 @@ release\mainwindow.obj: ..\SourceCode\GUI\mainwindow.cpp ../SourceCode/GUI/mainw
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\common\projection_matrix.h" \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\common\impl\projection_matrix.hpp" \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\search\impl\organized.hpp" \
-		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\features\impl\normal_3d.hpp"
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\features\impl\normal_3d.hpp" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\correspondence_rejection_sample_consensus.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\correspondence_rejection.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\correspondence_sorting.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\correspondence_rejection.hpp" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\ransac.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\sac.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\boost.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\sac_model.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\model_types.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\impl\ransac.hpp" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\sac_model_registration.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\eigen.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\NonLinearOptimization" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\NumericalDiff" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NumericalDiff\NumericalDiff.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\qrsolv.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\r1updt.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\r1mpyq.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\rwupdt.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\fdjac1.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\lmpar.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\dogleg.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\covar.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\chkder.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\HybridNonLinearSolver.h" \
+		"..\..\..\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\LevenbergMarquardt.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\impl\sac_model_registration.hpp" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\common\point_operators.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\correspondence_rejection_sample_consensus.hpp"
 
 release\sensors.obj: ..\SourceCode\IO\sensors.cpp ../SourceCode/IO/sensors.h \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\point_cloud.h" \
@@ -24254,7 +24283,9 @@ release\registration.obj: ..\SourceCode\Core\registration.cpp ../SourceCode/Core
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\distances.h" \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\transformation_estimation_lm.hpp" \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\warp_point_rigid_6d.h" \
-		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\transformation_estimation_point_to_plane.h"
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\transformation_estimation_point_to_plane.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\correspondence_estimation_backprojection.h" \
+		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\correspondence_estimation_backprojection.hpp"
 
 release\filtering.obj: ..\SourceCode\Core\filtering.cpp ../SourceCode/Core/filtering.h \
 		"..\..\..\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\filters\voxel_grid.h" \

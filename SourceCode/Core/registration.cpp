@@ -15,6 +15,7 @@
 #include <pcl/registration/transformation_estimation_svd.h>
 #include <pcl/registration/transformation_estimation_lm.h>
 #include <pcl/registration/transformation_estimation_point_to_plane.h>
+#include <pcl/registration/correspondence_estimation_backprojection.h>
 
 #include <pcl/point_cloud.h>
 namespace Core {
@@ -28,15 +29,17 @@ namespace Core {
 /// @param target: target point cloud
 /// @param maxDist: maximum allowed distance between correspondences
 /// @return the found correspondences (index of query point, index of target point, distance)
-pcl::Correspondences correspKD(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const float &maxDist)
+pcl::Correspondences correspKD(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, pcl::PointCloud<pcl::Normal>::Ptr srcN, pcl::PointCloud<pcl::Normal>::Ptr targetN, const float &radius)
 {
     LOG("Finding correspondences. src: " + std::to_string(src->size()) + " points, target: " + std::to_string(target->size()) + " points");
-    pcl::registration::CorrespondenceEstimation<pcl::PointNormal, pcl::PointNormal> corresp_kdtree;
+    pcl::registration::CorrespondenceEstimationBackProjection<pcl::PointXYZRGB, pcl::PointXYZRGB, pcl::Normal> corr_est;
+    corr_est.setInputSource(src);
+    corr_est.setSourceNormals(srcN);
+    corr_est.setInputTarget(target);
+    corr_est.setTargetNormals(targetN);
     pcl::Correspondences corresp;
-    corresp_kdtree.setInputSource (src);
-    corresp_kdtree.setInputTarget (target);
-    corresp_kdtree.determineCorrespondences (corresp, maxDist);
-    LOG("Found " + std::to_string(src->size()) + " correspondences.");
+    corr_est.determineReciprocalCorrespondences(corresp);
+    LOG("Found " + std::to_string(corresp.size()) + " correspondences.");
     return corresp;
 }
 
@@ -107,18 +110,18 @@ pcl::Correspondences correspRdist(pcl::PointCloud<pcl::PointNormal>::Ptr src, pc
 /// @param corresp: the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
 /// @param medFact: the factor for correspondence rejection.
 /// @return the resultant filtered set of remaining correspondences
-pcl::Correspondences correspRmeddist(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp,const double &medFact)
+pcl::Correspondences correspRmeddist(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, pcl::Correspondences corresp,const double &medFact)
 {
     LOG("Median distance correspondence rejection on " + std::to_string(corresp.size()) + " correspondences" );
 
     pcl::registration::CorrespondenceRejectorMedianDistance rejector_meddist;
     pcl::Correspondences correspRes;
-    rejector_meddist.setInputSource<pcl::PointNormal>(src);
-    rejector_meddist.setInputTarget<pcl::PointNormal>(target);
+    rejector_meddist.setInputSource<pcl::PointXYZRGB>(src);
+    rejector_meddist.setInputTarget<pcl::PointXYZRGB>(target);
     rejector_meddist.setMedianFactor(medFact);
     rejector_meddist.getRemainingCorrespondences(corresp, correspRes);
 
-    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / corresp.size()) * 100) + "%)");
+    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / (float)corresp.size()) * 100) + "%)");
     return correspRes;
 }
 
@@ -136,7 +139,7 @@ pcl::Correspondences correspR121(pcl::Correspondences corresp)
     pcl::Correspondences correspRes;
     rejector_121.getRemainingCorrespondences(corresp, correspRes);
 
-    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / corresp.size()) * 100) + "%)");
+    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / (float)corresp.size()) * 100) + "%)");
     return correspRes;
 }
 
@@ -151,20 +154,20 @@ pcl::Correspondences correspR121(pcl::Correspondences corresp)
 /// @param iter: maximum number if iterations to run
 /// @param in_thres: distance threshold in the same dimension as source and target data sets.
 /// @return the resultant filtered set of remaining correspondences
-pcl::Correspondences correspRransac(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp, const int &iter, const float &in_thres)
+pcl::Correspondences correspRransac(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, pcl::Correspondences corresp, const int &iter, const float &in_thres)
 {
     LOG("Ransac correspondence rejection on " + std::to_string(corresp.size()) + " correspondences" );
 
-    pcl::registration::CorrespondenceRejectorSampleConsensus<pcl::PointNormal> rejector_ransac;
+    pcl::registration::CorrespondenceRejectorSampleConsensus<pcl::PointXYZRGB> rejector_ransac;
     pcl::Correspondences correspRes;
     rejector_ransac.setInputSource(src);
     rejector_ransac.setInputTarget(target);
-    rejector_ransac.setMaxIterations(iter);
-    rejector_ransac.setInlierThreshold(in_thres);
-    rejector_ransac.setSaveInliers(true);
-    rejector_ransac.getRemainingCorrespondences(corresp, correspRes);
 
-    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / corresp.size()) * 100) + "%)");
+    rejector_ransac.setInlierThreshold (in_thres);
+    rejector_ransac.setMaxIterations (iter);
+    rejector_ransac.getRemainingCorrespondences(corresp,correspRes);
+
+    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / (float)corresp.size()) * 100) + "%)");
     return correspRes;
 }
 
@@ -180,20 +183,23 @@ pcl::Correspondences correspRransac(pcl::PointCloud<pcl::PointNormal>::Ptr src, 
 /// @param smoothSize:
 /// @param thres: cosine of the thresholding angle between the normals for rejection
 /// @return the resultant filtered set of remaining correspondences
-pcl::Correspondences correspRsurfacenorm(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp, const float &thres)
+pcl::Correspondences correspRsurfacenorm(pcl::PointCloud<pcl::PointNormal>::Ptr srcPN, pcl::PointCloud<pcl::PointNormal>::Ptr targetPN, pcl::Correspondences corresp, const float &thres)
 {
     LOG("Surface Normal correspondence rejection on " + std::to_string(corresp.size()) + " correspondences" );
 
     pcl::registration::CorrespondenceRejectorSurfaceNormal rejector_norm;
     pcl::Correspondences correspRes;
+    pcl::CorrespondencesPtr corresp_tmp (new pcl::Correspondences(corresp));
     rejector_norm.setThreshold(thres);
-    rejector_norm.setInputSource<pcl::PointNormal>(src);
-    rejector_norm.setInputTarget<pcl::PointNormal>(target);
-    rejector_norm.setInputNormals<pcl::PointNormal, pcl::PointNormal>(src);
-    rejector_norm.setTargetNormals<pcl::PointNormal, pcl::PointNormal>(target);
-    rejector_norm.getRemainingCorrespondences(corresp, correspRes);
+    rejector_norm.initializeDataContainer<pcl::PointNormal,pcl::PointNormal>();
+    rejector_norm.setInputSource<pcl::PointNormal>(srcPN);
+    rejector_norm.setInputTarget<pcl::PointNormal>(targetPN);
+    rejector_norm.setInputNormals<pcl::PointNormal, pcl::PointNormal>(srcPN);
+    rejector_norm.setTargetNormals<pcl::PointNormal, pcl::PointNormal>(targetPN);
+    rejector_norm.setInputCorrespondences(corresp_tmp);
+    rejector_norm.getCorrespondences(correspRes);
 
-    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / corresp.size()) * 100) + "%)");
+    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / (float)corresp.size()) * 100) + "%)");
     return correspRes;
 }
 
@@ -210,14 +216,19 @@ pcl::Correspondences correspRboudary(pcl::PointCloud<pcl::PointNormal>::Ptr src,
 {
 
     LOG("Boundary correspondence rejection on " + std::to_string(corresp.size()) + " correspondences" );
-
+    src->width = 640;
+    src->height = 480;
+    src->points.resize(src->width * src->height);
+    target->width = 640;
+    target->height = 480;
+    target->points.resize(target->width * target->height);
     pcl::registration::CorrespondenceRejectionOrganizedBoundary rejector_bound;
     pcl::Correspondences correspRes;
     rejector_bound.setInputSource<pcl::PointNormal>(src);
     rejector_bound.setInputTarget<pcl::PointNormal>(target);
     rejector_bound.getRemainingCorrespondences(corresp, correspRes);
 
-    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / corresp.size()) * 100) + "%)");
+    LOG("Kept " + std::to_string(correspRes.size()) + " correspondences (" + std::to_string( (correspRes.size() / (float)corresp.size()) * 100) + "%)");
     return correspRes;
 }
 
@@ -234,19 +245,25 @@ pcl::Correspondences correspRboudary(pcl::PointCloud<pcl::PointNormal>::Ptr src,
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the resultant set of correspondences
-pcl::Correspondences fullCorresp(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFact, const float &thres, const float &in_thres)
+pcl::Correspondences fullCorresp(pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, pcl::PointCloud<pcl::PointXYZRGB>::Ptr target, const int &iter, const float &radius, const float &medFact, const float &thres, const float &in_thres)
 {
     LOG("Running full correspondence rejection on src: " + std::to_string(src->size()) + " points, target: " + std::to_string(target->size()) + " points");
 
-    pcl::Correspondences corresp;
-    corresp = correspKD(src,target,maxDist);
-    float tmp = corresp.size();
+    pcl::PointCloud<pcl::PointNormal>::Ptr srcPN (new pcl::PointCloud<pcl::PointNormal>), targetPN (new pcl::PointCloud<pcl::PointNormal>);
+    pcl::PointCloud<pcl::Normal>::Ptr srcN (new pcl::PointCloud<pcl::Normal>), targetN (new pcl::PointCloud<pcl::Normal>);
+    srcN = getNormals(src,radius);
+    targetN = getNormals(target,radius);
+    srcPN = getNormalPoints(src,radius);
+    targetPN = getNormalPoints(target,radius);
 
+    pcl::Correspondences corresp;
+    corresp = correspKD(src,target,srcN,targetN,radius);
+    float tmp = corresp.size();
     LOG(" ------ Found " + std::to_string(tmp) + " correspondences -------");
 
     corresp = correspRmeddist(src, target,corresp, medFact); // val = 2
-    //corresp = correspRsurfacenorm(src,target,corresp,thres); // val  = (acos (deg2rad (30.0))
-    corresp = correspRboudary(src,target,corresp);
+    corresp = correspRsurfacenorm(srcPN,targetPN,corresp,thres); // val  = (acos (deg2rad (30.0))
+    corresp = correspRboudary(srcPN,targetPN,corresp);
     corresp = correspR121(corresp);
     corresp = correspRransac(src,target,corresp,iter,in_thres); // val = 5cm
 
@@ -269,7 +286,7 @@ pcl::Correspondences fullCorresp(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl
 /// @param medFact: the median factor for median distance rejection
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
-void fullRegister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &maxDepthChange, const float &smoothSize, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
+void fullRegister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &radius, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
 {
     std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it = vec.rbegin();
     pcl::PointCloud<pcl::PointNormal>::Ptr srcN (new pcl::PointCloud<pcl::PointNormal>), targetN (new pcl::PointCloud<pcl::PointNormal>);
@@ -278,8 +295,8 @@ void fullRegister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, cons
 
     for (it; it != vec.rend() -1; ++it)
     {
-        srcN = getNormalPoints(*it, maxDepthChange, smoothSize);
-        targetN = getNormalPoints(*(it + 1), maxDepthChange, smoothSize);
+        srcN = getNormalPoints(*it, radius);
+        targetN = getNormalPoints(*(it + 1), radius);
         transform = pairRegister(srcN,targetN,icpMode,iter,maxDist,medFac,thres,in_thres);
         std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it_propagation = vec.rbegin();
         for (it_propagation; it_propagation != it + 1; ++it_propagation)
@@ -305,7 +322,7 @@ void fullRegister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, cons
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the total final point cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr fullRegisterIncremental(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &maxDepthChange, const float &smoothSize, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr fullRegisterIncremental(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &radius, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
 {
     std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it = vec.rbegin();
     pcl::PointCloud<pcl::PointNormal>::Ptr srcN (new pcl::PointCloud<pcl::PointNormal>), targetN (new pcl::PointCloud<pcl::PointNormal>);
@@ -314,8 +331,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr fullRegisterIncremental(std::vector<pcl::
     *finalPC = **it;
     for (it; it != vec.rend() -1; ++it)
     {
-        srcN = getNormalPoints(finalPC, maxDepthChange, smoothSize);
-        targetN = getNormalPoints(*(it + 1), maxDepthChange, smoothSize);
+        srcN = getNormalPoints(finalPC, radius);
+        targetN = getNormalPoints(*(it + 1), radius);
         transform = pairRegister(srcN,targetN,icpMode,iter,maxDist,medFac,thres,in_thres);
         pcl::transformPointCloud(*finalPC,*output,transform);
         *finalPC = *output;
@@ -376,7 +393,7 @@ Eigen::Matrix4d pairRegister(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::Po
 /// @param thres: the threshold and value for rejaction by surface norme
 /// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
-Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
+Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &radius, const float &medFac, const float &thres, const float &in_thres)
 
 {
     pcl::registration::TransformationEstimationPointToPlaneLLS< pcl::PointNormal, pcl::PointNormal, double > teLLS;
@@ -391,11 +408,11 @@ Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::Point
     converged.setMaximumIterationsSimilarTransforms(5);
 
     do{
-        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
-        teLLS.estimateRigidTransformation(*output,*target,*corresp,transform);
-        final_transform = transform * final_transform;
-        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
-        ++iterations;
+        //        *corresp = fullCorresp(output, target, iter, radius, medFac, thres, in_thres);
+        //        teLLS.estimateRigidTransformation(*output,*target,*corresp,transform);
+        //        final_transform = transform * final_transform;
+        //        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
+        //        ++iterations;
     }while(!converged);
     return final_transform;
 }
@@ -429,11 +446,11 @@ Eigen::Matrix4d icpSVD(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointClo
     converged.setMaximumIterationsSimilarTransforms(5);
 
     do{
-        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
-        teSVD.estimateRigidTransformation(*output,*target,*corresp,transform);
-        final_transform = transform * final_transform;
-        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
-        ++iterations;
+        //        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
+        //        teSVD.estimateRigidTransformation(*output,*target,*corresp,transform);
+        //        final_transform = transform * final_transform;
+        //        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
+        //        ++iterations;
     }while(!converged);
     return final_transform;
 }
@@ -467,11 +484,11 @@ Eigen::Matrix4d icpLMp2p(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointC
     converged.setMaximumIterationsSimilarTransforms(5);
 
     do{
-        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
-        teLM.estimateRigidTransformation(*output,*target,*corresp,transform);
-        final_transform = transform * final_transform;
-        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
-        ++iterations;
+        //        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
+        //        teLM.estimateRigidTransformation(*output,*target,*corresp,transform);
+        //        final_transform = transform * final_transform;
+        //        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
+        //        ++iterations;
     }while(!converged);
     return final_transform;
 }
@@ -504,11 +521,11 @@ Eigen::Matrix4d icpLMp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointC
     converged.setMaximumIterationsSimilarTransforms(5);
 
     do{
-        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
-        teLM.estimateRigidTransformation(*output,*target,*corresp,transform);
-        final_transform = transform * final_transform;
-        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
-        ++iterations;
+        //        *corresp = fullCorresp(output, target, iter, maxDist, medFac, thres, in_thres);
+        //        teLM.estimateRigidTransformation(*output,*target,*corresp,transform);
+        //        final_transform = transform * final_transform;
+        //        pcl::transformPointCloudWithNormals (*src, *output, final_transform.cast<float> ());
+        //        ++iterations;
     }while(!converged);
     return final_transform;
 }

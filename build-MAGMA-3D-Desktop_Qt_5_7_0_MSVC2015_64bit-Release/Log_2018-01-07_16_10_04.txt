@@ -1,0 +1,3 @@
+2018-01-07.16:10:05:	Program initilized
+2018-01-07.16:10:08:	Scan window closed
+2018-01-07.16:10:08:	Main window closed

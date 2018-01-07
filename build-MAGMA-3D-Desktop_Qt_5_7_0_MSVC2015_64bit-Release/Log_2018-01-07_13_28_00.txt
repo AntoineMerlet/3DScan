@@ -1,0 +1,22 @@
+2018-01-07.13:28:02:	Program initilized
+2018-01-07.13:28:50:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.13:28:50:	Added 1 rawPC in DB. Size: 1
+2018-01-07.13:28:50:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.13:28:50:	Added 1 rawPC in DB. Size: 2
+2018-01-07.13:28:52:	Register window opened
+2018-01-07.13:28:55:	Display updated
+2018-01-07.13:28:56:	Display updated
+2018-01-07.13:28:56:	Display updated
+2018-01-07.13:28:57:	Display updated
+2018-01-07.13:28:58:	Register window opened
+2018-01-07.13:28:59:	Processing 2 point clouds
+2018-01-07.13:28:59:	Processing 0 point clouds0
+2018-01-07.13:28:59:	test
+2018-01-07.13:28:59:	Running full correspondence rejection on src: 33959 points, target: 33762 points
+2018-01-07.13:28:59:	Normals Done. Now 33959
+2018-01-07.13:29:00:	Normals Done. Now 33762
+2018-01-07.13:29:00:	Finding correspondences. src: 0 points, target: 0 points
+2018-01-07.13:29:00:	Found 0 correspondences.
+2018-01-07.13:29:00:	 ------ Found 0.000000 correspondences -------
+2018-01-07.13:29:00:	Total Kept 0 correspondences (-nan(ind)%)
+2018-01-07.13:29:19:	Main window closed
