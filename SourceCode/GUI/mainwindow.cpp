@@ -29,6 +29,7 @@
 #include <cmath>
 #include <pcl/filters/random_sample.h>
 #include <QCloseEvent>
+
 using namespace std;
 
 
