@@ -1,0 +1,9 @@
+2018-01-07.11:34:52:	Program initilized
+2018-01-07.11:36:15:	Live scan started
+2018-01-07.11:36:16:	Live scan stopped
+2018-01-07.11:36:20:	User Manual opened
+2018-01-07.11:36:24:	About section opened
+2018-01-07.11:36:31:	Loaded C:/SoftEngProject/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/TDK_CapturedPointCloud1.ply
+2018-01-07.11:36:31:	Added 1 rawPC in DB. Size: 1
+2018-01-07.11:36:38:	Scan window closed
+2018-01-07.11:36:38:	Main window closed

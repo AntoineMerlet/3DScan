@@ -43,9 +43,9 @@ private slots:
     void on_actionAbout_triggered();
     void on_actionUser_manual_triggered();
     void on_filter_pb_clicked();
-    void on_pc_list_clicked(const QModelIndex &index);
-    void on_regpc_list_clicked(const QModelIndex &index);
-    void on_mesh_list_clicked(const QModelIndex &index);
+    void on_pc_list_clicked(const QModelIndex &);
+    void on_regpc_list_clicked(const QModelIndex &);
+    void on_mesh_list_clicked(const QModelIndex &);
 
 public slots:
     void receivedmessage(const QString& arg);

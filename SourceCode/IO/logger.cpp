@@ -1,8 +1,12 @@
 #include "IO/logger.h"
 #include <iostream>
-#include <string>
 #include <time.h>
 #include <QObject>
+#include <fstream>
+#include <iostream>
+#include <cstdarg>
+#include <string>
+#include <QString>
 
 // Initiliazing static members of the class
 logger* logger::LogPointer = NULL;
@@ -95,6 +99,7 @@ void logger::Log(const char * format, ...)
     delete [] message;
 }
 
+<<<<<<< HEAD
 /// @author: Marcio Rockenbach
 /// @date: 23-12-2017
 /// @version 1.0
@@ -107,6 +112,8 @@ logger& logger::operator<<(const string& message)
     return *this;
 }
 
+=======
+>>>>>>> ba66f91996724d8af6196bea8edca9b0fbecc9c5
 /// @author: Marcio Rockenbach
 /// @date: 25-12-2017
 /// @version 1.0
