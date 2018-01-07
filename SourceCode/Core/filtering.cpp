@@ -12,6 +12,7 @@
 #include <pcl/features/normal_3d.h>
 #include <pcl/features/integral_image_normal.h>
 #include <pcl/filters/covariance_sampling.h>
+#include <pcl/filters/extract_indices.h>
 
 namespace Core {
 
@@ -29,6 +30,9 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZR
     grid.setLeafSize (x, y, z);
     grid.setInputCloud (pc);
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr src (new pcl::PointCloud<pcl::PointXYZRGB>);
+    src->width = 640;
+    src->height = 480;
+    src->points.resize(src->width * src->height);
     grid.filter (*src);
     LOG("Downsampling Done. Now " + std::to_string(src->size()) + " points");
     return src;
@@ -45,17 +49,27 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZR
 /// @return The final point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &sigmaR, const float &sigmaS)
 {
-    LOG("Bilateral Filtering on " + std::to_string(cloud_in->size()) + "points ...");
+    if (cloud_in->isOrganized())
+    {
+        LOG("Bilateral Filtering on " + std::to_string(cloud_in->size()) + "points ...");
+        pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
+        cloud_out->width = 640;
+        cloud_out->height = 480;
+        cloud_out->points.resize(cloud_out->width * cloud_out->height);
+        pcl::FastBilateralFilter<pcl::PointXYZRGB> fbf;
+        fbf.setSigmaS(sigmaS);
+        fbf.setSigmaR(sigmaR);
+        fbf.setInputCloud(cloud_in);
+        fbf.filter(*cloud_out);
+        LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points " );
+        return cloud_out;
 
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
-    pcl::FastBilateralFilter<pcl::PointXYZRGB> fbf;
-    fbf.setSigmaS(sigmaS);
-    fbf.setSigmaR(sigmaR);
-    fbf.setInputCloud(cloud_in);
-    fbf.filter(*cloud_out);
-
-    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
-    return cloud_out;
+    }
+    else
+    {
+        LOG(" Point Cloud non organized. Skipping Bilateral Filtering." );
+        return cloud_in;
+    }
 }
 
 /// @author: Gulnur Ungan
@@ -93,9 +107,13 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamplerRGB(pcl::PointCloud<pcl
 /// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const int &windowSize, const float &maxMovement)
 {
+    if (cloud_in->isOrganized())
+    {
     LOG("Median filtering on " + std::to_string(cloud_in->size()) + "points ...");
-
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
+    cloud_out->width = 640;
+    cloud_out->height = 480;
+    cloud_out->points.resize(cloud_out->width * cloud_out->height);
     pcl::MedianFilter<pcl::PointXYZRGB> mf;
     mf.setWindowSize(windowSize);
     mf.setMaxAllowedMovement(maxMovement);
@@ -104,6 +122,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXY
 
     LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
+    }
+    else
+    {
+        LOG(" Point Cloud non organized. Skipping Median Filtering." );
+        return cloud_in;
+    }
 }
 
 /// @author: Gulnur Ungan
@@ -114,11 +138,14 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXY
 /// @param cloud_in : The Point Cloud to downsample
 /// @param order: downsampling ratio
 /// @return Resultant point cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order)
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const int &order)
 {
     LOG("Random sampling on " + std::to_string(cloud_in->size()) + "points ...");
 
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
+    cloud_out->width = 640;
+    cloud_out->height = 480;
+    cloud_out->points.resize(cloud_out->width * cloud_out->height);
     pcl::RandomSample<pcl::PointXYZRGB> randsample;
     randsample.setSample(cloud_in->size() / order);
     randsample.setInputCloud(cloud_in);
@@ -141,8 +168,12 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXY
 /// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const unsigned int &nbBins, const float &maxDepthChange, const float &smoothSize)
 {
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
+    LOG("Normal  sampling on " + std::to_string(cloud_in->size()) + "points ...");
 
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
+    cloud_out->width = 640;
+    cloud_out->height = 480;
+    cloud_out->points.resize(cloud_out->width * cloud_out->height);
     pcl::NormalSpaceSampling<pcl::PointXYZRGB, pcl::PointNormal> normsample;
     normsample.setBins (nbBins, nbBins, nbBins);
     normsample.setSample(cloud_in->size() / order);
@@ -166,17 +197,36 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXY
 /// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr covarianceSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const unsigned int &order, const float &maxDepthChange, const float &smoothSize)
 {
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>);
-    pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud_in_const(new pcl::PointCloud<pcl::PointXYZRGB>(*cloud_in));
+    LOG("Covariance  sampling on " + std::to_string(cloud_in->size()) + "points ...");
 
-    pcl::CovarianceSampling<pcl::PointXYZRGB, pcl::PointNormal> covSampling;
-    covSampling.setNumberOfSamples(cloud_in->size() / order);;
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZRGB>(*cloud_in));
+    cloud_out->width = 640;
+    cloud_out->height = 480;
+    cloud_out->points.resize(cloud_out->width * cloud_out->height);
+
+    pcl::CovarianceSampling< pcl::PointNormal, pcl::PointNormal> covSampling;
+    pcl::PointCloud<pcl::PointNormal>::Ptr normals = getNormalPoints(cloud_in, maxDepthChange, smoothSize);
+    pcl::PointCloud<pcl::PointNormal>::Ptr out (new pcl::PointCloud<pcl::PointNormal>);
+    covSampling.setNumberOfSamples(normals->size() / order);
     covSampling.setKeepOrganized (true);
-    covSampling.setInputCloud(cloud_in_const);
-    covSampling.setNormals(getNormalPoints(cloud_in, maxDepthChange, smoothSize));
-    covSampling.filter(*cloud_out);
+    covSampling.setInputCloud(normals);
+    covSampling.setNormals(normals);
 
-    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
+    covSampling.filter (*out);
+    // good size
+//    LOG("zeryhthd " + std::to_string(out->size()) + " points");
+
+//    pcl::IndicesPtr indices (new std::vector<int> ());
+//    indices = covSampling.getIndices();
+
+//    LOG("indice 255 " + std::to_string(indices->at(255)) + " points");
+//    pcl::ExtractIndices<pcl::PointXYZRGB> eifilter (true); // Initializing with true will allow us to extract the removed indices
+//    eifilter.setInputCloud (cloud_in);
+//    eifilter.setIndices(indices);
+//    eifilter.setKeepOrganized(true);
+//    LOG("Downsampling Done. Now " + std::to_string(cloud_out->size()) + " points");
+//    eifilter.filter (*cloud_out);
+//    LOG("Dzetg dw " + std::to_string(cloud_out->size()) + " points");
     return cloud_out;
 }
 

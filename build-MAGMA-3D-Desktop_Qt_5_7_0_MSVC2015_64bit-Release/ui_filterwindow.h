@@ -164,6 +164,7 @@ public:
         line_2->setFrameShadow(QFrame::Sunken);
         bilateral_cb = new QCheckBox(filterwindow);
         bilateral_cb->setObjectName(QStringLiteral("bilateral_cb"));
+        bilateral_cb->setEnabled(false);
         bilateral_cb->setGeometry(QRect(10, 260, 111, 17));
         label_11 = new QLabel(filterwindow);
         label_11->setObjectName(QStringLiteral("label_11"));
@@ -197,6 +198,7 @@ public:
         line_4->setFrameShadow(QFrame::Sunken);
         median_cb = new QCheckBox(filterwindow);
         median_cb->setObjectName(QStringLiteral("median_cb"));
+        median_cb->setEnabled(false);
         median_cb->setGeometry(QRect(370, 10, 121, 17));
         windowsize_sb = new QSpinBox(filterwindow);
         windowsize_sb->setObjectName(QStringLiteral("windowsize_sb"));
@@ -235,6 +237,7 @@ public:
         line_5->setFrameShadow(QFrame::Sunken);
         normal_cb = new QCheckBox(filterwindow);
         normal_cb->setObjectName(QStringLiteral("normal_cb"));
+        normal_cb->setEnabled(false);
         normal_cb->setGeometry(QRect(370, 200, 111, 17));
         label_18 = new QLabel(filterwindow);
         label_18->setObjectName(QStringLiteral("label_18"));
@@ -259,6 +262,7 @@ public:
         line_6->setFrameShadow(QFrame::Sunken);
         covar_cb = new QCheckBox(filterwindow);
         covar_cb->setObjectName(QStringLiteral("covar_cb"));
+        covar_cb->setEnabled(false);
         covar_cb->setGeometry(QRect(370, 310, 151, 17));
         label_20 = new QLabel(filterwindow);
         label_20->setObjectName(QStringLiteral("label_20"));

@@ -1,0 +1,21 @@
+2018-01-07.01:21:50:	Program initilized
+2018-01-07.01:22:02:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.01:22:02:	Added 1 rawPC in DB. Size: 1
+2018-01-07.01:22:02:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb2.ply
+2018-01-07.01:22:02:	Added 1 rawPC in DB. Size: 2
+2018-01-07.01:22:02:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb3.ply
+2018-01-07.01:22:02:	Added 1 rawPC in DB. Size: 3
+2018-01-07.01:22:04:	Filter window opened
+2018-01-07.01:22:07:	Processing 1 point clouds
+2018-01-07.01:22:07:	VoxelGrid on 33762points ...
+2018-01-07.01:22:07:	Downsampling Done. Now 7941 points
+2018-01-07.01:22:13:	Filter window opened
+2018-01-07.01:22:19:	Processing 1 point clouds
+2018-01-07.01:22:19:	VoxelGrid on 7941points ...
+2018-01-07.01:22:19:	Downsampling Done. Now 399 points
+2018-01-07.01:22:32:	Filter window opened
+2018-01-07.01:22:36:	Processing 1 point clouds
+2018-01-07.01:22:36:	Bilateral Filtering on 31143points ...
+2018-01-07.01:22:36:	Downsampling Done. Now 0 points
+2018-01-07.01:22:36:	VoxelGrid on 0points ...
+2018-01-07.01:22:36:	Downsampling Done. Now 0 points

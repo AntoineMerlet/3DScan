@@ -1,0 +1,9 @@
+2018-01-07.02:26:26:	Program initilized
+2018-01-07.02:27:31:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.02:27:31:	Added 1 rawPC in DB. Size: 1
+2018-01-07.02:27:31:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.02:27:31:	Added 1 rawPC in DB. Size: 2
+2018-01-07.02:27:33:	Filter window opened
+2018-01-07.02:27:35:	Processing 1 point clouds
+2018-01-07.02:27:35:	----- 0.001000 and1
+2018-01-07.02:27:35:	 Point Cloud non organized. Skipping.

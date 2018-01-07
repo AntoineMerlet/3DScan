@@ -1,0 +1,28 @@
+2018-01-07.03:49:51:	Program initilized
+2018-01-07.03:50:04:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
+2018-01-07.03:50:04:	Added 1 rawPC in DB. Size: 1
+2018-01-07.03:50:04:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb2.ply
+2018-01-07.03:50:04:	Added 1 rawPC in DB. Size: 2
+2018-01-07.03:50:04:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb3.ply
+2018-01-07.03:50:04:	Added 1 rawPC in DB. Size: 3
+2018-01-07.03:50:06:	Filter window opened
+2018-01-07.03:50:09:	Processing 1 point clouds
+2018-01-07.03:50:09:	Covariance  sampling on 307200points ...
+2018-01-07.03:50:09:	Normals Done. Now 307200
+2018-01-07.03:50:09:	Downsampling Done. Now 153600 points
+2018-01-07.03:50:15:	Filter window opened
+2018-01-07.03:50:16:	Processing 1 point clouds
+2018-01-07.03:50:16:	Covariance  sampling on 307200points ...
+2018-01-07.03:50:16:	Normals Done. Now 307200
+2018-01-07.03:50:17:	Downsampling Done. Now 153600 points
+2018-01-07.03:50:32:	Filter window opened
+2018-01-07.03:50:33:	Processing 1 point clouds
+2018-01-07.03:50:33:	Covariance  sampling on 307200points ...
+2018-01-07.03:50:33:	Normals Done. Now 307200
+2018-01-07.03:50:33:	Downsampling Done. Now 153600 points
+2018-01-07.03:51:03:	Filter window opened
+2018-01-07.03:51:10:	Processing 1 point clouds
+2018-01-07.03:51:10:	Covariance  sampling on 307200points ...
+2018-01-07.03:51:10:	Normals Done. Now 307200
+2018-01-07.03:51:10:	Downsampling Done. Now 38400 points
+2018-01-07.03:51:19:	Filter window opened

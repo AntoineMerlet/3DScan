@@ -22,6 +22,13 @@
 #include <GUI/filterwindow.h>
 #include "GUI/regwindow.h"
 #include <exception>
+#include "Core/filtering.h"
+#include "Core/registration.h"
+#include <pcl/registration/correspondence_estimation.h>
+#include "Core/mathtools.h"
+#include <cmath>
+#include <pcl/filters/random_sample.h>
+#include <QCloseEvent>
 
 using namespace std;
 
@@ -67,7 +74,11 @@ MainWindow::~MainWindow()
 {
     delete DB;
     delete scan;
-
+    delete FW;
+    delete RW;
+    delete PCList;
+    delete RPCList;
+    delete MeshList;
     QApplication::exit();
     delete ui;
 }
@@ -82,8 +93,11 @@ void MainWindow::on_actionNew_scan_triggered()
 {
     //...
     scan = new scanwindow(this);
+    QObject::connect(scan,SIGNAL(send_unhide()),this,SLOT(unhidemain()));
     scan->setWindowTitle("MAGMA Project - New Scan");
+    scan->move(700,100);
     scan->show();
+    MainWindow::setVisible(false);
 }
 
 /// @author: Mladen Rakic / Marcio Rockenbach
@@ -97,7 +111,10 @@ void MainWindow::updatePCList(QStringList list)
     int dif = rawPCs_size - PCList->rowCount();
     if (dif >= 0)
         for (int i = 0; i < dif; i++){
-            QStandardItem* newitem = new QStandardItem(list[i]);
+            QString str = list[i];
+            str = str.section('/',-1);
+            str = str.section('.',0,0);
+            QStandardItem* newitem = new QStandardItem(str);
             newitem->setCheckable(true);
             newitem->setCheckState(Qt::Unchecked);
             PCList->appendRow(newitem);
@@ -116,7 +133,10 @@ void MainWindow::updateRegPCList(QStringList list)
     int dif = regPCs_size - RPCList->rowCount();
     if (dif >= 0)
         for (int i = 0; i < dif; i++){
-            QStandardItem* newitem = new QStandardItem(list[i]);
+            QString str = list[i];
+            str = str.section('/',-1);
+            str = str.section('.',0,0);
+            QStandardItem* newitem = new QStandardItem(str);
             newitem->setCheckable(true);
             newitem->setCheckState(Qt::Unchecked);
             RPCList->appendRow(newitem);
@@ -135,7 +155,10 @@ void MainWindow::updateMeshList(QStringList list)
     int dif = mesh_size - MeshList->rowCount();
     if (dif >= 0)
         for (int i = 0; i < dif; i++){
-            QStandardItem* newitem = new QStandardItem(list[i]);
+            QString str = list[i];
+            str = str.section('/',-1);
+            str = str.section('.',0,0);
+            QStandardItem* newitem = new QStandardItem(str);
             newitem->setCheckable(true);
             newitem->setCheckState(Qt::Unchecked);
             MeshList->appendRow(newitem);
@@ -424,9 +447,77 @@ void MainWindow::on_mesh_list_clicked(const QModelIndex &index)
 }
 
 void MainWindow::updatef() {
+    std::set<int>::iterator it = selectedRaw.begin();
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr currentPC;
+    LOG("Processing " + std::to_string(selectedRaw.size()) +" point clouds");
+    for(it; it != selectedRaw.end(); it++)
+    {
+        currentPC = DB->getRawPC(*it);
+        if (!currentPC->isOrganized())
+        {
+            currentPC->width = 640;
+            currentPC->height = 480;
+            currentPC->points.resize(currentPC->width * currentPC->height);
+        }
+        if (FW->bilateralfilt.checked)
+            *currentPC = *Core::bilateralFilter(currentPC, FW->bilateralfilt.sigmaR, FW->bilateralfilt.sigmaS);
+        if (FW->voxelgridfilt.checked)
+            *currentPC = *Core::downsample(currentPC,FW->voxelgridfilt.x,FW->voxelgridfilt.y,FW->voxelgridfilt.z);
+        if (FW->medianfilt.checked)
+            *currentPC = *Core::medianFilter(currentPC,FW->medianfilt.windowsize, FW->medianfilt.maxmovement);
+        if (FW->randomfilt.checked)
+            *currentPC = *Core::randomSample(currentPC,100);
+        if (FW->normalfilt.checked)
+            *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
+        if (FW->covarfilt.checked)
+            *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
+        DB->replaceRawPC(currentPC,*it);
+        pcViz->updatePointCloud(currentPC,PCList->item(*it)->text().toStdString());
+    }
 
 }
 
 void MainWindow::updater() {
-    LOG("TEST");
+    if (selectedRaw.size() > 1)
+    {
+        LOG("Processing " + std::to_string(selectedRaw.size()) +" point clouds");
+
+        pcl::PointCloud<pcl::PointXYZRGB>::Ptr src, target;
+        pcl::PointCloud<pcl::PointNormal>::Ptr srcN, targetN;
+        for(int i = 1; i < selectedRaw.size(); i++)
+        {
+            src = DB->getRawPC(i-1);
+            target = DB->getRawPC(i);
+
+            srcN = Core::getNormalPoints(src,0.01f,50);
+            targetN = Core::getNormalPoints(target,0.01f,50);
+
+            pcl::PointCloud<pcl::PointNormal>::Ptr srcNS(new pcl::PointCloud<pcl::PointNormal>), targetNS(new pcl::PointCloud<pcl::PointNormal>);
+            pcl::RandomSample<pcl::PointNormal> randsample;
+            randsample.setSample(srcN->size() / 100);
+            randsample.setInputCloud(srcN);
+            randsample.filter(*srcNS);
+            randsample.setInputCloud(targetN);
+            randsample.filter(*targetNS);
+
+            LOG("Processing " + std::to_string(srcNS->size()) +" point clouds"+ std::to_string(targetNS->size()) );
+            LOG("test");
+            pcl::Correspondences corresp = Core::fullCorresp(srcNS,targetNS,1000,0.2,1,acos (90.0 * M_PI / 180.0),0.05);
+        }
+    }
 }
+
+void MainWindow::closeEvent(QCloseEvent *e)
+{
+    foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+        if (widget != this) { // avoid recursion.
+            widget->close();
+        }
+    }
+    e->accept();
+}
+
+void MainWindow::unhidemain(){
+    MainWindow::setVisible(true);
+}
+

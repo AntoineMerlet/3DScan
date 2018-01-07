@@ -125,10 +125,10 @@ void regwindow::on_surface_cb_toggled(bool checked)
 
 void regwindow::on_reg_button_clicked()
 {
-    paramsreg.maxdepth = ui->depth_sb->value();
+    paramsreg.maxdepth = ui->depth_sb->value()/100;
     paramsreg.smoothsize = ui->smooth_sb->value();
 
-    correspreg.maxdist = ui->dist_sb->value();
+    correspreg.maxdist = ui->dist_sb->value()/100;
     methodreg.maxiter = ui->maxiter_sb->value();
 
     if (ui->median_cb->checkState()) {
@@ -143,7 +143,7 @@ void regwindow::on_reg_button_clicked()
     if (ui->ransac_cb->checkState()) {
         ransacreg.checked = true;
         ransacreg.iter = ui->ransacit_sb->value();
-        ransacreg.threshold = ui->ransacth_sb->value();
+        ransacreg.threshold = ui->ransacth_sb->value()/100;
     }
 
     if (ui->surface_cb->checkState()) {

@@ -1,0 +1,2 @@
+2018-01-07.00:29:36:	Program initilized
+2018-01-07.00:29:41:	Filter window opened
