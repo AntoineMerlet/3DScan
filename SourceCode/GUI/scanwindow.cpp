@@ -73,12 +73,10 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
     LOG("Live scan started");
 
     // Point Cloud
-<<<<<<< HEAD
         pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
 =======
 
     pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
->>>>>>> ba66f91996724d8af6196bea8edca9b0fbecc9c5
 
     // Retrieved Point Cloud Callback Function
     boost::mutex mutex;
@@ -86,7 +84,6 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
             [&cloud, &mutex]( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& ptr ){
         boost::mutex::scoped_lock lock( mutex );
 
-<<<<<<< HEAD
                 /* Point Cloud Processing */
                 cloud = ptr->makeShared();
             };
@@ -95,7 +92,6 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
 
         cloud = ptr->makeShared();
     };
->>>>>>> ba66f91996724d8af6196bea8edca9b0fbecc9c5
 
     // Keyboard Callback Function
     boost::function<void( const pcl::visualization::KeyboardEvent& )> keyboard =
@@ -163,19 +159,11 @@ void scanwindow::on_sw_stopscan_pushbutton_clicked()
     scanwindow::setVisible(false);
 }
 
-<<<<<<< HEAD
-/// @author: Mladen Rakic / Marcio Rockenbach
-/// @date: 05-01-2018
-/// @version 1.0
-///
-/// @brief Function used to update the bounding box on the live feed from the sensor
-=======
-/// @author: Marcio Rockenbach
+/// @author: Marcio Rockenbach / Mladen Rakic
 /// @date: 06-01-2018
 /// @version 1.0
 ///
 /// @brief Creates a bounding box in the live scan window. The dimensions of the box are defined by the sliders in the scan window
->>>>>>> ba66f91996724d8af6196bea8edca9b0fbecc9c5
 void scanwindow::updatebox(){
     viewer->removeShape("cube");
     float x_min = ((float)ui->xmin->value())/3;

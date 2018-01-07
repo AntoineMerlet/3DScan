@@ -99,7 +99,6 @@ void logger::Log(const char * format, ...)
     delete [] message;
 }
 
-<<<<<<< HEAD
 /// @author: Marcio Rockenbach
 /// @date: 23-12-2017
 /// @version 1.0
@@ -112,8 +111,6 @@ logger& logger::operator<<(const string& message)
     return *this;
 }
 
-=======
->>>>>>> ba66f91996724d8af6196bea8edca9b0fbecc9c5
 /// @author: Marcio Rockenbach
 /// @date: 25-12-2017
 /// @version 1.0

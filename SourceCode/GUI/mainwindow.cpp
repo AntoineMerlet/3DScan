@@ -144,11 +144,7 @@ void MainWindow::updateRegPCList(QStringList list)
 /// @date: 06-01-2018
 /// @version 2.0
 ///
-<<<<<<< HEAD
 /// @brief Function to update the list of meshes on the GUI
-=======
-/// @brief Function to update the list of mesh on the GUI
->>>>>>> ba66f91996724d8af6196bea8edca9b0fbecc9c5
 void MainWindow::updateMeshList(QStringList list)
 {
     int mesh_size = DB->getMeshedPCs().size();
