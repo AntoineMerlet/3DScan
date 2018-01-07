@@ -81,7 +81,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 /// @author: Antoine Merlet
 /// @date: 28-12-2017
 /// @version 1.0
@@ -89,7 +88,6 @@ MainWindow::~MainWindow()
 /// @brief Showing scan window on click
 void MainWindow::on_actionNew_scan_triggered()
 {
-    //...
     scan = new scanwindow(this);
     QObject::connect(scan,SIGNAL(send_unhide()),this,SLOT(unhidemain()));
     scan->setWindowTitle("MAGMA Project - New Scan");
@@ -146,7 +144,7 @@ void MainWindow::updateRegPCList(QStringList list)
 /// @date: 06-01-2018
 /// @version 2.0
 ///
-/// @brief Function to update the list of mesh on the GUI
+/// @brief Function to update the list of meshes on the GUI
 void MainWindow::updateMeshList(QStringList list)
 {
     int mesh_size = DB->getMeshedPCs().size();
@@ -268,7 +266,6 @@ void MainWindow::updateDisplay(){
             {
             }
         }
-
 }
 
 /// @author: Antoine Merlet
@@ -285,7 +282,6 @@ void MainWindow::on_actionImport_point_clouds_triggered()
         MainWindow::updatePCList(qlistPC);
     }
 }
-
 
 /// @author: Antoine Merlet
 /// @date: 28-12-2017
@@ -313,7 +309,6 @@ void MainWindow::on_actionImport_mesh_triggered()
     MainWindow::updateMeshList(qlistMesh);
 }
 
-
 /// @author: Antoine Merlet
 /// @date: 28-12-2017
 /// @version 0.1
@@ -324,7 +319,6 @@ void MainWindow::on_actionExport_point_clouds_triggered()
     QString qdir = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
     if (qdir != "")
     {
-        //    foreach (std::string str, selectedRaw)
         {
 
         }

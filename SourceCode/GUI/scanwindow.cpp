@@ -37,7 +37,6 @@ scanwindow::~scanwindow()
 void scanwindow::on_sw_verticalacq_radiobutton_clicked(bool checked)
 {
     ui->sw_horizontalacq_radiobutton->setChecked(false);
-    //...
 }
 
 /// @author: Mladen Rakic
@@ -49,12 +48,6 @@ void scanwindow::on_sw_verticalacq_radiobutton_clicked(bool checked)
 void scanwindow::on_sw_horizontalacq_radiobutton_clicked(bool checked)
 {
     ui->sw_verticalacq_radiobutton->setChecked(false);
-    //...
-}
-
-void scanwindow::on_sw_horizontalacq_radiobutton_clicked()
-{
-
 }
 
 /// @author: Mladen Rakic / Marcio Rockenbach
@@ -80,6 +73,8 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
     LOG("Live scan started");
 
     // Point Cloud
+        pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
+=======
 
     pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
 
@@ -89,6 +84,10 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
             [&cloud, &mutex]( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& ptr ){
         boost::mutex::scoped_lock lock( mutex );
 
+                /* Point Cloud Processing */
+                cloud = ptr->makeShared();
+            };
+=======
         /* Point Cloud Processing */
 
         cloud = ptr->makeShared();
@@ -160,7 +159,7 @@ void scanwindow::on_sw_stopscan_pushbutton_clicked()
     scanwindow::setVisible(false);
 }
 
-/// @author: Marcio Rockenbach
+/// @author: Marcio Rockenbach / Mladen Rakic
 /// @date: 06-01-2018
 /// @version 1.0
 ///

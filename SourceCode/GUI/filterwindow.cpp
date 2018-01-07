@@ -16,6 +16,11 @@ filterwindow::~filterwindow()
     delete ui;
 }
 
+/// @author: Mladen Rakic
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Accepts the selected values for filtering parameters.
 void filterwindow::on_filter_pb_clicked()
 {
     paramsfilt.maxdepth = ui->depth_sb->value()/100;

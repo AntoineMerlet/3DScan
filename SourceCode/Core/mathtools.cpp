@@ -29,11 +29,11 @@ pcl::PointCloud<pcl::PointNormal>::Ptr normal2PointNormal(pcl::PointCloud<pcl::P
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief:Surface normal estimation on organized data using integral images
-/// @param cloud_in The point cloud to compute normals from
+/// @brief Surface normal estimation on organized data using integral images
+/// @param cloud_in: The point cloud to compute normals from
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
-/// @return normals.
+/// @return normals
 pcl::PointCloud<pcl::Normal>::Ptr getNormals(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const float &maxDepthChange, const float &smoothSize )
 {
     pcl::IntegralImageNormalEstimation<pcl::PointXYZRGB, pcl::Normal>normest;
@@ -58,8 +58,8 @@ pcl::PointCloud<pcl::Normal>::Ptr getNormals(pcl::PointCloud<pcl::PointXYZRGB>::
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief:Surface normal estimation on organized data using integral images
-/// @param cloud_in The point cloud to compute normals from
+/// @brief Surface normal estimation on organized data using integral images
+/// @param cloud_in: The point cloud to compute normals from
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)
 /// @return Cloud with its normals.
