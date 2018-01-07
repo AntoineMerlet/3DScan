@@ -1,0 +1,5 @@
+2018-01-07.12:42:54:	Program initilized
+2018-01-07.12:42:56:	Register window opened
+2018-01-07.12:42:58:	P1 0.000000 P23145778
+2018-01-07.12:43:19:	Register window opened
+2018-01-07.12:48:16:	Main window closed

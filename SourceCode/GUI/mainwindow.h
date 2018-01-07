@@ -11,7 +11,6 @@
 #include "GUI/regwindow.h"
 #include "scanwindow.h"
 
-
 namespace Ui {
 class MainWindow;
 }

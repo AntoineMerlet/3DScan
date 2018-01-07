@@ -23,8 +23,7 @@ filterwindow::~filterwindow()
 /// @brief Accepts the selected values for filtering parameters.
 void filterwindow::on_filter_pb_clicked()
 {
-    paramsfilt.maxdepth = ui->depth_sb->value()/100;
-    paramsfilt.smoothsize = ui->smooth_sb->value();
+    paramsfilt.radius = ui->radius_sb->value();
     if (ui->voxelgrid_cb->checkState()) {
         voxelgridfilt.x = ui->x_sb->value()/100;
         voxelgridfilt.y = ui->y_sb->value()/100;

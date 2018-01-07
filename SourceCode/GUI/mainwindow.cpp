@@ -356,8 +356,8 @@ void MainWindow::on_actionExport_mesh_triggered()
 /// @brief Showing filter window on click
 void MainWindow::on_filter_pb_clicked()
 {
-
     LOG("Filter window opened");
+    FW->setWindowTitle("MAGMA Project - Filter");
     FW->show();
 }
 
@@ -369,10 +369,10 @@ void MainWindow::on_filter_pb_clicked()
 /// @brief Showing register window on click
 void MainWindow::on_mw_register_pc_pushbutton_clicked()
 {
-    regwindow *reg = new regwindow(this);
-    reg->setWindowTitle("MAGMA Project - Register");
+
     LOG("Register window opened");
-    reg->show();
+    RW->setWindowTitle("MAGMA Project - Register");
+    RW->show();
 }
 
 void MainWindow::on_mw_generatemesh_pushbutton_clicked()
@@ -466,10 +466,10 @@ void MainWindow::updatef() {
             *currentPC = *Core::medianFilter(currentPC,FW->medianfilt.windowsize, FW->medianfilt.maxmovement);
         if (FW->randomfilt.checked)
             *currentPC = *Core::randomSample(currentPC,100);
-        if (FW->normalfilt.checked)
-            *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
-        if (FW->covarfilt.checked)
-            *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
+//        if (FW->normalfilt.checked)
+//            *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
+//        if (FW->covarfilt.checked)
+//            *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,FW->paramsfilt.maxdepth, FW->paramsfilt.smoothsize);
         DB->replaceRawPC(currentPC,*it);
         pcViz->updatePointCloud(currentPC,PCList->item(*it)->text().toStdString());
     }
@@ -477,8 +477,6 @@ void MainWindow::updatef() {
 }
 
 void MainWindow::updater() {
-    LOG("P1 " + std::to_string(RW->paramsreg.maxdepth) +" P2"+ std::to_string(RW->paramsreg.smoothsize ));
-
     if (selectedRaw.size() > 1)
     {
         LOG("Processing " + std::to_string(selectedRaw.size()) +" point clouds");

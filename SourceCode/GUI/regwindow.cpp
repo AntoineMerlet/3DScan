@@ -1,5 +1,7 @@
 #include "regwindow.h"
 #include "ui_regwindow.h"
+#include "IO/logger.h"
+#include <GUI/mainwindow.h>
 
 regwindow::regwindow(QWidget *parent) :
     QDialog(parent),
@@ -9,6 +11,7 @@ regwindow::regwindow(QWidget *parent) :
     ui->setupUi(this);
 
     QObject::connect(this, SIGNAL(updatereg()), parent, SLOT(updater()));
+
 
 }
 
@@ -135,9 +138,7 @@ void regwindow::on_surface_cb_toggled(bool checked)
 /// @brief Accepts the selected values for registering parameters.
 void regwindow::on_reg_button_clicked()
 {
-    paramsreg.maxdepth = ui->depth_sb->value()/100;
-    paramsreg.smoothsize = ui->smooth_sb->value();
-
+    paramsreg.radius = ui->radius_sb->value();
     correspreg.maxdist = ui->dist_sb->value()/100;
     methodreg.maxiter = ui->maxiter_sb->value();
 
@@ -180,6 +181,6 @@ void regwindow::on_reg_button_clicked()
         absolutereg.mse = ui->absolutemse_sb->value();
     }
 
-    emit updatereg();
     this->close();
+    emit updatereg();
 }

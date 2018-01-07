@@ -16,8 +16,7 @@ public:
     ~filterwindow();
 
     struct params {
-        float maxdepth;
-        int smoothsize;
+        float radius;
     } paramsfilt;
 
     struct voxelgrid {
