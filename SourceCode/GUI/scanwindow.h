@@ -30,34 +30,28 @@ public:
 
 private slots:
     void on_sw_horizontalacq_radiobutton_clicked();
-
     void on_sw_horizontalacq_radiobutton_clicked(bool checked);
-
     void on_sw_verticalacq_radiobutton_clicked(bool checked);
-
     void on_sw_startscan_pushbutton_clicked();
-
     void on_xmin_sliderReleased();
-
     void on_sw_stopscan_pushbutton_clicked();
-
     void on_xmin_sliderMoved(int position);
-
     void on_xmax_sliderMoved(int position);
-
     void on_ymin_sliderMoved(int position);
-
     void on_ymax_sliderMoved(int position);
-
     void on_zmin_sliderMoved(int position);
-
     void on_zmax_sliderMoved(int position);
 
+signals:
+    void send_unhide();
+
 private:
+    bool scan_pressed = false;
     Ui::scanwindow *ui;
     pcl::Kinect2Grabber * kinect;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
     boost::shared_ptr<pcl::Grabber> grabber = boost::make_shared<pcl::Kinect2Grabber>();
+    void closeEvent(QCloseEvent*);
 };
 
 #endif // SCANWINDOW_H

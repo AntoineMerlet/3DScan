@@ -22,13 +22,10 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-
     ~MainWindow();
-
     void MainWindow::readfile(std::string);
 
 protected:
-
     void updatePCList(QStringList);
     void updateRegPCList(QStringList);
     void updateMeshList(QStringList);
@@ -52,6 +49,7 @@ private slots:
 
 public slots:
     void receivedmessage(const QString& arg);
+    void unhidemain();
     void updatef();
     void updater();
 
@@ -73,6 +71,7 @@ private:
     filterwindow * FW;
     regwindow * RW;
     scanwindow *scan;
+    void closeEvent(QCloseEvent*);
 };
 
 #endif // MAINWINDOW_H

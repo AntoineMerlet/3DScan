@@ -46,7 +46,6 @@ public:
     QSlider *ymax;
     QSlider *zmin;
     QSlider *zmax;
-    QLabel *xmin_lab;
     QCheckBox *sw_filtering_checkbox;
     QPushButton *sw_startscan_pushbutton;
     QPushButton *sw_stopscan_pushbutton;
@@ -96,6 +95,7 @@ public:
         xmin->setGeometry(QRect(10, 30, 160, 19));
         xmin->setMinimum(-30);
         xmin->setMaximum(30);
+        xmin->setSingleStep(0);
         xmin->setValue(-3);
         xmin->setOrientation(Qt::Horizontal);
         xmax = new QSlider(sw_parameters_frame);
@@ -135,9 +135,6 @@ public:
         zmax->setMaximum(30);
         zmax->setValue(3);
         zmax->setOrientation(Qt::Horizontal);
-        xmin_lab = new QLabel(sw_parameters_frame);
-        xmin_lab->setObjectName(QStringLiteral("xmin_lab"));
-        xmin_lab->setGeometry(QRect(120, 10, 45, 16));
         sw_filtering_checkbox = new QCheckBox(centralwidget);
         sw_filtering_checkbox->setObjectName(QStringLiteral("sw_filtering_checkbox"));
         sw_filtering_checkbox->setGeometry(QRect(30, 360, 121, 17));
@@ -174,12 +171,10 @@ public:
         retranslateUi(scanwindow);
         QObject::connect(xmin, SIGNAL(valueChanged(int)), xmin, SLOT(setValue(int)));
         QObject::connect(xmax, SIGNAL(valueChanged(int)), xmax, SLOT(setValue(int)));
-        QObject::connect(xmin, SIGNAL(valueChanged(int)), xmin_lab, SLOT(setNum(int)));
         QObject::connect(ymin, SIGNAL(valueChanged(int)), ymin, SLOT(setValue(int)));
         QObject::connect(ymax, SIGNAL(valueChanged(int)), ymax, SLOT(setValue(int)));
         QObject::connect(zmin, SIGNAL(valueChanged(int)), zmin, SLOT(setValue(int)));
         QObject::connect(zmax, SIGNAL(valueChanged(int)), zmax, SLOT(setValue(int)));
-        QObject::connect(xmin, SIGNAL(valueChanged(int)), scanwindow, SLOT(updatebox()));
 
         QMetaObject::connectSlotsByName(scanwindow);
     } // setupUi
@@ -194,7 +189,6 @@ public:
         sw_ymax_label->setText(QApplication::translate("scanwindow", "Y maximum", 0));
         sw_zmin_label->setText(QApplication::translate("scanwindow", "Z minimum", 0));
         sw_zmax_label->setText(QApplication::translate("scanwindow", "Z maximum", 0));
-        xmin_lab->setText(QString());
         sw_filtering_checkbox->setText(QApplication::translate("scanwindow", "Filter coordinates", 0));
         sw_startscan_pushbutton->setText(QApplication::translate("scanwindow", "Start scan", 0));
         sw_stopscan_pushbutton->setText(QApplication::translate("scanwindow", "Stop scan", 0));

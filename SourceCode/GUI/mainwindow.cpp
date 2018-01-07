@@ -28,6 +28,7 @@
 #include "Core/mathtools.h"
 #include <cmath>
 #include <pcl/filters/random_sample.h>
+#include <QCloseEvent>
 using namespace std;
 
 
@@ -72,7 +73,11 @@ MainWindow::~MainWindow()
 {
     delete DB;
     delete scan;
-
+    delete FW;
+    delete RW;
+    delete PCList;
+    delete RPCList;
+    delete MeshList;
     QApplication::exit();
     delete ui;
 }
@@ -87,8 +92,11 @@ void MainWindow::on_actionNew_scan_triggered()
 {
     //...
     scan = new scanwindow(this);
+    QObject::connect(scan,SIGNAL(send_unhide()),this,SLOT(unhidemain()));
     scan->setWindowTitle("MAGMA Project - New Scan");
+    scan->move(700,100);
     scan->show();
+    MainWindow::setVisible(false);
 }
 
 /// @author: Mladen Rakic / Marcio Rockenbach
@@ -102,7 +110,10 @@ void MainWindow::updatePCList(QStringList list)
     int dif = rawPCs_size - PCList->rowCount();
     if (dif >= 0)
         for (int i = 0; i < dif; i++){
-            QStandardItem* newitem = new QStandardItem(list[i]);
+            QString str = list[i];
+            str = str.section('/',-1);
+            str = str.section('.',0,0);
+            QStandardItem* newitem = new QStandardItem(str);
             newitem->setCheckable(true);
             newitem->setCheckState(Qt::Unchecked);
             PCList->appendRow(newitem);
@@ -121,7 +132,10 @@ void MainWindow::updateRegPCList(QStringList list)
     int dif = regPCs_size - RPCList->rowCount();
     if (dif >= 0)
         for (int i = 0; i < dif; i++){
-            QStandardItem* newitem = new QStandardItem(list[i]);
+            QString str = list[i];
+            str = str.section('/',-1);
+            str = str.section('.',0,0);
+            QStandardItem* newitem = new QStandardItem(str);
             newitem->setCheckable(true);
             newitem->setCheckState(Qt::Unchecked);
             RPCList->appendRow(newitem);
@@ -140,7 +154,10 @@ void MainWindow::updateMeshList(QStringList list)
     int dif = mesh_size - MeshList->rowCount();
     if (dif >= 0)
         for (int i = 0; i < dif; i++){
-            QStandardItem* newitem = new QStandardItem(list[i]);
+            QString str = list[i];
+            str = str.section('/',-1);
+            str = str.section('.',0,0);
+            QStandardItem* newitem = new QStandardItem(str);
             newitem->setCheckable(true);
             newitem->setCheckState(Qt::Unchecked);
             MeshList->appendRow(newitem);
@@ -488,3 +505,18 @@ void MainWindow::updater() {
         }
     }
 }
+
+void MainWindow::closeEvent(QCloseEvent *e)
+{
+    foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+        if (widget != this) { // avoid recursion.
+            widget->close();
+        }
+    }
+    e->accept();
+}
+
+void MainWindow::unhidemain(){
+    MainWindow::setVisible(true);
+}
+
