@@ -1,0 +1,13 @@
+2018-01-07.12:14:31:	Program initilized
+2018-01-07.12:14:34:	Live scan started
+2018-01-07.12:14:35:	Scan window closed
+2018-01-07.12:14:51:	Live scan started
+2018-01-07.12:14:57:	Point cloud number 1 saved
+2018-01-07.12:15:08:	Point cloud number 2 saved
+2018-01-07.12:15:09:	Point cloud number 3 saved
+2018-01-07.12:15:09:	Point cloud number 4 saved
+2018-01-07.12:15:09:	Point cloud number 5 saved
+2018-01-07.12:15:12:	Live scan stopped
+2018-01-07.12:15:26:	Scan window closed
+2018-01-07.12:15:26:	Scan window closed
+2018-01-07.12:15:26:	Main window closed
