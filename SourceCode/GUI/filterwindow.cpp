@@ -23,8 +23,7 @@ filterwindow::~filterwindow()
 /// @brief Accepts the selected values for filtering parameters.
 void filterwindow::on_filter_pb_clicked()
 {
-    paramsfilt.maxdepth = ui->depth_sb->value()/100;
-    paramsfilt.smoothsize = ui->smooth_sb->value();
+    paramsfilt.radius = ui->radius_sb->value();
     if (ui->voxelgrid_cb->checkState()) {
         voxelgridfilt.x = ui->x_sb->value()/100;
         voxelgridfilt.y = ui->y_sb->value()/100;
@@ -32,11 +31,17 @@ void filterwindow::on_filter_pb_clicked()
         voxelgridfilt.checked = true;
     }
 
+    if (ui->voxelgrid_cb->checkState() == false)
+        voxelgridfilt.checked = false;
+
     if (ui->bilateral_cb->checkState()) {
         bilateralfilt.sigmaS = ui->sigmas_sb->value();
         bilateralfilt.sigmaR = ui->sigmar_sb->value()/100;
         bilateralfilt.checked = true;
     }
+
+    if (ui->bilateral_cb->checkState() == false)
+        bilateralfilt.checked = false;
 
     if (ui->median_cb->checkState()) {
         medianfilt.windowsize = ui->windowsize_sb->value();
@@ -44,10 +49,16 @@ void filterwindow::on_filter_pb_clicked()
         medianfilt.checked = true;
     }
 
+    if (ui->median_cb->checkState() == false)
+        medianfilt.checked = false;
+
     if (ui->random_cb->checkState()) {
         randomfilt.order = ui->randord_sb->value();
         randomfilt.checked = true;
     }
+
+    if (ui->random_cb->checkState() == false)
+        randomfilt.checked = false;
 
     if (ui->normal_cb->checkState()) {
         normalfilt.order = ui->normord_sb->value();
@@ -55,10 +66,16 @@ void filterwindow::on_filter_pb_clicked()
         normalfilt.checked = true;
     }
 
+    if (ui->normal_cb->checkState() == false)
+        normalfilt.checked = false;
+
     if (ui->covar_cb->checkState()) {
         covarfilt.order = ui->covarord_sb->value();
         covarfilt.checked = true;
     }
+
+    if (ui->covar_cb->checkState() == false)
+        covarfilt.checked = false;
 
     this->close();
     emit updatefilt();

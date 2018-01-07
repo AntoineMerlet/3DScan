@@ -16,8 +16,7 @@ public:
     ~regwindow();
 
     struct params {
-        float maxdepth;
-        int smoothsize;
+        float radius;
     } paramsreg;
 
     struct corresp {
@@ -67,7 +66,6 @@ public:
     struct boundary {
         bool checked = false;
     } boundaryreg;
-
 
 private slots:
     void on_p2plls_toggled(bool checked);

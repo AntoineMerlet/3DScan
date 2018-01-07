@@ -359,7 +359,11 @@ void MainWindow::on_actionExport_mesh_triggered()
 /// @brief Showing filter window on click
 void MainWindow::on_filter_pb_clicked()
 {
+<<<<<<< HEAD
 
+=======
+    LOG("Filter window opened");
+>>>>>>> bf11af50638f34710f44f450589c46cb228d7c83
     FW->show();
 }
 
@@ -371,10 +375,10 @@ void MainWindow::on_filter_pb_clicked()
 /// @brief Showing register window on click
 void MainWindow::on_mw_register_pc_pushbutton_clicked()
 {
-    regwindow *reg = new regwindow(this);
-    reg->setWindowTitle("MAGMA Project - Register");
+
     LOG("Register window opened");
-    reg->show();
+    RW->setWindowTitle("MAGMA Project - Register");
+    RW->show();
 }
 
 void MainWindow::on_mw_generatemesh_pushbutton_clicked()
@@ -467,10 +471,13 @@ void MainWindow::updatef() {
             *currentPC = *Core::medianFilter(currentPC,FW->medianfilt.windowsize, FW->medianfilt.maxmovement);
         if (FW->randomfilt.checked)
             *currentPC = *Core::randomSample(currentPC,100);
+<<<<<<< HEAD
         if (FW->normalfilt.checked)
             *currentPC = *Core::normalSample(currentPC,FW->normalfilt.order,FW->normalfilt.nofbins, 0.05);
         if (FW->covarfilt.checked)
             *currentPC = *Core::covarianceSample(currentPC, FW->covarfilt.order,0.05);
+=======
+>>>>>>> bf11af50638f34710f44f450589c46cb228d7c83
         DB->replaceRawPC(currentPC,*it);
         pcViz->updatePointCloud(currentPC,PCList->item(*it)->text().toStdString());
     }
