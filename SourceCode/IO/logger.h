@@ -18,7 +18,6 @@ public:
     void Log(const std::string& message); // Adds a message to the log file
     void Log(const char *format, ...); // Adds a message to the log file with a specific formatting
     logger &operator << (const string &message); // Operator overload
-    void Log(const char * format, ...); // Adds a message to the log file with a specific formatting
 
 signals:
     void sendmessage(const QString& arg);

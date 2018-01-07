@@ -23,7 +23,6 @@ public:
     ~scanwindow();
 
 private slots:
-    void on_sw_horizontalacq_radiobutton_clicked();
     void on_sw_horizontalacq_radiobutton_clicked(bool checked);
     void on_sw_verticalacq_radiobutton_clicked(bool checked);
     void on_sw_startscan_pushbutton_clicked();

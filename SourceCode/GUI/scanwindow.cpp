@@ -72,9 +72,6 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
     updatebox();
     LOG("Live scan started");
 
-    // Point Cloud
-        pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
-=======
 
     pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
 
@@ -84,10 +81,6 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
             [&cloud, &mutex]( const pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr& ptr ){
         boost::mutex::scoped_lock lock( mutex );
 
-                /* Point Cloud Processing */
-                cloud = ptr->makeShared();
-            };
-=======
         /* Point Cloud Processing */
 
         cloud = ptr->makeShared();
