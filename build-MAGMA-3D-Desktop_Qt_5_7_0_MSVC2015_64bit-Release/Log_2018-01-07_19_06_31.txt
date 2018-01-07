@@ -1,0 +1,5 @@
+2018-01-07.19:06:32:	Program initilized
+2018-01-07.19:07:13:	Register window opened
+2018-01-07.19:08:05:	User Manual opened
+2018-01-07.19:08:11:	Scan window closed
+2018-01-07.19:08:11:	Main window closed
