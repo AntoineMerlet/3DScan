@@ -1,8 +1,12 @@
 #include "IO/logger.h"
 #include <iostream>
-#include <string>
 #include <time.h>
 #include <QObject>
+#include <fstream>
+#include <iostream>
+#include <cstdarg>
+#include <string>
+#include <QString>
 
 // Initiliazing static members of the class
 logger* logger::LogPointer = NULL;
@@ -92,25 +96,6 @@ void logger::Log(const char * format, ...)
     LogFile.flush(); // Records the log in the file
     va_end(args);
     delete [] message;
-}
-
-
-/// @author: Marcio Rockenbach
-/// @date: 23-12-2017
-/// @version 1.0
-///
-/// @brief Overloads the << operator to log a message
-/// @param string for the message to be logged.
-//void logger::operator<<(const string& message)
-//{
-//    logger::Log(message);
-//}
-
-
-logger& logger::operator<<(const string& message)
-{
-    logger::CreateLog()->Log(message);
-    return *this;
 }
 
 /// @author: Marcio Rockenbach

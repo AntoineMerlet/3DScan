@@ -66,8 +66,6 @@ MainWindow::MainWindow(QWidget *parent) :
     pcViz->setBackgroundColor (0.1, 0.1, 0.1);
     pcViz->addCoordinateSystem(1.0);
     pcViz->setCameraPosition(0.0, 0.0, 7, 0.0, 0.0, 0.0);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -126,7 +124,7 @@ void MainWindow::updatePCList(QStringList list)
 /// @date: 06-01-2018
 /// @version 2.0
 ///
-/// @brief Function to update the list of raw point clouds on the GUI
+/// @brief Function to update the list of registered point clouds on the GUI
 void MainWindow::updateRegPCList(QStringList list)
 {
     int regPCs_size = DB->getRegisteredPCs().size();
@@ -148,7 +146,7 @@ void MainWindow::updateRegPCList(QStringList list)
 /// @date: 06-01-2018
 /// @version 2.0
 ///
-/// @brief Function to update the list of raw point clouds on the GUI
+/// @brief Function to update the list of mesh on the GUI
 void MainWindow::updateMeshList(QStringList list)
 {
     int mesh_size = DB->getMeshedPCs().size();
@@ -170,7 +168,7 @@ void MainWindow::updateMeshList(QStringList list)
 /// @date: 06-01-2018
 /// @version 1.0
 ///
-/// @brief Function to update the list which contains the index of each checked raw point cloud
+/// @brief Function to update the list which contains the index of each selected raw point cloud in the GUI
 void MainWindow::UpdateSelectedRaw(){
     for (int i = 0; i < PCList->rowCount(); i++)
         if (PCList->item(i)->checkState())
@@ -182,7 +180,7 @@ void MainWindow::UpdateSelectedRaw(){
 /// @date: 06-01-2018
 /// @version 1.0
 ///
-/// @brief Function to update the list which contains the index of each checked registered point cloud
+/// @brief Function to update the list which contains the index of each selected registered point cloud in the GUI
 void MainWindow::UpdateSelectedReg(){
     for (int i = 0; i < RPCList->rowCount(); i++)
         if (RPCList->item(i)->checkState())
@@ -194,7 +192,7 @@ void MainWindow::UpdateSelectedReg(){
 /// @date: 06-01-2018
 /// @version 1.0
 ///
-/// @brief Function to update the list which contains the index of each checked mesh
+/// @brief Function to update the list which contains the index of each selected mesh in the GUI
 void MainWindow::UpdateSelectedMesh(){
     for (int i = 0; i < MeshList->rowCount(); i++)
         if (MeshList->item(i)->checkState())
@@ -206,16 +204,16 @@ void MainWindow::UpdateSelectedMesh(){
 /// @date: 06-01-2018
 /// @version 1.0
 ///
-/// @brief Function to update the VTK Widget to show only the checked point clouds and mesh
+/// @brief Function to update the VTK Widget to show only the selected point clouds and mesh
 void MainWindow::updateDisplay(){
-    for (int i = 0; i < PCList->rowCount(); i++)
+    for (int i = 0; i < PCList->rowCount(); i++) // Displaying selected raw point clouds
         if (PCList->item(i)->checkState())
         {
             try{
                 pcViz->addPointCloud(DB->getRawPC(i),PCList->item(i)->text().toStdString());
                 ui->pcScan->update();
             }
-            catch (const std::exception &e)
+            catch (const std::exception &)
             {
             }
         }
@@ -224,19 +222,19 @@ void MainWindow::updateDisplay(){
                 pcViz->removePointCloud(PCList->item(i)->text().toStdString());
                 ui->pcScan->update();
             }
-            catch (const std::exception &e)
+            catch (const std::exception &)
             {
             }
         }
 
-    for (int i = 0; i < RPCList->rowCount(); i++)
+    for (int i = 0; i < RPCList->rowCount(); i++) // Displaying selected registered point clouds
         if (RPCList->item(i)->checkState())
         {
             try{
                 pcViz->addPointCloud(DB->getRegisteredPC(i),RPCList->item(i)->text().toStdString());
                 ui->pcScan->update();
             }
-            catch (const std::exception &e)
+            catch (const std::exception &)
             {
             }
         }
@@ -245,19 +243,19 @@ void MainWindow::updateDisplay(){
                 pcViz->removePointCloud(RPCList->item(i)->text().toStdString());
                 ui->pcScan->update();
             }
-            catch (const std::exception &e)
+            catch (const std::exception &)
             {
             }
         }
 
-    for (int i = 0; i < MeshList->rowCount(); i++)
+    for (int i = 0; i < MeshList->rowCount(); i++) // Displaying selected mesh
         if (MeshList->item(i)->checkState())
         {
             try{
                 pcViz->addPolygonMesh(*(DB->getMeshedPC(i)),MeshList->item(i)->text().toStdString());
                 ui->pcScan->update();
             }
-            catch (const std::exception &e)
+            catch (const std::exception &)
             {
             }
         }
@@ -266,7 +264,7 @@ void MainWindow::updateDisplay(){
                 pcViz->removePolygonMesh(MeshList->item(i)->text().toStdString());
                 ui->pcScan->update();
             }
-            catch (const std::exception &e)
+            catch (const std::exception &)
             {
             }
         }
@@ -360,6 +358,19 @@ void MainWindow::on_actionExport_mesh_triggered()
 /// @date: 05-01-2018
 /// @version 1.0
 ///
+/// @brief Showing filter window on click
+void MainWindow::on_filter_pb_clicked()
+{
+
+    LOG("Filter window opened");
+    FW->show();
+}
+
+
+/// @author: Mladen Rakic / Marcio Rockenbach
+/// @date: 05-01-2018
+/// @version 1.0
+///
 /// @brief Showing register window on click
 void MainWindow::on_mw_register_pc_pushbutton_clicked()
 {
@@ -373,6 +384,7 @@ void MainWindow::on_mw_generatemesh_pushbutton_clicked()
 {
 
 }
+
 void MainWindow::receivedmessage(const QString &arg)
 {
     ui->mw_logger_textedit->append(arg);
@@ -382,7 +394,7 @@ void MainWindow::receivedmessage(const QString &arg)
 /// @date: 29-12-2017
 /// @version 1.0
 ///
-/// @brief Showing about window on click
+/// @brief Shows about window on click
 void MainWindow::on_actionAbout_triggered()
 {
     aboutwindow *about = new aboutwindow(this);
@@ -394,34 +406,24 @@ void MainWindow::on_actionAbout_triggered()
 /// @date: 29-12-2017
 /// @version 1.0
 ///
-/// @brief Showing user manual on click
+/// @brief Shows user manual on click
 void MainWindow::on_actionUser_manual_triggered()
 {
     LOG("User Manual opened");
     QDesktopServices::openUrl(QUrl("user_manual.pdf"));
 }
 
-/// @author: Mladen Rakic / Marcio Rockenbach
-/// @date: 05-01-2018
-/// @version 1.0
-///
-/// @brief Showing filter window on click
-void MainWindow::on_filter_pb_clicked()
-{
-
-    LOG("Filter window opened");
-    FW->show();
-}
 
 /// @author: Marcio Rockenbach
 /// @date: 06-01-2018
 /// @version 1.0
 ///
 /// @brief Updates the display and the set of selected raw point clouds whenever a user clicks on the list of loaded raw point clouds on the GUI
-void MainWindow::on_pc_list_clicked(const QModelIndex &index)
+void MainWindow::on_pc_list_clicked(const QModelIndex &)
 {
     UpdateSelectedRaw();
     updateDisplay();
+    LOG("Display updated");
 }
 
 /// @author: Marcio Rockenbach
@@ -429,10 +431,11 @@ void MainWindow::on_pc_list_clicked(const QModelIndex &index)
 /// @version 1.0
 ///
 /// @brief Updates the display and the set of selected registered point clouds whenever a user clicks on the List of loaded registered point clouds on the GUI
-void MainWindow::on_regpc_list_clicked(const QModelIndex &index)
+void MainWindow::on_regpc_list_clicked(const QModelIndex &)
 {
     UpdateSelectedReg();
     updateDisplay();
+    LOG("Display updated");
 }
 
 /// @author: Marcio Rockenbach
@@ -440,10 +443,11 @@ void MainWindow::on_regpc_list_clicked(const QModelIndex &index)
 /// @version 1.0
 ///
 /// @brief Updates the display and the set of selected Mesh whenever a user clicks on the list of loaded meshes on the GUI
-void MainWindow::on_mesh_list_clicked(const QModelIndex &index)
+void MainWindow::on_mesh_list_clicked(const QModelIndex &)
 {
     UpdateSelectedMesh();
     updateDisplay();
+    LOG("Display updated");
 }
 
 void MainWindow::updatef() {
@@ -514,10 +518,10 @@ void MainWindow::closeEvent(QCloseEvent *e)
             widget->close();
         }
     }
+    LOG("Main window closed");
     e->accept();
 }
 
 void MainWindow::unhidemain(){
     MainWindow::setVisible(true);
 }
-

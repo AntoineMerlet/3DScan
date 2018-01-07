@@ -1,12 +1,6 @@
 #ifndef CUSTOM_LOGGER_H
 #define CUSTOM_LOGGER_H
-
-#include <fstream>
-#include <iostream>
-#include <cstdarg>
-#include <string>
 #include <QObject>
-#include <QString>
 
 using namespace std;
 
@@ -23,7 +17,6 @@ public:
     static logger* CreateLog(); // Creates instance of the logger class
     void Log(const std::string& message); // Adds a message to the log file
     void Log(const char * format, ...); // Adds a message to the log file with a specific formatting
-    logger& operator << (const string& message); // Operator overload
 
 signals:
     void sendmessage(const QString& arg);

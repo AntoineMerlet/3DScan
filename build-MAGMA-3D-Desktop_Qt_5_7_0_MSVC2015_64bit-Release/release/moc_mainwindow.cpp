@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[23];
-    char stringdata0[527];
+    QByteArrayData data[22];
+    char stringdata0[521];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,14 +44,13 @@ QT_MOC_LITERAL(11, 335, 24), // "on_actionAbout_triggered"
 QT_MOC_LITERAL(12, 360, 30), // "on_actionUser_manual_triggered"
 QT_MOC_LITERAL(13, 391, 20), // "on_filter_pb_clicked"
 QT_MOC_LITERAL(14, 412, 18), // "on_pc_list_clicked"
-QT_MOC_LITERAL(15, 431, 5), // "index"
-QT_MOC_LITERAL(16, 437, 21), // "on_regpc_list_clicked"
-QT_MOC_LITERAL(17, 459, 20), // "on_mesh_list_clicked"
-QT_MOC_LITERAL(18, 480, 15), // "receivedmessage"
-QT_MOC_LITERAL(19, 496, 3), // "arg"
-QT_MOC_LITERAL(20, 500, 10), // "unhidemain"
-QT_MOC_LITERAL(21, 511, 7), // "updatef"
-QT_MOC_LITERAL(22, 519, 7) // "updater"
+QT_MOC_LITERAL(15, 431, 21), // "on_regpc_list_clicked"
+QT_MOC_LITERAL(16, 453, 20), // "on_mesh_list_clicked"
+QT_MOC_LITERAL(17, 474, 15), // "receivedmessage"
+QT_MOC_LITERAL(18, 490, 3), // "arg"
+QT_MOC_LITERAL(19, 494, 10), // "unhidemain"
+QT_MOC_LITERAL(20, 505, 7), // "updatef"
+QT_MOC_LITERAL(21, 513, 7) // "updater"
 
     },
     "MainWindow\0on_actionNew_scan_triggered\0"
@@ -66,9 +65,9 @@ QT_MOC_LITERAL(22, 519, 7) // "updater"
     "on_actionAbout_triggered\0"
     "on_actionUser_manual_triggered\0"
     "on_filter_pb_clicked\0on_pc_list_clicked\0"
-    "index\0on_regpc_list_clicked\0"
-    "on_mesh_list_clicked\0receivedmessage\0"
-    "arg\0unhidemain\0updatef\0updater"
+    "on_regpc_list_clicked\0on_mesh_list_clicked\0"
+    "receivedmessage\0arg\0unhidemain\0updatef\0"
+    "updater"
 };
 #undef QT_MOC_LITERAL
 
@@ -99,12 +98,12 @@ static const uint qt_meta_data_MainWindow[] = {
       12,    0,  119,    2, 0x08 /* Private */,
       13,    0,  120,    2, 0x08 /* Private */,
       14,    1,  121,    2, 0x08 /* Private */,
-      16,    1,  124,    2, 0x08 /* Private */,
-      17,    1,  127,    2, 0x08 /* Private */,
-      18,    1,  130,    2, 0x0a /* Public */,
-      20,    0,  133,    2, 0x0a /* Public */,
-      21,    0,  134,    2, 0x0a /* Public */,
-      22,    0,  135,    2, 0x0a /* Public */,
+      15,    1,  124,    2, 0x08 /* Private */,
+      16,    1,  127,    2, 0x08 /* Private */,
+      17,    1,  130,    2, 0x0a /* Public */,
+      19,    0,  133,    2, 0x0a /* Public */,
+      20,    0,  134,    2, 0x0a /* Public */,
+      21,    0,  135,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -119,10 +118,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QModelIndex,   15,
-    QMetaType::Void, QMetaType::QModelIndex,   15,
-    QMetaType::Void, QMetaType::QModelIndex,   15,
-    QMetaType::Void, QMetaType::QString,   19,
+    QMetaType::Void, QMetaType::QModelIndex,    2,
+    QMetaType::Void, QMetaType::QModelIndex,    2,
+    QMetaType::Void, QMetaType::QModelIndex,    2,
+    QMetaType::Void, QMetaType::QString,   18,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
