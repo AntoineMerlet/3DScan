@@ -71,7 +71,7 @@
     <double>0.010000000000000</double>
    </property>
    <property name="value">
-    <double>0.100000000000000</double>
+    <double>0.050000000000000</double>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -170,6 +170,9 @@
    <property name="singleStep">
     <double>0.500000000000000</double>
    </property>
+   <property name="value">
+    <double>3.000000000000000</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="y_sb">
    <property name="geometry">
@@ -189,6 +192,9 @@
    <property name="singleStep">
     <double>0.500000000000000</double>
    </property>
+   <property name="value">
+    <double>3.000000000000000</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="z_sb">
    <property name="geometry">
@@ -207,6 +213,9 @@
    </property>
    <property name="singleStep">
     <double>0.500000000000000</double>
+   </property>
+   <property name="value">
+    <double>3.000000000000000</double>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -263,7 +272,7 @@
   </widget>
   <widget class="QCheckBox" name="bilateral_cb">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -318,6 +327,9 @@
    <property name="maximum">
     <number>20</number>
    </property>
+   <property name="value">
+    <number>5</number>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="sigmar_sb">
    <property name="geometry">
@@ -329,13 +341,16 @@
     </rect>
    </property>
    <property name="minimum">
-    <double>0.100000000000000</double>
+    <double>0.010000000000000</double>
    </property>
    <property name="maximum">
     <double>5.000000000000000</double>
    </property>
    <property name="singleStep">
-    <double>0.100000000000000</double>
+    <double>0.010000000000000</double>
+   </property>
+   <property name="value">
+    <double>0.050000000000000</double>
    </property>
   </widget>
   <widget class="QLabel" name="label_13">
@@ -348,7 +363,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>cm [0.1-5]</string>
+    <string>cm [0.01-1]</string>
    </property>
   </widget>
   <widget class="Line" name="line_3">
@@ -379,7 +394,7 @@
   </widget>
   <widget class="QCheckBox" name="median_cb">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -407,6 +422,9 @@
    </property>
    <property name="maximum">
     <number>20</number>
+   </property>
+   <property name="value">
+    <number>5</number>
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="maxmov_sb">
@@ -492,6 +510,9 @@
    <property name="maximum">
     <number>10</number>
    </property>
+   <property name="value">
+    <number>5</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label_17">
    <property name="geometry">
@@ -521,7 +542,7 @@
   </widget>
   <widget class="QCheckBox" name="normal_cb">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -562,6 +583,9 @@
    </property>
    <property name="maximum">
     <number>10</number>
+   </property>
+   <property name="value">
+    <number>5</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_19">
@@ -649,6 +673,9 @@
    </property>
    <property name="maximum">
     <number>10</number>
+   </property>
+   <property name="value">
+    <number>5</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_22">

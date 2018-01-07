@@ -1,0 +1,16 @@
+2018-01-07.15:40:09:	Program initilized
+2018-01-07.15:40:15:	Loaded D:/chair_alb0.ply
+2018-01-07.15:40:15:	Added 1 rawPC in DB. Size: 1
+2018-01-07.15:40:15:	Loaded D:/chair_alb1.ply
+2018-01-07.15:40:15:	Added 1 rawPC in DB. Size: 2
+2018-01-07.15:40:19:	Processing 1 point clouds
+2018-01-07.15:40:19:	Bilateral Filtering on 307200points ...
+2018-01-07.15:40:19:	Downsampling Done. Now 307200 points 
+2018-01-07.15:40:19:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:40:37:	Processing 1 point clouds
+2018-01-07.15:40:37:	Bilateral Filtering on 307200points ...
+2018-01-07.15:40:37:	Downsampling Done. Now 307200 points 
+2018-01-07.15:40:37:	Normal  sampling on 307200points ...
+2018-01-07.15:40:49:	Downsampling Done. Now 30720 points
+2018-01-07.15:40:49:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:40:59:	Main window closed

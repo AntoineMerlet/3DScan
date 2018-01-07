@@ -1,0 +1,12 @@
+2018-01-07.15:42:09:	Program initilized
+2018-01-07.15:42:16:	Loaded D:/chair_alb0.ply
+2018-01-07.15:42:16:	Added 1 rawPC in DB. Size: 1
+2018-01-07.15:42:16:	Loaded D:/chair_alb1.ply
+2018-01-07.15:42:16:	Added 1 rawPC in DB. Size: 2
+2018-01-07.15:42:24:	Processing 1 point clouds
+2018-01-07.15:42:24:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:42:29:	Processing 1 point clouds
+2018-01-07.15:42:29:	Normal  sampling on 307200points ...
+2018-01-07.15:42:52:	Downsampling Done. Now 76800 points
+2018-01-07.15:42:52:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:43:14:	Main window closed

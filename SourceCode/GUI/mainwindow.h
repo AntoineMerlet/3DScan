@@ -51,6 +51,7 @@ public slots:
     void unhidemain();
     void updatef();
     void updater();
+    void updated();
 
 private:
     Ui::MainWindow *ui;

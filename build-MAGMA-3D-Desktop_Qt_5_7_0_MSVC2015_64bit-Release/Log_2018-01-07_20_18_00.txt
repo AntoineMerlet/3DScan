@@ -1,0 +1,13 @@
+2018-01-07.20:18:02:	Program initilized
+2018-01-07.20:18:07:	Loaded D:/chair_alb0.ply
+2018-01-07.20:18:07:	Added 1 rawPC in DB. Size: 1
+2018-01-07.20:18:07:	Loaded D:/chair_alb1.ply
+2018-01-07.20:18:07:	Added 1 rawPC in DB. Size: 2
+2018-01-07.20:18:11:	Processing 2 point clouds
+2018-01-07.20:18:11:	Processing pair number 1
+2018-01-07.20:18:11:	 ------ Running ICP
+2018-01-07.20:18:13:	 ------ ICP finished
+2018-01-07.20:18:13:	Added 1 registeredPC in DB. Size: 1
+2018-01-07.20:18:15:	Display updated
+2018-01-07.20:18:16:	Display updated
+2018-01-07.20:18:26:	Main window closed

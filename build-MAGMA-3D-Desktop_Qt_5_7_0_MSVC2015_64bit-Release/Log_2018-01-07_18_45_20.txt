@@ -1,0 +1,17 @@
+2018-01-07.18:45:22:	Program initilized
+2018-01-07.18:45:32:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
+2018-01-07.18:45:32:	Added 1 rawPC in DB. Size: 1
+2018-01-07.18:45:32:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb3.ply
+2018-01-07.18:45:32:	Added 1 rawPC in DB. Size: 2
+2018-01-07.18:45:40:	Processing 2 point clouds
+2018-01-07.18:45:40:	Processing pair number 1
+2018-01-07.18:45:42:	Finding correspondences. src: 33959 points, target: 25341 points
+2018-01-07.18:45:43:	Found 655 correspondences.
+2018-01-07.18:45:43:	 ---- Running correspondence rejection on src: 655 correspondences.
+2018-01-07.18:45:43:	Median distance correspondence rejection on 655 correspondences
+2018-01-07.18:45:43:	Kept 430 correspondences (65.648857%)
+2018-01-07.18:45:43:	 ------ Total Kept 430 correspondences (65.648857%)
+2018-01-07.18:45:43:	 ------ Running ICP
+2018-01-07.18:45:43:	 ---- Running SVD ICP on src: 33959
+2018-01-07.18:45:43:	Added 1 registeredPC in DB. Size: 1
+2018-01-07.18:49:05:	Main window closed

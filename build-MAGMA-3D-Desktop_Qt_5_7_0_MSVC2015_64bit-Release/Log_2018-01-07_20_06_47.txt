@@ -1,0 +1,15 @@
+2018-01-07.20:06:49:	Program initilized
+2018-01-07.20:07:07:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_eze0.ply
+2018-01-07.20:07:07:	Added 1 rawPC in DB. Size: 1
+2018-01-07.20:07:07:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_eze1.ply
+2018-01-07.20:07:07:	Added 1 rawPC in DB. Size: 2
+2018-01-07.20:07:08:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_eze2.ply
+2018-01-07.20:07:08:	Added 1 rawPC in DB. Size: 3
+2018-01-07.20:07:14:	Processing 3 point clouds
+2018-01-07.20:07:14:	Processing pair number 1
+2018-01-07.20:07:14:	 ------ Running ICP
+2018-01-07.20:07:17:	Processing pair number 2
+2018-01-07.20:07:17:	 ------ Running ICP
+2018-01-07.20:07:23:	Added 1 registeredPC in DB. Size: 1
+2018-01-07.20:07:27:	Display updated
+2018-01-07.20:08:15:	Main window closed

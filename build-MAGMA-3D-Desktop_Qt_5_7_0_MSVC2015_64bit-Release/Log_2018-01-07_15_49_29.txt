@@ -1,0 +1,11 @@
+2018-01-07.15:49:31:	Program initilized
+2018-01-07.15:49:36:	Loaded D:/chair_alb0.ply
+2018-01-07.15:49:36:	Added 1 rawPC in DB. Size: 1
+2018-01-07.15:49:36:	Loaded D:/chair_alb1.ply
+2018-01-07.15:49:36:	Added 1 rawPC in DB. Size: 2
+2018-01-07.15:49:41:	Processing 1 point clouds
+2018-01-07.15:49:41:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:49:44:	Processing 1 point clouds
+2018-01-07.15:49:44:	Covariance  sampling on 307200points ...
+2018-01-07.15:49:50:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:50:01:	Main window closed

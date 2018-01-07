@@ -1,0 +1,17 @@
+2018-01-07.15:51:32:	Program initilized
+2018-01-07.15:51:46:	Loaded D:/chair_alb0.ply
+2018-01-07.15:51:46:	Added 1 rawPC in DB. Size: 1
+2018-01-07.15:51:46:	Loaded D:/chair_alb1.ply
+2018-01-07.15:51:46:	Added 1 rawPC in DB. Size: 2
+2018-01-07.15:51:52:	Processing 1 point clouds
+2018-01-07.15:51:52:	Covariance  sampling on 307200points ...
+2018-01-07.15:51:59:	Downsampling Done. Now 30720 points
+2018-01-07.15:51:59:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:54:53:	Processing 1 point clouds
+2018-01-07.15:54:53:	Covariance  sampling on 307200points ...
+2018-01-07.15:54:59:	Downsampling Done. Now 30720 points
+2018-01-07.15:54:59:	1 rawPC replaced DB. Size: 2
+2018-01-07.15:55:16:	Processing 1 point clouds
+2018-01-07.15:55:16:	Random sampling on 307200points ...
+2018-01-07.15:55:16:	Downsampling Done. Now 153600 points
+2018-01-07.15:55:16:	Covariance  sampling on 153600points ...
