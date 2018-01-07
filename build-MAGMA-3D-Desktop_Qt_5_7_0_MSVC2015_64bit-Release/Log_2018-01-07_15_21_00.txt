@@ -1,0 +1,10 @@
+2018-01-07.15:21:00:	Scan window closed
+2018-01-07.15:21:00:	Program initilized
+2018-01-07.15:21:05:	Live scan started
+2018-01-07.15:21:06:	Live scan stopped
+2018-01-07.15:21:08:	Live scan started
+2018-01-07.15:21:09:	Live scan stopped
+2018-01-07.15:21:13:	Live scan started
+2018-01-07.15:21:14:	Scan window closed
+2018-01-07.15:21:24:	Scan window closed
+2018-01-07.15:21:24:	Main window closed
