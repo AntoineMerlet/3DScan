@@ -48,7 +48,7 @@ signals:
 private:
     bool scan_pressed = false;
     Ui::scanwindow *ui;
-    pcl::Kinect2Grabber * kinect;
+    pcl::Kinect2Grabber *kinect;
     boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
     boost::shared_ptr<pcl::Grabber> grabber = boost::make_shared<pcl::Kinect2Grabber>();
     void closeEvent(QCloseEvent*);

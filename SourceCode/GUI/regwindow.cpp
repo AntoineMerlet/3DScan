@@ -17,6 +17,11 @@ regwindow::~regwindow()
     delete ui;
 }
 
+/// @author: Mladen Rakic
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Set of functions that enable interaction with the registering window and selection of parameters.
 void regwindow::on_p2plls_toggled(bool checked)
 {
     ui->svd->setChecked(false);
@@ -123,6 +128,11 @@ void regwindow::on_surface_cb_toggled(bool checked)
     }
 }
 
+/// @author: Mladen Rakic
+/// @date: 06-01-2018
+/// @version 1.0
+///
+/// @brief Accepts the selected values for registering parameters.
 void regwindow::on_reg_button_clicked()
 {
     paramsreg.maxdepth = ui->depth_sb->value()/100;
@@ -172,5 +182,4 @@ void regwindow::on_reg_button_clicked()
 
     emit updatereg();
     this->close();
-
 }

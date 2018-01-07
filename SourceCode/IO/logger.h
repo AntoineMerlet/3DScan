@@ -20,10 +20,10 @@ public:
     static std::string FileName;
     static logger* LogPointer; // Pointer for the logger class
     logger(){} // Default constructor
-    static logger* CreateLog(); // Creates instance of the logger class
+    static logger *CreateLog(); // Creates instance of the logger class
     void Log(const std::string& message); // Adds a message to the log file
-    void Log(const char * format, ...); // Adds a message to the log file with a specific formatting
-    logger& operator << (const string& message); // Operator overload
+    void Log(const char *format, ...); // Adds a message to the log file with a specific formatting
+    logger &operator << (const string &message); // Operator overload
 
 signals:
     void sendmessage(const QString& arg);
@@ -33,7 +33,7 @@ private:
     static std::string SetFileName(); // Sets the namefile of the log with current date and time
     std::string CurrentDateTime(); // Gets the current date and time
     logger(const logger&){} // Copy constructor
-    logger& operator=(const logger&){return *this;}  // Assignment operator for the logger class
+    logger &operator=(const logger&){return *this;}  // Assignment operator for the logger class
     ~logger(){delete LogPointer;}
 };
 

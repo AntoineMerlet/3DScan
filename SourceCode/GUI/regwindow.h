@@ -71,21 +71,13 @@ public:
 
 private slots:
     void on_p2plls_toggled(bool checked);
-
     void on_svd_toggled(bool checked);
-
     void on_lmp2p_toggled(bool checked);
-
     void on_lmp2s_toggled(bool checked);
-
     void on_median_cb_toggled(bool checked);
-
     void on_one2one_cb_toggled(bool checked);
-
     void on_ransac_cb_toggled(bool checked);
-
     void on_surface_cb_toggled(bool checked);
-
     void on_reg_button_clicked();
 
 private:

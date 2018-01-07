@@ -24,7 +24,8 @@ namespace Core {
 /// @param pc The Point Cloud to downsample
 /// @param x y z The size of the filter
 /// @return The downsampled Point Cloud
-pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr pc, const float &x, const float &y, const float &z){
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr pc, const float &x, const float &y, const float &z)
+{
     LOG("VoxelGrid on " + std::to_string(pc->size()) + "points ...");
     pcl::VoxelGrid<pcl::PointXYZRGB> grid;
     grid.setLeafSize (x, y, z);
@@ -43,7 +44,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr downsample(pcl::PointCloud<pcl::PointXYZR
 /// @version 1.0
 ///
 /// @brief Implementation of a fast bilateral filter for smoothing depth information in organized point clouds
-/// @param cloud_in :The Point Cloud to downsample
+/// @param cloud_in: The Point Cloud to downsample
 /// @param sigmaR: The standard deviation of the Gaussian for the intensity difference
 /// @param sigmaS: The size of the Gaussian bilateral filter window to use
 /// @return The final point cloud
@@ -77,7 +78,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralFilter(pcl::PointCloud<pcl::Poin
 /// @version 1.0
 ///
 /// @brief Takes in a colored organized point cloud, that might contain non zero values for the depth information.
-/// @param cloud_in : The Point Cloud to downsample
+/// @param cloud_in: The Point Cloud to downsample
 /// @param sigmaC: the new value to be set. It is called sigmacolor.
 /// @param sigmaD: the new value to be set. It is called sigmadepth.
 /// @return An upsampled version of this cloud
@@ -100,8 +101,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr bilateralupsamplerRGB(pcl::PointCloud<pcl
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief:Implementation of the median filter.
-/// @param cloud_in : The Point Cloud to downsample
+/// @brief Implementation of the median filter.
+/// @param cloud_in: The Point Cloud to downsample
 /// @param windowSize: Set the window size of the filter.
 /// @param maxMovement: Maximum value a dexel is allowed to move during filtering
 /// @return Resultant point cloud
@@ -134,8 +135,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr medianFilter(pcl::PointCloud<pcl::PointXY
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief :Random sampling with uniform probability. Based on an article. Results: http://www.ittc.ku.edu/~jsv/Papers/Vit84.sampling.pdf
-/// @param cloud_in : The Point Cloud to downsample
+/// @brief Random sampling with uniform probability. Based on an article. Results: http://www.ittc.ku.edu/~jsv/Papers/Vit84.sampling.pdf
+/// @param cloud_in: The Point Cloud to downsample
 /// @param order: downsampling ratio
 /// @return Resultant point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_in, const int &order)
@@ -159,8 +160,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr randomSample(pcl::PointCloud<pcl::PointXY
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief : It samples the input point cloud in the space of normal directions computed at every point.
-/// @param cloud_in : The Point Cloud to downsample
+/// @brief It samples the input point cloud in the space of normal directions computed at every point.
+/// @param cloud_in: The Point Cloud to downsample
 /// @param order: downsampling ratio
 /// @param nbBins: Number of bins.
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
@@ -189,8 +190,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr normalSample(pcl::PointCloud<pcl::PointXY
 /// @date: 05-01-2018
 /// @version 1.0
 ///
-/// @brief : It selects the points such that the resulting cloud is as stable as possible for being registered (against a copy of itself) with ICP.
-/// @param cloud_in : The Point Cloud to downsample
+/// @brief It selects the points such that the resulting cloud is as stable as possible for being registered (against a copy of itself) with ICP.
+/// @param cloud_in: The Point Cloud to downsample
 /// @param order: downsampling ratio
 /// @param maxDepthChange: the depth change threshold for computing object borders based on depth changes
 /// @param smoothSize: smooth size factor which influences the size of the area used to smooth normals (depth dependent if useDepthDependentSmoothing is true)

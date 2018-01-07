@@ -20,8 +20,8 @@ std::vector<std::string> QStringList2StdStringVec(const QStringList &list){
 /// @version 0.1
 ///
 /// @brief Loads raw Point Clouds to the DataBase
-/// @param qlist The list of path of files to load
-/// @param DB the pointer to  the DataBase
+/// @param qlist: The list of path of files to load
+/// @param DB: the pointer to  the DataBase
 /// @return The number of errors while loading
 int rawPC2DB(const QStringList &qlist, DataBase *DB){
     int fails = 0;
@@ -42,8 +42,8 @@ int rawPC2DB(const QStringList &qlist, DataBase *DB){
 /// @version 0.1
 ///
 /// @brief Loads registered Point Clouds to the DataBase
-/// @param qlist The list of path of files to load
-/// @param DB the pointer to  the DataBase
+/// @param qlist: The list of path of files to load
+/// @param DB: the pointer to  the DataBase
 /// @return The number of errors while loading
 int registeredPC2DB(const QStringList &qlist, DataBase *DB){
     int fails = 0;
@@ -64,8 +64,8 @@ int registeredPC2DB(const QStringList &qlist, DataBase *DB){
 /// @version 0.1
 ///
 /// @brief Loads meshs to the DataBase
-/// @param qlist The list of path of files to load
-/// @param DB the pointer to  the DataBase
+/// @param qlist: The list of path of files to load
+/// @param DB: the pointer to  the DataBase
 /// @return The number of errors while loading
 int meshedPC2DB(const QStringList &qlist, DataBase *DB){
     int fails = 0;

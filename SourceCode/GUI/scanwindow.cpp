@@ -37,7 +37,6 @@ scanwindow::~scanwindow()
 void scanwindow::on_sw_verticalacq_radiobutton_clicked(bool checked)
 {
     ui->sw_horizontalacq_radiobutton->setChecked(false);
-    //...
 }
 
 /// @author: Mladen Rakic
@@ -49,12 +48,6 @@ void scanwindow::on_sw_verticalacq_radiobutton_clicked(bool checked)
 void scanwindow::on_sw_horizontalacq_radiobutton_clicked(bool checked)
 {
     ui->sw_verticalacq_radiobutton->setChecked(false);
-    //...
-}
-
-void scanwindow::on_sw_horizontalacq_radiobutton_clicked()
-{
-
 }
 
 /// @author: Mladen Rakic / Marcio Rockenbach
@@ -76,7 +69,6 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
     updatebox();
 
     // Point Cloud
-
         pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr cloud;
 
         // Retrieved Point Cloud Callback Function
@@ -86,7 +78,6 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
                 boost::mutex::scoped_lock lock( mutex );
 
                 /* Point Cloud Processing */
-
                 cloud = ptr->makeShared();
             };
 
@@ -137,6 +128,11 @@ void scanwindow::on_sw_startscan_pushbutton_clicked()
             }
 }
 
+/// @author: Mladen Rakic / Marcio Rockenbach
+/// @date: 05-01-2018
+/// @version 1.0
+///
+/// @brief Function used to update the bounding box on the live feed from the sensor
 void scanwindow::updatebox(){
     viewer->removeShape("cube");
     float x_min = ((float)ui->xmin->value())/3;

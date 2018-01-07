@@ -15,7 +15,8 @@ std::string logger::FileName = SetFileName();
 ///
 /// @brief Funtion to set the name of the logger file
 /// @return string that is the name of the file to be created
-std::string logger::SetFileName(){
+std::string logger::SetFileName()
+{
     string name = "Log_";
     name.append(LogPointer->CurrentDateTime());
     name[14] = '_'; // Changing special character ':' to '_' to make it possible to create a file name with that
@@ -45,8 +46,8 @@ logger* logger::CreateLog()
 /// @version 2.0
 ///
 /// @brief Logs a string message
-/// @param message to be included in the log
-void logger::Log(const string& message)
+/// @param message: message to be included in the log
+void logger::Log(const string &message)
 {
     std::string time = logger::CurrentDateTime(); // Getting current date and time to add to the log
     std::string time_message = "00:00:00";
@@ -66,7 +67,7 @@ void logger::Log(const string& message)
 /// @version 2.0
 ///
 /// @brief Logs a message with a specific format
-/// @param message to be included in the log; specification of the format of the message
+/// @param message: message to be included in the log; specification of the format of the message
 void logger::Log(const char * format, ...)
 {
     char* message = NULL;
@@ -94,19 +95,12 @@ void logger::Log(const char * format, ...)
     delete [] message;
 }
 
-
 /// @author: Marcio Rockenbach
 /// @date: 23-12-2017
 /// @version 1.0
 ///
 /// @brief Overloads the << operator to log a message
-/// @param string for the message to be logged.
-//void logger::operator<<(const string& message)
-//{
-//    logger::Log(message);
-//}
-
-
+/// @param message: string for the message to be logged.
 logger& logger::operator<<(const string& message)
 {
     logger::CreateLog()->Log(message);

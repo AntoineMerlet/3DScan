@@ -74,14 +74,14 @@ namespace pcl
             bool available;
 
             HRESULT result;
-            IKinectSensor* sensor;
-            ICoordinateMapper* mapper;
-            IColorFrameSource* colorSource;
-            IColorFrameReader* colorReader;
-            IDepthFrameSource* depthSource;
-            IDepthFrameReader* depthReader;
-            IInfraredFrameSource* infraredSource;
-            IInfraredFrameReader* infraredReader;
+            IKinectSensor *sensor;
+            ICoordinateMapper *mapper;
+            IColorFrameSource *colorSource;
+            IColorFrameReader *colorReader;
+            IDepthFrameSource *depthSource;
+            IDepthFrameReader *depthReader;
+            IInfraredFrameSource *infraredSource;
+            IInfraredFrameReader *infraredReader;
 
             int colorWidth;
             int colorHeight;

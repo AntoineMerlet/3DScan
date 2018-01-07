@@ -47,7 +47,7 @@ pcl::Correspondences correspKD(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::
 /// @brief Function implements a correspondence rejection method that exploits low-level and pose-invariant geometric constraints between two point sets.
 /// @param src: the input point cloud source
 /// @param target: target point cloud
-/// @param corresp:the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
+/// @param corresp: the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
 /// @param iter: number of iterations
 /// @param cardi: polygon cardinality
 /// @param simiThre: similarity threshold.Set the similarity threshold in [0,1[ between edge lengths, where 1 is a perfect match.
@@ -79,10 +79,10 @@ pcl::Correspondences correspRpoly(pcl::PointCloud<pcl::PointNormal>::Ptr src, pc
 /// @brief Implements a simple correspondence rejection method based on thresholding the distances between the correspondences.
 /// @param src: the input point cloud source
 /// @param target: target point cloud
-/// @param corresp:the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
-/// @param maxDist: Distance to be used as maximum distance between correspondences. Correspondences with larger distances are rejected.
+/// @param corresp: the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
+/// @param maxDist: distance to be used as maximum distance between correspondences. Correspondences with larger distances are rejected.
 /// @return the resultant filtered set of remaining correspondences
-pcl::Correspondences correspRdist(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp,const float &maxDist)
+pcl::Correspondences correspRdist(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp, const float &maxDist)
 {
     LOG("Distance correspondence rejection on " + std::to_string(corresp.size()) + " correspondences" );
 
@@ -104,8 +104,8 @@ pcl::Correspondences correspRdist(pcl::PointCloud<pcl::PointNormal>::Ptr src, pc
 /// @brief Implements a simple correspondence rejection method based on thresholding the distances between the correspondences.
 /// @param src: the input point cloud source
 /// @param target: target point cloud
-/// @param corresp:the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
-/// @param medFact: Set the factor for correspondence rejection.
+/// @param corresp: the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
+/// @param medFact: the factor for correspondence rejection.
 /// @return the resultant filtered set of remaining correspondences
 pcl::Correspondences correspRmeddist(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp,const double &medFact)
 {
@@ -147,9 +147,9 @@ pcl::Correspondences correspR121(pcl::Correspondences corresp)
 /// @brief correspondence rejection using Random Sample Consensus to identify inliers (and reject outliers)
 /// @param src: the input point cloud source
 /// @param target: target point cloud
-/// @param corresp:the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
-/// @param iter: Maximum number if iterations to run
-/// @param in_thres: Distance threshold in the same dimension as source and target data sets.
+/// @param corresp: the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
+/// @param iter: maximum number if iterations to run
+/// @param in_thres: distance threshold in the same dimension as source and target data sets.
 /// @return the resultant filtered set of remaining correspondences
 pcl::Correspondences correspRransac(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp, const int &iter, const float &in_thres)
 {
@@ -175,10 +175,10 @@ pcl::Correspondences correspRransac(pcl::PointCloud<pcl::PointNormal>::Ptr src, 
 /// @brief implements a simple correspondence rejection method based on the angle between the normals at correspondent points.
 /// @param src: the input point cloud source
 /// @param target: target point cloud
-/// @param corresp:the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
+/// @param corresp: the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
 /// @param maxDepthChange:
 /// @param smoothSize:
-/// @param thres:cosine of the thresholding angle between the normals for rejection
+/// @param thres: cosine of the thresholding angle between the normals for rejection
 /// @return the resultant filtered set of remaining correspondences
 pcl::Correspondences correspRsurfacenorm(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp, const float &thres)
 {
@@ -204,7 +204,7 @@ pcl::Correspondences correspRsurfacenorm(pcl::PointCloud<pcl::PointNormal>::Ptr 
 /// @brief implements a simple correspondence rejection method to reject boundary points
 /// @param src: the input point cloud source
 /// @param target: target point cloud
-/// @param corresp:the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
+/// @param corresp: the found correspondences (index of query point, index of target point, distance)/the set of initial correspondences given
 /// @return the resultant filtered set of remaining correspondences
 pcl::Correspondences correspRboudary(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, pcl::Correspondences corresp)
 {
@@ -226,13 +226,13 @@ pcl::Correspondences correspRboudary(pcl::PointCloud<pcl::PointNormal>::Ptr src,
 /// @version 1.0
 ///
 /// @brief Run a set of rejections to obtain correspondences
-/// @param src The source Point Cloud
-/// @param target the target point cloud
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param src: The source Point Cloud
+/// @param target: the target point cloud
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the resultant set of correspondences
 pcl::Correspondences fullCorresp(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFact, const float &thres, const float &in_thres)
 {
@@ -260,15 +260,15 @@ pcl::Correspondences fullCorresp(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl
 /// @version 1.0
 ///
 /// @brief pairwise registration of all point clouds with transform propagation (but not incremental, i.e not point cloud addition)
-/// @param [out] vec The vector of Point Cloud to register. the point clouds are modified to their registered version
+/// @param [out] vec: the vector of Point Cloud to register. the point clouds are modified to their registered version
 /// @param icp mode: 1: LLS point to plane, 2: SVD, 3: LM point to point, 4: LM point to plane
-/// @param maxDepthChange the maximum depth change for normal calculation
-/// @param smoothSize the smoothing value for normal calculation
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param maxDepthChange: the maximum depth change for normal calculation
+/// @param smoothSize: the smoothing value for normal calculation
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 void fullRegister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &maxDepthChange, const float &smoothSize, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
 {
     std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr>::reverse_iterator it = vec.rbegin();
@@ -297,13 +297,13 @@ void fullRegister(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, cons
 /// @brief pairwise incremental registration of all point clouds
 /// @param vec The vector of Point Cloud to register
 /// @param icp mode: 1: LLS point to plane, 2: SVD, 3: LM point to point, 4: LM point to plane
-/// @param maxDepthChange the maximum depth change for normal calculation
-/// @param smoothSize the smoothing value for normal calculation
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param maxDepthChange: the maximum depth change for normal calculation
+/// @param smoothSize: the smoothing value for normal calculation
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the total final point cloud
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr fullRegisterIncremental(std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> &vec, const int &icpMode, const float &maxDepthChange, const float &smoothSize, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres )
 {
@@ -332,14 +332,14 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr fullRegisterIncremental(std::vector<pcl::
 /// @version 1.0
 ///
 /// @brief register a pair of point clouds
-/// @param src the source point cloud
-/// @param target the target point cloud
+/// @param src: the source point cloud
+/// @param target: the target point cloud
 /// @param icp mode: 1: LLS point to plane, 2: SVD, 3: LM point to point, 4: LM point to plane
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
 Eigen::Matrix4d pairRegister(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &icpMode, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
 {
@@ -368,13 +368,13 @@ Eigen::Matrix4d pairRegister(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::Po
 /// @version 1.0
 ///
 /// @brief register a pair of point clouds using point to surface LLS
-/// @param src the source point cloud
-/// @param target the target point cloud
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param src: the source point cloud
+/// @param target: the target point cloud
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
 Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
 
@@ -406,13 +406,13 @@ Eigen::Matrix4d icpLLSp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::Point
 /// @version 1.0
 ///
 /// @brief register a pair of point clouds using SVD
-/// @param src the source point cloud
-/// @param target the target point cloud
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param src: the source point cloud
+/// @param target: the target point cloud
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
 Eigen::Matrix4d icpSVD(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
 
@@ -444,13 +444,13 @@ Eigen::Matrix4d icpSVD(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointClo
 /// @version 1.0
 ///
 /// @brief register a pair of point clouds using point to surface Levenberg Marquardt point to point optimization
-/// @param src the source point cloud
-/// @param target the target point cloud
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param src: the source point cloud
+/// @param target: the target point cloud
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
 Eigen::Matrix4d icpLMp2p(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
 
@@ -482,16 +482,15 @@ Eigen::Matrix4d icpLMp2p(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointC
 /// @version 1.0
 ///
 /// @brief register a pair of point clouds using point to surface Levenberg Marquardt point to surface optimization
-/// @param src the source point cloud
-/// @param target the target point cloud
-/// @param iter the number of iterations for ransac rejection
-/// @param maxDist the maximum between two points to be said corresponding
-/// @param medFact the median factor for median distance rejection
-/// @param thres the threshold and value for rejaction by surface norme
-/// @param in_thres the inlier threshold value for ransac rejaction
+/// @param src: the source point cloud
+/// @param target: the target point cloud
+/// @param iter: the number of iterations for ransac rejection
+/// @param maxDist: the maximum between two points to be said corresponding
+/// @param medFact: the median factor for median distance rejection
+/// @param thres: the threshold and value for rejaction by surface norme
+/// @param in_thres: the inlier threshold value for ransac rejaction
 /// @return the transformation matrix
 Eigen::Matrix4d icpLMp2s(pcl::PointCloud<pcl::PointNormal>::Ptr src, pcl::PointCloud<pcl::PointNormal>::Ptr target, const int &iter, const float &maxDist, const float &medFac, const float &thres, const float &in_thres)
-
 {
     pcl::registration::TransformationEstimationPointToPlane< pcl::PointNormal, pcl::PointNormal, double > teLM;
     Eigen::Matrix4d final_transform (Eigen::Matrix4d::Identity()), transform (Eigen::Matrix4d::Identity ());
