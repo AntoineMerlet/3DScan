@@ -1,0 +1,18 @@
+2018-01-08.12:57:58:	Program initilized
+2018-01-08.12:59:27:	Loaded D:/chair_alb0.ply
+2018-01-08.12:59:27:	Added 1 rawPC in DB. Size: 1
+2018-01-08.12:59:27:	Loaded D:/chair_alb1.ply
+2018-01-08.12:59:27:	Added 1 rawPC in DB. Size: 2
+2018-01-08.12:59:33:	Processing 2 point clouds
+2018-01-08.12:59:33:	Processing pair number 1
+2018-01-08.12:59:33:	 ------ Running ICP
+2018-01-08.12:59:35:	 ------ ICP finished
+2018-01-08.12:59:35:	Added 1 registeredPC in DB. Size: 1
+2018-01-08.12:59:36:	Display updated
+2018-01-08.12:59:42:	D:/3DScanProjectsRegistered41
+2018-01-08.12:59:42:	Saved atD:/3DScanProjects/chair_alb0.ply
+2018-01-08.13:00:17:	Loaded D:/3DScanProjects/chair_alb0.ply
+2018-01-08.13:00:17:	Added 1 rawPC in DB. Size: 3
+2018-01-08.13:00:22:	Display updated
+2018-01-08.13:00:36:	Scan window closed
+2018-01-08.13:00:36:	Main window closed

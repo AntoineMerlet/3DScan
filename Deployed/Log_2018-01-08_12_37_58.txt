@@ -1,0 +1,4 @@
+2018-01-08.12:38:00:	Program initilized
+2018-01-08.12:38:02:	About section opened
+2018-01-08.12:38:05:	User Manual opened
+2018-01-08.12:38:06:	Main window closed

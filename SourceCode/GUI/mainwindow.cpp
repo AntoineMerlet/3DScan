@@ -338,7 +338,17 @@ void MainWindow::on_actionExport_point_clouds_triggered()
 /// @brief Opens a file dialog for the user to select a folder to save Point Clouds.
 void MainWindow::on_actionExport_registered_PC_triggered()
 {
-    //...
+    QString qdir = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
+    if (qdir != "")
+    {
+        std::set<int>::iterator it = selectedRegistered.begin();
+            for(it; it != selectedRegistered.end(); it++)
+            {
+                LOG(qdir.toStdString() + RPCList->item(*it)->text().toStdString());
+                IO::savePLY(DB->getRegisteredPC(*it),qdir.toStdString() + "/" + PCList->item(*it)->text().toStdString() + ".ply");
+            }
+
+    }
 }
 
 
@@ -349,7 +359,7 @@ void MainWindow::on_actionExport_registered_PC_triggered()
 /// @brief Opens a file dialog for the user to select a folder to save meshs.
 void MainWindow::on_actionExport_mesh_triggered()
 {
-    //...
+    LOG("not implemented yet");
 }
 
 
@@ -378,7 +388,7 @@ void MainWindow::on_mw_register_pc_pushbutton_clicked()
 
 void MainWindow::on_mw_generatemesh_pushbutton_clicked()
 {
-
+    LOG("not implemented yet");
 }
 
 void MainWindow::receivedmessage(const QString &arg)
