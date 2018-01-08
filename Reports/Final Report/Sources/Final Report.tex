@@ -155,15 +155,16 @@ I also implemented the logger in a way that is easy to be used everywhere in the
 \subsubsection{I/O Tools}
 My second goal was to handle most of the input and output section of our project. For that, I had to work with the Kinect sensor and to implement the necessary code to obtain and save data from the Kinect and to display the point clouds in a visualizer.\par
 The Kinect for Windows version 2.0 was released in the end of 2013 / beginning of 2014. The sensor is composed of an RGB camera (3 channels) that stores data in a 1280 x 960 resolution, an infrared emitter and an infrared depth sensor, which allows it to capture a depth image with resolution of 512 x 424. It also features a microphone and an accelerometer. It has a depth range between 0.4 - 4.5 m and has a field of view 70º horizontally and 60º vertically.\par
+
 Point cloud library (PCL) has some modules for data input that are called grabbers, but it does not have one specific for the Kinect. Although it is not implemented in the PCL itself, previous year projects made use of a grabber for the Kinect that is available on the internet (\url{http://unanancyowen.com/en/pcl-kinectv2-with-grabber/}) and that is implemented in only one header / cpp file. We decided to keep this method of data acquisition by using this class.\par
 After implementing and testing the Kinect acquisition using the kinect2grabber, it was necessary to connect it to our project. I worked with Mladen in the development of the GUI for that purpose, by creating a PCL Visualizer to display the live scan. For the acquisition of the point clouds, I implemented a callback function that interacts with the keyboard. By pressing the key “s”, one point cloud is stored in the system. The visualizer of the live scan also features a bounding box, whose coordinates can be determined through sliders in the scan window.\par
-I also worked on the loading and display of the point clouds in the main window (figure \ref {fig:PCdisp}). When the user selects the files to be loaded, a QListView widget is updated to display the corresponding filenames. By interacting with this widget (by checking or unchecking the items), the display widget (a QVTK widget) is updated to show the selected point clouds.\par
-
 \begin{figure}[h]
 \includegraphics[scale=0.5]{PC_display}
 \caption{Display of point clouds}
 \label{fig:PCdisp}
 \end{figure}
+I also worked on the loading and display of the point clouds in the main window (figure \ref {fig:PCdisp}). When the user selects the files to be loaded, a QListView widget is updated to display the corresponding filenames. By interacting with this widget (by checking or unchecking the items), the display widget (a QVTK widget) is updated to show the selected point clouds.\par
+
 
 Since the input and output are closely related to interaction with the user, it was a good opportunity for me to also learn a lot about GUI design in Qt and how to transmit information between different modules of the software.\par
 
@@ -314,10 +315,14 @@ To conclude, even though the project was started from the scratch, and even thou
 For the next generation of students who will work on this project, we propose some improvements that can be done on the software:\par
 \begin{itemize}
 \item Logger: implementation without using macro, making it typesafe
+\item std::cout and Qdebug redirection to the logger, for easy printing of matrices for example
 \item Implement meshing techniques of the registered point clouds
 \item Horizontal / vertical acquisition modes: allows the user to choose between vertical and horizontal orientation of the Kinect sensor.
 \item Save captured files in other extension than “.PLY”
+\item Generate configuration files for settings, be able to load them as well
 \item Full implementation of the software as Qt and PCL independent
+\item Use the viewports of the display, to show the base and result with colored distance metrics
+\item For nw, the software cannot really be expanded full screen. It would be great, reagarding user experience, to implement full screen mode
 \end{itemize}
 
 

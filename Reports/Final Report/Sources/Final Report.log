@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.30)  7 JAN 2018 23:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.30)  8 JAN 2018 12:19
 entering extended mode
 **"./Final Report.tex"
 ("Final Report.tex"
@@ -983,35 +983,60 @@ Package caption Warning: \caption will not be redefined since it's already
 See the caption package documentation for explanation.
 
 Package caption Info: End \AtBeginDocument code.
-<logo.jpg, id=59, 246.1697pt x 63.23625pt>
+<logo.jpg, id=83, 246.1697pt x 63.23625pt>
 File: logo.jpg Graphic file (type jpg)
  <use logo.jpg>
 Package pdftex.def Info: logo.jpg used on input line 64.
 (pdftex.def)             Requested size: 246.16908pt x 63.23608pt.
  [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./logo.jpg>] ("Final R
 eport.toc"
-Overfull \hbox (5.95001pt too wide) detected at line 12
- \OT1/cmr/m/n/10.95 13
- []
-
-
 Overfull \hbox (5.95001pt too wide) detected at line 13
- \OT1/cmr/m/n/10.95 17
+ \OT1/cmr/m/n/10.95 10
  []
 
 
 Overfull \hbox (5.95001pt too wide) detected at line 14
- \OT1/cmr/m/n/10.95 18
+ \OT1/cmr/m/n/10.95 10
  []
 
 
 Overfull \hbox (5.95001pt too wide) detected at line 15
- \OT1/cmr/m/n/10.95 19
+ \OT1/cmr/m/n/10.95 10
  []
 
 
 Overfull \hbox (5.95001pt too wide) detected at line 16
- \OT1/cmr/m/n/10.95 20
+ \OT1/cmr/m/n/10.95 11
+ []
+
+
+Overfull \hbox (5.95001pt too wide) detected at line 17
+ \OT1/cmr/m/n/10.95 13
+ []
+
+
+Overfull \hbox (5.95001pt too wide) detected at line 18
+ \OT1/cmr/m/n/10.95 17
+ []
+
+
+Overfull \hbox (5.95001pt too wide) detected at line 19
+ \OT1/cmr/m/n/10.95 21
+ []
+
+
+Overfull \hbox (5.95001pt too wide) detected at line 20
+ \OT1/cmr/m/n/10.95 22
+ []
+
+
+Overfull \hbox (5.95001pt too wide) detected at line 21
+ \OT1/cmr/m/n/10.95 23
+ []
+
+
+Overfull \hbox (5.95001pt too wide) detected at line 22
+ \OT1/cmr/m/n/10.95 24
  []
 
 )
@@ -1028,89 +1053,74 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 108.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [6] [7] [8] [9]
-[10] <logger_mw.jpg, id=125, 310.91156pt x 70.01157pt>
+[10] <logger_mw.jpg, id=155, 310.91156pt x 70.01157pt>
 File: logger_mw.jpg Graphic file (type jpg)
  <use logger_mw.jpg>
 Package pdftex.def Info: logger_mw.jpg used on input line 148.
 (pdftex.def)             Requested size: 310.91078pt x 70.01138pt.
 
-[11 <./logger_mw.jpg>] <PC_display.jpg, id=133, 483.30562pt x 395.22656pt>
+[11 <./logger_mw.jpg>] <PC_display.jpg, id=162, 483.30562pt x 395.22656pt>
 File: PC_display.jpg Graphic file (type jpg)
 
 <use PC_display.jpg>
-Package pdftex.def Info: PC_display.jpg used on input line 163.
+Package pdftex.def Info: PC_display.jpg used on input line 162.
 (pdftex.def)             Requested size: 241.65222pt x 197.6128pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12] [13 <./PC_display.jpg>] <icpvsfe.png, id=150, 422.17725pt x 128.27925pt>
+ [12 <./PC_display.jpg>] [13]
+<icpvsfe.png, id=179, 422.17725pt x 128.27925pt>
 File: icpvsfe.png Graphic file (type png)
-
-<use icpvsfe.png>
-Package pdftex.def Info: icpvsfe.png used on input line 197.
+ <use icpvsfe.png>
+Package pdftex.def Info: icpvsfe.png used on input line 198.
 (pdftex.def)             Requested size: 426.79134pt x 129.68628pt.
  [14 <./icpvsfe.png>] [15] [16] [17] [18]
-<main_window.jpg, id=196, 490.08093pt x 399.74344pt>
+<main_window.jpg, id=224, 490.08093pt x 399.74344pt>
 File: main_window.jpg Graphic file (type jpg)
  <use main_window.jpg>
-Package pdftex.def Info: main_window.jpg used on input line 268.
+Package pdftex.def Info: main_window.jpg used on input line 269.
 (pdftex.def)             Requested size: 230.18253pt x 187.75134pt.
 
-<scan_window.jpg, id=197, 684.30656pt x 395.97937pt>
+<scan_window.jpg, id=225, 684.30656pt x 395.97937pt>
 File: scan_window.jpg Graphic file (type jpg)
  <use scan_window.jpg>
-Package pdftex.def Info: scan_window.jpg used on input line 272.
+Package pdftex.def Info: scan_window.jpg used on input line 273.
 (pdftex.def)             Requested size: 230.18253pt x 133.19318pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 279.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 280.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 279.
- [19 <./main_window.jpg> <./scan_window.jpg>] <filter_window.jpg, id=215, 548.8
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 280.
+ [19 <./main_window.jpg> <./scan_window.jpg>] <filter_window.jpg, id=243, 548.8
 0031pt x 362.85562pt>
 File: filter_window.jpg Graphic file (type jpg)
 
 <use filter_window.jpg>
-Package pdftex.def Info: filter_window.jpg used on input line 289.
+Package pdftex.def Info: filter_window.jpg used on input line 290.
 (pdftex.def)             Requested size: 230.18253pt x 152.18793pt.
 
-<register_window.jpg, id=216, 525.46312pt x 374.90062pt>
+<register_window.jpg, id=244, 525.46312pt x 374.90062pt>
 File: register_window.jpg Graphic file (type jpg)
 
 <use register_window.jpg>
-Package pdftex.def Info: register_window.jpg used on input line 293.
+Package pdftex.def Info: register_window.jpg used on input line 294.
 (pdftex.def)             Requested size: 230.18253pt x 164.23027pt.
  [20 <./filter_window.jpg> <./register_window.jpg>]
 [21] [22] [23]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 342.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 347.
  [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 342.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 347.
  ("Final Report.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 342.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 342.
-
-
-Package rerunfilecheck Warning: File `"Final Report".out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `"Final Report".out':
-(rerunfilecheck)             Before: 2356FA3A60D0B88C5F5D930965B62CAB;736
-(rerunfilecheck)             After:  C533ACB8F09ED1860033710E9211A620;1105.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
-
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 347.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 347.
+Package rerunfilecheck Info: File `"Final Report".out' has not changed.
+(rerunfilecheck)             Checksum: C533ACB8F09ED1860033710E9211A620;1105.
  ) 
 Here is how much of TeX's memory you used:
- 12442 strings out of 493333
- 178062 string characters out of 3139184
+ 12448 strings out of 493333
+ 178140 string characters out of 3139184
  321886 words of memory out of 3000000
- 15702 multiletter control sequences out of 15000+200000
+ 15708 multiletter control sequences out of 15000+200000
  13855 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,11n,58p,1279b,1392s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1123,9 +1133,9 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmtt10.pfb>
-Output written on "Final Report.pdf" (24 pages, 612254 bytes).
+Output written on "Final Report.pdf" (24 pages, 615132 bytes).
 PDF statistics:
- 309 PDF objects out of 1000 (max. 8388607)
+ 333 PDF objects out of 1000 (max. 8388607)
  90 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
