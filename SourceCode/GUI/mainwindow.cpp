@@ -324,9 +324,13 @@ void MainWindow::on_actionExport_point_clouds_triggered()
     QString qdir = QFileDialog::getExistingDirectory(this, QString("Export point cloud"),QString(""), QFileDialog::ShowDirsOnly);
     if (qdir != "")
     {
-        {
+        std::set<int>::iterator it = selectedRaw.begin();
+            for(it; it != selectedRaw.end(); it++)
+            {
+                LOG(qdir.toStdString() + PCList->item(*it)->text().toStdString());
+                IO::savePLY(DB->getRawPC(*it),qdir.toStdString() + "/" + PCList->item(*it)->text().toStdString() + ".ply");
+            }
 
-        }
     }
 }
 
@@ -344,8 +348,7 @@ void MainWindow::on_actionExport_registered_PC_triggered()
         std::set<int>::iterator it = selectedRegistered.begin();
             for(it; it != selectedRegistered.end(); it++)
             {
-                LOG(qdir.toStdString() + RPCList->item(*it)->text().toStdString());
-                IO::savePLY(DB->getRegisteredPC(*it),qdir.toStdString() + "/" + PCList->item(*it)->text().toStdString() + ".ply");
+                IO::savePLY(DB->getRegisteredPC(*it),qdir.toStdString() + "/" + RPCList->item(*it)->text().toStdString() + ".ply");
             }
 
     }
