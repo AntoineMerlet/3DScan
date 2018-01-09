@@ -1,2 +1,0 @@
-2018-01-06.22:07:14:	Program initilized
-2018-01-06.22:07:16:	Register window opened

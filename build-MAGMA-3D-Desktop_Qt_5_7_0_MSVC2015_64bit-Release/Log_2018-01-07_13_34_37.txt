@@ -1,5 +1,0 @@
-2018-01-07.13:34:38:	Program initilized
-2018-01-07.13:34:40:	Filter window opened
-2018-01-07.13:34:44:	Processing 0 point clouds
-2018-01-07.13:34:44:	P1 0.100000
-2018-01-07.13:34:54:	Main window closed

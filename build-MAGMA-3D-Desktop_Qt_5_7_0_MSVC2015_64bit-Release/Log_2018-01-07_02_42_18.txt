@@ -1,6 +1,0 @@
-2018-01-07.02:42:20:	Program initilized
-2018-01-07.02:42:33:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
-2018-01-07.02:42:33:	Added 1 rawPC in DB. Size: 1
-2018-01-07.02:42:35:	Filter window opened
-2018-01-07.02:42:39:	Processing 1 point clouds
-2018-01-07.02:42:39:	Covariance  sampling on 33959points ...

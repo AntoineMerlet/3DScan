@@ -26,8 +26,6 @@ SOURCES += main.cpp\
     Core/registration.cpp \
     Core/filtering.cpp \
     Core/meshing.cpp \
-    GUI/parameters.cpp \
-    GUI/options.cpp \
     GUI/scanwindow.cpp \
     GUI/aboutwindow.cpp \
     GUI/filterwindow.cpp \
@@ -41,13 +39,10 @@ HEADERS  += GUI/mainwindow.h \
     IO/kinect2_grabber.h \
     IO/logger.h \
     Storage/database.h \
-    GUI/guitools.h \
     Core/mathtools.h \
     Core/registration.h \
     Core/filtering.h \
     Core/meshing.h \
-    GUI/parameters.h \
-    GUI/options.h \
     GUI/scanwindow.h \
     GUI/aboutwindow.h \
     GUI/filterwindow.h \

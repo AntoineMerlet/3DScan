@@ -1,7 +1,0 @@
-2018-01-07.20:08:20:	Program initilized
-2018-01-07.20:08:38:	Loaded D:/chair_alb0.ply
-2018-01-07.20:08:38:	Added 1 rawPC in DB. Size: 1
-2018-01-07.20:08:38:	Loaded D:/chair_alb1.ply
-2018-01-07.20:08:38:	Added 1 rawPC in DB. Size: 2
-2018-01-07.20:08:50:	Processing 2 point clouds
-2018-01-07.20:08:50:	Normal  sampling on 307200points ...

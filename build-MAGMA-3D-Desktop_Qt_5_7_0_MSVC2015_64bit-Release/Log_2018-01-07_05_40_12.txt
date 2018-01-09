@@ -1,8 +1,0 @@
-2018-01-07.05:40:14:	Program initilized
-2018-01-07.05:40:27:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
-2018-01-07.05:40:27:	Added 1 rawPC in DB. Size: 1
-2018-01-07.05:40:27:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb1.ply
-2018-01-07.05:40:27:	Added 1 rawPC in DB. Size: 2
-2018-01-07.05:40:29:	Register window opened
-2018-01-07.05:40:42:	Processing 2 point clouds
-2018-01-07.05:40:42:	Processing 0.000000 point clouds3145778

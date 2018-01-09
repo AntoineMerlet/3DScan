@@ -1,7 +1,0 @@
-2018-01-07.02:14:45:	Program initilized
-2018-01-07.02:14:58:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
-2018-01-07.02:14:58:	Added 1 rawPC in DB. Size: 1
-2018-01-07.02:15:00:	Filter window opened
-2018-01-07.02:15:01:	Processing 1 point clouds
-2018-01-07.02:15:01:	----- 0.001000 and1
-2018-01-07.02:15:01:	Bilateral Filtering on 33959points ...

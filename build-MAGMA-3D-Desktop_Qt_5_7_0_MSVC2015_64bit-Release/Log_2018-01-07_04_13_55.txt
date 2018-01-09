@@ -1,9 +1,0 @@
-2018-01-07.04:13:58:	Program initilized
-2018-01-07.04:14:08:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb2.ply
-2018-01-07.04:14:08:	Added 1 rawPC in DB. Size: 1
-2018-01-07.04:14:10:	Filter window opened
-2018-01-07.04:14:11:	Processing 1 point clouds
-2018-01-07.04:14:11:	Covariance  sampling on 307200points ...
-2018-01-07.04:14:11:	Normals Done. Now 307200
-2018-01-07.04:14:11:	zeryhthd 153600 points
-2018-01-07.04:14:11:	Downsampling Done. Now 0 points

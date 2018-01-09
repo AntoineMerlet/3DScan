@@ -1,5 +1,0 @@
-2018-01-06.20:01:45:	Program initialized
-2018-01-06.20:01:50:	Loaded C:/Users/Jinshür/Desktop/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/TDK_CapturedPointCloud2.ply
-2018-01-06.20:01:50:	Added 1 rawPC in DB. Size: 1
-2018-01-06.20:01:50:	Loaded C:/Users/Jinshür/Desktop/3DScan/build-MAGMA-3D-Desktop_Qt_5_7_0_MSVC2015_64bit-Release/TDK_CapturedPointCloud3.ply
-2018-01-06.20:01:50:	Added 1 rawPC in DB. Size: 2

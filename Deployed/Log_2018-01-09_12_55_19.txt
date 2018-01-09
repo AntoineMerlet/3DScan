@@ -1,0 +1,5 @@
+2018-01-09.12:55:20:	Program initilized
+2018-01-09.12:55:26:	Loaded D:/chair_alb0.ply
+2018-01-09.12:55:26:	Added 1 rawPC in DB. Size: 1
+2018-01-09.12:55:52:	Scan window closed
+2018-01-09.12:55:52:	Main window closed

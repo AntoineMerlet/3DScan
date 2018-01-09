@@ -1,7 +1,0 @@
-2018-01-07.14:10:57:	Program initilized
-2018-01-07.14:11:02:	Live scan started
-2018-01-07.14:11:40:	Point cloud number 1 saved
-2018-01-07.14:11:45:	Point cloud number 2 saved
-2018-01-07.14:12:05:	Scan window closed
-2018-01-07.14:12:05:	Scan window closed
-2018-01-07.14:12:05:	Main window closed

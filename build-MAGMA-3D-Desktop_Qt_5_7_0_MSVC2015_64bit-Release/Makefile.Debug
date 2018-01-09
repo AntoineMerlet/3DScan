@@ -58,14 +58,12 @@ SOURCES       = ..\SourceCode\main.cpp \
 		..\SourceCode\Core\filtering.cpp \
 		..\SourceCode\Core\meshing.cpp \
 		..\SourceCode\GUI\parameters.cpp \
-		..\SourceCode\GUI\options.cpp \
 		..\SourceCode\GUI\scanwindow.cpp \
 		..\SourceCode\GUI\aboutwindow.cpp \
 		..\SourceCode\GUI\filterwindow.cpp \
 		..\SourceCode\GUI\regwindow.cpp debug\moc_mainwindow.cpp \
 		debug\moc_logger.cpp \
 		debug\moc_parameters.cpp \
-		debug\moc_options.cpp \
 		debug\moc_scanwindow.cpp \
 		debug\moc_aboutwindow.cpp \
 		debug\moc_filterwindow.cpp \
@@ -85,7 +83,6 @@ OBJECTS       = debug\main.obj \
 		debug\filtering.obj \
 		debug\meshing.obj \
 		debug\parameters.obj \
-		debug\options.obj \
 		debug\scanwindow.obj \
 		debug\aboutwindow.obj \
 		debug\filterwindow.obj \
@@ -93,7 +90,6 @@ OBJECTS       = debug\main.obj \
 		debug\moc_mainwindow.obj \
 		debug\moc_logger.obj \
 		debug\moc_parameters.obj \
-		debug\moc_options.obj \
 		debug\moc_scanwindow.obj \
 		debug\moc_aboutwindow.obj \
 		debug\moc_filterwindow.obj \
@@ -107,13 +103,11 @@ DIST          =  ..\SourceCode\GUI\mainwindow.h \
 		..\SourceCode\IO\kinect2_grabber.h \
 		..\SourceCode\IO\logger.h \
 		..\SourceCode\Storage\database.h \
-		..\SourceCode\GUI\guitools.h \
 		..\SourceCode\Core\mathtools.h \
 		..\SourceCode\Core\registration.h \
 		..\SourceCode\Core\filtering.h \
 		..\SourceCode\Core\meshing.h \
 		..\SourceCode\GUI\parameters.h \
-		..\SourceCode\GUI\options.h \
 		..\SourceCode\GUI\scanwindow.h \
 		..\SourceCode\GUI\aboutwindow.h \
 		..\SourceCode\GUI\filterwindow.h \
@@ -132,7 +126,6 @@ DIST          =  ..\SourceCode\GUI\mainwindow.h \
 		..\SourceCode\Core\filtering.cpp \
 		..\SourceCode\Core\meshing.cpp \
 		..\SourceCode\GUI\parameters.cpp \
-		..\SourceCode\GUI\options.cpp \
 		..\SourceCode\GUI\scanwindow.cpp \
 		..\SourceCode\GUI\aboutwindow.cpp \
 		..\SourceCode\GUI\filterwindow.cpp \
@@ -305,7 +298,7 @@ dist:
 	$(ZIP) MAGMA-3D.zip $(SOURCES) $(DIST) ..\SourceCode\MAGMA-3D.pro C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\spec_pre.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\common\angle.conf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\common\msvc-base.conf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\qconfig.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_platformsupport_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\qt_functions.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\qt_config.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\win32\qt_config.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\win32-msvc2015\qmake.conf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\spec_post.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\default_pre.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\resolve_config.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\default_post.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\build_pass.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\precompile_header.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\warn_on.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\qt.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\resources.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\moc.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\uic.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\file_copies.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\win32\windows.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\exceptions.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\yacc.prf C:\Qt\Qt5.7.0\5.7\msvc2015_64\mkspecs\features\lex.prf ..\SourceCode\MAGMA-3D.pro C:\Qt\Qt5.7.0\5.7\msvc2015_64\lib\qtmaind.prl C:\Qt\Qt5.7.0\5.7\msvc2015_64\lib\Qt5OpenGLd.prl C:\Qt\Qt5.7.0\5.7\msvc2015_64\lib\Qt5Widgetsd.prl C:\Qt\Qt5.7.0\5.7\msvc2015_64\lib\Qt5Guid.prl C:\Qt\Qt5.7.0\5.7\msvc2015_64\lib\Qt5SerialPortd.prl C:\Qt\Qt5.7.0\5.7\msvc2015_64\lib\Qt5Cored.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.obj debug\mainwindow.obj debug\sensors.obj debug\kinect_v2.obj debug\intel_r200.obj debug\iotools.obj debug\kinect2_grabber.obj debug\logger.obj debug\database.obj debug\guitools.obj debug\mathtools.obj debug\registration.obj debug\filtering.obj debug\meshing.obj debug\parameters.obj debug\options.obj debug\scanwindow.obj debug\aboutwindow.obj debug\filterwindow.obj debug\regwindow.obj debug\moc_mainwindow.obj debug\moc_logger.obj debug\moc_parameters.obj debug\moc_options.obj debug\moc_scanwindow.obj debug\moc_aboutwindow.obj debug\moc_filterwindow.obj debug\moc_regwindow.obj
+	-$(DEL_FILE) debug\main.obj debug\mainwindow.obj debug\sensors.obj debug\kinect_v2.obj debug\intel_r200.obj debug\iotools.obj debug\kinect2_grabber.obj debug\logger.obj debug\database.obj debug\guitools.obj debug\mathtools.obj debug\registration.obj debug\filtering.obj debug\meshing.obj debug\parameters.obj debug\scanwindow.obj debug\aboutwindow.obj debug\filterwindow.obj debug\regwindow.obj debug\moc_mainwindow.obj debug\moc_logger.obj debug\moc_parameters.obj debug\moc_scanwindow.obj debug\moc_aboutwindow.obj debug\moc_filterwindow.obj debug\moc_regwindow.obj
 	-$(DEL_FILE) debug\MAGMA-3D.exp debug\MAGMA-3D.ilk debug\MAGMA-3D.idb
 
 distclean: clean 
@@ -325,9 +318,9 @@ compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: debug\moc_mainwindow.cpp debug\moc_logger.cpp debug\moc_parameters.cpp debug\moc_options.cpp debug\moc_scanwindow.cpp debug\moc_aboutwindow.cpp debug\moc_filterwindow.cpp debug\moc_regwindow.cpp
+compiler_moc_header_make_all: debug\moc_mainwindow.cpp debug\moc_logger.cpp debug\moc_parameters.cpp debug\moc_scanwindow.cpp debug\moc_aboutwindow.cpp debug\moc_filterwindow.cpp debug\moc_regwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_logger.cpp debug\moc_parameters.cpp debug\moc_options.cpp debug\moc_scanwindow.cpp debug\moc_aboutwindow.cpp debug\moc_filterwindow.cpp debug\moc_regwindow.cpp
+	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_logger.cpp debug\moc_parameters.cpp debug\moc_scanwindow.cpp debug\moc_aboutwindow.cpp debug\moc_filterwindow.cpp debug\moc_regwindow.cpp
 debug\moc_mainwindow.cpp: C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qmainwindow.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qwidget.h \
@@ -2637,110 +2630,6 @@ debug\moc_parameters.cpp: C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QMainW
 		..\SourceCode\GUI\parameters.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\bin\moc.exe
 	C:\Qt\Qt5.7.0\5.7\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Jinshür/Desktop/3DScan/SourceCode -I"C:/Program Files/PCL 1.8.0/include/pcl-1.8" -I"C:/Program Files/PCL 1.8.0/3rdParty/VTK/include/vtk-7.0" -I"C:/Program Files/PCL 1.8.0/3rdParty/Boost/include/boost-1_61" -I"C:/Program Files/PCL 1.8.0/3rdParty/Qhull/include" -I"C:/Program Files/PCL 1.8.0/3rdParty/FLANN/include" -I"C:/Program Files/PCL 1.8.0/3rdParty/Eigen/eigen3" -I"C:/Program Files/Microsoft SDKs/Kinect/v2.0_1409/inc" -I"C:/Program Files/OpenNI2/Include" -I"C:/Program Files/OpenNI2/Redist" -I"C:/Program Files (x86)/Intel/RSSDK/include" -I"C:/Program Files (x86)/Intel/RSSDK/src/libpxc" -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtGui -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtSerialPort -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtCore -I. ..\SourceCode\GUI\parameters.h -o debug\moc_parameters.cpp
-
-debug\moc_options.cpp: C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QMainWindow \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qmainwindow.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qwidget.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qwindowdefs.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qglobal.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qconfig.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qfeatures.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsystemdetection.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qprocessordetection.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcompilerdetection.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qtypeinfo.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qtypetraits.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qisenum.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsysinfo.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qlogging.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qflags.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qbasicatomic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qgenericatomic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic_cxx11.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic_msvc.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qglobalstatic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmutex.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qnumeric.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qversiontagging.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qnamespace.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobject.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstring.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qchar.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qbytearray.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qrefcount.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qarraydata.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstringbuilder.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qlist.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qalgorithms.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qiterator.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qhashfunctions.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qpair.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qbytearraylist.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstringlist.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qregexp.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstringmatcher.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcoreevent.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qscopedpointer.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmetatype.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qvarlengtharray.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcontainerfwd.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobject_impl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmargins.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpaintdevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qrect.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsize.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qpoint.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpalette.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qcolor.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qrgb.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qrgba64.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qbrush.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qvector.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qmatrix.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpolygon.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qregion.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qdatastream.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qiodevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qline.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qtransform.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpainterpath.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qimage.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpixelformat.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpixmap.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qshareddata.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qhash.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qfont.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qfontmetrics.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qfontinfo.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qsizepolicy.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qcursor.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qkeysequence.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qevent.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qvariant.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmap.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qdebug.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qtextstream.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qlocale.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qset.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcontiguouscache.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qurl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qfile.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qfiledevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qvector2d.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qtouchdevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qtabwidget.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qicon.h \
-		..\SourceCode\GUI\options.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\bin\moc.exe
-	C:\Qt\Qt5.7.0\5.7\msvc2015_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1900 -D_WIN32 -D_WIN64 -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/Jinshür/Desktop/3DScan/SourceCode -I"C:/Program Files/PCL 1.8.0/include/pcl-1.8" -I"C:/Program Files/PCL 1.8.0/3rdParty/VTK/include/vtk-7.0" -I"C:/Program Files/PCL 1.8.0/3rdParty/Boost/include/boost-1_61" -I"C:/Program Files/PCL 1.8.0/3rdParty/Qhull/include" -I"C:/Program Files/PCL 1.8.0/3rdParty/FLANN/include" -I"C:/Program Files/PCL 1.8.0/3rdParty/Eigen/eigen3" -I"C:/Program Files/Microsoft SDKs/Kinect/v2.0_1409/inc" -I"C:/Program Files/OpenNI2/Include" -I"C:/Program Files/OpenNI2/Redist" -I"C:/Program Files (x86)/Intel/RSSDK/include" -I"C:/Program Files (x86)/Intel/RSSDK/src/libpxc" -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtOpenGL -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtWidgets -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtGui -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtANGLE -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtSerialPort -IC:/Qt/Qt5.7.0/5.7/msvc2015_64/include/QtCore -I. ..\SourceCode\GUI\options.h -o debug\moc_options.cpp
 
 debug\moc_scanwindow.cpp: C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qmainwindow.h \
@@ -9667,7 +9556,7 @@ debug\mainwindow.obj: ..\SourceCode\GUI\mainwindow.cpp ../SourceCode/GUI/mainwin
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpen.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QToolBar \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qtoolbar.h \
-		../SourceCode/GUI/guitools.h \
+		..\SourceCode\GUI\guitools.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QStringList \
 		../SourceCode/IO/iotools.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QFileDialog \
@@ -10197,7 +10086,307 @@ debug\mainwindow.obj: ..\SourceCode\GUI\mainwindow.cpp ../SourceCode/GUI/mainwin
 		"C:\Program Files\PCL 1.8.0\3rdParty\Eigen\eigen3\unsupported\Eigen\src\NonLinearOptimization\LevenbergMarquardt.h" \
 		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\sample_consensus\impl\sac_model_registration.hpp" \
 		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\common\point_operators.h" \
-		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\correspondence_rejection_sample_consensus.hpp"
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\correspondence_rejection_sample_consensus.hpp" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\icp.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\registration.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\boost.h" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\graph_traits.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\property.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\detail\property.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\dijkstra_shortest_paths.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\named_function_params.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\library.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\enum.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\insert.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\push_back.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\detail\get_data.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\pop_back.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\pop_front.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\push_front.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\remove.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\replace.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\reverse.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\reverse.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\to_list.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\to_seq.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\to_seq.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\array\to_tuple.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\config\limits.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\control.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\debug.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\debug\assert.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\debug\line.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\facilities.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\facilities\apply.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\detail\is_unary.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\append.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\at.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\rest_n.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\cat.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\enum.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\filter.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\first_n.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\for_each.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\for_each_product.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\to_tuple.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\size.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\to_array.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\to_seq.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\list\transform.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\logical.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\logical\bitnor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\logical\bitor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\logical\bitxor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\logical\nor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\logical\or.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\logical\xor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\punctuation.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\punctuation\paren.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\punctuation\paren_if.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\punctuation\remove_parens.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\enum.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\selection.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\selection\min.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\filter.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\fold_right.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\reverse.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\insert.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\pop_back.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\pop_front.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\push_front.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\remove.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\replace.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\to_array.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\to_list.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\detail\binary_transform.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\variadic\detail\is_single_return.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\to_tuple.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\seq\variadic_seq_to_seq.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\slot.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\insert.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\to_array.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\pop_back.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\pop_front.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\push_back.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\push_front.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\remove.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\tuple\replace.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\variadic.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\variadic\to_array.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\variadic\to_list.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\variadic\to_seq.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\variadic\to_tuple.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\wstringize.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\properties.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\concept_archetype.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\parallel_property_maps.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\distributed_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\process_group.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\basic_reduce.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\detail\untracked_pair.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\datatype.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\config.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\datatype_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\detail\mpi_datatype_cache.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\detail\mpi_datatype_oarchive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\oserializer.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\extended_type_info_typeid.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\static_warning.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpl\print.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\config.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\singleton.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\force_include.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\auto_link_archive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\decl.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\abi_prefix.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\abi_suffix.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\extended_type_info.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\factory.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\access.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\throw_exception.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\smart_cast.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\assume_abstract.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\serialization.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\strong_typedef.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\version.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\level.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\level_enum.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\tracking.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\tracking_enum.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\type_info_implementation.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\traits.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\nvp.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\split_member.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\base_object.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\void_cast_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\wrapper.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\void_cast.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\array.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\collection_size_type.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\split_free.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\is_bitwise_serializable.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\archive_exception.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\basic_oarchive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\basic_archive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\helper_collection.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\basic_oserializer.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\basic_serializer.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\basic_pointer_oserializer.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\archive_serializer_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\check.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\detail\ignore_skeleton_oarchive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\common_oarchive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\interface_oarchive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\item_version_type.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\detail\mpi_datatype_primitive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpi\exception.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\detail\get_data.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\archive\detail\register_archive.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\serialization\utility.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\local_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\unsafe_serialize.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index_container.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\detail\allocator_utilities.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index_container_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\identity.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\identity_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\indexed_by.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\ordered_index_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\ord_index_args.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\tag.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\no_duplicate_tags.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\ord_index_impl_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\access_specifier.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\adl_swap.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\base_type.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\index_base.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\copy_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\auto_space.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\raw_ptr.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\do_not_copy_elements_tag.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\node_type.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpl\reverse_iter_fold.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\mpl\aux_\reverse_iter_fold_impl.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\header_holder.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\index_node_base.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\is_index_list.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\vartempl_support.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\index_loader.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\index_saver.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\index_matcher.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\converter.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\has_tag.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\safe_mode.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\iter_adaptor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\safe_mode_errors.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\detail\lightweight_mutex.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\archive_constructed.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\serialization_version.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\invariant_assert.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\hashed_index.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\bucket_array.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\hash_index_node.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\hash_index_iterator.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\modify_key_adaptor.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\promotes_arg.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\is_transparent.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\hashed_index_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\hash_index_args.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\member.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\sequenced_index.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\bidir_node_iterator.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\seq_index_node.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\detail\seq_index_ops.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\multi_index\sequenced_index_fwd.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\impl\distributed_property_map.ipp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\simple_trigger.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\vector_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\vector_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\property_maps\constant_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\property_maps\null_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\detail\d_ary_heap.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\shared_array_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\breadth_first_search.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\queue.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\graph_concepts.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\numeric_values.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\buffer_concepts.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\typeof.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\dmc\typeof_impl.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\msvc\typeof_impl.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\unsupported.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\message.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\typeof_impl.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\encode_decode.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\vector.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\vector50.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\vector100.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\vector150.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\vector200.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\repeat_from_to.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\type_encoding.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\template_encoding.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\int_encoding.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\type_template_param.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\integral_template_param.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\template_template_param.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\modifiers.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\pointers_data_members.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\encode_decode_params.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\register_functions.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\preprocessor\if.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\register_fundamental.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\typeof\native.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\visitors.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\overloading.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\two_bit_color_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\two_bit_color_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\concepts.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\breadth_first_search.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\detail\filtered_queue.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\queue.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\parallel\process_group.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\detail\queue.ipp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\parallel\algorithm.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\parallel\detail\inplace_all_to_all.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\parallel\simple_trigger.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\parallel\properties.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\parallel\container_traits.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\relax.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\indirect_cmp.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\exception.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\relaxed_heap.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\smart_ptr.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\mutable_queue.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\mutable_heap.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\pending\is_heap.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\detail\array_binary_tree.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\dijkstra_shortest_paths.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\crauser_et_al_shortest_paths.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\detail\dijkstra_shortest_paths.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\iteration_macros.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\property_map_iterator.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\property_map\parallel\caching_property_map.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\detail\remote_update_set.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\accounting.hpp" \
+		"C:\Program Files\PCL 1.8.0\3rdParty\Boost\include\boost-1_61\boost\graph\distributed\eager_dijkstra_shortest_paths.hpp" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\transformation_estimation.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\registration.hpp" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\transformation_estimation_svd.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\transformation_estimation_svd.hpp" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\transformation_estimation_point_to_plane_lls.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\warp_point_rigid.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\transformation_estimation_point_to_plane_lls.hpp" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\default_convergence_criteria.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\convergence_criteria.h" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\default_convergence_criteria.hpp" \
+		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\registration\impl\icp.hpp"
 
 debug\sensors.obj: ..\SourceCode\IO\sensors.cpp ../SourceCode/IO/sensors.h \
 		"C:\Program Files\PCL 1.8.0\include\pcl-1.8\pcl\point_cloud.h" \
@@ -18754,7 +18943,7 @@ debug\database.obj: ..\SourceCode\Storage\database.cpp ../SourceCode/Storage/dat
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobject_impl.h
 
-debug\guitools.obj: ..\SourceCode\GUI\guitools.cpp ../SourceCode/GUI/guitools.h \
+debug\guitools.obj: ..\SourceCode\GUI\guitools.cpp ..\SourceCode\GUI\guitools.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QStringList \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstringlist.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qlist.h \
@@ -26719,108 +26908,6 @@ debug\parameters.obj: ..\SourceCode\GUI\parameters.cpp ../SourceCode/GUI/paramet
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qicon.h
 
-debug\options.obj: ..\SourceCode\GUI\options.cpp ../SourceCode/GUI/options.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QMainWindow \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qmainwindow.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qwidget.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qwindowdefs.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qglobal.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qconfig.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qfeatures.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsystemdetection.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qprocessordetection.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcompilerdetection.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qtypeinfo.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qtypetraits.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qisenum.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsysinfo.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qlogging.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qflags.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qbasicatomic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qgenericatomic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic_cxx11.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qatomic_msvc.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qglobalstatic.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmutex.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qnumeric.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qversiontagging.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qnamespace.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobject.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstring.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qchar.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qbytearray.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qrefcount.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qarraydata.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstringbuilder.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qlist.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qalgorithms.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qiterator.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qhashfunctions.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qpair.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qbytearraylist.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstringlist.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qregexp.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qstringmatcher.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcoreevent.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qscopedpointer.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmetatype.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qvarlengtharray.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcontainerfwd.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qobject_impl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmargins.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpaintdevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qrect.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsize.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qpoint.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpalette.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qcolor.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qrgb.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qrgba64.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qbrush.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qvector.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qmatrix.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpolygon.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qregion.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qdatastream.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qiodevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qline.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qtransform.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpainterpath.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qimage.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpixelformat.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qpixmap.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsharedpointer.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qshareddata.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qhash.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qfont.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qfontmetrics.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qfontinfo.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qsizepolicy.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qcursor.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qkeysequence.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qevent.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qvariant.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qmap.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qdebug.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qtextstream.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qlocale.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qset.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qcontiguouscache.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qurl.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qurlquery.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qfile.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qfiledevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qvector2d.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qtouchdevice.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qtabwidget.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\qicon.h
-
 debug\scanwindow.obj: ..\SourceCode\GUI\scanwindow.cpp ../SourceCode/GUI/scanwindow.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\qmainwindow.h \
@@ -29023,7 +29110,12 @@ debug\scanwindow.obj: ..\SourceCode\GUI\scanwindow.cpp ../SourceCode/GUI/scanwin
 		../SourceCode/IO/kinect_v2.h \
 		../SourceCode/IO/sensors.h \
 		../SourceCode/IO/logger.h \
-		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\QCloseEvent
+		../SourceCode/IO/iotools.h \
+		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QStringList \
+		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtGui\QCloseEvent \
+		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\QDir \
+		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qdir.h \
+		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtCore\qfileinfo.h
 
 debug\aboutwindow.obj: ..\SourceCode\GUI\aboutwindow.cpp ../SourceCode/GUI/aboutwindow.h \
 		C:\Qt\Qt5.7.0\5.7\msvc2015_64\include\QtWidgets\QDialog \
@@ -33563,8 +33655,6 @@ debug\moc_mainwindow.obj: debug\moc_mainwindow.cpp
 debug\moc_logger.obj: debug\moc_logger.cpp 
 
 debug\moc_parameters.obj: debug\moc_parameters.cpp 
-
-debug\moc_options.obj: debug\moc_options.cpp 
 
 debug\moc_scanwindow.obj: debug\moc_scanwindow.cpp 
 

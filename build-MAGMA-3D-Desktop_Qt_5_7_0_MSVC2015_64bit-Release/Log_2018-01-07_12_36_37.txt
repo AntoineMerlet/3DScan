@@ -1,4 +1,0 @@
-2018-01-07.12:36:39:	Program initilized
-2018-01-07.12:36:45:	Register window opened
-2018-01-07.12:36:51:	Register window opened
-2018-01-07.12:37:14:	Main window closed

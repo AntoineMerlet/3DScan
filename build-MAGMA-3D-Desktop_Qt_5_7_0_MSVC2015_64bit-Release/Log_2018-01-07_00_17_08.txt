@@ -1,2 +1,0 @@
-2018-01-07.00:17:08:	Program initilized
-2018-01-07.00:17:16:	Singal arrived

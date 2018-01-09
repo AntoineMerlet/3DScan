@@ -1,0 +1,11 @@
+2018-01-09.12:50:58:	Program initilized
+2018-01-09.12:51:07:	Loaded D:/chair_alb0.ply
+2018-01-09.12:51:07:	Added 1 rawPC in DB. Size: 1
+2018-01-09.12:51:18:	Processing 1 point clouds
+2018-01-09.12:51:18:	1 rawPC replaced DB. Size: 1
+2018-01-09.12:51:23:	Processing 1 point clouds
+2018-01-09.12:51:23:	VoxelGrid on 307200points ...
+2018-01-09.12:51:23:	Downsampling Done. Now 2439 points
+2018-01-09.12:51:23:	1 rawPC replaced DB. Size: 1
+2018-01-09.12:52:03:	Scan window closed
+2018-01-09.12:52:03:	Main window closed

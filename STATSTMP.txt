@@ -1,0 +1,3 @@
+Number of log file created in the last 2 days: 700
+number of commits: 165
+nb lines: 847 (headers) 2901 (cpp)

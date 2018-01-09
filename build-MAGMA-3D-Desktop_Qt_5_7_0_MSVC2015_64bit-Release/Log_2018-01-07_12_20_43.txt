@@ -1,2 +1,0 @@
-2018-01-07.12:20:46:	Program initilized
-2018-01-07.12:30:23:	Main window closed

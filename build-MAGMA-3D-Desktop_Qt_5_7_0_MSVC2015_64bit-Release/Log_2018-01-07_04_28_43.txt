@@ -1,8 +1,0 @@
-2018-01-07.04:28:45:	Program initilized
-2018-01-07.04:28:54:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb4.ply
-2018-01-07.04:28:54:	Added 1 rawPC in DB. Size: 1
-2018-01-07.04:28:56:	Filter window opened
-2018-01-07.04:28:58:	Processing 1 point clouds
-2018-01-07.04:28:58:	Normal  sampling on 307200points ...
-2018-01-07.04:28:58:	Normals Done. Now 307200
-2018-01-07.04:28:58:	Downsampling Done. Now 0 points

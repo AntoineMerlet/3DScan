@@ -1,8 +1,0 @@
-2018-01-07.01:04:11:	Program initilized
-2018-01-07.01:04:26:	Loaded D:/3DScanProjects/3D-KORN/Source-Code/ScanRegistrationDev/chair_alb0.ply
-2018-01-07.01:04:26:	Added 1 rawPC in DB. Size: 1
-2018-01-07.01:04:29:	Filter window opened
-2018-01-07.01:04:36:	Processing 1 point clouds
-2018-01-07.01:04:36:	VoxelGrid on 33959points ...
-2018-01-07.01:04:36:	Downsampling Done. Now 408 points
-2018-01-07.01:04:36:	Res size 408 points
